@@ -1,4 +1,4 @@
-# AppDelivery (Proyecto DPS)
+# AppDelivery PupasRicas (Proyecto DPS)
 
 ### Integrantes:
 
