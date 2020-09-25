@@ -1,0 +1,155 @@
+ <body> 
+ <!-- Bootstrap NavBar -->
+<nav class="navbar navbar-expand-md navbar-dark bg-primary fixed-top">
+    <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <a class="navbar-brand" href="#">
+        <img src="https://www.flaticon.com/svg/static/icons/svg/2912/2912292.svg" width="40" height="30" class="d-inline-block align-top" alt="">
+        <span class="menu-collapsed">Pupusas</span>
+    </a>
+    <div class="collapse navbar-collapse" id="navbarNavDropdown">
+        <ul class="navbar-nav"> 
+            <!-- Aunque poco probable, si la pagina se utiliza desde un dispositivo movil 
+                 la barra lateral de navegacion se esconde y el menu se muestra desde la barra superior.
+             -->
+            <li class="nav-item dropdown d-sm-block d-md-none">
+                <a class="nav-link dropdown-toggle" href="#" id="smallerscreenmenu" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                  Menu
+                </a>
+                <div class="dropdown-menu" aria-labelledby="smallerscreenmenu">
+                    <a class="dropdown-item" href="#">Dashboard</a>
+                    <a class="dropdown-item" href="#">Profile</a>
+                    <a class="dropdown-item" href="#">Tasks</a>
+                    <a class="dropdown-item" href="#">Etc ...</a>
+                </div>
+            </li>
+            <!-- Smaller devices menu END -->
+
+        </ul>
+    </div>
+</nav>
+<!-- NavBar END -->
+
+
+<!-- Bootstrap row -->
+<div class="row" id="body-row">
+    <!-- Sidebar -->
+    <div id="sidebar-container" class="sidebar-expanded d-none d-md-block col-2">
+        <!-- d-* hiddens the Sidebar in smaller devices. Its itens can be kept on the Navbar 'Menu' -->
+        <!-- Bootstrap List Group -->
+        <ul class="list-group sticky-top sticky-offset"> 
+
+            <!-- Menu with submenu -->
+            <a href="#submenu1" data-toggle="collapse" aria-expanded="false" class="bg-dark list-group-item list-group-item-action flex-column align-items-start">
+                <div class="d-flex w-100 justify-content-start align-items-center">
+                    <span class="fa fa-dashboard fa-fw mr-3"></span>
+                    <span class="menu-collapsed">Dashboard</span>
+                    <span class="submenu-icon ml-auto"></span>
+                </div>
+            </a>
+            <!-- Submenu dashboard-->
+            <div id="submenu1" class="collapse sidebar-submenu">
+                <a href="#" class="list-group-item list-group-item-action bg-dark text-white">
+                    <span class="menu-collapsed">Submenu 1</span>
+                </a>
+                <a href="#" class="list-group-item list-group-item-action bg-dark text-white">
+                    <span class="menu-collapsed">Submenu 1</span>
+                </a>
+                <a href="#" class="list-group-item list-group-item-action bg-dark text-white">
+                    <span class="menu-collapsed">Submenu 1</span>
+                </a>
+            </div> 
+            <!-- /EOF Submenu dashboard -->
+
+            <!-- Pedidos -->
+            <a href="#" class="bg-dark list-group-item list-group-item-action">
+                <div class="d-flex w-100 justify-content-start align-items-center">
+                    <span class="fa fa-question-circle fa-fw mr-3"></span>
+                    <span class="menu-collapsed">Ordenes<span class="badge badge-pill badge-primary ml-2">9</span></span>
+                </div>
+            </a>  
+            <!--/EOF Pedidos -->
+
+            <!-- Clientes -->
+            <a href="#" class="bg-dark list-group-item list-group-item-action">
+                <div class="d-flex w-100 justify-content-start align-items-center">
+                    <span class="fa fa-question-circle fa-fw mr-3"></span>
+                    <span class="menu-collapsed">Clientes</span>
+                </div>
+            </a>
+            <!-- /EOF Clientes -->
+
+            <!-- Categorias -->
+            <a href="#" class="bg-dark list-group-item list-group-item-action">
+                <div class="d-flex w-100 justify-content-start align-items-center">
+                    <span class="fa fa-question-circle fa-fw mr-3"></span>
+                    <span class="menu-collapsed">Categorias </span>
+                </div>
+            </a>
+            <!--/EOF  Categorias -->
+
+            <!-- Ingredientes -->
+            <a href="#" class="bg-dark list-group-item list-group-item-action">
+                <div class="d-flex w-100 justify-content-start align-items-center">
+                    <span class="fa fa-question-circle fa-fw mr-3"></span>
+                    <span class="menu-collapsed">Ingredientes </span>
+                </div>
+            </a>
+            <!--/EOF  Ingredientes -->
+
+            <!-- Productos -->
+            <a href="#" class="bg-dark list-group-item list-group-item-action">
+                <div class="d-flex w-100 justify-content-start align-items-center">
+                    <span class="fa fa-question-circle fa-fw mr-3"></span>
+                    <span class="menu-collapsed">Productos </span>
+                </div>
+            </a>
+            <!--/EOF Productos -->
+
+            <!-- Separador sin titulo -->
+            <li class="list-group-item sidebar-separator menu-collapsed"></li>
+            <!-- /EOF Separador -->
+
+
+            <a href="#" class="bg-dark list-group-item list-group-item-action">
+                <div class="d-flex w-100 justify-content-start align-items-center">
+                    <span class="fa fa-question fa-fw mr-3"></span>
+                    <span class="menu-collapsed">Ayuda</span>
+                </div>
+            </a> 
+
+
+        </ul>
+        <!-- List Group END-->
+    </div>
+    <!-- sidebar-container END -->
+
+    <!-- MAIN -->
+    <div class="main col py-3">
+
+        <h1>
+            Dashboard
+            <small class="text-muted"></small>
+        </h1>
+
+        <p>Sriracha biodiesel taxidermy organic post-ironic, Intelligentsia salvia mustache 90's code editing brunch. Butcher polaroid VHS art party, hashtag Brooklyn deep v PBR narwhal sustainable mixtape swag wolf squid tote bag. Tote bag cronut semiotics,
+            raw denim deep v taxidermy messenger bag. Tofu YOLO Etsy, direct trade ethical Odd Future jean shorts paleo. Forage Shoreditch tousled aesthetic irony, street art organic Bushwick artisan cliche semiotics ugh synth chillwave meditation. Shabby
+            chic lomo plaid vinyl chambray Vice. Vice sustainable cardigan, Williamsburg master cleanse hella DIY 90's blog.</p>
+
+        <hr>
+
+        <p>Ethical Kickstarter PBR asymmetrical lo-fi. Dreamcatcher street art Carles, stumptown gluten-free Kickstarter artisan Wes Anderson wolf pug. Godard sustainable you probably haven't heard of them, vegan farm-to-table Williamsburg slow-carb readymade
+            disrupt deep v. Meggings seitan Wes Anderson semiotics, cliche American Apparel whatever. Helvetica cray plaid, vegan brunch Banksy leggings +1 direct trade. Wayfarers codeply PBR selfies. Banh mi McSweeney's Shoreditch selfies, forage fingerstache
+            food truck occupy YOLO Pitchfork fixie iPhone fanny pack art party Portland.</p>
+
+        <hr> 
+
+    </div>
+    <!-- Main Col END -->
+
+</div>
+<!-- body-row END -->
+
+ 
+</body>
