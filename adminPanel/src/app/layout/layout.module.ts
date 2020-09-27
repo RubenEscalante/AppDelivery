@@ -6,10 +6,10 @@ import { CommonModule } from '@angular/common';
 import { LayoutRoutingModule } from './layout-routing.module';
 
 //Componentes
-import { SidebarComponent } from './sidebar/sidebar.component';
-import { HeaderComponent } from './header/header.component';
-import { FooterComponent } from './footer/footer.component';
-import { MainLayoutComponent } from './main-layout/main-layout.component'; 
+import { SidebarComponent } from './components/sidebar/sidebar.component';
+import { HeaderComponent } from './components/header/header.component';
+import { FooterComponent } from './components/footer/footer.component';
+import { MainLayoutComponent } from './components/main-layout/main-layout.component'; 
 
 //import {FlexLayoutModule} from '@angular/flex-layout';
 

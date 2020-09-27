@@ -28,7 +28,6 @@ export class OrdenService{
   
   //Obteniendo ordenes del Servidor
   obtenerOrdenes(){
-    
     return this.Clientehttp.get<Orden[]>(this.ordenesUrl);
     //return this.http.get(this.ordenesUrl); 
   }
@@ -42,8 +41,6 @@ export class OrdenService{
   actualizarEstado(orden:Orden){  
      return this.Clientehttp.put(`${this.ordenesUrl}/${orden.id}`,orden,httpOptions);  
   }
-
-  
 
 
 
