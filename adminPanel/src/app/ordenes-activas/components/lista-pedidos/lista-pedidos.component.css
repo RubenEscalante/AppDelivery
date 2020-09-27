@@ -1,0 +1,64 @@
+.thumbnail{
+    padding: 15px;
+    border: solid 1px gray; 
+} 
+
+.post-content {
+    text-align: left;
+}
+.post-meta {
+    text-align: right;
+}
+.post-content h4 {
+    font-weight: bold;
+    margin-bottom: 20px;
+    
+} 
+    
+.post-productos {
+    list-style-type: none;
+    padding: 10px 15px;
+    margin: 0;
+    text-align: right;
+    border: 1px solid black;
+} 
+
+.acceso-rapido{
+    display: flex;
+    flex-direction: column; 
+    text-align: center;
+
+}
+
+.acceso-rapido .wrapper-check{
+    display: inline-block; 
+}
+
+.acceso-rapido .button{
+    display: block;
+}
+
+.acceso-rapido label{
+    font-size: 14px;
+    display: block;
+}
+.post-productos li {       
+    border: none;
+    margin: none;
+    padding: none;
+    text-align: left;    
+} 
+
+.post-productos .badge {       
+     margin-right: 10px;
+    
+} 
+
+.post-meta{
+    margin-top: 20px;
+}
+.post-meta .price {
+    font-weight: bold;
+    font-size: 24px;
+    color: #4BB047;
+}

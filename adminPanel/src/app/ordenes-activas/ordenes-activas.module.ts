@@ -1,14 +1,20 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
-import { OrdenesActivasRoutingModule } from './ordenes-activas-routing.module';
+import { ListaPedidosComponent } from './components/lista-pedidos/lista-pedidos.component'; 
+
+import { OrdenesActivasRoutingModule } from './ordenes-activas-routing.module'; 
+import { PrincipalComponent } from './components/principal/principal.component';
 
 
 @NgModule({
-  declarations: [],
   imports: [
     CommonModule,
     OrdenesActivasRoutingModule
-  ]
+  ], 
+  declarations: [ListaPedidosComponent, PrincipalComponent] 
+  
 })
-export class OrdenesActivasModule {  constructor() { console.log('Ordenes called'); }}
+
+
+export class OrdenesActivasModule { }
