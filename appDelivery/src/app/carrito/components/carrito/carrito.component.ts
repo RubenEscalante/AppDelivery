@@ -7,9 +7,15 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CarritoComponent implements OnInit {
 
+  public total:number;
   constructor() { }
 
   ngOnInit(): void {
+    this.total = 0;
+  }
+
+  recibirTotal(valor){
+    this.total = valor;
   }
 
 

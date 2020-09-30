@@ -1,6 +1,24 @@
 <br><h4>Aqui va el carrito de compras</h4>
 <div class="container">
-    <app-lista-productos></app-lista-productos>
+    <app-lista-productos #listaCarrito (enviarTotal)="recibirTotal($event)"></app-lista-productos>
+    <div class="row justify-content-between my-3">
+        <div class="col-3 text-center align-self-center">
+            <button class="btn btn-primary" routerLink="/menu">
+                Regresar a la tienda
+            </button>
+        </div>
+        <div class="col-3 align-self-center">
+            <button class="btn btn-danger" (click)="listaCarrito.vaciarCarrito()">
+                Vaciar carrito
+            </button>
+        </div>
+        <div class="col-3 text-center border">
+            <p class="h3 my-2">Total: <span class="ml-3"><span class="mr-1">$</span> {{total}}</span></p>
+            <hr>
+            <button class="btn btn-success my-2" (click)="listaCarrito.guardarCambios()">
+                Realizar compra
+            </button>
+        </div>
+    </div>
 </div> 
 
-<button type="button" routerLink="/menu"  class="btn btn-primary">Regresar al menu</button>

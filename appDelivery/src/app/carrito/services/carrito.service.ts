@@ -18,7 +18,6 @@ export class CarritoService {
 
   set(key:string, data:any){
     localStorage.setItem(key,JSON.stringify(data));
-    console.log(this.datos);
   }
 
   get(key:string){

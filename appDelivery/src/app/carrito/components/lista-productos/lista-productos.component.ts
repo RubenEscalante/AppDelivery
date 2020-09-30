@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { FormControl } from '@angular/forms';
 
 //Modelo
@@ -13,14 +13,9 @@ import { CarritoService } from '../../services/carrito.service';
   styleUrls: ['./lista-productos.component.css']
 })
 export class ListaProductosComponent implements OnInit {
-  datos = [
-    {"codigoProducto":1,"precioProducto":0.50,"cantidad":1,"descripcion":'Pupusa frijol con queso',"fotografia":'aa'},
-    {"codigoProducto":2,"precioProducto":1.50,"cantidad":2,"descripcion":'Soda Coca-cola 2.5L',"fotografia":'aa'},
-    {"codigoProducto":3,"precioProducto":3.25,"cantidad":3,"descripcion":'Pie de Manzana',"fotografia":'aa'},
-    {"codigoProducto":4,"precioProducto":0.5,"cantidad":4,"descripcion":'Pupusa de frijol con queso',"fotografia":'aa'},
-  ];
   public productos:Producto[];
   public total:number = 0;
+  @Output() enviarTotal = new EventEmitter();
   constructor(
     private carritoService:CarritoService
   ) { }
@@ -33,9 +28,13 @@ export class ListaProductosComponent implements OnInit {
  //Calculo el total de la compra
  obtenerTotal(){
   this.total = 0;
-  for(let producto of this.productos){
-    this.total += producto.precioProducto * producto.cantidad;
+  if(this.productos){
+    for(let producto of this.productos){
+      this.total += producto.precioProducto * producto.cantidad;
+    }
   }
+  
+  this.enviarTotal.emit(this.total);
   this.guardarCambios();
 }
 
@@ -60,11 +59,39 @@ eliminarProducto(productoEliminado:Producto){
   }
 }
 
+//Incrementa en uno la cantidad del producto
+incrementarCantidad(producto:Producto){
+  if(producto.cantidad < 50){
+    producto.cantidad++;
+  }else{
+    //Aqui puedo mostrar un mensaje de error
+    producto.cantidad = 50;
+  }
+  let indice = this.productos.indexOf(producto);
+  this.productos.splice(indice,1,producto);
+  this.obtenerTotal();
+}
+
+//Decrementa en uno la cantidad del producto
+decrementarCantidad(producto:Producto){
+  if(producto.cantidad > 1){
+    producto.cantidad--;
+  }else{
+    //Aqui puedo mostrar un mensaje de error al usuario
+    producto.cantidad = 1;
+  }
+  let indice = this.productos.indexOf(producto);
+  this.productos.splice(indice,1,producto);
+  this.obtenerTotal();
+
+}
+
 //Elimina todos los productos del carrito en el componente y en el localStorage
 vaciarCarrito(){
   this.productos = null;
   this.carritoService.remove('productos');
   this.total = 0;
+  this.enviarTotal.emit(this.total);
 
   //Mostrando toast
   /*this.toastr.warning('Productos eliminados del carrito exitosamente', 'Carrito Vaciado',{
