@@ -1,6 +1,8 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core'; 
 import { AppComponent } from './app.component';
+
+import { CarritoService } from '../app/carrito/services/carrito.service';
  
 
 
@@ -15,9 +17,9 @@ import {LayoutModule} from './layout/layout.module';
   imports: [
     BrowserModule,
     RouterModule.forRoot([]),
-    LayoutModule 
+    LayoutModule
   ],
-  providers: [],
+  providers: [CarritoService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
