@@ -15,6 +15,7 @@ import { CarritoService } from '../../services/carrito.service';
 export class ListaProductosComponent implements OnInit {
   public productos:Producto[];
   public total:number = 0;
+  public cantidad:number = 0;
   @Output() enviarTotal = new EventEmitter();
   constructor(
     private carritoService:CarritoService
@@ -106,6 +107,8 @@ guardarCambios(renderizar?:string){
   
   //Con esto almaceno los cambios realizados en las cantidades y los productos eliminados en el localStorage
   this.carritoService.set('productos',this.productos);
+  this.carritoService.set('total',this.total);
+  this.carritoService.set('cantidadProductos',this.productos.length);
   if(renderizar){
     //Aquí hago el cambio de pantalla a la página de productos
     //
