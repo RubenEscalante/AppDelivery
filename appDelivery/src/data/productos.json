@@ -1,0 +1,58 @@
+[
+  {
+    "id": 1,
+    "Name": "Frijol con queso",
+    "Description": "Pupusa clasica de frijol con queso",
+    "Type": "Pupusa",
+    "Price": 0.5,
+    "imageURL": "https://i.ytimg.com/vi/ii2XYKpuTPk/maxresdefault.jpg"
+  },
+  {
+    "id": 2,
+    "Name": "Revueltas",
+    "Description": "Pupusa clasica revuelta con chicharron, queso, frijol",
+    "Type": "Pupusa",
+    "Price": 0.5,
+    "imageURL": "https://i.ytimg.com/vi/CdFE_9SxFoQ/maxresdefault.jpg"
+  },
+  {
+    "id": 3,
+    "Name": "Queso",
+    "Description": "Pupusa clasica de queso",
+    "Type": "Pupusa",
+    "Price": 0.75,
+    "imageURL": "https://i.ytimg.com/vi/ii2XYKpuTPk/maxresdefault.jpg"
+  },
+  {
+    "id": 4,
+    "Name": "Coca-cola 1L",
+    "Description": "Coca-cola de 1 litro",
+    "Type": "Bebida",
+    "Price": 1.5,
+    "imageURL": "https://i.ytimg.com/vi/CdFE_9SxFoQ/maxresdefault.jpg"
+  },
+  {
+    "id": 5,
+    "Name": "Sprite 2.5L",
+    "Description": "Soda Sprite 2.5L",
+    "Type": "Bebida",
+    "Price": 2.0,
+    "imageURL": "https://i.ytimg.com/vi/ii2XYKpuTPk/maxresdefault.jpg"
+  },
+  {
+    "id": 6,
+    "Name": "Camaron con aji",
+    "Description": "Pupusa de especialidad que contiene camaron y aji rojo",
+    "Type": "Especialidad",
+    "Price": 1.0,
+    "imageURL": "https://i.ytimg.com/vi/CdFE_9SxFoQ/maxresdefault.jpg"
+  },
+  {
+    "id": 7,
+    "Name": "Pollo piquin",
+    "Description": "Pupusa de especialidad que contiene pollo piquin y mostaza",
+    "Type": "Especialidad",
+    "Price": 1.0,
+    "imageURL": "https://i.ytimg.com/vi/ii2XYKpuTPk/maxresdefault.jpg"
+  }
+]

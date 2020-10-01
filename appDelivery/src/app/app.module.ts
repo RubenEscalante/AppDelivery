@@ -1,12 +1,12 @@
-import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core'; 
-import { AppComponent } from './app.component';
- 
+import {BrowserModule} from '@angular/platform-browser';
+import {NgModule} from '@angular/core';
+import {AppComponent} from './app.component';
 
 
-import { PreloadAllModules, RouterModule} from '@angular/router';  
+import {PreloadAllModules, RouterModule} from '@angular/router';
 
 import {LayoutModule} from './layout/layout.module';
+
 
 @NgModule({
   declarations: [
@@ -15,9 +15,10 @@ import {LayoutModule} from './layout/layout.module';
   imports: [
     BrowserModule,
     RouterModule.forRoot([]),
-    LayoutModule 
+    LayoutModule
   ],
   providers: [],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {
+}

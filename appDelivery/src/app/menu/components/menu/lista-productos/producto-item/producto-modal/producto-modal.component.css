@@ -1,0 +1,11 @@
+.content {
+  opacity: 0;
+  visibility: 0;
+  height: 0px;
+}
+.hola {
+  transition: all 600ms;
+  opacity: 1;
+  visibility: 1;
+  height: 400px;
+}

@@ -1,1 +1,54 @@
 /* You can add global styles to this file, and also import other style files */
+
+/*
+ESTILOS MENU
+ */
+.cart-item {
+  font-size: small;
+}
+
+.filtros {
+  font-size: small;
+}
+
+.product-btn {
+  font-size: smaller;
+}
+.activelink {
+  background-color: #0000ff;
+}
+
+.pagination .active a {
+  background: #007bff !important;
+  border-color: #007bff !important;
+  border-radius: 1000px !important;
+}
+.pagination a {
+  border-radius: 200px !important;
+  margin-left: 15px !important;
+}
+
+.flex-between {
+  justify-content: space-between;
+}
+.flex-item {
+  display: flex;
+  padding: 2px;
+  width: 100%;
+}
+.box {
+  display: inline-block;
+  font-size: 20px;
+  line-height: 50px;
+}
+.fade {
+  transition: opacity 0.15s ease-out !important;
+}
+.img-fluid:hover {
+  opacity: 0.7;
+  cursor: pointer;
+}
+
+/*
+FIN ESTILOS MENU
+ */

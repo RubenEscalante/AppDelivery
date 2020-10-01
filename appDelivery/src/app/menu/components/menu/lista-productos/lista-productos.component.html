@@ -1,0 +1,23 @@
+<div class="row album py-5">
+  <div
+    class="col-md-4 mb-3"
+    *ngFor="
+      let productos of Productos
+        | filtro: valorfiltro:'Type'
+        | paginacion: page_size:page_number
+    "
+  >
+    <app-producto-item [productos]="productos"></app-producto-item>
+  </div>
+</div>
+<div *ngIf="page_size < (Productos | filtro: valorfiltro:'Type').length">
+  <ngb-pagination
+    size="lg"
+    [directionLinks]="false"
+    [(page)]="page_number"
+    [pageSize]="page_size"
+    [collectionSize]="(Productos | filtro: valorfiltro:'Type').length"
+    class="d-flex justify-content-center"
+  ></ngb-pagination>
+</div>
+
