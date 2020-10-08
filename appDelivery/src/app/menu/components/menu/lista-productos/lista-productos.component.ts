@@ -1,6 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {ProductlistService} from '../../../services/productlist.service';
 import {ProductfilterService} from '../../../services/productfilter.service';
+import {Products} from 'src/app/menu/models/products';
 
 @Component({
   selector: 'app-lista-productos',
@@ -8,7 +9,7 @@ import {ProductfilterService} from '../../../services/productfilter.service';
   styleUrls: ['./lista-productos.component.css'],
 })
 export class ListaProductosComponent implements OnInit {
-  Productos: any;
+  Productos: Products;
   valorfiltro: any;
   page_size: number = 6;
   page_number: number = 1;
@@ -21,7 +22,7 @@ export class ListaProductosComponent implements OnInit {
 
   ngOnInit(): void {
     if (!this.valorfiltro) {
-      this.valorfiltro = 'Pupusa';
+      this.valorfiltro = 'Tradicional';
     }
     this.filterService.enviarMensajeObservable.subscribe((data) => {
       this.valorfiltro = data;
@@ -31,7 +32,6 @@ export class ListaProductosComponent implements OnInit {
       (data) => {
         localStorage.setItem('datos', JSON.stringify(data));
         this.Productos = data;
-        console.log(data);
       },
       (error) => {
         console.log(error);

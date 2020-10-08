@@ -2,7 +2,7 @@ import {NgModule} from '@angular/core';
 import {CommonModule} from '@angular/common';
 import { NgbModule, NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
 import { HttpClientModule } from '@angular/common/http';
-
+import {ReactiveFormsModule} from '@angular/forms';
 
 import {MenuRoutingModule} from './menu-routing.module';
 import {MenuComponent} from './components/menu/menu.component';
@@ -14,6 +14,7 @@ import { FiltroPipe } from './Pipes/filtro.pipe';
 import { PaginacionPipe } from './Pipes/paginacion.pipe';
 import {ProductlistService} from './services/productlist.service';
 import {ProductfilterService} from './services/productfilter.service';
+import {MenucartService} from './services/menucart.service';
 
 
 @NgModule({
@@ -26,16 +27,17 @@ import {ProductfilterService} from './services/productfilter.service';
     FiltroPipe,
     PaginacionPipe,
 
+
   ],
   imports: [
     CommonModule,
     MenuRoutingModule,
     NgbModule,
-    HttpClientModule
-
+    HttpClientModule,
+    ReactiveFormsModule,
 
   ],
-  providers: [ProductlistService, ProductfilterService],
+  providers: [ProductlistService, ProductfilterService,MenucartService],
   bootstrap: [MenuComponent],
 })
 export class MenuModule {

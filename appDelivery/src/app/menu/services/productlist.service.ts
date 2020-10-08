@@ -1,6 +1,6 @@
 import {Injectable} from '@angular/core';
 import {HttpClient} from '@angular/common/http';
-
+import {Products} from 'src/app/menu/models/products';
 @Injectable({
   providedIn: 'root'
 })
@@ -10,6 +10,6 @@ export class ProductlistService {
   }
 
   getProductos() {
-    return this.http.get('data/productos.json');
+    return this.http.get<Products>('data/productos.json');
   }
 }
