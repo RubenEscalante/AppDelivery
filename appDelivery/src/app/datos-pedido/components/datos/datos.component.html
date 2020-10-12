@@ -1,85 +1,120 @@
 <div class="container">
-    <div class="py-5 text-center">
+    <div class="py-3 text-center">
       <h2>Datos del pedido</h2>
     </div>
-  
     <div class="row mb-5">
       <div class="col-md-5 order-md-2 mb-4">
         <app-carrito></app-carrito>
       </div>
       <div class="col-md-7 order-md-1">
-        <form class="needs-validation" novalidate>
+        <form>
           <div class="row">
             <div class="col-md-6 mb-3">
-              <label for="firstName">Nombres</label>
-              <input type="text" class="form-control" id="firstName" placeholder="" value="" required>
+              <label for="nombres">Nombres</label>
+              <input type="text" class="form-control" id="nombres" placeholder="" value="" required>
               <div class="invalid-feedback">
                 Debe ingresar nombres válidos.
               </div>
             </div>
             <div class="col-md-6 mb-3">
-              <label for="lastName">Apellidos</label>
-              <input type="text" class="form-control" id="lastName" placeholder="" value="" required>
+              <label for="apellidos">Apellidos</label>
+              <input type="text" class="form-control" id="apellidos" placeholder="" value="" required>
               <div class="invalid-feedback">
                 Debe ingresar apellidos válidos.
               </div>
             </div>
           </div>
-  
-          <div class="mb-3">
-            <label for="email">Correo</label>
-            <input type="email" class="form-control" id="email" placeholder="ricardo@pupusa.com">
-            <div class="invalid-feedback">
-              Por favor ingrese un correo válido.
-            </div>
-          </div>
-  
-          <div class="mb-3">
-            <label for="address">Dirección</label>
-            <input type="text" class="form-control" id="address" placeholder="1234 Main St" required>
-            <div class="invalid-feedback">
-              Por favor ingrese una dirección de envío válida.
-            </div>
-          </div>
-  
-          <div class="mb-3">
-            <label for="address2">Address 2 <span class="text-muted">(Optional)</span></label>
-            <input type="text" class="form-control" id="address2" placeholder="Apartment or suite">
-          </div>
-  
           <div class="row">
-            <div class="col-md-5 mb-3">
-              <label for="country">Country</label>
-              <select class="custom-select d-block w-100" id="country" required>
-                <option value="">Choose...</option>
-                <option>United States</option>
-              </select>
+            <div class="col-md-6 mb-3">
+              <label for="correo">Correo</label>
+              <input type="email" class="form-control" id="correo" placeholder="ricardo@pupusa.com" required>
               <div class="invalid-feedback">
-                Please select a valid country.
+                Por favor ingrese un correo válido.
               </div>
             </div>
-            <div class="col-md-4 mb-3">
-              <label for="state">State</label>
-              <select class="custom-select d-block w-100" id="state" required>
-                <option value="">Choose...</option>
-                <option>California</option>
-              </select>
+            <div class="col-md-6 mb-3">
+              <label for="telefono">Telefono</label>
+              <input type="tel" class="form-control" id="telefono" placeholder="2284-8965" pattern="[0-9]{4}-[0-9]{4}" required>
               <div class="invalid-feedback">
-                Please provide a valid state.
-              </div>
-            </div>
-            <div class="col-md-3 mb-3">
-              <label for="zip">Zip</label>
-              <input type="text" class="form-control" id="zip" placeholder="" required>
-              <div class="invalid-feedback">
-                Zip code required.
+                Por favor ingrese un telefono válido.
               </div>
             </div>
           </div>
-          <button class="btn btn-primary btn-lg btn-block" type="submit">Continue to checkout</button>
+
+          <div class="mb-3">
+            <h4>Direcciones Actuales</h4>
+            <hr>
+          </div>
+  
+          <!--Direcciones-->
+          <div class="mb-3" class="direcciones">
+            <!--Tarjeta de dirección 1-->
+            <div class="row py-2">
+              <div class="card w-100">
+                <div class="card-header">
+                  Dirección 1
+                </div>
+                <div class="card-body">
+                  <div class="row">
+                    <div class="col-8">
+                      <p class="d-inline-flex card-text">Colonia el pepeto, pasaje 11, casa #54</p>
+                    </div>
+                    <div class="col-4">
+                      <input class="d-inline-flex p-2 form-check-input" type="radio" name="direccion">
+                      <label>Elegir esta dirección</label>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!--Tarjeta de dirección 1-->
+            
+            <!--Tarjeta de dirección 2-->
+            <div class="row py-2">
+              <div class="card w-100">
+                <div class="card-body">
+                  <h5 class="card-title">Dirección 2</h5>
+                  <div class="row">
+                    <div class="col-8">
+                      <p class="d-inline-flex card-text">Colonia el pepeto, pasaje 11, casa #54</p>
+                    </div>
+                    <div class="col-4">
+                      <input class="d-inline-flex p-2 form-check-input" type="radio" name="direccion">
+                      <label>Elegir esta dirección</label>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!--Tarjeta de dirección 2-->
+
+            <!--Tarjeta de dirección 3-->
+            <div class="row py-2">
+              <div class="card w-100">
+                <div class="card-body">
+                  <h5 class="card-title">Dirección 3</h5>
+                  <div class="row">
+                    <div class="col-8">
+                      <p class="d-inline-flex card-text">Colonia el pepeto, pasaje 11, casa #54</p>
+                    </div>
+                    <div class="col-4">
+                      <input class="d-inline-flex p-2 form-check-input" type="radio" name="direccion">
+                      <label>Elegir esta dirección</label>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!--Tarjeta de dirección 3-->
+          </div>
+          <!--Direcciones-->
+
+          <div class="mb-3 text-center">
+            <button class="btn btn-primary" type="button">Nueva dirección</button>
+          </div>
+
+          <button class="btn btn-primary btn-lg btn-block" type="submit">Confirmar compra</button>
         </form>
       </div>
     </div>
-  
-
-  </div>
+</div>
