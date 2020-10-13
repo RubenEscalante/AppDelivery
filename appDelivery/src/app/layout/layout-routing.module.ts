@@ -15,19 +15,12 @@ const routes: Routes = [
     path: '',
     component: MainLayoutComponent,
     children: [
-<<<<<<< HEAD
       { path: 'menu', 
         loadChildren: ()=> import('../menu/menu.module').then(mod => mod.MenuModule)},  
       { path: 'carrito', 
         loadChildren: ()=> import('../carrito/carrito.module').then(mod => mod.CarritoModule)},
       { path: 'datos-pedido', 
         loadChildren: ()=> import('../datos-pedido/datos-pedido.module').then(mod => mod.DatosPedidoModule)}  
-=======
-      { path: 'menu',
-        loadChildren: () => import('../menu/menu.module').then(mod => mod.MenuModule)},
-      { path: 'carrito',
-        loadChildren: () => import('../carrito/carrito.module').then(mod => mod.CarritoModule)},
->>>>>>> ruben
 
     ]
   },

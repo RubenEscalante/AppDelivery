@@ -13,7 +13,7 @@ export class CarritoService {
 
   constructor() {
     //TODO: Eliminar esta línea de código cuando reciba los datos de rubén
-    this.set('productos',this.datos);
+    //this.set('cart',this.datos);
   }
 
   set(key:string, data:any){
