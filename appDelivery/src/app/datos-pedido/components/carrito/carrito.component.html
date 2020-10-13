@@ -16,10 +16,10 @@
   <ul class="list-group mb-3">
     <li *ngFor="let producto of productos" class="list-group-item d-flex justify-content-between lh-condensed">
       <div>
-        <h6 class="my-0">{{producto.descripcion}} <span class="badge badge-success">x{{producto.cantidad}}</span></h6>
-        <small class="text-muted">Descripcion</small>
+        <h6 class="my-0">{{producto.name}} <span class="badge badge-success">x{{producto.quantity}}</span></h6>
+        <small class="text-muted">{{producto.description}}</small>
       </div>
-      <span class="text-muted">${{producto.precioProducto*producto.cantidad}}</span>
+      <span class="text-muted">${{producto.price*producto.quantity}}</span>
     </li>
     <li class="list-group-item d-flex justify-content-between bg-light">
       <div class="text-success">

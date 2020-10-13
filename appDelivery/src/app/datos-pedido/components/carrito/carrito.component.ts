@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
 import { CarritoService } from '../../../carrito/services/carrito.service';
+import { MenucartService } from '../../../menu/services/menucart.service';
 
 @Component({
   selector: 'app-carrito',
@@ -12,13 +13,14 @@ export class CarritoComponent implements OnInit {
   public total;
   public cantidad;
   constructor(
-    private carritoServicio:CarritoService
+    private carritoServicio:CarritoService,
+    private menucartServicio:MenucartService
   ) { }
 
   ngOnInit(): void {
-    this.productos = this.carritoServicio.get('productos');
+    this.productos = this.carritoServicio.get('cart');
     this.total = this.carritoServicio.get('total');
-    this.cantidad = this.carritoServicio.get('cantidadProductos');
+    this.cantidad = this.menucartServicio.getCartLength();
   }
 
 }
