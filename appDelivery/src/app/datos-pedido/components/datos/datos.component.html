@@ -1,12 +1,14 @@
 <div class="container">
     <div class="py-3 text-center">
-      <h2>Datos del pedido</h2>
+      <h2>Confirmación del pedido</h2>
     </div>
     <div class="row mb-5">
       <div class="col-md-5 order-md-2 mb-4">
         <app-carrito></app-carrito>
       </div>
       <div class="col-md-7 order-md-1">
+        <h4>Datos del cliente</h4>
+        <hr>
         <form>
           <div class="row">
             <div class="col-md-6 mb-3">
@@ -41,7 +43,7 @@
             </div>
           </div>
 
-          <div class="mb-3">
+          <div class="mb-3 pt-2">
             <h4>Direcciones Actuales</h4>
             <hr>
           </div>
@@ -109,8 +111,9 @@
           </div>
           <!--Direcciones-->
 
+          <!--Modal para agregar direcciones-->
           <div class="mb-3 text-center">
-            <button class="btn btn-primary" type="button">Nueva dirección</button>
+            <app-modal-direcciones></app-modal-direcciones>
           </div>
 
           <button class="btn btn-primary btn-lg btn-block" type="submit">Confirmar compra</button>

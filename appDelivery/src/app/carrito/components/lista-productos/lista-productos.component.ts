@@ -1,5 +1,6 @@
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { FormControl } from '@angular/forms';
+import { ToastrService } from 'ngx-toastr';
 
 //Modelo
 import { Producto } from '../../models/producto';
@@ -18,7 +19,8 @@ export class ListaProductosComponent implements OnInit {
   public cantidad:number = 0;
   @Output() enviarTotal = new EventEmitter();
   constructor(
-    private carritoService:CarritoService
+    private carritoService:CarritoService,
+    private toastr:ToastrService
   ) { }
 
   ngOnInit(): void {
@@ -48,11 +50,11 @@ eliminarProducto(productoEliminado:Producto){
   this.obtenerTotal();
 
   //Mostrando toast
-  /*this.toastr.warning('Producto eliminado exitosamente', 'Producto Eliminado',{
+  this.toastr.warning('Producto eliminado exitosamente', 'Producto Eliminado',{
     progressBar: true,
     timeOut: 1500,
     closeButton: true
-  });*/
+  });
 
   //Revisar si el carrito está vacio
   if(this.productos.length == 0){
@@ -95,11 +97,13 @@ vaciarCarrito(){
   this.enviarTotal.emit(this.total);
 
   //Mostrando toast
-  /*this.toastr.warning('Productos eliminados del carrito exitosamente', 'Carrito Vaciado',{
+  this.toastr.warning('Productos eliminados del carrito exitosamente', 'Carrito Vaciado',{
     progressBar: true,
     timeOut: 1500,
     closeButton: true
-  });*/
+  });
+
+  this.guardarCambios();
 }
 
 //Guarda cambios en el localStorage
@@ -108,7 +112,11 @@ guardarCambios(renderizar?:string){
   //Con esto almaceno los cambios realizados en las cantidades y los productos eliminados en el localStorage
   this.carritoService.set('productos',this.productos);
   this.carritoService.set('total',this.total);
-  this.carritoService.set('cantidadProductos',this.productos.length);
+  if(this.productos == null){
+    this.carritoService.set('cantidadProductos',0);
+  }else{
+    this.carritoService.set('cantidadProductos',this.productos.length);
+  }
   if(renderizar){
     //Aquí hago el cambio de pantalla a la página de productos
     //
