@@ -1,82 +1,61 @@
+ 
+<table class="table table-bordered table-sm ">
+    <thead class="thead-light">
+        <tr>
+            <th>Orden ID</th>
+            <th>Recibida</th>
+            <th>Cliente</th>
+            <th>Productos</th>
+            <th>Status</th>
+            <th>Total</th>
+        </tr>
+    </thead> 
+    <ng-container *ngFor="let pedido of listaPedidos;let i = index"> 
+        <tbody id="pedido.id">   
+            <tr class="clickable" data-toggle="collapse" [attr.data-target]="'#group-of-rows-'+i" aria-expanded="false" aria-controls="group-of-rows-1">
+                <td>{{pedido.id}}</td>
+                <td>{{pedido.fechaCreacion}}</td>
+                <td>{{pedido.usuario.nombre}}</td>
+                <td>{{pedido.productos.length}} items</td>
+                <td>{{pedido.estado}}</td>
+                <td>$ {{pedido.total}}</td>
+            </tr>
+        </tbody>  
+        <!--//.TODO: Decidir si esta tabla llevara class="collapse"-->
+        <tbody id="group-of-rows-{{i}}">
+            <tr class="table">
+                <td colspan="3"> 
+                    <p  *ngFor="let producto of pedido.productos">
+                            <span class="float-left badge badge-success round">x{{producto.cantidad}}</span>                                            
+                            {{producto.descripcion}} 
+                            $ {{producto.precio}} 
+                    </p>   
+                </td>
+                <td colspan="2">
+                    <h6>Resumen de orden</h6> 
+                    <p>Total de orden: $ {{pedido.total}}- </p>
+                    <h6>Detalles de entrega</h6> 
+                    <p>{{pedido.direccionEnvio}}</p> 
+                    
+                </td>
+                <td colspan="1"> 
+                    <a href="" (click)="moverCocina(pedido);actualizar()">    
+                        Cocinado                                  
+                    </a> <br>
+                    <a href="" (click)="moverListo(pedido);actualizar()">    
+                        Listo                               
+                    </a> <br> 
 
-
-<div class="container">      
-     <div class="row">
-        <!-- orden -->
-		<div class="col-lg-4 col-md-4 col-xs-6 thumb" *ngFor="let pedido of listaPedidos">
-            <div class="thumbnail">
-                <a class="">
-                    <div class="wrapper">
-                        <div class="caption post-content">
-                            <h4>Orden {{pedido.id}}</h4>
-                        </div> 
-
-                        <div class="row">
-                            <!--Productos-->
-                            <div class="col-md-8">                                                   
-                                <ul class="list-group post-productos">
-                                    <li class="list-group-item" *ngFor="let producto of pedido.productos">
-                                        <span class="float-left badge badge-success round">x{{producto.cantidad}}</span>                                            
-                                        {{producto.descripcion}} 
-                                    </li>  
-                                </ul>                         
-                            </div>
-                            <!--/EOF Productos -->
-
-                            <!--Acceso rapido-->
-                            <div class="col-md-4 acceso-rapido">
-                                <div class="formGroup">
-                                    <button class="btn btn-light" (click)="moverCocina(pedido);actualizar()">
-                                        <i class="fa fa-check-square fa-2x"></i>                                         
-                                    </button>
-                                    <label>Cocinado</label>
-                                </div>
-                                <div class="formGroup">
-                                    <button class="btn btn-light"(click)="moverListo(pedido);actualizar()">
-                                        <i class="fa fa-check-square fa-2x"></i>                                         
-                                    </button>
-                                    <label>Listo</label>
-                                </div>
-                                <div class="formGroup">
-                                    <button class="btn btn-light" (click)="moverEnviado(pedido);actualizar()">
-                                        <i class="fa fa-check-square fa-2x"></i>                                         
-                                    </button>
-                                    <label>Enviado</label>
-                                </div>
-                                <div class="formGroup wrapper-check">
-                                    <button class="btn btn-light" (click)="moverEntregado(pedido);actualizar()">
-                                        <i class="fa fa-check-square fa-2x"></i>                                         
-                                    </button>
-                                    <label>Entregado</label>
-                                </div>                                
-                            </div>
-                            <!--/EOF Acceso rapido -->                           
-                        </div>     
-
-
-                         <!--Zona de variables temporales-->
-                         <div class="col">
-                            <h5>Variables temporales</h5>
-                            <p>Estado: {{pedido.estado}}</p>
-                            <p>Nombre del cliente: {{pedido.usuario.nombre}}</p>
-                        </div>                        
-                        <!--/EOF Variables temporales-->                       
-                    </div>
-                </a>
-                <!--Precio TOTAL-->
-                <div class="wrapper">
-                    <div class="post-meta">
-                        <small>Total de orden</small>
-                        <div class="price">$ {{pedido.total}}-</div>
-                    </div>
-                </div>
-                <!--/EOF Precio TOTAL-->
-            </div> 
-        <!--/EOF orden-->
-
-
-
-        </div> 
-        <!--/EOF orden-->
-    </div>
-</div>
+                    <a href="" (click)="moverEnviado(pedido);actualizar()">    
+                        Enviado                               
+                    </a>   <br>
+                    <a href="" (click)="moverEntregado(pedido);actualizar()">    
+                        Entregado                            
+                    </a><br>               
+                </td>
+            </tr> 
+        </tbody> 
+        
+    </ng-container> 
+</table>   
+ 

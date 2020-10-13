@@ -23,6 +23,7 @@ export class ListaPedidosComponent implements OnInit {
   ngOnInit() {
     this.obtenerOrdenes();
   }
+ 
 
   obtenerOrdenes():void{
     this.servicioOrdenes.obtenerOrdenes().subscribe(respuesta =>(this.listaPedidos=respuesta));
