@@ -5,11 +5,12 @@ import { Products } from 'src/app/menu/models/products';
 import {MenucartService} from '../../../../../services/menucart.service';
 import {FormBuilder} from '@angular/forms';
 import {FormControl, FormGroup} from '@angular/forms';
+import {Cartitems} from 'src/app/menu/models/cartitems';
 
 @Component({
   selector: 'app-producto-modal',
   templateUrl: './producto-modal.component.html',
-  styleUrls: ['./producto-modal.component.css','../../../menu.component.css'],
+  styleUrls: ['./producto-modal.component.css', '../../../menu.component.css'],
 })
 export class ProductoModalComponent implements OnInit {
   @Input() productos: Products ;
@@ -46,16 +47,16 @@ export class ProductoModalComponent implements OnInit {
   }
 
   onSubmit() {
-    const myvalue = this.productoModalForm;
-    let mycart: any = {
+    const formValue = this.productoModalForm;
+    let mycart: Cartitems = {
       $key: this.productos.$key,
       name: this.productos.name,
       type: this.productos.type,
       description: this.productos.description,
       ingredients: this.productos.ingredients,
       price: this.productos.price,
-      quantity: myvalue.value.quantity,
-      dough: myvalue.value.dough,
+      quantity: formValue.value.quantity,
+      dough: formValue.value.dough,
       imgurl: this.productos.imgurl
     };
     this.menuCartservice.addToCar(mycart);
