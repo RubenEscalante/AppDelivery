@@ -45,6 +45,7 @@ export class MenucartService {
   }
 
   getCartLength() {
+    //Tomar tamaño del carrito
     if (localStorage.getItem('cart') === null || localStorage.getItem('cart') === 'null') {
       return null;
     }
