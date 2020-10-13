@@ -12,7 +12,7 @@
     </thead> 
     <ng-container *ngFor="let pedido of listaPedidos;let i = index"> 
         <tbody id="pedido.id">   
-            <tr class="clickable" data-toggle="collapse" [attr.data-target]="'#group-of-rows-'+i" aria-expanded="false" aria-controls="group-of-rows-1">
+            <tr style="background-color:#b5d5eb" class="clickable" data-toggle="collapse" [attr.data-target]="'#group-of-rows-'+i" aria-expanded="false" aria-controls="group-of-rows-1">
                 <td>{{pedido.id}}</td>
                 <td>{{pedido.fechaCreacion}}</td>
                 <td>{{pedido.usuario.nombre}}</td>
@@ -39,19 +39,19 @@
                     
                 </td>
                 <td colspan="1"> 
-                    <a href="" (click)="moverCocina(pedido);actualizar()">    
+                    <button (click)="moverCocina(pedido);actualizar()">    
                         Cocinado                                  
-                    </a> <br>
-                    <a href="" (click)="moverListo(pedido);actualizar()">    
+                    </button> <br>
+                    <button (click)="moverListo(pedido);actualizar()">    
                         Listo                               
-                    </a> <br> 
+                    </button> <br> 
 
-                    <a href="" (click)="moverEnviado(pedido);actualizar()">    
+                    <button href="" (click)="moverEnviado(pedido);actualizar()">    
                         Enviado                               
-                    </a>   <br>
-                    <a href="" (click)="moverEntregado(pedido);actualizar()">    
+                    </button>   <br>
+                    <button href="" (click)="moverEntregado(pedido);actualizar()">    
                         Entregado                            
-                    </a><br>               
+                    </button><br>               
                 </td>
             </tr> 
         </tbody> 

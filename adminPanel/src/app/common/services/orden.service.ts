@@ -27,7 +27,7 @@ export class OrdenService{
 
   
   //Obteniendo ordenes del Servidor
-  obtenerOrdenes(){
+  obtenerOrdenes(){  
     return this.Clientehttp.get<Orden[]>(this.ordenesUrl);
     //return this.http.get(this.ordenesUrl); 
   }

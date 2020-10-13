@@ -1,9 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 //Servicio
-import {OrdenService} from '../../services/orden.service';
+import {OrdenService} from '../../../common/services/orden.service';
 //Modelo
-import {Orden} from '../../models/orden';
+import {Orden} from '../../../common/models/orden';
 
+import {Global} from '../../../common/global';
 
 @Component({
   selector: 'app-lista-pedidos',
@@ -12,21 +13,35 @@ import {Orden} from '../../models/orden';
   providers:[OrdenService]
 })
 export class ListaPedidosComponent implements OnInit {
-   
+  
+  global: Global;
   
   listaPedidos: Orden[];
   //La orden que se esta editando
   ordenActiva: Orden;
    
-  constructor(private servicioOrdenes: OrdenService) { }
+  constructor(private servicioOrdenes: OrdenService,
+              global:Global) { 
+                this.global=global;
+              }
 
   ngOnInit() {
     this.obtenerOrdenes();
-  }
  
+   
+  }
 
   obtenerOrdenes():void{
-    this.servicioOrdenes.obtenerOrdenes().subscribe(respuesta =>(this.listaPedidos=respuesta));
+    // The 1st callback handles the data emitted by the observable. 
+    this.servicioOrdenes.obtenerOrdenes().subscribe(respuesta =>{
+      this.listaPedidos=respuesta
+    },
+    // The 2nd callback handles errors.
+    (err)=>console.error(err),
+    // The 3rd callback handles the "complete" event.
+    () => this.global.numeroOrdenes=this.listaPedidos.length
+    );
+    
   }
 
   //Funciones para cambiar estado de producto, posiblemente inseguras, por aqui entra un buen jiaker xd
@@ -55,8 +70,10 @@ export class ListaPedidosComponent implements OnInit {
         this.servicioOrdenes
         .actualizarEstado(this.ordenActiva)
         .subscribe();
-      this.ordenActiva=undefined;
-    }
+        this.ordenActiva=undefined;
+    } 
+    this.obtenerOrdenes();
   } 
+ 
 
 }

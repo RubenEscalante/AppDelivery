@@ -1,12 +1,13 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
- 
 //Routing
 import { LayoutRoutingModule } from './layout-routing.module';
 
-//Componentes
-import { SidebarComponent } from './components/sidebar/sidebar.component';
+
+import { Global } from '../common/global';
+
+//Componentes 
 import { HeaderComponent } from './components/header/header.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { MainLayoutComponent } from './components/main-layout/main-layout.component'; 
@@ -14,12 +15,13 @@ import { MainLayoutComponent } from './components/main-layout/main-layout.compon
 //import {FlexLayoutModule} from '@angular/flex-layout';
 
 @NgModule({
-  declarations: [SidebarComponent, HeaderComponent, FooterComponent, MainLayoutComponent],
+  declarations: [HeaderComponent, FooterComponent, MainLayoutComponent],
   imports: [
     CommonModule,
     LayoutRoutingModule//,
     //FlexLayoutModule
   ],
+  providers:[Global],
   exports:[]
 })
 export class LayoutModule { }
