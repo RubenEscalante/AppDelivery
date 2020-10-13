@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import {MenucartService} from '../../../menu/services/menucart.service';
 
 @Component({
   selector: 'app-main-layout',
@@ -7,7 +8,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class MainLayoutComponent implements OnInit {
 
-  constructor() { console.log('Main layout constructor called'); }
+  constructor(public menuCartservice: MenucartService) { console.log('Main layout constructor called'); }
 
   ngOnInit(): void {
   }

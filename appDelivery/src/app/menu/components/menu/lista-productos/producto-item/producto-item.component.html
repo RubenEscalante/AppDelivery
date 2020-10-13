@@ -1,0 +1,46 @@
+<div class="card h-100 mb-4 shadow-sm">
+  <img
+    (click)="openModal()"
+    src="{{ productos.imgurl }}"
+    alt="[item-description]"
+    class="img-fluid"
+    [class.img-products]="conditionalProduct()"
+  />
+
+  <div class="card-body d-flex flex-column">
+    <h4 class="card-title text-center">{{ productos.type }}</h4>
+    <div class="flex-item flex-between">
+      <div class="box">
+        {{ productos.name }}
+      </div>
+      <div class="box">
+        <strong>
+          {{ productos.price | currency: "USD" }}
+        </strong>
+      </div>
+    </div>
+
+    <p class="card-text mb-auto">{{ productos.description }}</p>
+
+
+    <div class="text-center mt-auto pt-3">
+      <div *ngIf="conditionalProduct(); then showPlus else showButtons"></div>
+      <ng-template #showPlus><i class="fa fa-plus-circle cursor-pointer fa-2x" (click)="openModal()"></i></ng-template>
+      <ng-template #showButtons>
+        <form [formGroup]="productoForm" (ngSubmit)="onSubmit()">
+
+
+          <input formControlName="quantity" min="1" name="quantity" type="number">
+
+
+          <button type="submit"><i class="fa fa-cart-plus cursor-pointer fa-3x"></i></button>
+
+        </form>
+
+
+      </ng-template>
+
+
+    </div>
+  </div>
+</div>
