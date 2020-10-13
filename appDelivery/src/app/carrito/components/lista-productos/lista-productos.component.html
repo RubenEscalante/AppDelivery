@@ -35,21 +35,25 @@
                     <img src="https://www.cowgirlcontractcleaning.com/wp-content/uploads/sites/360/2018/05/placeholder-img.jpg" alt="..." class="img-thumbnail w-75">
                 </div>
                 <div class="col-6">
-                    <p class="my-0 h2">{{producto.descripcion}}</p>
+                    <p class="my-0 h2">{{producto.name}}</p>
+                  <div *ngIf="producto.type !== 'Bebida'">
                     <p>Ingredientes</p>
+                    {{producto.ingredients}}
+                  </div>
+
                 </div>
             </div>
         </div>
         <div class="col-2">
-            <p class="my-0 text-center">{{producto.precioProducto}} <span>$</span> </p>
+            <p class="my-0 text-center">{{producto.price}} <span>$</span> </p>
         </div>
         <div class="col-2 text-center">
             <button class="btn d-inline" (click)="incrementarCantidad(producto)">+</button>
-            <input type="number" min="0" max="50" [value]="producto.cantidad" class="form-control d-inline w-50 text-center" [(ngModel)]="producto.cantidad" (change)="obtenerTotal()" disabled>
+            <input type="number" min="0" max="50" [value]="producto.quantity" class="form-control d-inline w-50 text-center" [(ngModel)]="producto.quantity" (change)="obtenerTotal()" disabled>
             <button class="btn d-inline" (click)="decrementarCantidad(producto)">-</button>
         </div>
         <div class="col-2">
-            <p class="my-0 text-center">{{producto.precioProducto*producto.cantidad}} <span>$</span> </p>
+            <p class="my-0 text-center">{{producto.price*producto.quantity}} <span>$</span> </p>
         </div>
         <div class="col-1">
             <button class="btn btn-warning" (click)="eliminarProducto(producto)">
