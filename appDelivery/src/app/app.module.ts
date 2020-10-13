@@ -1,15 +1,9 @@
-<<<<<<< HEAD
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core'; 
 import { AppComponent } from './app.component';
 
 import { CarritoService } from '../app/carrito/services/carrito.service';
  
-=======
-import {BrowserModule} from '@angular/platform-browser';
-import {NgModule} from '@angular/core';
-import {AppComponent} from './app.component';
->>>>>>> ruben
 
 
 import {PreloadAllModules, RouterModule} from '@angular/router';
