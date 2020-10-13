@@ -1,0 +1,68 @@
+<ng-template #content let-modal>
+    <div class="modal-header">
+      <h4 class="modal-title">Agregar una nueva dirección</h4>
+      <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    <div class="modal-body">
+      <form>
+          <div class="form-group">
+            <input type="text" class="form-control" placeholder="Nombre de la dirección*">
+          </div>
+          <div class="form-group">
+            <input type="text" class="form-control" placeholder="Dirección*">
+          </div>
+          <div class="form-group">
+            <input type="text" class="form-control" placeholder="Dirección 2">
+          </div>
+          <div class="row form-group">
+              <div class="col-6">
+                <select name="departamento" id="departamento" class="form-control">
+                    <option value="">Departamento*</option>
+                    <option value="Ahuachapan">Ahuachapan</option>
+                    <option value="Cabañas">Cabañas</option>
+                    <option value="Chalatenango">Chalatenango</option>
+                    <option value="Cuscatlán">Cuscatlán</option>
+                    <option value="La Libertad">La Libertad</option>
+                    <option value="La Paz">La Paz</option>
+                    <option value="La Unión">La Unión</option>
+                    <option value="Morazán">Morazán</option>
+                    <option value="San Miguel">San Miguel</option>
+                    <option value="San Salvador">San Salvador</option>
+                    <option value="San Vicente">San Vicente</option>
+                    <option value="Santa Ana">Santa Ana</option>
+                    <option value="Sonsonate">Sonsonate</option>
+                    <option value="Usulután">Usulután</option>
+                </select>
+              </div>
+              <div class="col-6">
+                <select name="departamento" id="departamento" class="form-control">
+                    <option value="">Municipio*</option>
+                    <option value="Ahuachapan">Ahuachapan</option>
+                    <option value="Cabañas">Cabañas</option>
+                    <option value="Chalatenango">Chalatenango</option>
+                    <option value="Cuscatlán">Cuscatlán</option>
+                    <option value="La Libertad">La Libertad</option>
+                    <option value="La Paz">La Paz</option>
+                    <option value="La Unión">La Unión</option>
+                    <option value="Morazán">Morazán</option>
+                    <option value="San Miguel">San Miguel</option>
+                    <option value="San Salvador">San Salvador</option>
+                    <option value="San Vicente">San Vicente</option>
+                    <option value="Santa Ana">Santa Ana</option>
+                    <option value="Sonsonate">Sonsonate</option>
+                    <option value="Usulután">Usulután</option>
+                </select>
+              </div>
+          </div>
+        
+      </form>
+    </div>
+    <div class="modal-footer justify-content-between">
+        <p>Campos con * son requeridos</p>
+        <button type="button" class="btn btn-outline-dark" (click)="modal.close('Save click')">Guardar</button>
+    </div>
+</ng-template>
+
+<button class="btn btn-primary" type="button" (click)="modal.open(content)">Nueva dirección</button>

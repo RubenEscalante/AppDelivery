@@ -27,7 +27,8 @@
             "styles": [
               "src/styles.css",
               "node_modules/bootstrap/dist/css/bootstrap.min.css",
-              "node_modules/font-awesome/css/font-awesome.css"
+              "node_modules/font-awesome/css/font-awesome.css",
+              "node_modules/ngx-toastr/toastr.css"
             ],
             "scripts": [
               "node_modules/jquery/dist/jquery.min.js",
@@ -125,6 +126,10 @@
           }
         }
       }
-    }},
-  "defaultProject": "appDelivery"
+    }
+  },
+  "defaultProject": "appDelivery",
+  "cli": {
+    "analytics": false
+  }
 }

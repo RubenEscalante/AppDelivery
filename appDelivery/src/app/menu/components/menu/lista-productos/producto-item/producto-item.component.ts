@@ -40,7 +40,7 @@ export class ProductoItemComponent implements OnInit {
 
   onSubmit() {
     const myvalue = this.productoForm;
-    let mycart: any = {
+    let mycart: Cartitems = {
       $key: this.productos.$key,
       name: this.productos.name,
       type: this.productos.type,

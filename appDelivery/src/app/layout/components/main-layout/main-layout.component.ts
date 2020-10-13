@@ -7,10 +7,11 @@ import {MenucartService} from '../../../menu/services/menucart.service';
   styleUrls: ['./main-layout.component.css']
 })
 export class MainLayoutComponent implements OnInit {
-
+  ///totalCartItem: number;
   constructor(public menuCartservice: MenucartService) { console.log('Main layout constructor called'); }
 
   ngOnInit(): void {
+   // this.totalCartItem = this.menuCartservice.getCartLength(); //Para despues
   }
 
 }
