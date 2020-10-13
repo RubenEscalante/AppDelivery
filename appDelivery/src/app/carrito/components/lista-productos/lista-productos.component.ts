@@ -14,7 +14,7 @@ import { CarritoService } from '../../services/carrito.service';
   styleUrls: ['./lista-productos.component.css']
 })
 export class ListaProductosComponent implements OnInit {
-  public productos:Producto[];
+  public productos = [];
   public total:number = 0;
   public cantidad:number = 0;
   @Output() enviarTotal = new EventEmitter();
@@ -24,7 +24,7 @@ export class ListaProductosComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    this.productos = this.carritoService.get('productos');
+    this.productos = this.carritoService.get('cart');
     this.obtenerTotal();
   }
 
@@ -33,7 +33,7 @@ export class ListaProductosComponent implements OnInit {
   this.total = 0;
   if(this.productos){
     for(let producto of this.productos){
-      this.total += producto.precioProducto * producto.cantidad;
+      this.total += producto.price * producto.quantity;
     }
   }
   
@@ -63,12 +63,12 @@ eliminarProducto(productoEliminado:Producto){
 }
 
 //Incrementa en uno la cantidad del producto
-incrementarCantidad(producto:Producto){
-  if(producto.cantidad < 50){
-    producto.cantidad++;
+incrementarCantidad(producto){
+  if(producto.quantity < 50){
+    producto.quantity++;
   }else{
     //Aqui puedo mostrar un mensaje de error
-    producto.cantidad = 50;
+    producto.quantity = 50;
   }
   let indice = this.productos.indexOf(producto);
   this.productos.splice(indice,1,producto);
@@ -76,12 +76,12 @@ incrementarCantidad(producto:Producto){
 }
 
 //Decrementa en uno la cantidad del producto
-decrementarCantidad(producto:Producto){
-  if(producto.cantidad > 1){
-    producto.cantidad--;
+decrementarCantidad(producto){
+  if(producto.quantity > 1){
+    producto.quantity--;
   }else{
     //Aqui puedo mostrar un mensaje de error al usuario
-    producto.cantidad = 1;
+    producto.quantity = 1;
   }
   let indice = this.productos.indexOf(producto);
   this.productos.splice(indice,1,producto);
@@ -92,7 +92,7 @@ decrementarCantidad(producto:Producto){
 //Elimina todos los productos del carrito en el componente y en el localStorage
 vaciarCarrito(){
   this.productos = null;
-  this.carritoService.remove('productos');
+  this.carritoService.remove('cart');
   this.total = 0;
   this.enviarTotal.emit(this.total);
 
@@ -110,7 +110,8 @@ vaciarCarrito(){
 guardarCambios(renderizar?:string){
   
   //Con esto almaceno los cambios realizados en las cantidades y los productos eliminados en el localStorage
-  this.carritoService.set('productos',this.productos);
+  //this.carritoService.set('cart',this.productos);
+  
   this.carritoService.set('total',this.total);
   if(this.productos == null){
     this.carritoService.set('cantidadProductos',0);
