@@ -63,7 +63,7 @@ eliminarProducto(productoEliminado:Producto){
 }
 
 //Incrementa en uno la cantidad del producto
-incrementarCantidad(producto:Producto){
+incrementarCantidad(producto){
   if(producto.quantity < 50){
     producto.quantity++;
   }else{
@@ -76,7 +76,7 @@ incrementarCantidad(producto:Producto){
 }
 
 //Decrementa en uno la cantidad del producto
-decrementarCantidad(producto:Producto){
+decrementarCantidad(producto){
   if(producto.quantity > 1){
     producto.quantity--;
   }else{
