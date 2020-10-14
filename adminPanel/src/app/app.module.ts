@@ -1,6 +1,9 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
  
+import { ReactiveFormsModule  } from '@angular/forms';
+
+
 import { AppComponent } from './app.component';
 import { PreloadAllModules, RouterModule} from '@angular/router';  
 import { HttpClientModule } from '@angular/common/http';
@@ -22,7 +25,8 @@ import { AngularFireDatabaseModule } from '@angular/fire/database';
     AngularFireDatabaseModule,
     HttpClientModule,
     RouterModule.forRoot([]),
-    LayoutModule
+    LayoutModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

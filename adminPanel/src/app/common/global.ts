@@ -4,7 +4,5 @@ import { Injectable } from '@angular/core';
 export class Global {
 
   numeroOrdenes: number = 0; 
-
-   
   
 }

@@ -5,7 +5,6 @@ import {OrdenService} from '../../../common/services/orden.service';
 import {Orden} from '../../../common/models/orden';
 
 import {Global} from '../../../common/global';
-import { element } from 'protractor';
 
 @Component({
   selector: 'app-lista-pedidos',

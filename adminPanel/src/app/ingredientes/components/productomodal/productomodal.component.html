@@ -5,28 +5,46 @@
     </button>
 </div>
 <div class="modal-body">
-    <form>
-        <div class="form-group">        
-          <label>Nombre de ingrediente</label>
-          <input type="text" class="form-control" placeholder="Chocolate"> 
-          <small  class="invalid form-text text-muted ">We'll never share your email with anyone else.</small>
-          
-
+    <form [formGroup]="ingredienteForm">
+        <!--Campo nombre de ingrediente-->     
+        <div class="form-group">                 
+            <label>Nombre de ingrediente</label>
+            <input formControlName="nombre"   type="text" class="form-control" placeholder="Chocolate"> 
+            <!--Advertencias de validacion-->     
+            <small  class="invalid form-text text-muted" *ngIf="!ingredienteForm.get('nombre').valid && (ingredienteForm.get('nombre').touched || ingredienteForm.get('nombre').dirty)">
+                Este campo es requerido.
+            </small>  
+            <!--/EOF Advertencias de validacion-->
         </div>
-        
+        <!--/EOF Campo nombre de ingrediente-->   
+
+
+        <!--Campo precio de ingrediente-->   
         <div class="form-group">
-          <label for="exampleInputPassword1">Precio</label>
-          <div class="input-group mb-3">
-            <div class="input-group-prepend">
-              <span class="input-group-text">$</span>
-            </div>
-            <input type="number" class="form-control" placeholder="0.01">
-          </div>
+            <label for="exampleInputPassword1">Precio</label>
+            <div class="input-group mb-3">
+                <div class="input-group-prepend">
+                    <span class="input-group-text">$</span>
+                </div>
+                <input formControlName="costo"   type="number" class="form-control" placeholder="0.01">
+            </div>  
+            <!--Advertencias de validacion-->     
+            <small  class="invalid form-text text-muted" *ngIf="!ingredienteForm.get('costo').valid && (ingredienteForm.get('costo').touched || ingredienteForm.get('costo').dirty)">
+                Ingrese un costo entre $0.01 y $100.
+            </small>  
+            <!--/EOF Advertencias de validacion-->
+
+
         </div> 
-        <button type="submit" class="btn btn-primary">Añadir ingrediente</button>
+        <!--/EOF Campo precio de ingrediente-->  
+        
+        <!--Boton Añadir ingrediente--> 
+        <button type="submit" [disabled]="!ingredienteForm.valid" (click)="crearProducto()" class="btn btn-primary">Añadir ingrediente</button>
+        <!--/EOF Boton Añadir ingrediente--> 
+
     </form>
 </div>
 <div class="modal-footer">
-    <button type="button" class="btn btn-outline-dark" (click)="activeModal.close('Close click')">Cerrar</button>
+     
 </div>
    
