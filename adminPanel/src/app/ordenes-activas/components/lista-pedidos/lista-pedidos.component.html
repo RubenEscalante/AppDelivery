@@ -10,9 +10,12 @@
             <th>Total</th>
         </tr>
     </thead> 
+    
     <ng-container *ngFor="let pedido of listaPedidos;let i = index"> 
         <tbody id="pedido.id">   
-            <tr style="background-color:#b5d5eb" class="clickable" data-toggle="collapse" [attr.data-target]="'#group-of-rows-'+i" aria-expanded="false" aria-controls="group-of-rows-1">
+
+            <!--Le quite class="clickable-->
+            <tr style="background-color:#b5d5eb"  data-toggle="collapse" [attr.data-target]="'#group-of-rows-'+i" aria-expanded="false" aria-controls="group-of-rows-1">
                 <td>{{pedido.id}}</td>
                 <td>{{pedido.fechaCreacion}}</td>
                 <td>{{pedido.usuario.nombre}}</td>
@@ -25,10 +28,11 @@
         <tbody id="group-of-rows-{{i}}">
             <tr class="table">
                 <td colspan="3"> 
-                    <p  *ngFor="let producto of pedido.productos">
-                            <span class="float-left badge badge-success round">x{{producto.cantidad}}</span>                                            
-                            {{producto.descripcion}} 
-                            $ {{producto.precio}} 
+                    <p  *ngFor="let producto of generateArray(pedido.productos)">
+                        <!--$ {{producto.precio}} -->
+                        <span class="float-left badge badge-success round">x{{producto.cantidad}}</span>                                            
+                         {{producto.descripcion}} 
+                            
                     </p>   
                 </td>
                 <td colspan="2">

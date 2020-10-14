@@ -5,6 +5,7 @@ import {OrdenService} from '../../../common/services/orden.service';
 import {Orden} from '../../../common/models/orden';
 
 import {Global} from '../../../common/global';
+import { element } from 'protractor';
 
 @Component({
   selector: 'app-lista-pedidos',
@@ -26,23 +27,31 @@ export class ListaPedidosComponent implements OnInit {
               }
 
   ngOnInit() {
-    this.obtenerOrdenes();
- 
-   
+    this.obtenerOrdenes();   
   }
 
-  obtenerOrdenes():void{
+  obtenerOrdenes():void{ 
     // The 1st callback handles the data emitted by the observable. 
-    this.servicioOrdenes.obtenerOrdenes().subscribe(respuesta =>{
-      this.listaPedidos=respuesta
+    this.servicioOrdenes.obtenerOrdenes().snapshotChanges().subscribe(respuesta =>{
+      this.listaPedidos=[];
+      respuesta.forEach(element=>{
+        let x = element.payload.toJSON();
+        x["id"] = element.key;  
+        this.listaPedidos.push(x as Orden) 
+      })
+      this.global.numeroOrdenes=this.listaPedidos.length;
     },
     // The 2nd callback handles errors.
     (err)=>console.error(err),
-    // The 3rd callback handles the "complete" event.
-    () => this.global.numeroOrdenes=this.listaPedidos.length
-    );
-    
-  }
+    // The 3rd callback handles the "complete" event. 
+    () => console.log("Complete")//this.global.numeroOrdenes=this.listaPedidos.length
+    ); 
+  } 
+
+  generateArray(obj){
+    return Object.keys(obj).map((key)=>{ return obj[key]});
+ }
+
 
   //Funciones para cambiar estado de producto, posiblemente inseguras, por aqui entra un buen jiaker xd
   moverCocina(orden:Orden){
@@ -68,8 +77,7 @@ export class ListaPedidosComponent implements OnInit {
   actualizar(){
     if(this.ordenActiva){        
         this.servicioOrdenes
-        .actualizarEstado(this.ordenActiva)
-        .subscribe();
+        .actualizarEstado(this.ordenActiva);
         this.ordenActiva=undefined;
     } 
     this.obtenerOrdenes();

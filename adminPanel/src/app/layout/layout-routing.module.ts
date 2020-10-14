@@ -16,7 +16,8 @@ const routes: Routes = [
         loadChildren: ()=> import('../dashboard/dashboard.module').then(mod => mod.DashboardModule)},  
       { path: 'ordenes-activas', 
         loadChildren: ()=> import('../ordenes-activas/ordenes-activas.module').then(mod => mod.OrdenesActivasModule)},  
-
+      { path: 'ingredientes',
+        loadChildren: ()=> import('../ingredientes/ingredientes.module').then(mod=>mod.IngredientesModule)}
     ]
   }
 ];

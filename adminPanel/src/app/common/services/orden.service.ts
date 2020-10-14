@@ -1,16 +1,10 @@
 import { Injectable } from '@angular/core';  
-import { HttpClient, HttpParams } from '@angular/common/http';
-import {HttpHeaders} from '@angular/common/http'; 
+
+//Firebase
+import { AngularFireDatabase, AngularFireList } from '@angular/fire/database';
 //Modelo
 import {Orden} from '../models/orden';
-
-const httpOptions = {
-  headers: new HttpHeaders({
-    'Content-Type':  'application/json'
-    //Authorization: 'my-auth-token'
-  })
-};
-
+ 
 
 @Injectable({
   providedIn: 'root'
@@ -18,18 +12,13 @@ const httpOptions = {
 
 export class OrdenService{ 
 
-  constructor( private Clientehttp: HttpClient) { }
+  datosFirebase:AngularFireList<any>;
 
-  //Api key
-  API_KEY = 'La llave de la api';
-  //Api Url
-  private ordenesUrl='http://localhost:3000/ordenes';
-
-  
+  constructor(private firebase:AngularFireDatabase) { }
+   
   //Obteniendo ordenes del Servidor
   obtenerOrdenes(){  
-    return this.Clientehttp.get<Orden[]>(this.ordenesUrl);
-    //return this.http.get(this.ordenesUrl); 
+    return this.datosFirebase = this.firebase.list('orders'); 
   }
   
   //Buscar Orden por estado
@@ -38,8 +27,10 @@ export class OrdenService{
   }
 
   //Cuando sea necesario actualizar el estado de la orden seleccionada
-  actualizarEstado(orden:Orden){  
-     return this.Clientehttp.put(`${this.ordenesUrl}/${orden.id}`,orden,httpOptions);  
+  actualizarEstado(orden:Orden){      
+    return this.datosFirebase.update(orden.id,{
+      estado: orden.estado 
+      })    
   }
 
 
