@@ -1,1 +1,16 @@
-<p>lista-ingredientes works!</p>
+<table class="table table-bordered table-sm ">
+    <thead class="thead-light">
+        <tr>
+            <th>ID</th>
+            <th>Nombre</th>
+            <th>Precio</th> 
+        </tr>
+    </thead> 
+    <tbody *ngFor="let ingrediente of listaIngredientes">    
+        <tr>
+            <td>{{ingrediente.id}}</td>
+            <td>{{ingrediente.nombre}}</td>
+            <td>$ {{ingrediente.costo}}</td>
+        </tr>
+    </tbody>
+</table>
