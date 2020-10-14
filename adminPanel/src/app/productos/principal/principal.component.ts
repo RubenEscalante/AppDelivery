@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 
-
 //Componentes para mostrar modal
 import {NgbModal, NgbActiveModal} from '@ng-bootstrap/ng-bootstrap';
-import { ProductomodalComponent } from '../productomodal/productomodal.component';
+import {ModalpupusasComponent } from '../modalpupusas/modalpupusas.component';
+
 
 
 @Component({
@@ -18,8 +18,8 @@ export class PrincipalComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  abrirModalParaProductos(){ 
-    const modalRef =this.modalService.open(ProductomodalComponent, {size:<any>'lg'});
+  abrirModalParaPupusas(){ 
+    const modalRef =this.modalService.open(ModalpupusasComponent, {size:<any>'lg'});
      
   }
 
