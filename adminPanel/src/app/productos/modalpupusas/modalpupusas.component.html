@@ -22,29 +22,28 @@
                 </label> 
              </div> 
         </div> 
-         <!--/EOF Tipo de masa--> 
+        <!--/EOF Tipo de masa--> 
         
         <!--Ingredientes-->
         <div class="form-group">
             <label>Ingredientes</label>  
             <div class="form-inline">
-                <input list="ingredientes">
+                <input list="ingredientes" [(ngModel)]="IngredienteInputDataList" (change)="recuperarIngrediente($event)">
                 <datalist id="ingredientes">           
                     <ng-container *ngFor="let ingrediente of listaIngredientes">
-                        <option data-value="{{ingrediente.id}}" value="{{ingrediente.nombre}}" ng-change="hola(ingrediente)">
-                           
+                        <option data-value="{{ingrediente.id}}" value="{{ingrediente.nombre}}">                           
                     </ng-container>
                 </datalist> 
-                <button class="btn btn-primary">            
+                <button class="btn btn-primary" (click)="agregarEnLista()">            
                     <i class="fa fa-plus"></i>
                 </button> 
           </div>
         </div> 
         <div class="tag-container" style="border: 1px solid #C7CED4;">
 
-          <span class="tag badge badge-pill badge-info">
-            <span>Example Tag</span>
-            <a (click)="removerIngrediente()"><i class="fa fa-minus-circle"></i></a> 
+          <span *ngFor="let item of receta" class="tag badge badge-pill badge-info">
+            <span>{{item.nombre}}</span>
+            <a (click)="quitarIngrediente(item)"><i class="fa fa-minus-circle"></i></a> 
           </span>
 
         </div>

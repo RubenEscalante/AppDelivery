@@ -29,6 +29,7 @@
   } 
 .tag-container{
   padding: 15px 20px;   
-  height: 100px; 
+  height: 130px; 
+  overflow-y: auto;
 }
 

@@ -44,6 +44,7 @@ export class ProductomodalComponent implements OnInit {
     if (this.ingredienteForm.invalid) {
       return;
     }    
+    
     this.nuevoIngrediente = Object.assign(this.nuevoIngrediente, this.ingredienteForm.value);
     this.ingredienteServicio.crearIngrediente(this.nuevoIngrediente);
     this.activeModal.dismiss();
