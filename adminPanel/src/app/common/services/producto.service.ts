@@ -24,6 +24,7 @@ export class ProductoService {
   }
 
   crearPupusa(pupusa:Producto){
+    pupusa.categoria="pupusas";
     this.datosFirebase=this.firebase.list('/productos');
     this.datosFirebase.push(pupusa);
   }
