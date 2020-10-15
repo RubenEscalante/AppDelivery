@@ -9,7 +9,7 @@
       <div class="col-md-7 order-md-1">
         <h4>Datos del cliente</h4>
         <hr>
-        <form>
+        <form [formGroup]="">
           <div class="row">
             <!--
               <div class="col-md-6 mb-3">
@@ -80,7 +80,7 @@
 
           <!--Modal para agregar direcciones-->
           <div class="mb-3 text-center">
-            <app-modal-direcciones></app-modal-direcciones>
+            <app-modal-direcciones (agregarDireccion)="guardarDireccion($event)"></app-modal-direcciones>
           </div>
 
           <div class="mb-3">

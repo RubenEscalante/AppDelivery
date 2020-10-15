@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Usuario } from '../../models/usuario';
+import { FormGroup, FormControl, Validators} from '@angular/forms';
+
 
 @Component({
   selector: 'app-datos',
@@ -25,9 +27,15 @@ export class DatosComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
-
+    //localStorage.setItem('user',JSON.stringify(this.usuarioRegistrado));
     //Aquí debería de obtener los datos del usuario que inició sesión, ya sea del local storage o de la bd
-    this.usuario = this.usuarioRegistrado;
+    this.usuario = JSON.parse(localStorage.getItem('user'));
+  }
+
+  guardarDireccion(d){
+    this.usuario.direcciones.push(d);
+    localStorage.setItem('user',JSON.stringify(this.usuario));
+    //Aqui abajo debo guardar la nueva dirección agregada en la base de datos
   }
 
 
