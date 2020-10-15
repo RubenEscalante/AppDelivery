@@ -11,32 +11,41 @@
         <hr>
         <form>
           <div class="row">
-            <div class="col-md-6 mb-3">
+            <!--
+              <div class="col-md-6 mb-3">
               <label for="nombres">Nombres</label>
-              <input type="text" class="form-control" id="nombres" placeholder="" value="" required>
+              <input type="text" class="form-control" id="nombres" placeholder="" value="" required readonly>
               <div class="invalid-feedback">
                 Debe ingresar nombres válidos.
               </div>
             </div>
             <div class="col-md-6 mb-3">
               <label for="apellidos">Apellidos</label>
-              <input type="text" class="form-control" id="apellidos" placeholder="" value="" required>
+              <input type="text" class="form-control" id="apellidos" placeholder="" value="" required readonly>
               <div class="invalid-feedback">
                 Debe ingresar apellidos válidos.
+              </div>
+            </div>
+            -->
+            <div class="col-md-12 mb-3">
+              <label for="nombre">Nombre</label>
+              <input type="text" class="form-control" id="nombre" [value]="usuario.nombre" required readonly>
+              <div class="invalid-feedback">
+                Debe ingresar un nombre válido.
               </div>
             </div>
           </div>
           <div class="row">
             <div class="col-md-6 mb-3">
               <label for="correo">Correo</label>
-              <input type="email" class="form-control" id="correo" placeholder="ricardo@pupusa.com" required>
+              <input type="email" class="form-control" id="correo" [value]="usuario.correo" required readonly>
               <div class="invalid-feedback">
                 Por favor ingrese un correo válido.
               </div>
             </div>
             <div class="col-md-6 mb-3">
               <label for="telefono">Telefono</label>
-              <input type="tel" class="form-control" id="telefono" placeholder="2284-8965" pattern="[0-9]{4}-[0-9]{4}" required>
+              <input type="tel" class="form-control" id="telefono" [value]="usuario.telefono" pattern="[0-9]{4}-[0-9]{4}" required readonly>
               <div class="invalid-feedback">
                 Por favor ingrese un telefono válido.
               </div>
@@ -50,16 +59,13 @@
   
           <!--Direcciones-->
           <div class="mb-3" class="direcciones">
-            <!--Tarjeta de dirección 1-->
-            <div class="row py-2">
+            <div *ngFor="let direccion of usuario.direcciones" class="row py-2">
               <div class="card w-100">
-                <div class="card-header">
-                  Dirección 1
-                </div>
                 <div class="card-body">
+                  <h5 class="card-title">{{direccion.nombre}}</h5>
                   <div class="row">
                     <div class="col-8">
-                      <p class="d-inline-flex card-text">Colonia el pepeto, pasaje 11, casa #54</p>
+                      <p class="d-inline-flex card-text">{{direccion.direccion+", "+direccion.municipio+", "+direccion.departamento}}</p>
                     </div>
                     <div class="col-4">
                       <input class="d-inline-flex p-2 form-check-input" type="radio" name="direccion">
@@ -69,45 +75,6 @@
                 </div>
               </div>
             </div>
-            <!--Tarjeta de dirección 1-->
-            
-            <!--Tarjeta de dirección 2-->
-            <div class="row py-2">
-              <div class="card w-100">
-                <div class="card-body">
-                  <h5 class="card-title">Dirección 2</h5>
-                  <div class="row">
-                    <div class="col-8">
-                      <p class="d-inline-flex card-text">Colonia el pepeto, pasaje 11, casa #54</p>
-                    </div>
-                    <div class="col-4">
-                      <input class="d-inline-flex p-2 form-check-input" type="radio" name="direccion">
-                      <label>Elegir esta dirección</label>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <!--Tarjeta de dirección 2-->
-
-            <!--Tarjeta de dirección 3-->
-            <div class="row py-2">
-              <div class="card w-100">
-                <div class="card-body">
-                  <h5 class="card-title">Dirección 3</h5>
-                  <div class="row">
-                    <div class="col-8">
-                      <p class="d-inline-flex card-text">Colonia el pepeto, pasaje 11, casa #54</p>
-                    </div>
-                    <div class="col-4">
-                      <input class="d-inline-flex p-2 form-check-input" type="radio" name="direccion">
-                      <label>Elegir esta dirección</label>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <!--Tarjeta de dirección 3-->
           </div>
           <!--Direcciones-->
 

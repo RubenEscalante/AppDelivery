@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { NgbModal,  ModalDismissReasons} from '@ng-bootstrap/ng-bootstrap'
+import { NgbModal,  ModalDismissReasons} from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
   selector: 'app-modal-direcciones',
