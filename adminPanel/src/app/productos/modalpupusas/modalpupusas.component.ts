@@ -12,7 +12,10 @@ import { ProductoService } from '../../common/services/producto.service';
 
 //Modelos
 import { Ingrediente } from '../../common/models/ingrediente';
+import { Producto} from '../../common/models/producto';
+import { Preferencias} from '../../common/models/preferencias';
 import { element } from 'protractor';
+import { validateBasis } from '@angular/flex-layout';
 
 @Component({
   selector: 'app-modalpupusas',
@@ -29,9 +32,14 @@ export class ModalpupusasComponent implements OnInit {
   //Este item contiene la lista de ingredientes que se enviaran con la pupusa a la BD
   receta=[];
 
+  //El ingrediente que selecciona el usuario
   ingredienteSeleccionado:Ingrediente;   
 
-  
+
+  //Variable para guardar nuevo ingrediente
+  private nuevaPupusa: Producto = new Producto();
+
+  //FormGroup para controlar las pupusas
   pupusaForm: FormGroup;
  
   constructor(public activeModal: NgbActiveModal,
@@ -42,7 +50,9 @@ export class ModalpupusasComponent implements OnInit {
     this.obtenerIngredientes();
     //Creando formGroup 
     this.pupusaForm = this.fb.group({
-      nombre: new FormControl('', Validators.required),
+      nombre: new FormControl('', [Validators.required, Validators.minLength(4),Validators.maxLength(100)]), 
+      masa: new FormControl('',Validators.required),
+      descripcion: new FormControl('', [Validators.required, Validators.minLength(4), Validators.maxLength(150)]),
       costo: new FormControl('', [Validators.required,ValidadorminmaxService.max(100),ValidadorminmaxService.min(0.01)])
     
     }); 
@@ -78,10 +88,19 @@ export class ModalpupusasComponent implements OnInit {
   }
 
   crearPupusa(){
-    if (this.pupusaForm.invalid) {
+    if (this.pupusaForm.invalid || !this.receta?.length) {
       return;
-    }  
+    }   
+    let preferencias:Preferencias = new Preferencias;
+    preferencias.masa=this.pupusaForm.get("masa").value;
+    preferencias.ingredientes = this.receta; 
 
+    delete this.pupusaForm.value.masa; 
+
+    this.nuevaPupusa = Object.assign(this.nuevaPupusa,this.pupusaForm.value);
+
+    this.nuevaPupusa.preferencias = preferencias;  
+    this.productosService.crearPupusa(this.nuevaPupusa);
     this.activeModal.dismiss();
   }
 

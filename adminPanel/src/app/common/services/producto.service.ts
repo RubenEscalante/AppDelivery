@@ -4,7 +4,7 @@ import { Injectable } from '@angular/core';
 import { AngularFireDatabase, AngularFireList } from '@angular/fire/database';
 
 //Modelo
-import {Ingrediente} from '../models/ingrediente';
+import {Producto} from '../models/producto';
 
 
 
@@ -23,5 +23,9 @@ export class ProductoService {
     return this.datosFirebase = this.firebase.list('/ingredientes');
   }
 
+  crearPupusa(pupusa:Producto){
+    this.datosFirebase=this.firebase.list('/productos');
+    this.datosFirebase.push(pupusa);
+  }
 
 }

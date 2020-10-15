@@ -1,6 +1,10 @@
-export interface Producto {
-    nombre: string;
-    codigo: number;
-    precio: number;
+import{Preferencias} from './preferencias';
+
+export class Producto {
+    nombre: string; 
+    descripcion:string;    
     cantidad: number;
+    precio: number;
+    categoria:string;    
+    preferencias?: (Preferencias)|null; 
 }
