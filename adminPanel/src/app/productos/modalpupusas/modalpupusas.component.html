@@ -22,13 +22,19 @@
                 </label> 
              </div> 
         </div> 
-         <!--/EOF Tipo de masa-->
+         <!--/EOF Tipo de masa--> 
         
         <!--Ingredientes-->
         <div class="form-group">
-            <label>Ingredientes</label>        
+            <label>Ingredientes</label>  
             <div class="form-inline">
-                <input type="text" class="form-control" placeholder="Ingredientes">
+                <input list="ingredientes">
+                <datalist id="ingredientes">           
+                    <ng-container *ngFor="let ingrediente of listaIngredientes">
+                        <option data-value="{{ingrediente.id}}" value="{{ingrediente.nombre}}" ng-change="hola(ingrediente)">
+                           
+                    </ng-container>
+                </datalist> 
                 <button class="btn btn-primary">            
                     <i class="fa fa-plus"></i>
                 </button> 
@@ -56,7 +62,7 @@
             <label>Nombre de la pupusa</label>
             <input type="text" class="form-control" placeholder="Pupusa revuelta">             
         </div>
-        <!--/EOF Nombre de la pupusa-->
+        <!--/EOF Nombre de la pupusa--> 
 
         <!--Descripcion-->
         <div class="form-group">
@@ -80,7 +86,8 @@
          <!--Boton Añadir  --> 
          <button type="submit" class="btn btn-primary ml-auto">Crear pupusa</button>
          <!--/EOF Boton Añadir --> 
- 
+        
+        
 
 
     </div>
