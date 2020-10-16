@@ -20,7 +20,9 @@ const routes: Routes = [
       { path: 'carrito',
         loadChildren: ()=> import('../carrito/carrito.module').then(mod => mod.CarritoModule)},
       { path: 'datos-pedido',
-        loadChildren: ()=> import('../datos-pedido/datos-pedido.module').then(mod => mod.DatosPedidoModule)}
+        loadChildren: ()=> import('../datos-pedido/datos-pedido.module').then(mod => mod.DatosPedidoModule)},
+      { path: 'perfil-usuario',
+        loadChildren: ()=> import('../panel-usuario/panel-usuario.module').then(mod => mod.PanelUsuarioModule)}
     ]
   },
   // Enrutamiento para un layout secundario, de ser necesario
