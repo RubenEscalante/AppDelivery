@@ -18,6 +18,8 @@ export class ListaProductosComponent implements OnInit {
   public total:number = 0;
   public cantidad:number = 0;
   @Output() enviarTotal = new EventEmitter();
+  @Output() carritoVacio = new EventEmitter();
+
   constructor(
     private carritoService:CarritoService,
     private toastr:ToastrService
@@ -35,6 +37,7 @@ export class ListaProductosComponent implements OnInit {
     for(let producto of this.productos){
       this.total += producto.price * producto.quantity;
     }
+    this.carritoVacio.emit(false);
   }
 
   this.enviarTotal.emit(this.total);
@@ -104,6 +107,7 @@ vaciarCarrito(){
   });
 
   this.guardarCambios();
+  this.carritoVacio.emit(true);
 }
 
 //Guarda cambios en el localStorage
