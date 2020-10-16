@@ -19,7 +19,7 @@ export class CarritoComponent implements OnInit {
 
   ngOnInit(): void {
     this.productos = this.carritoServicio.get('cart');
-    this.total = this.carritoServicio.get('total');
+    this.total = this.menucartServicio.getCartTotal();
     this.cantidad = this.menucartServicio.getCartLength();
   }
 

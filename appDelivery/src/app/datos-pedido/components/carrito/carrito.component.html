@@ -19,8 +19,11 @@
         <h6 class="my-0">{{producto.name}} <span class="badge badge-success">x{{producto.quantity}}</span></h6>
         <small class="text-muted">{{producto.description}}</small>
       </div>
-      <span class="text-muted">${{producto.price*producto.quantity}}</span>
+      <span class="text-muted">${{(producto.price*producto.quantity).toFixed(2)}}</span>
     </li>
+
+    <!--Esto es por si se llegase a aplicar algún descuento-->
+    <!--
     <li class="list-group-item d-flex justify-content-between bg-light">
       <div class="text-success">
         <h6 class="my-0">Promo code</h6>
@@ -28,12 +31,16 @@
       </div>
       <span class="text-success">-$5</span>
     </li>
+    -->
+    
     <li class="list-group-item d-flex justify-content-between">
       <span>Total (USD)</span>
-      <strong>${{total}}</strong>
+      <strong>${{total.toFixed(2)}}</strong>
     </li>
   </ul>
 
+  <!--Esto es por si se llegase a aplicar algún descuento-->
+  <!--
   <form [formGroup]="" class="card p-2">
     <div class="input-group">
       <input type="text" class="form-control" placeholder="Promo code">
@@ -42,3 +49,5 @@
       </div>
     </div>
   </form>
+  -->
+  

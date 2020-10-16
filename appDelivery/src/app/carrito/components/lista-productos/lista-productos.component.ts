@@ -7,6 +7,7 @@ import { Producto } from '../../models/producto';
 
 //Servicio
 import { CarritoService } from '../../services/carrito.service';
+import { MenucartService } from '../../../menu/services/menucart.service';
 
 @Component({
   selector: 'app-lista-productos',
@@ -22,6 +23,7 @@ export class ListaProductosComponent implements OnInit {
 
   constructor(
     private carritoService:CarritoService,
+    private menuServicio:MenucartService,
     private toastr:ToastrService
   ) { }
 
@@ -32,16 +34,24 @@ export class ListaProductosComponent implements OnInit {
 
  //Calculo el total de la compra
  obtenerTotal(){
-  this.total = 0;
+
+  /*this.total = 0;
   if(this.productos){
     for(let producto of this.productos){
       this.total += producto.price * producto.quantity;
     }
     this.carritoVacio.emit(false);
-  }
-
-  this.enviarTotal.emit(this.total);
+  }*/
+  
   this.guardarCambios();
+  this.total = this.menuServicio.getCartTotal();
+  if(this.productos.length == 0){
+    this.carritoVacio.emit(true);
+  }else{
+    this.carritoVacio.emit(false);
+  }
+  this.enviarTotal.emit(this.total);
+  
 }
 
 //Elimina un solo producto
@@ -115,12 +125,6 @@ guardarCambios(renderizar?:string){
 
   //Con esto almaceno los cambios realizados en las cantidades y los productos eliminados en el localStorage
   this.carritoService.set('cart',this.productos);
-  this.carritoService.set('total',this.total);
-  if(this.productos == null){
-    this.carritoService.set('cantidadProductos',0);
-  }else{
-    this.carritoService.set('cantidadProductos',this.productos.length);
-  }
   if(renderizar){
     //Aquí hago el cambio de pantalla a la página de productos
     //

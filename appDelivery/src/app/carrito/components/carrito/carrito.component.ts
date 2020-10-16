@@ -22,7 +22,6 @@ export class CarritoComponent implements OnInit {
   }
 
   estadoCarrito(estado){
-    console.log(estado);
     this.carritoVacio = estado;
   }
 

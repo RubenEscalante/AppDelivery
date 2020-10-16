@@ -9,7 +9,7 @@
       <div class="col-md-7 order-md-1">
         <h4>Datos del cliente</h4>
         <hr>
-        <form [formGroup]="">
+        <form [formGroup]="formularioDatos" >
           <div class="row">
             <!--
               <div class="col-md-6 mb-3">
@@ -68,7 +68,7 @@
                       <p class="d-inline-flex card-text">{{direccion.direccion+", "+direccion.municipio+", "+direccion.departamento}}</p>
                     </div>
                     <div class="col-4">
-                      <input class="d-inline-flex p-2 form-check-input" type="radio" name="direccion">
+                      <input class="d-inline-flex p-2 form-check-input" type="radio" name="direccion" [value]="direccion" formControlName="direccion" required>
                       <label>Elegir esta dirección</label>
                     </div>
                   </div>
@@ -85,9 +85,9 @@
 
           <div class="mb-3">
             <div class="row justify-content-between">
-              <button class="btn btn-primary" routerLink="/menu" type="submit">Regresar al menú</button>
-              <button class="btn btn-primary" routerLink="/carrito" type="submit">Regresar al carrito</button>
-              <button class="btn btn-success" routerLink="" type="submit">Confirmar compra</button>
+              <button class="btn btn-primary" routerLink="/menu" type="button">Regresar al menú</button>
+              <button class="btn btn-primary" routerLink="/carrito" type="button">Regresar al carrito</button>
+              <button class="btn btn-success" type="submit" (click)="procesarOrden(formularioDatos.value)"  [disabled]="formularioDatos.invalid">Confirmar compra</button>
             </div>
           </div>
         </form>

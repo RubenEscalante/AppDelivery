@@ -59,4 +59,16 @@ export class MenucartService {
     return total;
   }
 
+  getCartTotal(){
+    let costoTotal = 0;
+    this.actualCart = this.getCartItems();
+    if(this.actualCart){
+      for(let producto of this.actualCart){
+        costoTotal += producto.price * producto.quantity;
+      }
+    }
+    return costoTotal;
+    
+  }
+
 }

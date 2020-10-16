@@ -14,7 +14,7 @@
             
         </div>
         <div class="col-3 text-center border">
-            <p class="h3 my-2">Total: <span class="ml-3"><span class="mr-1">$</span> {{total}}</span></p>
+            <p class="h3 my-2">Total: <span class="ml-3"><span class="mr-1">$</span> {{total.toFixed(2)}}</span></p>
             <hr>
             <span class="d-inline-block" tabindex="0" data-toggle="tooltip" title="Botón deshabilitado"> 
                 <button class="btn btn-success my-2" routerLink="/datos-pedido" (click)="listaCarrito.guardarCambios()" [disabled]="carritoVacio">Realizar compra</button>
