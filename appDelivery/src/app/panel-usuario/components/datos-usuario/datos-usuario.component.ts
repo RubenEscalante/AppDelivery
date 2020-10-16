@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit} from '@angular/core';
+import { Usuario } from 'src/app/datos-pedido/models/usuario';
 
 @Component({
   selector: 'app-datos-usuario',
@@ -7,9 +8,20 @@ import { Component, OnInit } from '@angular/core';
 })
 export class DatosUsuarioComponent implements OnInit {
 
-  constructor() { }
+  usuario:Usuario;
+  contraBool:Boolean;
+  constructor() {
+    this.contraBool = false;
+   }
 
   ngOnInit(): void {
+    this.usuario = JSON.parse(localStorage.getItem('user'));
+    
+  }
+
+  cambiarContra(){
+    this.contraBool = true;
+    console.log(this.contraBool);
   }
 
 }

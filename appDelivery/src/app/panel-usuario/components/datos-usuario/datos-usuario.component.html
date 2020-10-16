@@ -7,62 +7,64 @@
         </div>
         <div class="row form-group justify-content-center">
             <div class="col-8">
-                <input type="text" id="nombre" name="nombre" class="form-control" placeholder="nombre">
+                <input type="text" id="nombre" name="nombre" class="form-control" placeholder="Nombre">
             </div>
         </div>
         <div class="row form-group justify-content-center">
             <div class="col-8">
-                <input type="text" id="correo" name="correo" class="form-control" placeholder="correo">
+                <input type="text" id="correo" name="correo" class="form-control" placeholder="Correo">
             </div>
         </div>
         <div class="row form-group justify-content-center">
             <div class="col-8">
-                <input type="text" id="telefono" name="telefono" class="form-control" placeholder="telefono">
+                <input type="text" id="telefono" name="telefono" class="form-control" placeholder="Teléfono">
             </div>
         </div>
         <div class="row form-group justify-content-center">
             <div class="col-8">
                 <div class="row justify-content-end">
-                    <button type="button" class="btn btn-dark">Cambiar contraseña</button>
+                    <button type="button" class="btn btn-dark" (click)="password.activarDesactivar(true)">Cambiar contraseña</button>
                     <button type="button" class="btn btn-dark mx-3">Actualizar</button>
                 </div>  
             </div>
         </div>
     </form>
 
-    <form>
-        <div class="row form-group justify-content-center">
+    <app-password #password></app-password>
+
+    <div id="direcciones">
+        <div class="row justify-content-center">
             <div class="col-8">
-                <h1 class="text-center">Acutalizar contraseña</h1>
+                <h1 class="text-center">Direcciones</h1>
             </div>
         </div>
-        <div class="row form-group justify-content-center">
+        <div class="row justify-content-center">
             <div class="col-8">
-                <input type="text" id="contra" name="contra" class="form-control" placeholder="Contraseña actual">
-            </div>
-        </div>
-        <div class="row form-group justify-content-center">
-            <div class="col-8">
-                <input type="text" id="nuevaContra" name="nuevaContra" class="form-control" placeholder="Nueva contraseña">
-            </div>
-        </div>
-        <div class="row form-group justify-content-center">
-            <div class="col-8">
-                <input type="text" id="confirmarContra" name="confirmarContra" class="form-control" placeholder="Confirmar contraseña">
-            </div>
-        </div>
-        <div class="row form-group justify-content-center">
-            <div class="col-8">
-                <div class="row justify-content-end">
-                    <button type="button" class="btn btn-dark">Cambiar</button>
-                    <button type="button" class="btn btn-dark mx-3">Cancelar</button>
+                <div *ngFor="let direccion of usuario.direcciones" class="row py-2">
+                    <div class="card w-100">
+                      <div class="card-body">
+                        <h5 class="card-title">{{direccion.nombre}}</h5>
+                        <div class="row">
+                          <div class="col-8">
+                            <p class="d-inline-flex card-text">{{direccion.direccion+", "+direccion.municipio+", "+direccion.departamento}}</p>
+                          </div>
+                          <div class="col-4">
+                            <input class="d-inline-flex p-2 form-check-input" type="radio" name="direccion" [value]="direccion" formControlName="direccion" required>
+                            <label>Elegir esta dirección</label>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
                 </div>
             </div>
         </div>
-    </form>
-
-    <form action="">
-
-    </form>
+        <div class="row justify-content-center">
+            <div class="col-8 text-center">
+                <button class="btn btn-dark my-3" type="button" (click)="direccion.activarDesactivar(true)">Agregar Dirección</button>
+            </div>
+        </div>
+    </div>
+    <app-direccion #direccion></app-direccion>
+    
 </div>
 
