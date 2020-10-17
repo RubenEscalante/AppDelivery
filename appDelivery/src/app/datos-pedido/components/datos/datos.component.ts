@@ -6,6 +6,7 @@ import { Producto } from '../../models/producto';
 import { CarritoService } from 'src/app/carrito/services/carrito.service';
 import { MenucartService } from 'src/app/menu/services/menucart.service';
 import { OrdenService } from '../../services/orden.service';
+import { ToastrService } from 'ngx-toastr';
 
 
 
@@ -40,7 +41,8 @@ export class DatosComponent implements OnInit {
   constructor(
     private carritoServicio:CarritoService,
     private menucartServicio:MenucartService,
-    private ordenServicio:OrdenService
+    private ordenServicio:OrdenService,
+    private toastr:ToastrService
   ) { }
 
   ngOnInit(): void {
@@ -105,6 +107,12 @@ export class DatosComponent implements OnInit {
 
     this.ordenServicio.guardarOrden(this.orden);
     this.carritoServicio.remove('cart');
+
+    this.toastr.success('Orden procesada exitosamente', 'Orden Procesada',{
+      progressBar:true,
+      timeOut:1500,
+      closeButton:true
+    })
   }
 
   //Funcion que genera el numero de la orden

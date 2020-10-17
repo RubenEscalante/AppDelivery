@@ -45,7 +45,7 @@ export class ListaProductosComponent implements OnInit {
   
   this.guardarCambios();
   this.total = this.menuServicio.getCartTotal();
-  if(this.productos.length == 0){
+  if(this.productos == null || this.productos.length == 0){
     this.carritoVacio.emit(true);
   }else{
     this.carritoVacio.emit(false);

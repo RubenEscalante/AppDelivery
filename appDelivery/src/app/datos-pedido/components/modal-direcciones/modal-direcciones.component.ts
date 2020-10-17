@@ -3,6 +3,7 @@ import { NgbModal,  ModalDismissReasons} from '@ng-bootstrap/ng-bootstrap';
 import { FormGroup, FormControl, Validators, ValidationErrors} from '@angular/forms';
 import { Usuario } from '../../models/usuario';
 import { Direccion } from '../../models/direccion';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-modal-direcciones',
@@ -23,7 +24,8 @@ export class ModalDireccionesComponent implements OnInit {
   });
 
   constructor(
-    public modal:NgbModal
+    public modal:NgbModal,
+    private toastr:ToastrService
   ) { }
 
   ngOnInit(): void {
@@ -41,6 +43,11 @@ export class ModalDireccionesComponent implements OnInit {
   guardarDireccion(datosDireccion){
     this.direccion = datosDireccion;
     this.agregarDireccion.emit(this.direccion);
+    this.toastr.success('Direccion registrada exitosamente', 'Direccion Registrada',{
+      progressBar:true,
+      timeOut:1500,
+      closeButton:true
+    })
   }
 
 }
