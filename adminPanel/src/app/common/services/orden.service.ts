@@ -18,7 +18,7 @@ export class OrdenService{
    
   //Obteniendo ordenes del Servidor
   obtenerOrdenes(){  
-    return this.datosFirebase = this.firebase.list('orders'); 
+    return this.datosFirebase = this.firebase.list('ordenes'); 
   }
   
   //Buscar Orden por estado
@@ -33,6 +33,27 @@ export class OrdenService{
       })    
   }
 
+  moverHistorial(orden:Orden){
+    this.datosFirebase=this.firebase.list('historial');
+    this.datosFirebase.set(orden.id, {
+      descuento: orden.descuento,
+      direccionEnvio: orden.direccionEnvio,
+      estado: orden.estado,
+      fechaCreacion: orden.fechaCreacion,
+      fechaEntrega: 'indefinido',
+      productos: orden.productos,
+      subtotal: orden.subtotal,
+      total: orden.total,
+      usuario: orden.usuario
+    });
 
+    //this.eliminarPedido(orden.id);
+
+  }
+
+  eliminarPedido(idOrden:string){
+    this.datosFirebase=this.firebase.list('orders');
+    this.datosFirebase.remove(idOrden);
+  }
 
 }

@@ -7,8 +7,11 @@ export interface Orden {
     productos?: (Producto)[]|null;
     usuario: Usuario;
     direccionEnvio: string;
+    telefono?:string;
     total:number;
+    subtotal:number;
     descuento:number;
     fechaCreacion: Date;
+    fechaEntrega?: Date;
     
 }

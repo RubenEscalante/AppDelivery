@@ -72,6 +72,10 @@ export class ListaPedidosComponent implements OnInit {
     orden.estado="Entregado";
     this.ordenActiva=orden;
   }
+
+  moverHistorial(orden:Orden){
+    this.servicioOrdenes.moverHistorial(orden);
+  }
  
   actualizar(){
     if(this.ordenActiva){        
