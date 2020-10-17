@@ -1,1 +1,20 @@
- 
+.authblocknav{
+  position: relative;
+  display: inline-block;
+  text-decoration: none;
+  margin-left: 10px;
+  width: 100px;
+  height: 17px;
+
+}
+.authblocknav p{
+
+  top: 1;
+  display: block;
+  color: white;
+  font-size: 1.05em;
+  cursor: pointer;
+}
+.bg-info{
+  overflow: visible !important;
+}
