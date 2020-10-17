@@ -1,14 +1,10 @@
 export interface Cartitems {
-
-    $key: string;
-    name: string;
-    type: string;
-    description: string;
-    ingredients: string[];
-    price: number;
-    quantity: number;
-    dough: string;
+    id: string;
+    nombre: string;
+    categoria: string;
+    descripcion: string;
+    preferencias?: string[];
+    costo: number;
+    cantidad: number;
     imgurl: string;
-
-
 }

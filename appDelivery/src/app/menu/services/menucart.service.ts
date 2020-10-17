@@ -21,10 +21,10 @@ export class MenucartService {
     } else {
       this.actualCart = this.getCartItems();
       const person = this.actualCart.find((person) => {
-        return person.$key === items.$key && person.dough === items.dough;
+        return person.id === items.id;
       });
-      if (person && person.quantity) {
-        person.quantity = person.quantity + items.quantity;
+      if (person && person.cantidad) {
+        person.cantidad = person.cantidad + items.cantidad;
         localStorage.setItem('cart', JSON.stringify(this.actualCart));
       }
       if (person === undefined) {
@@ -54,7 +54,7 @@ export class MenucartService {
     }
     let total = 0;
     for (let num of this.actualCart) {
-      total += num.quantity;
+      total += num.cantidad;
     }
     return total;
   }

@@ -1,10 +1,9 @@
 export class Products {
-  $key: string;
-  name: string;
-  type: string;
-  description: string;
-  ingredients: string[];
-  available: boolean;
-  price: number;
+  id: string;
+  nombre: string;
+  categoria: string;
+  descripcion: string;
+  preferencias?: string[];
+  costo: number;
   imgurl: string;
 }

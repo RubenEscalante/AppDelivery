@@ -1,12 +1,12 @@
 
 <nav>
-  <a (click)="cambiarfiltro('Tradicional')"
+  <a (click)="cambiarfiltro('pupusas')"
    >Tradicional</a>
-  <a (click)="cambiarfiltro('Especialidad')"
-     >Especialidad</a>
-  <a (click)="cambiarfiltro('Bebida')"
+  <a (click)="cambiarfiltro('postres')"
+     >Postres</a>
+  <a (click)="cambiarfiltro('bebidas')"
      >Bebidas</a>
-  <div *ngIf="valorFiltro == 'Tradicional'" class="animation" [class.start-tradicional]="valorFiltro == 'Tradicional'"></div>
-  <div *ngIf="valorFiltro == 'Especialidad'" class="animation" [class.start-especialidad]="valorFiltro == 'Especialidad'"></div>
-  <div *ngIf="valorFiltro == 'Bebida'" class="animation" [class.start-bebidad]="valorFiltro == 'Bebida'"></div>
+  <div *ngIf="valorFiltro == 'pupusas'" class="animation" [class.start-tradicional]="valorFiltro == 'pupusas'"></div>
+  <div *ngIf="valorFiltro == 'postres'" class="animation" [class.start-especialidad]="valorFiltro == 'postres'"></div>
+  <div *ngIf="valorFiltro == 'bebidas'" class="animation" [class.start-bebidad]="valorFiltro == 'bebidas'"></div>
 </nav>

@@ -15,6 +15,10 @@ import { PaginacionPipe } from './Pipes/paginacion.pipe';
 import {ProductlistService} from './services/productlist.service';
 import {ProductfilterService} from './services/productfilter.service';
 import {MenucartService} from './services/menucart.service';
+import {AngularFireModule} from '@angular/fire';
+import {environment} from '../../environments/environment';
+import {AngularFireDatabaseModule} from '@angular/fire/database';
+
 
 
 @NgModule({
@@ -25,7 +29,7 @@ import {MenucartService} from './services/menucart.service';
     ProductoItemComponent,
     ProductoModalComponent,
     FiltroPipe,
-    PaginacionPipe,
+    PaginacionPipe
 
 
   ],
@@ -35,6 +39,8 @@ import {MenucartService} from './services/menucart.service';
     NgbModule,
     HttpClientModule,
     ReactiveFormsModule,
+    AngularFireModule.initializeApp(environment.firebase),
+    AngularFireDatabaseModule,
 
   ],
   providers: [ProductlistService, ProductfilterService, MenucartService],

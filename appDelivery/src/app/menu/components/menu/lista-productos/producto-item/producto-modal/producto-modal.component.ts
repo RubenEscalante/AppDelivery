@@ -14,6 +14,7 @@ import {Cartitems} from 'src/app/menu/models/cartitems';
 })
 export class ProductoModalComponent implements OnInit {
   @Input() productos: Products ;
+  Object = Object;
   public modalsNumber = 0;
   public timeLeft: number = 60;
   interval;
@@ -44,19 +45,19 @@ export class ProductoModalComponent implements OnInit {
   }
   ngOnInit(): void {
     this.startTimer();
+    console.log(this.productos);
   }
 
   onSubmit() {
     const formValue = this.productoModalForm;
-    let mycart: Cartitems = {
-      $key: this.productos.$key,
-      name: this.productos.name,
-      type: this.productos.type,
-      description: this.productos.description,
-      ingredients: this.productos.ingredients,
-      price: this.productos.price,
-      quantity: formValue.value.quantity,
-      dough: formValue.value.dough,
+    const mycart: Cartitems = {
+      id: this.productos.id,
+      nombre: this.productos.nombre,
+      categoria: this.productos.categoria,
+      descripcion: this.productos.descripcion,
+      preferencias: this.productos.preferencias,
+      costo: this.productos.costo,
+      cantidad: formValue.value.quantity,
       imgurl: this.productos.imgurl
     };
     this.menuCartservice.addToCar(mycart);

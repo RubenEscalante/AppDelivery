@@ -35,20 +35,19 @@ export class ProductoItemComponent implements OnInit {
   }
 
   conditionalProduct() {
-    return ['Tradicional', 'Especialidad'].includes(this.productos.type);
+    return ['pupusas', 'Especialidad'].includes(this.productos.categoria);
   }
 
   onSubmit() {
     const myvalue = this.productoForm;
-    let mycart: Cartitems = {
-      $key: this.productos.$key,
-      name: this.productos.name,
-      type: this.productos.type,
-      description: this.productos.description,
-      ingredients: this.productos.ingredients,
-      price: this.productos.price,
-      quantity: myvalue.value.quantity,
-      dough: '',
+    const mycart: Cartitems = {
+      id: this.productos.id,
+      nombre: this.productos.nombre,
+      categoria: this.productos.categoria,
+      descripcion: this.productos.descripcion,
+      preferencias: this.productos.preferencias,
+      costo: this.productos.costo,
+      cantidad: myvalue.value.quantity,
       imgurl: this.productos.imgurl
     };
     this.menuCartservice.addToCar(mycart);

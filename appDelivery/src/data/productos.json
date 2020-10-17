@@ -1,51 +1,34 @@
 [
   {
-    "$key": "asdasdasdasd",
-    "name": "Revueltas",
-    "type": "Tradicional",
-    "description": "Pupusa clasica revuelta con chicharron, queso, frijol",
-    "ingredients": [
-      "Queso",
-      "Frijol",
-      "Chicharron"
-    ],
-    "available": true,
-    "price": 0.5,
+    "id": "asdasdasdasd",
+    "nombre": "Revueltas",
+    "categoria": "Tradicional",
+    "descripcion": "Pupusa clasica revuelta con chicharron, queso, frijol",
+    "preferencias":
+      {
+        "ingredientes": [
+          {
+            "costo": 0.5,
+            "id": "asdasfwrw",
+            "nombre": "Peperoni"
+          },
+          {
+            "costo": 0.5,
+            "id": "ewrwerwer",
+            "nombre": "mostaza"
+          }
+        ],
+        "masa": "maiz"
+      }
+    ,
+    "costo": 0.5,
     "imgurl": "https://www.196flavors.com/wp-content/uploads/2013/06/pupusa-3.jpg"
   },
   {
-    "$key": "24234dsdfs",
-    "name": "Frijol con queso",
-    "type": "Especialidad",
-    "description": "Pupusa tradicional de frijol con queso",
-    "ingredients": [
-      "Queso",
-      "Frijol"
-    ],
-    "available": true,
-    "price": 0.5,
-    "imgurl": "https://www.196flavors.com/wp-content/uploads/2013/06/pupusa-3.jpg"
-  },
-  {
-    "$key": "16849",
-    "name": "Pepsi-cola",
-    "type": "Bebida",
-    "description": "Rica Pepsi",
-    "ingredients": [
-    ],
-    "available": true,
-    "price": 2.0,
-    "imgurl": "https://i.ytimg.com/vi/ii2XYKpuTPk/maxresdefault.jpg"
-  },
-  {
-    "$key": "we23we",
-    "name": "Coca-cola",
-    "type": "Bebida",
-    "description": "Rica cocacola",
-    "ingredients": [
-    ],
-    "available": true,
-    "price": 2.0,
-    "imgurl": "https://i.ytimg.com/vi/ii2XYKpuTPk/maxresdefault.jpg"
+    "id": "hola",
+    "nombre": "Coca cola",
+    "categoria": "Bebida",
+    "descripcion": "Soda"
   }
+
 ]
