@@ -1,37 +1,12 @@
-<div class="card filtros">
-  <nav class="navbar navbar-expand navbar-dark bg-dark">
-    <a
-      class="navbar-brand mouse-pointer"
 
-      (click)="cambiarfiltro('Tradicional')"
-      [class.activelink]="valorFiltro == 'Tradicional'"
-    >Pupusas</a
-    >
-    <button
-      class="navbar-toggler"
-      type="button"
-      data-toggle="collapse"
-      data-target="#navbarsExample02"
-      aria-controls="navbarsExample02"
-      aria-expanded="false"
-      aria-label="Toggle navigation"
-    >
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    <a
-      class="navbar-brand mouse-pointer"
-
-      (click)="cambiarfiltro('Bebida')"
-      [class.activelink]="valorFiltro == 'Bebida'"
-    >Bebidas</a
-    >
-    <a
-      class="navbar-brand mouse-pointer"
-
-      (click)="cambiarfiltro('Especialidad')"
-      [class.activelink]="valorFiltro == 'Especialidad'"
-    >Especialidades</a
-    >
-  </nav>
-</div>
-
+<nav>
+  <a (click)="cambiarfiltro('pupusas')"
+   >Tradicional</a>
+  <a (click)="cambiarfiltro('postres')"
+     >Postres</a>
+  <a (click)="cambiarfiltro('bebidas')"
+     >Bebidas</a>
+  <div *ngIf="valorFiltro == 'pupusas'" class="animation" [class.start-tradicional]="valorFiltro == 'pupusas'"></div>
+  <div *ngIf="valorFiltro == 'postres'" class="animation" [class.start-especialidad]="valorFiltro == 'postres'"></div>
+  <div *ngIf="valorFiltro == 'bebidas'" class="animation" [class.start-bebidad]="valorFiltro == 'bebidas'"></div>
+</nav>

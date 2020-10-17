@@ -4,6 +4,7 @@ import { Routes, RouterModule } from '@angular/router';
 import { MainLayoutComponent } from './components/main-layout/main-layout.component';
 import { SecondaryLayoutComponent} from './components/secondary-layout/secondary-layout.component';
 
+
 // Enrutamiento para el layout principal, compartido por el carrito de compras, el menu...
 const routes: Routes = [
   {
@@ -29,7 +30,14 @@ const routes: Routes = [
   {
     path: '',
     component: SecondaryLayoutComponent,
-    children:  []
+    children:  [
+      { path: 'autentificacion',
+        loadChildren: ()=> import('../usuarioauth/sign-in/sign-in.module').then(mod => mod.SignInModule)},
+      { path: 'verificar-email',
+        loadChildren: ()=> import('../usuarioauth/verificar-email/verificar-email.module').then(mod => mod.VerificarEmailModule)},
+      { path: 'clave-perdida',
+        loadChildren: ()=> import('../usuarioauth/clave-perdida/clave-perdida.module').then(mod => mod.ClavePerdidaModule)}
+    ]
   }
 
 ];
