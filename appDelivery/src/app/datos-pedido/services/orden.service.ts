@@ -7,14 +7,14 @@ import { Orden } from '../models/orden';
 })
 export class OrdenService {
 
-  ordenes:AngularFireList<any>;
+  ordenesList:AngularFireList<any>;
   numeroOrden:number;
   constructor(private firebase:AngularFireDatabase) { 
-    this.ordenes = this.firebase.list('ordenes');
+    this.ordenesList = this.firebase.list('/ordenes');
   }
 
   guardarOrden(orden:Orden){
-    this.ordenes.update("orden2",{
+    this.ordenesList.update(orden.id,{
       descuento: orden.descuento,
       direccionEnvio: orden.direccionEnvio,
       estado: orden.estado,
@@ -30,7 +30,7 @@ export class OrdenService {
 
   //Esto me salvó la vida, elimina todo el nodo si no especificas un elemento hijo
   eliminar(){
-    this.ordenes.remove();
+    this.ordenesList.remove();
   }
 }
 

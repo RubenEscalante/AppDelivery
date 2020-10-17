@@ -9,10 +9,10 @@ export class Orden {
         public estado:string,
         public fechaCreacion:string,
         public id:string,
-        public productos:Producto[],
+        public productos:(Producto)[]|null,
         public total:number,
         public subtotal:number,
         public usuario:Usuario,
-        public telefono
+        public telefono:string
     ){}
 }
