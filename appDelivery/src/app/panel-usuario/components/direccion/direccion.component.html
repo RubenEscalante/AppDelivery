@@ -1,0 +1,61 @@
+<form *ngIf="activarDireccion">
+    <div class="row form-group justify-content-center">
+        <div class="col-8">
+            <input type="text" class="form-control" placeholder="Nombre de la dirección*" required>
+        </div>
+    </div>
+    <div class="row form-group justify-content-center">
+        <div class="col-8">
+            <input type="text" class="form-control" placeholder="Dirección*">
+        </div>
+    </div>
+    <div class="row form-group justify-content-center">
+        <div class="col-8">
+            <div class="row">
+                <div class="col-6">
+                    <select name="departamento" id="departamento" class="form-control">
+                        <option value="">Departamento*</option>
+                        <option value="Ahuachapan">Ahuachapan</option>
+                        <option value="Cabañas">Cabañas</option>
+                        <option value="Chalatenango">Chalatenango</option>
+                        <option value="Cuscatlán">Cuscatlán</option>
+                        <option value="La Libertad">La Libertad</option>
+                        <option value="La Paz">La Paz</option>
+                        <option value="La Unión">La Unión</option>
+                        <option value="Morazán">Morazán</option>
+                        <option value="San Miguel">San Miguel</option>
+                        <option value="San Salvador">San Salvador</option>
+                        <option value="San Vicente">San Vicente</option>
+                        <option value="Santa Ana">Santa Ana</option>
+                        <option value="Sonsonate">Sonsonate</option>
+                        <option value="Usulután">Usulután</option>
+                    </select>
+                  </div>
+                  <div class="col-6">
+                    <select name="municipio" id="municipio" class="form-control">
+                        <option value="">Municipio*</option>
+                        <option value="Ahuachapan">Ahuachapan</option>
+                        <option value="Cabañas">Cabañas</option>
+                        <option value="Chalatenango">Chalatenango</option>
+                        <option value="Cuscatlán">Cuscatlán</option>
+                        <option value="La Libertad">La Libertad</option>
+                        <option value="La Paz">La Paz</option>
+                        <option value="La Unión">La Unión</option>
+                        <option value="Morazán">Morazán</option>
+                        <option value="San Miguel">San Miguel</option>
+                        <option value="San Salvador">San Salvador</option>
+                        <option value="San Vicente">San Vicente</option>
+                        <option value="Santa Ana">Santa Ana</option>
+                        <option value="Sonsonate">Sonsonate</option>
+                        <option value="Usulután">Usulután</option>
+                    </select>
+                  </div>
+            </div>
+        </div>
+    </div>
+    <div class="row justify-content-center">
+        <div class="col-8 text-center">
+            <button type="button" class="btn btn-dark my-3" (click)="activarDesactivar(false)">Guardar dirección</button>
+        </div>
+    </div>
+</form>

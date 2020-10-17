@@ -45,15 +45,15 @@
             </div>
         </div>
         <div class="col-2">
-            <p class="my-0 text-center">{{producto.price}} <span>$</span> </p>
+            <p class="my-0 text-center"><span>$</span> {{producto.price.toFixed(2)}}</p>
         </div>
         <div class="col-2 text-center">
-            <button class="btn d-inline" (click)="incrementarCantidad(producto)">+</button>
-            <input type="number" min="0" max="50" [value]="producto.quantity" class="form-control d-inline w-50 text-center" [(ngModel)]="producto.quantity" (change)="obtenerTotal()" disabled>
             <button class="btn d-inline" (click)="decrementarCantidad(producto)">-</button>
+            <input type="number" min="0" max="50" [value]="producto.quantity" class="form-control d-inline w-50 text-center" [(ngModel)]="producto.quantity" (change)="obtenerTotal()" disabled>
+            <button class="btn d-inline" (click)="incrementarCantidad(producto)">+</button>
         </div>
         <div class="col-2">
-            <p class="my-0 text-center">{{producto.price*producto.quantity}} <span>$</span> </p>
+            <p class="my-0 text-center"><span>$</span> {{(producto.price*producto.quantity).toFixed(2)}}</p>
         </div>
         <div class="col-1">
             <button class="btn btn-warning" (click)="eliminarProducto(producto)">
