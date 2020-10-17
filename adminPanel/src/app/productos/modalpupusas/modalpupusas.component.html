@@ -1,5 +1,7 @@
 <div class="modal-header">
-    <h4 class="modal-title">Crear una pupusa</h4>
+    <h4 class="modal-title">
+        {{pupusaParaModificar? "Modificar pupusa":"Crear una pupusa"}}
+    </h4>
     <button type="button" class="close" aria-label="Close" (click)="activeModal.dismiss('Cross click')">
       <span aria-hidden="true">&times;</span>
     </button>
@@ -107,10 +109,11 @@
             </small>  
             <!--/EOF Advertencias de validacion-->
         </div> 
-        <!--/EOF Campo precio-->  
-
+        <!--/EOF Campo precio-->   
          <!--Boton Añadir  --> 
-         <button type="button" (click)="crearPupusa()" class="btn btn-primary ml-auto">Crear pupusa</button>
+         <button type="button" (click)="crearSinoEditarPupusa()" class="btn btn-primary ml-auto">
+            {{pupusaParaModificar? "Guardar cambios":"Crear pupusa"}}
+        </button>
          <!--/EOF Boton Añadir --> 
         
         
