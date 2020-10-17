@@ -37,7 +37,7 @@ import {MenucartService} from './services/menucart.service';
     ReactiveFormsModule,
 
   ],
-  providers: [ProductlistService, ProductfilterService,MenucartService],
+  providers: [ProductlistService, ProductfilterService, MenucartService],
   bootstrap: [MenuComponent],
 })
 export class MenuModule {

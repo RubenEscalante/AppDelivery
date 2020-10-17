@@ -1,0 +1,59 @@
+<div class="container-fluid">
+  <div class="container">
+
+    <hr>
+    <div class="row">
+      <div class="col-md-5">
+
+
+            <p class="text-uppercase pull-center"> Registrate</p>
+            <div class="form-group">
+              <input type="text" name="username" id="usernamesignupup" class="form-control input-lg" placeholder="Nombre de usuario" #userName required >
+            </div>
+
+            <div class="form-group">
+              <input type="email" name="email" id="emailsignup" class="form-control input-lg" placeholder="Email" #userEmail required>
+            </div>
+            <div class="form-group">
+              <input type="password" name="password" id="passwordsignup" class="form-control input-lg" placeholder="Contraseña" #userPwd required>
+            </div>
+
+
+            <div>
+              <input type="submit" class="btn btn-lg btn-primary "  value="Registrarse" (click)="authService.SignUp(userName.value, userEmail.value, userPwd.value)">
+            </div>
+        <!-- Continue with Google -->
+        <div class="formGroup">
+          <button type="button" class="btn googleBtn" (click)="authService.GoogleAuth()">
+            <i class="fab fa-google-plus-g"></i>
+            Continuar con Google
+          </button>
+        </div>
+
+
+      </div>
+
+      <div class="col-md-2">
+        <!-------null------>
+      </div>
+
+      <div class="col-md-5">
+
+            <p class="text-uppercase"> Iniciar Sesion: </p>
+
+            <div class="form-group">
+              <input type="email" name="username" id="emailsignin" class="form-control input-lg" placeholder="Email" #usermail required>
+            </div>
+            <div class="form-group">
+              <input type="password" name="password" id="passwordsignin" class="form-control input-lg" placeholder="Contraseña" #userPass required>
+            </div>
+            <div>
+              <input type="submit" class="btn btn-lg btn-primary" value="Iniciar Sesion" (click)="authService.SignIn(usermail.value, userPass.value)">
+            </div>
+
+
+      </div>
+    </div>
+  </div>
+
+</div>
