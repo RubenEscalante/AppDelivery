@@ -75,6 +75,12 @@ export class ListaPedidosComponent implements OnInit {
 
   moverHistorial(orden:Orden){
     this.servicioOrdenes.moverHistorial(orden);
+    this.ordenActiva=orden;
+  }
+
+  eliminarPedido(){
+    this.servicioOrdenes.eliminarPedido(this.ordenActiva.id);
+    this.ordenActiva=undefined;
   }
  
   actualizar(){

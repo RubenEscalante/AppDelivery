@@ -1,5 +1,7 @@
 import { Injectable } from '@angular/core';  
-
+import { formatDate, registerLocaleData} from '@angular/common'
+import localeSV from '@angular/common/locales/es-SV';
+registerLocaleData(localeSV, 'es-SV');
 //Firebase
 import { AngularFireDatabase, AngularFireList } from '@angular/fire/database';
 //Modelo
@@ -15,6 +17,9 @@ export class OrdenService{
   datosFirebase:AngularFireList<any>;
 
   constructor(private firebase:AngularFireDatabase) { }
+
+  fechaEntrega:Date = new Date();
+  
    
   //Obteniendo ordenes del Servidor
   obtenerOrdenes(){  
@@ -40,7 +45,7 @@ export class OrdenService{
       direccionEnvio: orden.direccionEnvio,
       estado: orden.estado,
       fechaCreacion: orden.fechaCreacion,
-      fechaEntrega: 'indefinido',
+      fechaEntrega: formatDate(this.fechaEntrega, 'short', 'es-SV'),
       productos: orden.productos,
       subtotal: orden.subtotal,
       total: orden.total,
@@ -52,7 +57,7 @@ export class OrdenService{
   }
 
   eliminarPedido(idOrden:string){
-    this.datosFirebase=this.firebase.list('orders');
+    this.datosFirebase=this.firebase.list('ordenes');
     this.datosFirebase.remove(idOrden);
   }
 
