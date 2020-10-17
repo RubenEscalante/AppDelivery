@@ -14,6 +14,10 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ToastrModule } from 'ngx-toastr';
 
+import { environment } from '../environments/environment';
+import {AngularFireModule} from '@angular/fire';
+import { AngularFireDatabaseModule } from '@angular/fire/database';
+
 @NgModule({
   declarations: [
     AppComponent
@@ -24,7 +28,9 @@ import { ToastrModule } from 'ngx-toastr';
     LayoutModule,
     NgbModule,
     BrowserAnimationsModule,
-    ToastrModule.forRoot()
+    ToastrModule.forRoot(),
+    AngularFireModule.initializeApp(environment.firebase),
+    AngularFireDatabaseModule
   ],
   providers: [CarritoService],
   bootstrap: [AppComponent]
