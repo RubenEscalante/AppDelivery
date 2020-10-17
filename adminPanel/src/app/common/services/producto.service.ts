@@ -23,10 +23,13 @@ export class ProductoService {
     return this.datosFirebase = this.firebase.list('/ingredientes');
   }
 
-  crearPupusa(pupusa:Producto){
-    pupusa.categoria="pupusas";
+  crearProducto(producto:Producto){ 
     this.datosFirebase=this.firebase.list('/productos');
-    this.datosFirebase.push(pupusa);
+    this.datosFirebase.push(producto);
+  }
+
+  obtenerProductos(){
+    return this.datosFirebase = this.firebase.list('/productos');
   }
 
 }

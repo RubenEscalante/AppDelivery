@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {FormGroup,FormControl, Validators, FormBuilder} from '@angular/forms';
 
-import {NgbModal, ModalDismissReasons, NgbActiveModal} from '@ng-bootstrap/ng-bootstrap';  
+import {NgbActiveModal} from '@ng-bootstrap/ng-bootstrap';  
 
 
 //Servicio de validacion de minimo y maximo
@@ -36,7 +36,7 @@ export class ModalpupusasComponent implements OnInit {
   ingredienteSeleccionado:Ingrediente;   
 
 
-  //Variable para guardar nuevo ingrediente
+  //Variable para guardar nuevo producto
   private nuevaPupusa: Producto = new Producto();
 
   //FormGroup para controlar las pupusas
@@ -100,7 +100,8 @@ export class ModalpupusasComponent implements OnInit {
     this.nuevaPupusa = Object.assign(this.nuevaPupusa,this.pupusaForm.value);
 
     this.nuevaPupusa.preferencias = preferencias;  
-    this.productosService.crearPupusa(this.nuevaPupusa);
+    this.nuevaPupusa.categoria="pupusas";
+    this.productosService.crearProducto(this.nuevaPupusa);
     this.activeModal.dismiss();
   }
 

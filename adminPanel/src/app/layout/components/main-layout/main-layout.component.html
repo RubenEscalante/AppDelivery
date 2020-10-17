@@ -18,10 +18,12 @@
                      Menu
                    </a>
                    <div class="dropdown-menu" aria-labelledby="smallerscreenmenu">
-                       <a class="dropdown-item" href="#">Dashboard</a>
-                       <a class="dropdown-item" href="#">Profile</a>
-                       <a class="dropdown-item" href="#">Tasks</a>
-                       <a class="dropdown-item" href="#">Etc ...</a>
+                       <a routerLink="/dashboard"  class="dropdown-item">Dashboard</a>
+                       <a routerLink="/ordenes-activas" class="dropdown-item">Ordenes activas</a>
+                       <a class="dropdown-item">Clientes</a> 
+                       <a routerLink="/ingredientes" class="dropdown-item">Ingredientes</a>
+                       <a routerLink="/productos" class="dropdown-item">Productos</a>
+                       <a href="#" class="dropdown-item">Ayuda</a>
                    </div>
                </li>
                <!-- Smaller devices menu END -->
@@ -41,26 +43,14 @@
            <ul class="list-group sticky-top sticky-offset"> 
    
                <!-- Menu with submenu -->
-               <a routerLink="/dashboard" data-toggle="collapse" aria-expanded="false" class="bg-dark list-group-item list-group-item-action flex-column align-items-start">
+               <a routerLink="/dashboard" class="bg-dark list-group-item list-group-item-action flex-column align-items-start">
                    <div class="d-flex w-100 justify-content-start align-items-center">
                        <span class="fa fa-dashboard fa-fw mr-3"></span>
                        <span class="menu-collapsed">Dashboard</span>
                        <span class="submenu-icon ml-auto"></span>
                    </div>
                </a>
-               <!-- Submenu dashboard-->
-               <div id="collapse" class="collapse sidebar-submenu">
-                   <a href="#" class="list-group-item list-group-item-action bg-dark text-white">
-                       <span class="menu-collapsed">Submenu 1</span>
-                   </a>
-                   <a href="#" class="list-group-item list-group-item-action bg-dark text-white">
-                       <span class="menu-collapsed">Submenu 1</span>
-                   </a>
-                   <a href="#" class="list-group-item list-group-item-action bg-dark text-white">
-                       <span class="menu-collapsed">Submenu 1</span>
-                   </a>
-               </div> 
-               <!-- /EOF Submenu dashboard --> 
+               
 
                
                <!-- Ordenes -->

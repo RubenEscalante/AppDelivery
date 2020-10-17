@@ -1,3 +1,23 @@
-<p>lista-productos works!</p>
+<table class="table table-bordered table-sm ">
+    <thead class="thead-light">
+        <tr>
+            <th>ID</th>
+            <th>Nombre</th>
+            <th>Descripcion</th> 
+            <th>Precio</th> 
+            <th>Categoria</th> 
+            
+        </tr>
+    </thead> 
+    <tbody *ngFor="let producto of listaProductos">    
+        <tr>
+            <td>{{producto.id}}</td>
+            <td>{{producto.nombre}}</td>
+            <td>{{producto.descripcion}}</td>
+            <td>$ {{producto.costo}}</td>
+            <td>{{producto.categoria}}</td>
+        </tr>
+    </tbody>
+</table>
 
 
