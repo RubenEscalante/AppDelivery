@@ -5,6 +5,8 @@ import { Orden } from '../../models/orden';
 import { Producto } from '../../models/producto';
 import { CarritoService } from 'src/app/carrito/services/carrito.service';
 import { MenucartService } from 'src/app/menu/services/menucart.service';
+import { OrdenService } from '../../services/orden.service';
+
 
 
 @Component({
@@ -36,7 +38,8 @@ export class DatosComponent implements OnInit {
   
   constructor(
     private carritoServicio:CarritoService,
-    private menucartServicio:MenucartService
+    private menucartServicio:MenucartService,
+    private ordenServicio:OrdenService
   ) { }
 
   ngOnInit(): void {
@@ -52,30 +55,42 @@ export class DatosComponent implements OnInit {
   }
 
   procesarOrden(datos){
+
     let productos = [];
     let carrito = this.carritoServicio.get('cart');
     for(let producto of carrito){
-      let p = new Producto(0,'',0);
+      let p = new Producto(0,'','','',0);
       p.cantidad = producto.quantity;
+      p.categoria = producto.type;
       p.precio = producto.price;
       p.descripcion = producto.description;
+      p.nombre = producto.name;
       productos.push(p);
     }
     
-    let usuarioOrden = new Usuario('','','',[]);
+    let usuarioOrden = new Usuario('','',null,[]);
     usuarioOrden.nombre = this.usuario.nombre;
     usuarioOrden.correo = this.usuario.correo;
 
     let direccion = datos.direccion.direccion+", "+datos.direccion.municipio+", "+datos.direccion.departamento;
     console.log(direccion);
 
-    let fecha = new Date();
+    let fecha_ob = new Date();
+    let dia = ("0" + fecha_ob.getDate()).slice(-2);
+    let mes = ("0" + (fecha_ob.getMonth() + 1)).slice(-2);
+    let año = fecha_ob.getFullYear();
+    let horas = fecha_ob.getHours();
+    let minutos = fecha_ob.getMinutes();
+    let segundos = fecha_ob.getSeconds();
+    let fecha = dia + "/" + mes + "/" + año + " " + horas + ":" + minutos + ":" + segundos;
+
+
     this.orden = new Orden(
       0,
       direccion,
       'Recibido',
       fecha,
-      fecha,
+      "orden2",
       productos,
       this.menucartServicio.getCartTotal(),
       this.menucartServicio.getCartTotal(),
@@ -83,7 +98,9 @@ export class DatosComponent implements OnInit {
       this.usuario.telefono
     );
 
-    console.log(this.orden)
+    console.log(this.orden);
+    this.ordenServicio.guardarOrden(this.orden);
+    this.carritoServicio.remove('cart');
   }
 
 

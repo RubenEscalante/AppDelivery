@@ -87,7 +87,7 @@
             <div class="row justify-content-between">
               <button class="btn btn-primary" routerLink="/menu" type="button">Regresar al menú</button>
               <button class="btn btn-primary" routerLink="/carrito" type="button">Regresar al carrito</button>
-              <button class="btn btn-success" type="submit" (click)="procesarOrden(formularioDatos.value)"  [disabled]="formularioDatos.invalid">Confirmar compra</button>
+              <button class="btn btn-success" routerLink="/menu" type="submit" (click)="procesarOrden(formularioDatos.value)"  [disabled]="formularioDatos.invalid">Confirmar compra</button>
             </div>
           </div>
         </form>
