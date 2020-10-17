@@ -31,9 +31,7 @@ export class DatosComponent implements OnInit {
     correo:"ricardo.majano@pupusa.com",
     telefono:"2255-55555",
     direcciones:[
-      {nombre:"Dirección 1", direccion:"Colonia el pepeto, pasaje 11, casa #54", municipio:"Mejicanos", departamento:"San Salvador"},
-      {nombre:"Dirección 2", direccion:"Colonia el pepeto, pasaje 11, casa #54", municipio:"Mejicanos", departamento:"San Salvador"},
-      {nombre:"Dirección 3", direccion:"Colonia el pepeto, pasaje 11, casa #54", municipio:"Mejicanos", departamento:"San Salvador"}
+      {nombre:"Dirección 1", direccion:"Colonia el pepeto, pasaje 11, casa #54", municipio:"Mejicanos", departamento:"San Salvador"}
     ]
   };
 
@@ -46,7 +44,7 @@ export class DatosComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    //localStorage.setItem('user',JSON.stringify(this.usuarioRegistrado));
+    localStorage.setItem('user',JSON.stringify(this.usuarioRegistrado));
     //Aquí debería de obtener los datos del usuario que inició sesión, ya sea del local storage o de la bd
     this.usuario = JSON.parse(localStorage.getItem('user'));
   }
@@ -64,11 +62,11 @@ export class DatosComponent implements OnInit {
     let carrito = this.carritoServicio.get('cart');
     for(let producto of carrito){
       let p = new Producto(0,'','','',0);
-      p.cantidad = producto.quantity;
-      p.categoria = producto.type;
-      p.precio = producto.price;
-      p.descripcion = producto.description;
-      p.nombre = producto.name;
+      p.cantidad = producto.cantidad;
+      p.categoria = producto.categoria;
+      p.precio = producto.costo;
+      p.descripcion = producto.descripcion;
+      p.nombre = producto.nombre;
       productos.push(p);
     }
     

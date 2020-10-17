@@ -77,11 +77,11 @@ eliminarProducto(productoEliminado:Producto){
 
 //Incrementa en uno la cantidad del producto
 incrementarCantidad(producto){
-  if(producto.quantity < 50){
-    producto.quantity++;
+  if(producto.cantidad < 50){
+    producto.cantidad++;
   }else{
     //Aqui puedo mostrar un mensaje de error
-    producto.quantity = 50;
+    producto.cantidad = 50;
   }
   let indice = this.productos.indexOf(producto);
   this.productos.splice(indice,1,producto);
@@ -90,11 +90,11 @@ incrementarCantidad(producto){
 
 //Decrementa en uno la cantidad del producto
 decrementarCantidad(producto){
-  if(producto.quantity > 1){
-    producto.quantity--;
+  if(producto.cantidad > 1){
+    producto.cantidad--;
   }else{
     //Aqui puedo mostrar un mensaje de error al usuario
-    producto.quantity = 1;
+    producto.cantidad = 1;
   }
   let indice = this.productos.indexOf(producto);
   this.productos.splice(indice,1,producto);
