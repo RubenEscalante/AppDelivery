@@ -20,8 +20,7 @@ export class ListaPedidosComponent implements OnInit {
   //La orden que se esta editando
   ordenActiva: Orden;
    
-  constructor(private servicioOrdenes: OrdenService,
-              global:Global) { 
+  constructor(private servicioOrdenes: OrdenService,global:Global) { 
                 this.global=global;
               }
 
