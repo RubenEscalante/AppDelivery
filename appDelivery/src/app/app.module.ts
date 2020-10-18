@@ -5,6 +5,7 @@ import { AppComponent } from './app.component';
 import { CarritoService } from '../app/carrito/services/carrito.service';
  
 
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { PreloadAllModules, RouterModule} from '@angular/router';  
 
@@ -32,7 +33,9 @@ import { LoginmodalComponent } from './autentificacion/loginmodal/loginmodal.com
     BrowserAnimationsModule,
     ToastrModule.forRoot(),
     AngularFireModule.initializeApp(environment.firebase),
-    AngularFireDatabaseModule
+    AngularFireDatabaseModule,
+    FormsModule,
+    ReactiveFormsModule
   ],
   providers: [CarritoService],
   bootstrap: [AppComponent]
