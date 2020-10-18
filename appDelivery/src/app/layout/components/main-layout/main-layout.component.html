@@ -9,26 +9,34 @@
           <span class="h6 ml-2">$ {{menuCartservice.getCartTotal().toFixed(2)}}</span>
         </button>
 
-        <div class="authblocknav" *ngIf="!authService.isLoggedIn">
-          <div class="dropdown">
-            <button class="btn btn-secondary " style="white-space: nowrap;" type="button" id="loginbutton"
-                    routerLink="/autentificacion">
-              Iniciar sesion
-            </button>
-          </div>
-        </div>
-        <div class="authblocknav" *ngIf="authService.isLoggedIn">
+        <!--Mensaje de bienvenida-->        
+        <div class="authblocknav" *ngIf="authService.userData as user; else iniciar_sesion">
           <div class="dropdown">
             <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton"
                     data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-              {{authService.getUserName()}}
+                    Bienvenido
+                    {{authService.getUserName()}}
             </button>
             <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
               <a class="dropdown-item" routerLink="/perfil-usuario">Perfil de usuario</a>
-              <a class="dropdown-item cursor-pointer" (click)="authService.SignOut()">Cerrar Sesion</a>
+              <a class="dropdown-item cursor-pointer" href="#" (click)="authService.SignOut()">Cerrar Sesion</a>
             </div>
           </div>
-        </div>
+        </div> 
+        <!--/EOF Mensaje de bienvenida-->
+
+        <!--Boton para iniciar sesion-->
+        <ng-template #iniciar_sesion> 
+          <div class="authblocknav">
+            <div class="dropdown">
+              <button (click)="abrirModalParaAutentificarse()" class="btn btn-secondary"  style="white-space: nowrap;" type="button" id="loginbutton">
+                Iniciar sesion
+              </button>
+            </div>
+          </div> 
+        </ng-template>  
+        <!--/EOF Boton para inicias sesion-->  
+
       </div>
     </div>
   </div>

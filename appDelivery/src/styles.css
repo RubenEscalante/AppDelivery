@@ -1,68 +1,17 @@
-/* You can add global styles to this file, and also import other style files */
+ /* You can add global styles to this file, and also import other style files */
 
-/*
-ESTILOS MENU
- */
-.cart-item {
-  font-size: small;
-}
+ @import url('https://fonts.googleapis.com/css2?family=Puritan:wght@700&display=swap');
+ /*------- Biryani Bold 700*/
+ @import url('https://fonts.googleapis.com/css2?family=Biryani:wght@700&display=swap');
+ 
+ /*------- Metrophobic Regular 400*/
+ @import url('https://fonts.googleapis.com/css2?family=Metrophobic&display=swap');
+ 
+ 
+ *{ 
+   font-family: 'Metrophobic', sans-serif;    
+ }
+ 
+ 
 
-.filtros {
-  font-size: small;
-}
 
-.product-btn {
-  font-size: smaller;
-}
-.activelink {
-  background-color: #0000ff;
-}
-
-.pagination .active a {
-  background: #007bff !important;
-  border-color: #007bff !important;
-  border-radius: 1000px !important;
-}
-.pagination a {
-  border-radius: 200px !important;
-  margin-left: 15px !important;
-}
-
-.flex-between {
-  justify-content: space-between;
-}
-.flex-item {
-  display: flex;
-  padding: 2px;
-  width: 100%;
-}
-.box {
-  display: inline-block;
-  font-size: 20px;
-  line-height: 50px;
-}
-.fade {
-  transition: opacity 0.15s ease-out !important;
-}
-.img-products:hover {
-  opacity: 0.7;
-  cursor: pointer;
-}
-
-.cursor-pointer{
-  cursor: pointer;
-}
-.iconWidth{
-  width: 60px;
-  height: 60px;
-}
-
-@media (min-width: 576px){
-  .modal-dialog {
-    max-width: auto !important;
-  }
-}
-
-/*
-FIN ESTILOS MENU
- */

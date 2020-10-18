@@ -31,12 +31,12 @@ const routes: Routes = [
     path: '',
     component: SecondaryLayoutComponent,
     children:  [
-      { path: 'autentificacion',
-        loadChildren: ()=> import('../usuarioauth/sign-in/sign-in.module').then(mod => mod.SignInModule)},
+      { path: 'registro',
+        loadChildren: ()=> import('../autentificacion/sign-in/sign-in.module').then(mod => mod.SignInModule)},
       { path: 'verificar-email',
-        loadChildren: ()=> import('../usuarioauth/verificar-email/verificar-email.module').then(mod => mod.VerificarEmailModule)},
+        loadChildren: ()=> import('../autentificacion/verificar-email/verificar-email.module').then(mod => mod.VerificarEmailModule)},
       { path: 'clave-perdida',
-        loadChildren: ()=> import('../usuarioauth/clave-perdida/clave-perdida.module').then(mod => mod.ClavePerdidaModule)}
+        loadChildren: ()=> import('../autentificacion/clave-perdida/clave-perdida.module').then(mod => mod.ClavePerdidaModule)}
     ]
   }
 

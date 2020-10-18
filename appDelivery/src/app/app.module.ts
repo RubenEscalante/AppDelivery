@@ -17,10 +17,12 @@ import { ToastrModule } from 'ngx-toastr';
 import { environment } from '../environments/environment';
 import {AngularFireModule} from '@angular/fire';
 import { AngularFireDatabaseModule } from '@angular/fire/database';
+import { LoginmodalComponent } from './autentificacion/loginmodal/loginmodal.component';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    LoginmodalComponent
   ],
   imports: [
     BrowserModule,
