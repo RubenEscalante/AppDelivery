@@ -1,12 +1,12 @@
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
+import { NgModule } from '@angular/core'; 
 import { AppComponent } from './app.component';
 
 import { CarritoService } from '../app/carrito/services/carrito.service';
+ 
 
 
-
-import { PreloadAllModules, RouterModule} from '@angular/router';
+import { PreloadAllModules, RouterModule} from '@angular/router';  
 
 import {LayoutModule} from './layout/layout.module';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';

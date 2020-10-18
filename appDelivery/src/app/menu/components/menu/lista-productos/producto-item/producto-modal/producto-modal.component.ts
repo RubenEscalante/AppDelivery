@@ -45,7 +45,7 @@ export class ProductoModalComponent implements OnInit {
   }
   ngOnInit(): void {
     this.startTimer();
-    console.log(this.productos);
+   // console.log(this.productos);
   }
 
   onSubmit() {
