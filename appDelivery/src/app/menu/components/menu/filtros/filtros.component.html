@@ -1,0 +1,12 @@
+
+<nav>
+  <a (click)="cambiarfiltro('pupusas')"
+   >Tradicional</a>
+  <a (click)="cambiarfiltro('postres')"
+     >Postres</a>
+  <a (click)="cambiarfiltro('bebidas')"
+     >Bebidas</a>
+  <div *ngIf="valorFiltro == 'pupusas'" class="animation" [class.start-tradicional]="valorFiltro == 'pupusas'"></div>
+  <div *ngIf="valorFiltro == 'postres'" class="animation" [class.start-especialidad]="valorFiltro == 'postres'"></div>
+  <div *ngIf="valorFiltro == 'bebidas'" class="animation" [class.start-bebidad]="valorFiltro == 'bebidas'"></div>
+</nav>

@@ -1,0 +1,34 @@
+[
+  {
+    "id": "asdasdasdasd",
+    "nombre": "Revueltas",
+    "categoria": "Tradicional",
+    "descripcion": "Pupusa clasica revuelta con chicharron, queso, frijol",
+    "preferencias":
+      {
+        "ingredientes": [
+          {
+            "costo": 0.5,
+            "id": "asdasfwrw",
+            "nombre": "Peperoni"
+          },
+          {
+            "costo": 0.5,
+            "id": "ewrwerwer",
+            "nombre": "mostaza"
+          }
+        ],
+        "masa": "maiz"
+      }
+    ,
+    "costo": 0.5,
+    "imgurl": "https://www.196flavors.com/wp-content/uploads/2013/06/pupusa-3.jpg"
+  },
+  {
+    "id": "hola",
+    "nombre": "Coca cola",
+    "categoria": "Bebida",
+    "descripcion": "Soda"
+  }
+
+]
