@@ -15,6 +15,7 @@ export class AuthService {
   userData: any; // Guardar datos de usuario registrados
   clients: AngularFireList<any>;
   actualUsername: any;
+  userName: string;
 
   constructor(
     public afs: AngularFirestore,   //  Inyectar Servicio Firestore
@@ -32,9 +33,7 @@ export class AuthService {
         this.actualUsername = {
           uid: this.userData.uid,
           nombre: this.userData.displayName,
-          correo: this.userData.email,
-          telefono: '',
-          direcciones: []
+          correo: this.userData.email
         };
         localStorage.setItem('user', JSON.stringify(this.actualUsername)); // cambiar por  this.userData para ver objeto completo
         JSON.parse(localStorage.getItem('user'));
@@ -45,23 +44,23 @@ export class AuthService {
     });
   }
 
+  getUserName() {
+    const nombre = JSON.parse(localStorage.getItem('user'));
+    return this.userName = nombre.nombre;
+  }
+
   getClients() {
     return this.clients = this.firebase.list('clientes');
   }
 
-  appUserDataBase(user) {
+  appUserDataBase(user, username) {
+
     const adaRef = database().ref('clientes');
-    const userData: User = {
-      uid: user.uid,
-      email: user.email,
-      displayName: user.displayName,
-      photoURL: user.photoURL,
-      emailVerified: user.emailVerified
-    };
     if (user) {
+      console.log(user.displayName);
       adaRef.child(user.uid).set({
-        email: userData.email,
-        nombre: userData.displayName
+        email: user.email,
+        nombre: username
       });
     }
   }
@@ -85,12 +84,15 @@ export class AuthService {
       .then((result) => {
         /* Llame a la función SendVerificaitonMail () cuando un nuevo usuario firme
         y vuelve la funcion*/
+
         this.SendVerificationMail();
         this.SetUserData(result.user);
-        this.appUserDataBase(result.user);
+        this.appUserDataBase(result.user, username);
         result.user.updateProfile({
           displayName: username
+
         });
+
       }).catch((error) => {
         window.alert(error.message);
       });
@@ -118,7 +120,7 @@ export class AuthService {
   // el correo electrónico está verificado
   get isLoggedIn(): boolean {
     const user = JSON.parse(localStorage.getItem('user'));
-    return (user !== null && user.emailVerified !== false) ? true : true;
+    return (user !== null && user.emailVerified !== false) ? true : false;
   }
 
 // Iniciar sesión usando Facebook
@@ -140,12 +142,15 @@ export class AuthService {
   AuthLogin(provider) {
     return this.afAuth.signInWithPopup(provider)
       .then((result) => {
+
         this.ngZone.run(() => {
           this.router.navigate(['menu']);
         });
         this.SetUserData(result.user);
-        this.appUserDataBase(result.user); //TODO: ERROR CON GOOGLE, SE SOBREESCRIBIRA CUALQUIER EN LA DB POR ESTOS DATOS.
-
+        if (result.additionalUserInfo.isNewUser) {
+          this.userName = result.user.displayName;
+          this.appUserDataBase(result.user, this.userName);
+        }
       }).catch((error) => {
         window.alert(error);
       });
