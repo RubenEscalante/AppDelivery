@@ -28,7 +28,9 @@
           <div class="row form-group">
               <div class="col-6">
                 <select name="departamento" id="departamento" class="form-control" formControlName="departamento">
-                    <option value="">Departamento*</option>
+                  <option value="">Departamento*</option>
+                  <option value="San Salvador">San Salvador</option>
+                  <!--
                     <option value="Ahuachapan">Ahuachapan</option>
                     <option value="Cabañas">Cabañas</option>
                     <option value="Chalatenango">Chalatenango</option>
@@ -43,6 +45,9 @@
                     <option value="Santa Ana">Santa Ana</option>
                     <option value="Sonsonate">Sonsonate</option>
                     <option value="Usulután">Usulután</option>
+                  -->
+                    
+                    
                 </select>
                 <span *ngIf="this.formularioDireccion.get('departamento').touched && this.formularioDireccion.get('departamento').errors?.required">
                   (Debe seleccionar un departamento)
@@ -51,20 +56,25 @@
               <div class="col-6">
                 <select name="municipio" id="municipio" class="form-control" formControlName="municipio">
                     <option value="">Municipio*</option>
-                    <option value="Ahuachapan">Ahuachapan</option>
-                    <option value="Cabañas">Cabañas</option>
-                    <option value="Chalatenango">Chalatenango</option>
-                    <option value="Cuscatlán">Cuscatlán</option>
-                    <option value="La Libertad">La Libertad</option>
-                    <option value="La Paz">La Paz</option>
-                    <option value="La Unión">La Unión</option>
-                    <option value="Morazán">Morazán</option>
-                    <option value="San Miguel">San Miguel</option>
+                    <option value="Aguilares">Aguilares</option>
+                    <option value="Apopa">Apopa</option>
+                    <option value="Ayutuxtepeque">Ayutuxtepeque</option>
+                    <option value="Cuscatancingo">Cuscatancingo</option>
+                    <option value="El Paisnal">El Paisnal</option>
+                    <option value="Guazapa">Guazapa</option>
+                    <option value="Ilopango">Ilopango</option>
+                    <option value="Mejicanos">Mejicanos</option>
+                    <option value="Nejapa">Nejapa</option>
+                    <option value="Panchimalco">Panchimalco</option>
+                    <option value="Rosario de Mora">Rosario de Mora</option>
+                    <option value="San Marcos">San Marcos</option>
+                    <option value="San Martín">San Martín</option>
                     <option value="San Salvador">San Salvador</option>
-                    <option value="San Vicente">San Vicente</option>
-                    <option value="Santa Ana">Santa Ana</option>
-                    <option value="Sonsonate">Sonsonate</option>
-                    <option value="Usulután">Usulután</option>
+                    <option value="Santiago Texacuangos">Santiago Texacuangos</option>
+                    <option value="Santo Tomás">Santo Tomás</option>
+                    <option value="Soyapango">Soyapango</option>
+                    <option value="Tonacatepeque">Tonacatepeque</option>
+                    <option value="Delgado">Delgado</option>
                 </select>
                 <span *ngIf="this.formularioDireccion.get('municipio').touched && this.formularioDireccion.get('municipio').errors?.required">
                   (Debe seleccionar un municipio)

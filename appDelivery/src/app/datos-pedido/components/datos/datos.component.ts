@@ -23,7 +23,10 @@ export class DatosComponent implements OnInit {
   public formularioDatos = new FormGroup({
     direccion: new FormControl('',[Validators.required])
   });
-  public ordenesRegistradas;
+  public confirmarOrden:Boolean;
+  public ordenProcesada:Boolean;
+  public productos;
+  public total;
 
   //Este simula ser el usuario que estará almacenado en el local storage
   usuarioRegistrado:Usuario = {
@@ -44,9 +47,12 @@ export class DatosComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    localStorage.setItem('user',JSON.stringify(this.usuarioRegistrado));
+    //localStorage.setItem('user',JSON.stringify(this.usuarioRegistrado));
     //Aquí debería de obtener los datos del usuario que inició sesión, ya sea del local storage o de la bd
     this.usuario = JSON.parse(localStorage.getItem('user'));
+    this.productos = this.carritoServicio.get('cart');
+    this.confirmarOrden = true;
+    this.ordenProcesada = false;
   }
 
   guardarDireccion(d){
@@ -102,8 +108,13 @@ export class DatosComponent implements OnInit {
       usuarioOrden,
       this.usuario.telefono
     );
+    
+    this.total = this.menucartServicio.getCartTotal();
 
+    //Envio la orden a la base de datos
     this.ordenServicio.guardarOrden(this.orden);
+
+    //Elimino los productos almacenados en el carrito
     this.carritoServicio.remove('cart');
 
     this.toastr.success('Orden procesada exitosamente', 'Orden Procesada',{
@@ -111,6 +122,9 @@ export class DatosComponent implements OnInit {
       timeOut:1500,
       closeButton:true
     })
+
+    this.confirmarOrden = false;
+    this.ordenProcesada = true;
   }
 
   //Funcion que genera el numero de la orden
