@@ -17,6 +17,11 @@ export class DatosUsuarioComponent implements OnInit {
   ngOnInit(): void {
     this.usuario = JSON.parse(localStorage.getItem('user'));
     
+    //Defino la dirección y el teléfono al nuevo usuario registrado
+    if(typeof(this.usuario.direcciones) == 'undefined'){
+      let usuarioProvisional = new Usuario(this.usuario.uid,this.usuario.nombre,this.usuario.correo,"",[]);
+      this.usuario = usuarioProvisional;
+    }
   }
 
   cambiarContra(){

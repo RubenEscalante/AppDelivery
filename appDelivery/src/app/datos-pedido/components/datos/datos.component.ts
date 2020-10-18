@@ -27,17 +27,6 @@ export class DatosComponent implements OnInit {
   public ordenProcesada:Boolean;
   public productos;
   public total;
-
-  //Este simula ser el usuario que estará almacenado en el local storage
-  usuarioRegistrado:Usuario = {
-    nombre:"José Ricardo Majano De Paz",
-    correo:"ricardo.majano@pupusa.com",
-    telefono:"2255-55555",
-    direcciones:[
-      {nombre:"Dirección 1", direccion:"Colonia el pepeto, pasaje 11, casa #54", municipio:"Mejicanos", departamento:"San Salvador"}
-    ]
-  };
-
   
   constructor(
     private carritoServicio:CarritoService,
@@ -47,9 +36,15 @@ export class DatosComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    //localStorage.setItem('user',JSON.stringify(this.usuarioRegistrado));
     //Aquí debería de obtener los datos del usuario que inició sesión, ya sea del local storage o de la bd
     this.usuario = JSON.parse(localStorage.getItem('user'));
+
+    //Defino la dirección y el teléfono al nuevo usuario registrado
+    if(typeof(this.usuario.direcciones) == 'undefined'){
+      let usuarioProvisional = new Usuario(this.usuario.uid,this.usuario.nombre,this.usuario.correo,"",[]);
+      this.usuario = usuarioProvisional;
+    }
+    
     this.productos = this.carritoServicio.get('cart');
     this.confirmarOrden = true;
     this.ordenProcesada = false;
@@ -77,7 +72,7 @@ export class DatosComponent implements OnInit {
     }
     
     //Formateando al usuario
-    let usuarioOrden = new Usuario('','',null,[]);
+    let usuarioOrden = new Usuario('','','',null,[]);
     usuarioOrden.nombre = this.usuario.nombre;
     usuarioOrden.correo = this.usuario.correo;
 
