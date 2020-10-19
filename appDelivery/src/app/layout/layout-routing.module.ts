@@ -36,11 +36,14 @@ const routes: Routes = [
     component: SecondaryLayoutComponent,
     children:  [
       { path: 'registro',
-        loadChildren: ()=> import('../autentificacion/sign-in/sign-in.module').then(mod => mod.SignInModule)},
+        loadChildren: ()=> import('../autentificacion/sign-in/sign-in.module').then(mod => mod.SignInModule),
+        canActivateChild: [SessionGuard]},
       { path: 'verificar-email',
-        loadChildren: ()=> import('../autentificacion/verificar-email/verificar-email.module').then(mod => mod.VerificarEmailModule)},
+        loadChildren: ()=> import('../autentificacion/verificar-email/verificar-email.module').then(mod => mod.VerificarEmailModule),
+        canActivateChild: [AuthGuard]},
       { path: 'clave-perdida',
-        loadChildren: ()=> import('../autentificacion/clave-perdida/clave-perdida.module').then(mod => mod.ClavePerdidaModule)}
+        loadChildren: ()=> import('../autentificacion/clave-perdida/clave-perdida.module').then(mod => mod.ClavePerdidaModule),
+        canActivateChild: [SessionGuard]}
     ]
   }
 
