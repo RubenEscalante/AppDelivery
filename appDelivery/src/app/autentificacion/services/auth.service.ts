@@ -93,9 +93,11 @@ export class AuthService {
         /* Llame a la función SendVerificaitonMail () cuando un nuevo usuario firme
         y vuelve la funcion*/
 
-        this.SendVerificationMail();
+        //TODO:Agregarle estilo a la pagina de verificacion de identidad
+        //this.SendVerificationMail();
         this.SetUserData(result.user);
         this.appUserDataBase(result.user, username);
+        this.router.navigate(['menu']);
         /*
         result.user.updateProfile({
           displayName: username

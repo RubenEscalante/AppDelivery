@@ -5,12 +5,11 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { LayoutRoutingModule } from './layout-routing.module';
 import { HeaderComponent } from './components/header/header.component';
 import { FooterComponent } from './components/footer/footer.component'; 
-import { MainLayoutComponent } from './components/main-layout/main-layout.component';
-import { SecondaryLayoutComponent } from './components/secondary-layout/secondary-layout.component';
+import { MainLayoutComponent } from './components/main-layout/main-layout.component'; 
 
 
 @NgModule({
-  declarations: [HeaderComponent, FooterComponent,  MainLayoutComponent, SecondaryLayoutComponent],
+  declarations: [HeaderComponent, FooterComponent,  MainLayoutComponent ],
   imports: [
     CommonModule,
     LayoutRoutingModule,

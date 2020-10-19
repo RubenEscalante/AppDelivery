@@ -2,7 +2,6 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
 import { MainLayoutComponent } from './components/main-layout/main-layout.component';
-import { SecondaryLayoutComponent} from './components/secondary-layout/secondary-layout.component';
 import { AuthGuard} from '../guard/auth.guard';
 import { SessionGuard} from '../guard/session.guard';
 
@@ -27,14 +26,7 @@ const routes: Routes = [
         canActivateChild: [AuthGuard]},
       { path: 'perfil-usuario',
         loadChildren: ()=> import('../panel-usuario/panel-usuario.module').then(mod => mod.PanelUsuarioModule),
-        canActivateChild: [AuthGuard]}
-    ]
-  },
-  // Enrutamiento para un layout secundario, de ser necesario
-  {
-    path: '',
-    component: SecondaryLayoutComponent,
-    children:  [
+        canActivateChild: [AuthGuard]},
       { path: 'registro',
         loadChildren: ()=> import('../autentificacion/sign-in/sign-in.module').then(mod => mod.SignInModule),
         canActivateChild: [SessionGuard]},
@@ -45,9 +37,8 @@ const routes: Routes = [
         loadChildren: ()=> import('../autentificacion/clave-perdida/clave-perdida.module').then(mod => mod.ClavePerdidaModule),
         canActivateChild: [SessionGuard]}
     ]
-  }
-
-];
+  }];
+   
 
 @NgModule({
   imports: [RouterModule.forChild(routes)],
