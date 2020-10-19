@@ -5,6 +5,8 @@ import {AngularFireAuth} from '@angular/fire/auth';
 import {AngularFirestore, AngularFirestoreDocument} from '@angular/fire/firestore';
 import {AngularFireDatabase, AngularFireDatabaseModule, AngularFireList} from '@angular/fire/database';
 import {Router} from '@angular/router';
+import {Products} from '../../menu/models/products';
+import {UserDataFirebase} from '../models/user-data-firebase';
 
 
 @Injectable({
@@ -14,8 +16,9 @@ import {Router} from '@angular/router';
 export class AuthService {
   userData: any; // Guardar datos de usuario registrados
   clients: AngularFireList<any>;
-  actualUsername: any;
+  actualUser: any;
   userName: string;
+  dataUserFormDatabase: any;
 
   constructor(
     public afs: AngularFirestore,   //  Inyectar Servicio Firestore
@@ -30,13 +33,18 @@ export class AuthService {
     this.afAuth.authState.subscribe(user => {
       if (user) {
         this.userData = user;
-        this.actualUsername = {
-          uid: this.userData.uid,
-          nombre: this.userData.displayName,
-          correo: this.userData.email
-        };
-        localStorage.setItem('user', JSON.stringify(this.actualUsername)); // cambiar por  this.userData para ver objeto completo
-        JSON.parse(localStorage.getItem('user'));
+        const refKey = database().ref('clientes').child(this.userData.uid);
+        refKey.once('value', snapshot => {
+          this.actualUser = {
+            uid: this.userData.uid,
+            nombre: snapshot.val().nombre,
+            correo: snapshot.val().email,
+            direccion: snapshot.val().direccion
+          };
+          localStorage.setItem('user', JSON.stringify(this.actualUser)); // cambiar por  this.userData para ver objeto completo
+          //localStorage.setItem('firebaseUserData', JSON.stringify(this.userData));
+          JSON.parse(localStorage.getItem('user'));
+        });
       } else {
         localStorage.setItem('user', null);
         JSON.parse(localStorage.getItem('user'));
@@ -53,7 +61,7 @@ export class AuthService {
     return this.clients = this.firebase.list('clientes');
   }
 
-  appUserDataBase(user, username) {
+  private appUserDataBase(user, username) {
 
     const adaRef = database().ref('clientes');
     if (user) {
@@ -88,10 +96,12 @@ export class AuthService {
         this.SendVerificationMail();
         this.SetUserData(result.user);
         this.appUserDataBase(result.user, username);
+        /*
         result.user.updateProfile({
           displayName: username
-
-        });
+        });*/
+        // Sirve para modificar los datos. Cuando ingresamos con google, displayName se asigna automaticamente. Cuando es por correo y contraseña hay que asignarsela
+        // por este pedazo de codigo
 
       }).catch((error) => {
         window.alert(error.message);
@@ -149,7 +159,7 @@ export class AuthService {
         this.SetUserData(result.user);
         if (result.additionalUserInfo.isNewUser) {
           this.userName = result.user.displayName;
-          this.appUserDataBase(result.user, this.userName);
+          this.appUserDataBase(result.user, this.userName); //Unicamente para google, para login con usuario y contraseña se hace de diferente forma
         }
       }).catch((error) => {
         window.alert(error);
