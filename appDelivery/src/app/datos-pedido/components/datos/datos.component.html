@@ -1,121 +1,92 @@
 <div *ngIf="confirmarOrden" class="container">
-    <div class="py-3 text-center">
-      <h2>Confirmación del pedido</h2>
-    </div>
-    <div class="row mb-5">
-      <div class="col-md-5 order-md-2 mb-4">
-        <app-carrito></app-carrito>
-      </div>
-      <div class="col-md-7 order-md-1">
-        <h4>Datos del cliente</h4>
-        <hr>
-        <form [formGroup]="formularioDatos" >
-          <div class="row">
-            <!--
-              <div class="col-md-6 mb-3">
-              <label for="nombres">Nombres</label>
-              <input type="text" class="form-control" id="nombres" placeholder="" value="" required readonly>
-              <div class="invalid-feedback">
-                Debe ingresar nombres válidos.
-              </div>
-            </div>
-            <div class="col-md-6 mb-3">
-              <label for="apellidos">Apellidos</label>
-              <input type="text" class="form-control" id="apellidos" placeholder="" value="" required readonly>
-              <div class="invalid-feedback">
-                Debe ingresar apellidos válidos.
-              </div>
-            </div>
-            -->
-            <div class="col-md-12 mb-3">
-              <label for="nombre">Nombre</label>
-              <input type="text" class="form-control" id="nombre" [value]="usuario.nombre" required readonly>
-              <div class="invalid-feedback">
-                Debe ingresar un nombre válido.
-              </div>
-            </div>
+  <div class="my-3 py-3 text-center">
+    <h1>Confirmación del pedido</h1>
+  </div>
+  <div class="row mb-5">
+    <div class="col-6 mr-5">
+
+      <div class="row shadow bg-white rounded">
+        <div class="col">
+          <div class="row justify-content-center mt-3">
+            <h4>Datos del cliente</h4>
           </div>
           <div class="row">
-            <div class="col-md-6 mb-3">
-              <label for="correo">Correo</label>
-              <input type="email" class="form-control" id="correo" [value]="usuario.correo" required readonly>
-              <div class="invalid-feedback">
-                Por favor ingrese un correo válido.
-              </div>
-            </div>
-            <div class="col-md-6 mb-3">
-              <label for="telefono">Telefono</label>
-              <input type="tel" class="form-control" id="telefono" [value]="usuario.telefono" pattern="[0-9]{4}-[0-9]{4}" required readonly>
-              <div class="invalid-feedback">
-                Por favor ingrese un telefono válido.
-              </div>
+            <div class="col-12 mb-3">
+              <label for="nombre">Nombre</label>
+              <input type="text" class="form-control" id="nombre" [value]="usuario.nombre" required readonly>
             </div>
           </div>
 
-          <div class="mb-3 pt-2">
-            <h4>Direcciones Actuales</h4>
-            <hr>
+          <div class="row">
+            <div class="col-6 mb-3">
+              <label for="correo">Correo</label>
+              <input type="email" class="form-control" id="correo" [value]="usuario.correo" required readonly>
+            </div>
+            <div class="col-6 mb-3">
+              <label for="telefono">Teléfono</label>
+              <input type="tel" class="form-control" id="telefono" [value]="usuario.telefono" pattern="[0-9]{4}-[0-9]{4}" required readonly>
+            </div>
           </div>
-  
-          <!--Direcciones-->
-          <div class="mb-3" class="direcciones">
-            <div *ngFor="let direccion of usuario.direcciones" class="row py-2">
-              <div class="card w-100">
-                <div class="card-body">
-                  <h5 class="card-title">{{direccion.nombre}}</h5>
-                  <div class="row">
-                    <div class="col-8">
-                      <p class="d-inline-flex card-text">{{direccion.direccion+", "+direccion.municipio+", "+direccion.departamento}}</p>
-                    </div>
-                    <div class="col-4">
-                      <input class="d-inline-flex p-2 form-check-input" type="radio" name="direccion" [value]="direccion" formControlName="direccion" required>
-                      <label>Elegir esta dirección</label>
+        </div>
+
+      </div>
+
+      <div class="row mt-4 shadow bg-white rounded">
+        <div class="col">
+          <div class="row justify-content-center mt-3">
+            <h4>Direcciones Actuales</h4>
+          </div>
+          <form [formGroup]="formularioDatos" class="row justify-content-center direcciones scrollbar square scrollbar-color thin">
+            <!--Direcciones-->
+            <div class="col-10" *ngIf="usuario.direcciones.length > 0; else sinDirecciones">
+              <div *ngFor="let direccion of usuario.direcciones" class="row py-2">
+                <div class="card w-100">
+                  <div class="card-body">
+                    <h5 class="card-title">{{direccion.nombre}}</h5>
+                    <div class="row">
+                      <div class="col-8">
+                        <p class="d-inline-flex card-text">{{direccion.direccion+", "+direccion.municipio+", "+direccion.departamento}}</p>
+                      </div>
+                      <div class="col-4">
+                        <input class="d-inline-flex p-2 form-check-input" type="radio" name="direccion" [value]="direccion" formControlName="direccion" required>
+                        <label>Elegir esta dirección</label>
+                      </div>
                     </div>
                   </div>
                 </div>
-              </div>
+              </div>              
             </div>
-          </div>
-          <!--Direcciones-->
+            <!--Direcciones-->
+
+            <ng-template #sinDirecciones>
+              <div class="col-10 text-center">
+                <p class="bg-warning rounded py-2">No posee direcciones registradas</p>
+              </div>
+            </ng-template>
+            
+          </form>
+
+          
 
           <!--Modal para agregar direcciones-->
-          <div class="mb-3 text-center">
-            <app-modal-direcciones (agregarDireccion)="guardarDireccion($event)"></app-modal-direcciones>
-          </div>
-
-          <div class="mb-3">
-            <div class="row justify-content-between">
-              <button class="btn btn-primary" routerLink="/menu" type="button">Regresar al menú</button>
-              <button class="btn btn-primary" routerLink="/carrito" type="button">Regresar al carrito</button>
-              <button class="btn btn-success" type="submit" (click)="procesarOrden(formularioDatos.value)"  [disabled]="formularioDatos.invalid">Confirmar compra</button>
+          <div class="row justify-content-center">
+            <div class="mb-3 text-center">
+              <app-modal-direcciones (agregarDireccion)="guardarDireccion($event)"></app-modal-direcciones>
             </div>
           </div>
-        </form>
+
+        </div>
       </div>
     </div>
+
+    <div class="col-5 shadow bg-white rounded resumen scrollbar square scrollbar-color thin">
+      <app-carrito></app-carrito>
+    </div>
+  </div>
+
+  <div class="row justify-content-between">
+    <button class="btn btn-primary" routerLink="/menu" type="button">Regresar al menú</button>
+    <button class="btn btn-primary" routerLink="/carrito" type="button">Regresar al carrito</button>
+    <button class="btn btn-success" type="submit" (click)="procesarOrden(formularioDatos.value)"  [disabled]="formularioDatos.invalid">Confirmar compra</button>
+  </div>
 </div>
-
-<div *ngIf="ordenProcesada" class="container">
-  <h1>Pedido procesado con éxito</h1>
-  <hr>
-  <h2>Número de orden {{orden.id}}</h2>
-  <p>Gracias por preferirnos. Puede revisar el estado de su pedido en su <a>Historial</a></p>
-  <p>Ante cualquier duda o inconveniente con su orden, puede llamarnos al número 2254-6854, guarde su número de orden.</p>
-  <h3>Resumen:</h3>
-  <ul class="list-group mb-3">
-    <li *ngFor="let producto of productos" class="list-group-item d-flex justify-content-between lh-condensed">
-      <div>
-        <h6 class="my-0">{{producto.nombre}} <span class="badge badge-success">x{{producto.cantidad}}</span></h6>
-        <small class="text-muted">{{producto.descripcion}}</small>
-      </div>
-      <span class="text-muted">${{(producto.costo*producto.cantidad).toFixed(2)}}</span>
-    </li>
-    <li class="list-group-item d-flex justify-content-between">
-      <span>Total (USD)</span>
-      <strong>${{total.toFixed(2)}}</strong>
-    </li>
-  </ul>
-
-  <button class="btn btn-dark" routerLink="/menu">Guardar</button>
-</div>
-
