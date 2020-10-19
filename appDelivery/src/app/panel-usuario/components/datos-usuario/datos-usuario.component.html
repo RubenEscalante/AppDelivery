@@ -1,5 +1,5 @@
 <div class="container">
-    <form action="">
+    <form [formGroup]="">
         <div class="row form-group justify-content-center">
             <div class="col-8">
                 <h1 class="text-center">Perfil de usuario</h1>
@@ -64,7 +64,7 @@
             </div>
         </div>
     </div>
-    <app-direccion #direccion></app-direccion>
+    <app-direccion #direccion (enviarDireccion)="guardarDireccion($event)"></app-direccion>
     
 </div>
 

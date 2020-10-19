@@ -1,5 +1,6 @@
 import { Component, OnInit, EventEmitter, Output } from '@angular/core';
 import { FormGroup, FormControl, Validators, ValidationErrors } from '@angular/forms'
+import { Direccion } from 'src/app/datos-pedido/models/direccion';
 
 @Component({
   selector: 'app-direccion',
@@ -9,14 +10,15 @@ import { FormGroup, FormControl, Validators, ValidationErrors } from '@angular/f
 export class DireccionComponent implements OnInit {
 
   activarDireccion:Boolean;
-  @Output() enviarDireccion = new EventEmitter();
-
+  direccion:Direccion;
   formularioDireccion = new FormGroup({
     nombre: new FormControl('',[Validators.required, this.validarCadena]),
     direccion: new FormControl('',[Validators.required, this.validarCadena]),
     departamento: new FormControl('',[Validators.required]),
     municipio: new FormControl('',[Validators.required])
   });
+
+  @Output() enviarDireccion = new EventEmitter();
 
   constructor() { }
 
@@ -28,7 +30,9 @@ export class DireccionComponent implements OnInit {
   }
 
   agregarDireccion(datosDireccion){
-
+    this.direccion = datosDireccion;
+    this.enviarDireccion.emit(this.direccion);
+    this.activarDireccion = false;
   }
 
   validarCadena(control:FormControl):ValidationErrors{
