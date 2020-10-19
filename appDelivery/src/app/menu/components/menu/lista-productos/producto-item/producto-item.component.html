@@ -3,18 +3,24 @@
   <div class="menuItemsHeader">
     <strong><p> {{ productos.costo | currency: "USD" }}</p></strong>
     <h1> {{ productos.nombre }}</h1>
+    <div class="detalles">
+      <p>{{ productos.descripcion }}</p>
+    </div>
   </div>
+
   <div class="menuItemsImg">
     <img
       src="https://www.lonestarpark.com/wp-content/uploads/2019/04/image-placeholder-500x500.jpg"
       alt="Imagen de producto"
     />
+
     <div class="imgMoreDetails" [class.nohover]="!conditionalProduct()">
       <div class="btn btn-three" (click)="openModal()">
         <span>ORDENAR</span>
       </div>
     </div>
   </div>
+
   <div *ngIf="!conditionalProduct(); then showPlus "></div>
   <ng-template #showPlus>
     <div class="menuitemfooter">
@@ -33,6 +39,7 @@
       </div>
     </div>
   </ng-template>
+
 </div>
 
 

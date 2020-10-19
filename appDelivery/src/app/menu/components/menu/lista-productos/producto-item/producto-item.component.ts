@@ -6,6 +6,7 @@ import {Cartitems} from 'src/app/menu/models/cartitems';
 import {FormControl, FormGroup, Validators} from '@angular/forms';
 import {FormBuilder} from '@angular/forms';
 import {MenucartService} from 'src/app/menu/services/menucart.service';
+import {ToastrService} from 'ngx-toastr';
 
 @Component({
   selector: 'app-producto-item',
@@ -20,7 +21,7 @@ export class ProductoItemComponent implements OnInit {
   });
 
 
-  constructor(private modalService: NgbModal, ngbConfig: NgbConfig, private fb: FormBuilder, public menuCartservice: MenucartService) {
+  constructor(private modalService: NgbModal, ngbConfig: NgbConfig, private fb: FormBuilder, public menuCartservice: MenucartService, private toastr: ToastrService) {
     ngbConfig.animation = true;
   }
 
@@ -61,6 +62,12 @@ export class ProductoItemComponent implements OnInit {
       this.menuCartservice.addToCar(mycart);
       this.productoForm.setValue({
         quantity: 1
+      });
+
+      this.toastr.success('Producto agregado al carrito', 'Exito',{
+        progressBar: true,
+        timeOut: 1500,
+        closeButton: true
       });
     }
     // console.log(mycart);

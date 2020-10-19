@@ -5,10 +5,8 @@
   margin-left: 10px;
   width: 100px;
   height: 17px;
-
 }
 .authblocknav p{
-
   top: 1;
   display: block;
   color: white;
@@ -24,7 +22,8 @@
   border: none;
 }
 .botoncartcolor{
-  background-color: #252525;
+  color: white;
+  background-color: #252525 !important;
   border: none;
 }
 .botoncartcolor:active{

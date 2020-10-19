@@ -6,6 +6,7 @@ import {MenucartService} from '../../../../../services/menucart.service';
 import {FormBuilder, Validators} from '@angular/forms';
 import {FormControl, FormGroup} from '@angular/forms';
 import {Cartitems} from 'src/app/menu/models/cartitems';
+import {ToastrService} from 'ngx-toastr';
 
 @Component({
   selector: 'app-producto-modal',
@@ -37,7 +38,8 @@ export class ProductoModalComponent implements OnInit {
     public activeModal: NgbActiveModal,
     private modalService: NgbModal,
     public menuCartservice: MenucartService,
-    private fb: FormBuilder
+    private fb: FormBuilder,
+    private toastr: ToastrService
   ) {
     this.modalService.activeInstances.subscribe((list) => {
       this.modalsNumber = list.length;
@@ -68,6 +70,11 @@ export class ProductoModalComponent implements OnInit {
       this.menuCartservice.addToCar(mycart);
       this.productoModalForm.setValue({
         quantity: 1
+      });
+      this.toastr.success('Producto agregado al carrito', 'Exito',{
+        progressBar: true,
+        timeOut: 1500,
+        closeButton: true
       });
     }
    // console.log(mycart);

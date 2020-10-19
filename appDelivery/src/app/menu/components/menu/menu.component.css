@@ -189,7 +189,7 @@ NUEVOS ESTILOS DE MENU
   display: flex;
   justify-content: center;
   flex-grow: 1;
-  width: 100%;
+  width: 270px;
   height: 54px;
   /*background-color: chartreuse;*/
 }
@@ -233,7 +233,9 @@ NUEVOS ESTILOS DE MENU
 .nohover {
   display: none;
 }
-
+.detalles{
+  display: none;
+}
 .menuitems .menuItemsImg img:hover + .imgMoreDetails {
   opacity: 1;
   height: 100%;
@@ -249,12 +251,11 @@ NUEVOS ESTILOS DE MENU
 }
 
 .menuItemsHeader h1 {
-  font-family: "Intro Regular Regular";
-  font-weight: normal;
+  font-family: 'Metrophobic', sans-serif;
   font-size: 20px;
-  line-height: 20px;
-  font-weight: 300;
+ letter-spacing: 1px;
   text-align: center;
+  overflow-wrap: anywhere;
 }
 .menuItemsHeader strong {
 display: block;
@@ -262,7 +263,7 @@ display: block;
 }
 
 .btn {
-  line-height: 50px;
+  line-height: 39px;
   height: 0px;
   text-align: center;
   width: 250px;
@@ -388,31 +389,81 @@ input[type=number]::-webkit-outer-spin-button {
 }
 
 @media only screen and (max-width: 767px) {
+  html*{
+    margin: 0;
+    padding: 0;
+    width: 100%;
+  }
   .filtroitems {
     min-width: 100%;
-    margin: 0px 0px 10px 0px;
+    border-radius: unset;
+    border: none;
+    border-bottom: 1px solid rgba(136, 136, 136, 0.5);
+    box-shadow: none;
+    margin: 0px 0px 0px 0px;
+  }
+  .filtrocontent{
+    width: 95vw;
+  }
+  .filtroactive{
+    box-shadow: none;
+    background-color: rgba(141, 35, 36, 1);
+    color: white;
+  }
+  .filtroitems:hover {
+   box-shadow: none;
+    background-color: rgba(141, 35, 36, 1);
+    color: white;
   }
   .filtroElements {
-    width: 100%;
+    width: 95vw;
   }
   .contenedor {
-    width: 100%;
+    width: 95vw !important;
+  }
+  .menucontent{
+    border: none;
+    width: 95vw;
+  }
+  .menucart{
+    width: 95vw !important;
   }
   .menuitems {
-    width: 100%;
+    flex-direction: row-reverse;
+    width: 95vw;
     height: 200px;
+    margin: 0 0 20px 0;
+    border: 1px solid rgba(136, 136, 136, 0.5);
+  }
+  .menuItems:hover{
+    background-color: rgba(141, 35, 36, 1) !important;
+  }
+  .menuitems .menuItemsHeader {
+    position: relative;
   }
   .menuitems .menuItemsImg {
-    max-width: 150px;
+    max-width: 200px;
     min-width: 100px;
-    flex-shrink: 1;
-
-    height: 73%;
+    height: 100%;
     /*background-color: darkblue;*/
   }
   .menuitems .menuItemsImg img {
-    max-width: 100%;
+    width: 100%;
     height: 100%;
+  }
+  .menuItemsHeader .detalles{
+    display: block;
+    position: absolute;
+    overflow-wrap: anywhere;
+    top: 70px;
+    width: 100%;
+    height: auto;
+  }
+  .items2 .detalles{
+    display: none;
+  }
+  .detalles p{
+   margin-left: 50px;
   }
 }
 @media only screen and (max-width: 400px) {

@@ -81,7 +81,7 @@ body {
 .price {
   position: absolute;
   color: #8D2324;
-  left: 570px;
+  left: 448px;
 }
 /*
 FORMULARIOS DEL MODAL
@@ -142,7 +142,8 @@ FORMULARIOS DEL MODAL
 
 .product-text h1,
 .product-price-btn p {
-  font-family: 'Bentham', serif;
+  font-family: 'Biryani', serif;
+  font-size: 30px;
 }
 
 .product-text h1 p {
@@ -152,7 +153,7 @@ FORMULARIOS DEL MODAL
 .product-text h2 {
   margin: 0 0 20px 38px;
   font-size: 13px;
-  font-family: 'Raleway', sans-serif;
+  font-family: 'Biryani', sans-serif;
   font-weight: 400;
   text-transform: uppercase;
   color: #d2d2d2;
@@ -160,13 +161,10 @@ FORMULARIOS DEL MODAL
 }
 
 .product-text p {
-
-  margin: 0 0 0 38px;
-  font-family: 'Playfair Display', serif;
+  margin: -10px 0 0 38px;
+  font-family: 'Metrophobic', sans-serif;
   color: #8d8d8d;
-  line-height: 1.7em;
-  font-size: 15px;
-  font-weight: lighter;
+  font-size: 20px;
   overflow: hidden;
 }
 
@@ -194,7 +192,7 @@ FORMULARIOS DEL MODAL
 span {
   display: inline-block;
   height: 50px;
-  font-family: 'Suranna', serif;
+  font-family: 'Metrophobic', serif;
   font-size: 34px;
 }
 
@@ -208,11 +206,9 @@ span {
   box-sizing: border-box;
   border: transparent;
   border-radius: 60px;
-  font-family: 'Raleway', sans-serif;
+  font-family: 'Metrophobic', sans-serif;
   font-size: 14px;
-  font-weight: 500;
   text-transform: uppercase;
-  letter-spacing: 0.2em;
   color: #ffffff;
   background-color: #8D2324;
   cursor: pointer;
@@ -333,8 +329,9 @@ body label {
 ESTILO LISTA
  */
 .check-list {
-  margin: 0;
+  margin: 5px 0 0 0;
   max-height: 80px;
+  height: 80px;
   overflow-y: scroll;
   padding-left: 1.2rem !important;
 }
@@ -343,10 +340,10 @@ ESTILO LISTA
   position: relative;
   list-style-type: none;
   padding-left: 1.2rem;
-  font-family: 'Playfair Display', serif;
+  font-family: 'Metrophobic', sans-serif;
   color: #8d8d8d;
   line-height: 1.7em;
-  font-size: 15px;
+  font-size: 18px;
   font-weight: lighter;
   margin: 0px 0px 0px 38px;
   overflow: hidden;
