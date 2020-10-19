@@ -1,0 +1,67 @@
+
+<div class="modal-body">   
+    <div class="omb_login">
+        <!--Titulo de ventana-->
+        <h3 class="omb_authTitle">Inicia sesión ó <a routerLink="/registro" (click)="activeModal.dismiss()">Registrate</a></h3> 
+        <!--/EOF Titulo de ventana-->
+        
+        <div class="row justify-content-center">
+            <div class="col-xs-12 col-sm-10">	
+                <!--Formulario de inicio de sesion-->
+                <form [formGroup]="loginForm" class="omb_loginForm" action="" autocomplete="off" >
+                    <!--Correo electronico-->
+                    <div class="form-group">
+                        <label>Correo electronico</label>
+                        <input formControlName="correo" type="email" class="form-control input-lg" placeholder="Correo electronico*">
+                        <!--Advertencias de validacion-->
+                        <span class="help-block">
+                        </span>
+                        <!--/Advertencias de validacion-->
+                    </div>
+                    <!--Contraseña-->
+                    <div class="form-group">
+                        <label>Contraseña</label>
+                        <input formControlName="pwd"  type="password" name="password" id="password" class="form-control input-lg" placeholder="Contraseña*">
+                        
+                        <!--Olvide mi contraseña-->
+                        <div  class="text-right" style="margin-top: 10px;"> 
+                            <a href="#" id="forgot-password-link">Olvide mi contraseña</a>
+                        </div>
+                    <!--/Olvide mi contraseña--> 
+                    </div>
+                    
+
+                    <!--Boton iniciar sesión-->
+                    <button (click)="autentificacion()" class="btn btn-md btn-primary btn-block" id="btn-login" type="button" >INICIAR SESION</button>
+                    <!--/Boton iniciar sesión-->
+                </form>
+                <!--/Formulario de inicio de sesion-->
+
+                <div class=" omb_loginOr">
+                    <div class="col-xs-12 col-sm-12">
+                        <hr class="omb_hrOr">
+                        <span class="omb_spanOr">o</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+    </div> 
+
+    <div class="omb_login">
+        <!--Titulo de ventana-->          
+        <div class="row justify-content-center">
+            <div class="col-xs-12 col-sm-10">	
+                <p style="text-align: center;">Puedes iniciar sesión con tú cuenta de Google</p>
+                <!--Boton iniciar sesión-->
+                <button (click)="autentificacionGoogle()" class="btn btn-md btn-primary btn-block" id="btn-login-google" type="button">
+                    <i class="fa fa-google"></i>
+                    Iniciar sesión con Google</button>
+                <!--/Boton iniciar sesión-->
+            </div>
+        </div>
+        <!--/Titulo de ventana--> 
+    </div> 
+
+
+</div> 

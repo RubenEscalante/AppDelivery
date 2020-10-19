@@ -1,20 +1,32 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-
-import { AppRoutingModule } from './app-routing.module';
-import { AppComponent } from './app.component';
-import { DashboardComponent } from './components/dashboard/dashboard.component'; 
-
  
+import { ReactiveFormsModule  } from '@angular/forms';
+
+
+import { AppComponent } from './app.component';
+import { PreloadAllModules, RouterModule} from '@angular/router';  
+import { HttpClientModule } from '@angular/common/http';
+import { LayoutModule } from './layout/layout.module';
+ 
+// firebase
+import { environment } from '../environments/environment';
+import { AngularFireModule } from '@angular/fire';
+import { AngularFireDatabaseModule } from '@angular/fire/database';
+
 
 @NgModule({
   declarations: [
-    AppComponent,
-    DashboardComponent 
+    AppComponent
   ],
   imports: [
-    BrowserModule,
-    AppRoutingModule  
+    BrowserModule, //Angular Firebase
+    AngularFireModule.initializeApp(environment.firebase), 
+    AngularFireDatabaseModule,
+    HttpClientModule,
+    RouterModule.forRoot([]),
+    LayoutModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

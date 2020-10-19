@@ -1,0 +1,65 @@
+ 
+<table class="table table-bordered table-sm ">
+    <thead class="thead-light">
+        <tr>
+            <th>Orden ID</th>
+            <th>Recibida</th>
+            <th>Cliente</th>
+            <th>Productos</th>
+            <th>Status</th>
+            <th>Total</th>
+        </tr>
+    </thead> 
+    
+    <ng-container *ngFor="let pedido of listaPedidos;let i = index"> 
+        <tbody id="pedido.id">   
+
+            <!--Le quite class="clickable-->
+            <tr style="background-color:#b5d5eb"  data-toggle="collapse" [attr.data-target]="'#group-of-rows-'+i" aria-expanded="false" aria-controls="group-of-rows-1">
+                <td>{{pedido.id}}</td>
+                <td>{{pedido.fechaCreacion}}</td>
+                <td>{{pedido.usuario.nombre}}</td>
+                <td>{{pedido.productos.length}} items</td>
+                <td>{{pedido.estado}}</td>
+                <td>$ {{pedido.total}}</td>
+            </tr>
+        </tbody>  
+        <!--//.TODO: Decidir si esta tabla llevara class="collapse"-->
+        <tbody id="group-of-rows-{{i}}">
+            <tr class="table">
+                <td colspan="3"> 
+                    <p  *ngFor="let producto of generateArray(pedido.productos)">
+                        <!--$ {{producto.precio}} -->
+                        <span class="float-left badge badge-success round">x{{producto.cantidad}}</span>                                            
+                         {{producto.descripcion}} 
+                            
+                    </p>   
+                </td>
+                <td colspan="2">
+                    <h6>Resumen de orden</h6> 
+                    <p>Total de orden: $ {{pedido.total}}- </p>
+                    <h6>Detalles de entrega</h6> 
+                    <p>{{pedido.direccionEnvio}}</p> 
+                    
+                </td>
+                <td colspan="1"> 
+                    <button (click)="moverCocina(pedido);actualizar()">    
+                        Cocinado                                  
+                    </button> <br>
+                    <button (click)="moverListo(pedido);actualizar()">    
+                        Listo                               
+                    </button> <br> 
+
+                    <button href="" (click)="moverEnviado(pedido);actualizar()">    
+                        Enviado                               
+                    </button>   <br>
+                    <button href="" (click)="moverEntregado(pedido);actualizar();moverHistorial(pedido);eliminarPedido()">    
+                        Entregado                            
+                    </button><br>               
+                </td>
+            </tr> 
+        </tbody> 
+        
+    </ng-container> 
+</table>   
+ 
