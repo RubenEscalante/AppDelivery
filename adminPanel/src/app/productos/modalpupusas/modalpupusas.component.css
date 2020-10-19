@@ -1,0 +1,35 @@
+.radio-inline{
+    margin: auto 15px;
+}
+
+/* adapted from http://maxwells.github.io/bootstrap-tags.html */
+.tag {
+    font-size: 14px;
+    padding: .3em .4em .4em;
+    margin: 0 .1em; 
+  }
+
+.tag span{
+  padding: 0.3em .5em;
+}
+  .tag a {
+    color: #FFFFFF;
+    cursor: pointer;
+    opacity: 0.6;
+  }
+  .tag a:hover {
+    opacity: 1.0
+  }
+  .tag .remove {
+    vertical-align: bottom;
+    top: 0;
+  }
+  .tag a {
+    margin: 0 0 0 .3em;
+  } 
+.tag-container{
+  padding: 15px 20px;   
+  height: 130px; 
+  overflow-y: auto;
+}
+

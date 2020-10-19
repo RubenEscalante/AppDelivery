@@ -29,4 +29,9 @@ export class DatosUsuarioComponent implements OnInit {
     console.log(this.contraBool);
   }
 
+  guardarDireccion(d){
+    this.usuario.direcciones.push(d);
+    localStorage.setItem('user', JSON.stringify(this.usuario));
+  }
+
 }

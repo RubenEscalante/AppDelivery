@@ -1,0 +1,122 @@
+<body> 
+    <!-- Bootstrap NavBar -->
+   <nav class="navbar navbar-expand-md navbar-dark bg-primary fixed-top">
+       <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+           <span class="navbar-toggler-icon"></span>
+       </button>
+       <a class="navbar-brand" href="#">
+           <img src="https://www.flaticon.com/svg/static/icons/svg/2912/2912292.svg" width="40" height="30" class="d-inline-block align-top" alt="">
+           <span class="menu-collapsed">Pupusas</span>
+       </a>
+       <div class="collapse navbar-collapse" id="navbarNavDropdown">
+           <ul class="navbar-nav"> 
+               <!-- Aunque poco probable, si la pagina se utiliza desde un dispositivo movil 
+                    la barra lateral de navegacion se esconde y el menu se muestra desde la barra superior.
+                -->
+               <li class="nav-item dropdown d-sm-block d-md-none">
+                   <a class="nav-link dropdown-toggle" href="#" id="smallerscreenmenu" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                     Menu
+                   </a>
+                   <div class="dropdown-menu" aria-labelledby="smallerscreenmenu">
+                       <a routerLink="/dashboard"  class="dropdown-item">Dashboard</a>
+                       <a routerLink="/ordenes-activas" class="dropdown-item">Ordenes activas</a>
+                       <a class="dropdown-item">Clientes</a> 
+                       <a routerLink="/ingredientes" class="dropdown-item">Ingredientes</a>
+                       <a routerLink="/productos" class="dropdown-item">Productos</a>
+                       <a href="#" class="dropdown-item">Ayuda</a>
+                   </div>
+               </li>
+               <!-- Smaller devices menu END -->
+   
+           </ul>
+       </div>
+   </nav>
+   <!-- NavBar END -->
+   
+   
+   <!-- Bootstrap row -->
+   <div class="row" id="body-row">
+       <!-- Sidebar -->
+       <div id="sidebar-container" class="sidebar-expanded d-none d-md-block col-2">
+           <!-- d-* hiddens the Sidebar in smaller devices. Its itens can be kept on the Navbar 'Menu' -->
+           <!-- Bootstrap List Group -->
+           <ul class="list-group sticky-top sticky-offset"> 
+   
+               <!-- Menu with submenu -->
+               <a routerLink="/dashboard" class="bg-dark list-group-item list-group-item-action flex-column align-items-start">
+                   <div class="d-flex w-100 justify-content-start align-items-center">
+                       <span class="fa fa-dashboard fa-fw mr-3"></span>
+                       <span class="menu-collapsed">Dashboard</span>
+                       <span class="submenu-icon ml-auto"></span>
+                   </div>
+               </a>
+               
+
+               
+               <!-- Ordenes -->
+               <a routerLink="/ordenes-activas" class="bg-dark list-group-item list-group-item-action">
+                   <div class="d-flex w-100 justify-content-start align-items-center">
+                       <span class="fa fa-question-circle fa-fw mr-3"></span>
+                       <span class="menu-collapsed">Ordenes activas
+                           <span class="badge badge-pill badge-primary ml-2">{{global.numeroOrdenes}}</span>
+                        </span>
+                   </div>
+               </a>  
+               <!--/EOF Ordenes -->
+   
+               <!-- Clientes -->
+               <a href="#" class="bg-dark list-group-item list-group-item-action">
+                   <div class="d-flex w-100 justify-content-start align-items-center">
+                       <span class="fa fa-question-circle fa-fw mr-3"></span>
+                       <span class="menu-collapsed">Clientes</span>
+                   </div>
+               </a>
+               <!-- /EOF Clientes --> 
+   
+               <!-- Ingredientes -->
+               <a routerLink="/ingredientes" class="bg-dark list-group-item list-group-item-action">
+                   <div class="d-flex w-100 justify-content-start align-items-center">
+                       <span class="fa fa-question-circle fa-fw mr-3"></span>
+                       <span class="menu-collapsed">Ingredientes </span>
+                   </div>
+               </a>
+               <!--/EOF  Ingredientes -->
+   
+               <!-- Productos -->
+               <a routerLink="/productos" class="bg-dark list-group-item list-group-item-action">
+                   <div class="d-flex w-100 justify-content-start align-items-center">
+                       <span class="fa fa-question-circle fa-fw mr-3"></span>
+                       <span class="menu-collapsed">Productos </span>
+                   </div>
+               </a>
+               <!--/EOF Productos -->
+   
+               <!-- Separador sin titulo -->
+               <li class="list-group-item sidebar-separator menu-collapsed"></li>
+               <!-- /EOF Separador -->
+   
+   
+               <a href="#" class="bg-dark list-group-item list-group-item-action">
+                   <div class="d-flex w-100 justify-content-start align-items-center">
+                       <span class="fa fa-question fa-fw mr-3"></span>
+                       <span class="menu-collapsed">Ayuda</span>
+                   </div>
+               </a> 
+   
+   
+           </ul>
+           <!-- List Group END-->
+       </div>
+       <!-- sidebar-container END -->
+   
+       <!-- MAIN -->
+       <div class="main col py-3">    
+            <router-outlet></router-outlet>   
+       </div>
+       <!-- Main Col END -->
+   
+   </div>
+   <!-- body-row END -->
+   
+    
+   </body>
