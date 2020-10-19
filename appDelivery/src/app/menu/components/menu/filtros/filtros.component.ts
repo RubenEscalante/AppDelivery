@@ -4,7 +4,7 @@ import { ProductfilterService } from '../../../services/productfilter.service';
 @Component({
   selector: 'app-filtros',
   templateUrl: './filtros.component.html',
-  styleUrls: ['./filtros.component.css'],
+  styleUrls: ['./filtros.component.css', '../menu.component.css'],
 })
 export class FiltrosComponent implements OnInit {
   valorFiltro: string = "pupusas";

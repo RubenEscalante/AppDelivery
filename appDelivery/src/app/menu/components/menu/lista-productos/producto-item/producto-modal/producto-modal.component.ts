@@ -3,7 +3,7 @@ import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
 import { NgbModal, NgbConfig } from '@ng-bootstrap/ng-bootstrap';
 import { Products } from 'src/app/menu/models/products';
 import {MenucartService} from '../../../../../services/menucart.service';
-import {FormBuilder} from '@angular/forms';
+import {FormBuilder, Validators} from '@angular/forms';
 import {FormControl, FormGroup} from '@angular/forms';
 import {Cartitems} from 'src/app/menu/models/cartitems';
 
@@ -18,9 +18,9 @@ export class ProductoModalComponent implements OnInit {
   public modalsNumber = 0;
   public timeLeft: number = 60;
   interval;
+  valor: number = 1;
   productoModalForm = this.fb.group({
-    quantity: [1],
-    dough: ['maiz']
+    quantity: [1, [Validators.required, Validators.pattern(/^[1-9]\d*$/), Validators.min(1)]],
   });
 
   startTimer() {
@@ -49,19 +49,60 @@ export class ProductoModalComponent implements OnInit {
   }
 
   onSubmit() {
-    const formValue = this.productoModalForm;
-    const mycart: Cartitems = {
-      id: this.productos.id,
-      nombre: this.productos.nombre,
-      categoria: this.productos.categoria,
-      descripcion: this.productos.descripcion,
-      preferencias: this.productos.preferencias,
-      costo: this.productos.costo,
-      cantidad: formValue.value.quantity,
-      imgurl: this.productos.imgurl
-    };
-    this.menuCartservice.addToCar(mycart);
+    if (!this.productoModalForm.valid) {
+      this.productoModalForm.setValue({
+        quantity: 1
+      });
+    } else {
+      const formValue = this.productoModalForm;
+      const mycart: Cartitems = {
+        id: this.productos.id,
+        nombre: this.productos.nombre,
+        categoria: this.productos.categoria,
+        descripcion: this.productos.descripcion,
+        preferencias: this.productos.preferencias,
+        costo: this.productos.costo,
+        cantidad: formValue.value.quantity,
+        imgurl: this.productos.imgurl
+      };
+      this.menuCartservice.addToCar(mycart);
+      this.productoModalForm.setValue({
+        quantity: 1
+      });
+    }
    // console.log(mycart);
 
+  }
+
+  restarcantidad() {
+    this.valor = this.productoModalForm.value.quantity;
+    if (this.valor > 1) {
+      this.valor--;
+    }
+    if (!this.productoModalForm.valid) {
+      this.productoModalForm.setValue({
+        quantity: 1
+      });
+    } else {
+      this.productoModalForm.setValue({
+        quantity: this.valor
+      });
+    }
+  }
+
+  aumentarcantidad() {
+    this.valor = this.productoModalForm.value.quantity;
+    if (this.valor >= 1) {
+      this.valor++;
+    }
+    if (!this.productoModalForm.valid) {
+      this.productoModalForm.setValue({
+        quantity: 1
+      });
+    } else {
+      this.productoModalForm.setValue({
+        quantity: this.valor
+      });
+    }
   }
 }

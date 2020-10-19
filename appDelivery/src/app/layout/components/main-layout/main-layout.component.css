@@ -15,6 +15,23 @@
   font-size: 1.05em;
   cursor: pointer;
 }
-.bg-info{
+.webcolor{
   overflow: visible !important;
+  background-color: rgba(176, 23, 31) !important;
+}
+
+.webcolor .btn-info{
+  border: none;
+}
+.botoncartcolor{
+  background-color: #252525;
+  border: none;
+}
+.botoncartcolor:active{
+  background-color: #252525;
+  border: none;
+}
+.botoncartcolor:visited{
+  background-color: #252525;
+  border: none;
 }

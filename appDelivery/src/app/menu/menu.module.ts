@@ -44,7 +44,7 @@ import {AngularFireDatabaseModule} from '@angular/fire/database';
 
   ],
   providers: [ProductlistService, ProductfilterService, MenucartService],
-  bootstrap: [MenuComponent],
+
 })
 export class MenuModule {
 }

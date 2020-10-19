@@ -1,13 +1,14 @@
 <div class="wrapper">
   <div class="product-img">
-    <img src="{{productos.imgurl}}" height="420" width="327">
+    <img src="https://www.196flavors.com/wp-content/uploads/2013/06/pupusa-3.jpg" height="420" width="327">
   </div>
   <div class="product-info">
     <div class="product-text">
-      <span class="price">{{productos.costo}}$</span>
+      <span class="price">{{ productos.costo | currency: "USD" }}</span>
       <h1>{{productos.nombre}}</h1>
       <h2>{{productos.categoria}}</h2>
-      <p>Ingredientes que contiene:</p>
+      <p>{{productos.descripcion}}</p>
+
       <ul class="check-list">
         <li *ngFor="let hola of productos.preferencias['ingredientes'] | keyvalue">{{hola.value.nombre}}</li>
       </ul>
@@ -24,9 +25,9 @@
             <label for="arroz">Arroz</label>
           </div> -->
           <div class="number-input formNumber">
-            <button onclick="this.parentNode.querySelector('input[type=number]').stepDown()"></button>
-            <input class="quantity" min="0" name="quantity" value="1" type="number">
-            <button onclick="this.parentNode.querySelector('input[type=number]').stepUp()" class="plus"></button>
+            <button (click)="restarcantidad()" type="button"></button>
+            <input formControlName="quantity" class="quantity" min="1" name="quantity" value="1" type="number">
+            <button (click)="aumentarcantidad()" type="button" class="plus"></button>
           </div>
 
         </div>

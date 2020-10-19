@@ -12,16 +12,39 @@
 
 }
 
+.clearfix{
+  clear: both;
+}
+/* width */
+::-webkit-scrollbar {
+  width: 7px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #b0171f !important;
+  border-radius: 10px;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #b0171f;
+}
 /********************************************
 Contenido
  */
 
 .contenido {
   display: flex;
-  height: 85%;
   justify-content: center;
   align-items: center;
   flex-wrap: wrap;
+  height: 85%;
 }
 
 .header {
@@ -35,9 +58,9 @@ Contenido
   display: flex;
   align-items: center;
   justify-content: center;
+  flex: 1;
   height: 100%;
   min-width: 50%;
-  flex: 1;
 }
 
 .info {
@@ -48,10 +71,8 @@ Contenido
 }
 
 /*
-
 Estilos modal
-
- */
+*/
 
 body {
   background-color: #fdf1ec;
@@ -59,20 +80,18 @@ body {
 
 .price {
   position: absolute;
-  color: #79b0a1;
+  color: #8D2324;
   left: 570px;
 }
-
 /*
 FORMULARIOS DEL MODAL
  */
 .formControls {
+  display: flex;
+  justify-content: center;
   width: 100%;
+}
 
-}
-.clearfix{
-  clear: both;
-}
 .formControls .formRadio {
   float: left;
   width: 25%;
@@ -87,7 +106,6 @@ FORMULARIOS DEL MODAL
   height: 420px;
   width: 654px;
   border-radius: 7px 7px 7px 7px;
-  /* VIA CSS MATIC https://goo.gl/cIbnS */
   -webkit-box-shadow: 0px 14px 32px 0px rgba(0, 0, 0, 0.15);
   -moz-box-shadow: 0px 14px 32px 0px rgba(0, 0, 0, 0.15);
   box-shadow: 0px 14px 32px 0px rgba(0, 0, 0, 0.15);
@@ -196,13 +214,13 @@ span {
   text-transform: uppercase;
   letter-spacing: 0.2em;
   color: #ffffff;
-  background-color: #9cebd5;
+  background-color: #8D2324;
   cursor: pointer;
   outline: none;
 }
 
 .product-price-btn button:hover {
-  background-color: #79b0a1;
+  background-color: #a97575;
 }
 
 /*
@@ -316,6 +334,8 @@ ESTILO LISTA
  */
 .check-list {
   margin: 0;
+  max-height: 80px;
+  overflow-y: scroll;
   padding-left: 1.2rem !important;
 }
 
@@ -343,7 +363,7 @@ ESTILO LISTA
   height: 11px;
   border-width: 0 2px 2px 0;
   border-style: solid;
-  border-color: #00a8a8;
+  border-color: #8D2324;
   transform-origin: bottom left;
   transform: rotate(45deg);
 }
@@ -415,7 +435,7 @@ input[type=number]::-webkit-outer-spin-button {
   height: 3rem;
   font-weight: bold;
   text-align: center;
-  color: #40e0d0;
+  color: #8D2324;
 }
 
 

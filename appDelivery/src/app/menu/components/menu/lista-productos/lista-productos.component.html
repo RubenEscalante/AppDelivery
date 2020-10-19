@@ -1,6 +1,6 @@
-<div class="row album py-5">
+<div class="menucart">
   <div
-    class="col-md-4 mb-3"
+
     *ngFor="
       let productos of Productos
         | filtro: valorfiltro:'categoria'
@@ -10,6 +10,8 @@
     <app-producto-item [productos]="productos"></app-producto-item>
   </div>
 </div>
+
+
 <div *ngIf="page_size < (Productos | filtro: valorfiltro:'categoria').length">
   <ngb-pagination
     size="lg"

@@ -1,12 +1,30 @@
+<div class="filtrocontent">
+  <div class="filtroElements">
+    <div class="filtroitems" (click)="cambiarfiltro('pupusas')" [class.filtroactive]="valorFiltro == 'pupusas'">
+      <div class="imgfiltro">
+        <img src="assets/img/pupusafiltro.png" class="imgf" alt="" srcset="" />
+      </div>
+      <div class="titlefiltro">
+        <h1>Pupusas</h1>
+      </div>
+    </div>
+    <div class="filtroitems" (click)="cambiarfiltro('bebidas')" [class.filtroactive]="valorFiltro == 'bebidas'">
+      <div class="imgfiltro">
+        <img src="assets/img/bebidafiltro.png" class="imgb" alt="" srcset="" />
+      </div>
+      <div class="titlefiltro">
+        <h1>Bebidas</h1>
+      </div>
+    </div>
+    <div class="filtroitems" (click)="cambiarfiltro('postres')" [class.filtroactive]="valorFiltro == 'postres'">
+      <div class="imgfiltro">
+        <img src="assets/img/postrefiltro.png" class="imgc" alt="" srcset="" />
+      </div>
+      <div class="titlefiltro">
+        <h1>Postres</h1>
+      </div>
+    </div>
+  </div>
+</div>
 
-<nav>
-  <a (click)="cambiarfiltro('pupusas')"
-   >Pupusas</a>
-  <a (click)="cambiarfiltro('postres')"
-     >Postres</a>
-  <a (click)="cambiarfiltro('bebidas')"
-     >Bebidas</a>
-  <div *ngIf="valorFiltro == 'pupusas'" class="animation" [class.start-tradicional]="valorFiltro == 'pupusas'"></div>
-  <div *ngIf="valorFiltro == 'postres'" class="animation" [class.start-especialidad]="valorFiltro == 'postres'"></div>
-  <div *ngIf="valorFiltro == 'bebidas'" class="animation" [class.start-bebidad]="valorFiltro == 'bebidas'"></div>
-</nav>
+

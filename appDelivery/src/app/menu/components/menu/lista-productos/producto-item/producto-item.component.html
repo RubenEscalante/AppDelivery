@@ -1,4 +1,46 @@
 
+<div [class.menuitems]="conditionalProduct()" [class.items2]="!conditionalProduct()">
+  <div class="menuItemsHeader">
+    <strong><p> {{ productos.costo | currency: "USD" }}</p></strong>
+    <h1> {{ productos.nombre }}</h1>
+  </div>
+  <div class="menuItemsImg">
+    <img
+      src="https://www.lonestarpark.com/wp-content/uploads/2019/04/image-placeholder-500x500.jpg"
+      alt="Imagen de producto"
+    />
+    <div class="imgMoreDetails" [class.nohover]="!conditionalProduct()">
+      <div class="btn btn-three" (click)="openModal()">
+        <span>ORDENAR</span>
+      </div>
+    </div>
+  </div>
+  <div *ngIf="!conditionalProduct(); then showPlus "></div>
+  <ng-template #showPlus>
+    <div class="menuitemfooter">
+      <div class="itemsfooters">
+
+        <form [formGroup]="productoForm" (ngSubmit)="onSubmit()">
+          <div class="number-input">
+            <button (click)="restarcantidad()" type="button"></button>
+            <input formControlName="quantity" class="quantity" min="1" name="quantity" value="1" type="number">
+            <button (click)="aumentarcantidad()" class="plus" type="button"></button>
+          </div>
+          <div class="carticon">
+            <button  type="submit"><i class="fa fa-shopping-cart fa-3x"></i></button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </ng-template>
+</div>
+
+
+
+
+
+
+<!--
 <div class="card" style="width: 18rem;">
   <img  (click)="openModal()" class="card-img-top imagen" src="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wCEAAkGBw8ODw0NDg4QDg8NCA4PDQoNCg8NDQ0NFhEWFhURExMYHSggJBolGxUTITEhJSkrLi4uFx8zODMsNygtOisBCgoKBQUFDgUFDisZExkrKysrKysrKysrKysrKysrKysrKysrKysrKysrKysrKysrKysrKysrKysrKysrKysrK//AABEIAOEA4QMBIgACEQEDEQH/xAAZAAEAAwEBAAAAAAAAAAAAAAAAAgMEAQf/xAArEAEBAAAFAgUEAQUAAAAAAAAAAQIDBBFRIXExQWGBkSKhsfATEjJyweH/xAAUAQEAAAAAAAAAAAAAAAAAAAAA/8QAFBEBAAAAAAAAAAAAAAAAAAAAAP/aAAwDAQACEQMRAD8A9iAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAEbjk845hzZem4JgAAAAAAAAAAAAAAAAjccnnPkHcV2lvoyfyXm/K7NzZZZFGGb2TmglM7Fz9kpqLxE7p5zUbp7yDs1Hp90pn4fX4VXIxftRuXi4oLrqJwhdRfKRVQE7m4ufjohbR2Xbj3gOEWzOvE9uioG6CnLzptJeFkzJfOAkAAAAAAAAAAAA5f9OgMWLFb41wxTre7Vkf2wGWy8fZPJn1RPU3wc006+wNIKs7M26TxBaMcx3m/LTlY/6p+QTRuCcT4SAV3Jw8fdG6ecrgGe6e8o3JxftagGO5d4vwi2Zl2l/wAaxg2ZfhOyTknSdnQAAAAAAAAAAAAZM6fVVumvSz1R1M6y+jmmvWz0BzUX6vZPTTxqrNv1Xuv086e4LWfU4eu/o0OWAxNGnw7S3lP+LDwmADNn5m/SeHn6gvwY5d9vKpMmTj2vdrAABXn36azYJvZ3i/U3pO6rIn1QGsAAAAAAAAAAAAAFOpnSelVZN2xRozpvhvZkAt/LXkz6Z2ZG2dJ2gOubs2ZnW+HSK9wbhh3Tmbi5BZn5vlPeqAAacvMn9O98mYBfl5luL26Rex5d2s7tgM+pvWdnNNOt7Oai/V7J6aeN9QXgAAAAAAAAAAAAA5Z+GJuY82bW9wcw+M7tdks2/FYwGi6ec1G6e8qpjvN+UpnYufsDtyMX7Ubl3ipzUXiJTUTgFFg0zOw/sd3wXgGUav4sN/5Ubp5zQZ22X8KLp7yuwTaSXygMuZet7rdNfGKKt0063sDSAAAAAAAAAAAAAAy6ide8alGpnhQc018YuuCcT4Y5is8C393BoxYMHO3aqsUw+VvwglMu3yoIiyZF7JzT80FA1TJw9/dKYJPKfAMbsx3m/LXcucT4RuTh/aCiZ2Ln7Jfz3bbbyTunnKF095gKm2Tbp6M+DIu/Xw3aQAAAAAAAAAAAAAAEceHebVIBTNPOanMrDwmA5Js6AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAP/9k=" alt="Card image cap"  [class.img-products]="conditionalProduct()">
   <div class="card-body">
@@ -18,19 +60,11 @@
       <ng-template #showPlus><i class="fa fa-plus-circle cursor-pointer fa-2x" (click)="openModal()"></i></ng-template>
       <ng-template #showButtons>
         <form [formGroup]="productoForm" (ngSubmit)="onSubmit()">
-
-
           <input formControlName="quantity" min="1" name="quantity" type="number">
-
-
           <button type="submit"><i class="fa fa-cart-plus cursor-pointer fa-3x"></i></button>
-
         </form>
-
-
       </ng-template>
-
-
     </div>
   </div>
 </div>
+-->

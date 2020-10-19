@@ -6,12 +6,12 @@ import {Products} from 'src/app/menu/models/products';
 @Component({
   selector: 'app-lista-productos',
   templateUrl: './lista-productos.component.html',
-  styleUrls: ['./lista-productos.component.css'],
+  styleUrls: ['./lista-productos.component.css', '../menu.component.css'],
 })
 export class ListaProductosComponent implements OnInit {
   Productos: Products[];
   valorfiltro: any;
-  page_size: number = 6;
+  page_size: number = 8;
   page_number: number = 1;
 
   constructor(
