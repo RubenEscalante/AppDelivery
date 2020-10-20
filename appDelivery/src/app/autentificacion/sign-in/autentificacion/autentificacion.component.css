@@ -1,16 +1,208 @@
-body {
-  background-color: #eee;
+
+ 
+  /* ==========================================================================
+     #GRID
+     ========================================================================== */
+  .row {
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-flex-wrap: wrap;
+    -ms-flex-wrap: wrap;
+    flex-wrap: wrap;
+  }
+  
+  .row-space {
+    -webkit-box-pack: justify;
+    -webkit-justify-content: space-between;
+    -moz-box-pack: justify;
+    -ms-flex-pack: justify;
+    justify-content: space-between;
+  }
+  
+  .col-2 {
+    width: -webkit-calc((100% - 60px) / 2);
+    width: -moz-calc((100% - 60px) / 2);
+    width: calc((100% - 60px) / 2);
+  }
+  
+  @media (max-width: 767px) {
+    .col-2 {
+      width: 100%;
+    }
+  }
+   
+  
+  /* ==========================================================================
+     #PAGE WRAPPER
+     ========================================================================== */
+  .page-wrapper {
+    min-height: 100vh;
+  }
+  
+  body {
+    font-family: "Roboto", "Arial", "Helvetica Neue", sans-serif;
+    font-weight: 400;
+    font-size: 14px;
+  }
+  
+  h1, h2, h3, h4, h5, h6 {
+    font-weight: 400;
+  }
+  
+  h1 {
+    font-size: 36px;
+  }
+  
+  h2 {
+    font-size: 30px;
+  }
+  
+  h3 {
+    font-size: 24px;
+  }
+  
+  h4 {
+    font-size: 18px;
+  }
+  
+  h5 {
+    font-size: 15px;
+  }
+  
+  h6 {
+    font-size: 13px;
+  }
+  
+  /* ==========================================================================
+     #BACKGROUND
+     ========================================================================== */
+  .bg-blue {
+    background: #2c6ed5;
+  }
+  
+  .bg-red {
+    background: #F2F2F2;
+  }
+  
+  /* ==========================================================================
+     #SPACING
+     ========================================================================== */
+  .p-t-100 {
+    padding-top: 100px;
+  }
+  
+  .p-t-180 {
+    padding-top: 180px;
+  }
+  
+  .p-t-20 {
+    padding-top: 20px;
+  }
+  
+  .p-t-30 {
+    padding-top: 30px;
+  }
+  
+  .p-b-100 {
+    padding-bottom: 100px;
+  }
+  
+  /* ==========================================================================
+     #WRAPPER
+     ========================================================================== */
+  .wrapper {
+    margin: 0 auto;
+  }
+  
+  .wrapper--w960 {
+    max-width: 960px;
+  }
+  
+  .wrapper--w680 {
+    max-width: 680px;
+  }
+  
+
+  /* ==========================================================================
+     #TITLE
+     ========================================================================== */
+  
+  .title { 
+    font-weight: 700; 
+    font-family: 'Biryani', sans-serif;
+    color: #FD264B; 
+	  line-height: 300%;
+  }
+
+  /* ==========================================================================
+     #LOGIN
+     ========================================================================== */
+  
+  #btn-login{
+    background-color: #0098D5;
+    border-color: #0098D5;
+    margin-top: 25px;
+    font-family: 'Jaldi', sans-serif;
+    letter-spacing: 1.5px;
+}
+#btn-login:hover{
+    background-color: #465B6B;
+    border-color: #465B6B;
 }
 
-.container-fluid {
-  padding: 50px;
-}
 
-.container {
-  background-color: white;
-  padding: 50px;
-}
-
-#title {
-  font-family: 'Lobster', cursive;
-}
+  /* ==========================================================================
+     #CARD
+     ========================================================================== */
+  .card {
+    overflow: hidden;
+    -webkit-border-radius: 3px;
+    -moz-border-radius: 3px;
+    border-radius: 3px;
+    background: #fff;
+  }
+  
+  .card-2 {
+    -webkit-box-shadow: 0px 8px 20px 0px rgba(0, 0, 0, 0.15);
+    -moz-box-shadow: 0px 8px 20px 0px rgba(0, 0, 0, 0.15);
+    box-shadow: 0px 8px 20px 0px rgba(0, 0, 0, 0.15);
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    border-radius: 10px;
+    width: 100%;
+    display: table;
+  }
+  
+  .card-2 .card-heading {
+    
+    background: url("../../assets/heading-registro-1.jpg") top left/cover no-repeat;
+    /*background: url("../../assets/heading-registro.jpg") top left cover no-repeat; */
+    width: 29.1%;
+    display: table-cell;
+  }
+  
+  .card-2 .card-body {
+    display: table-cell;
+    padding: 80px 90px;
+    padding-bottom: 88px;
+  }
+  
+  @media (max-width: 767px) {
+    .card-2 {
+      display: block;
+    }
+    .card-2 .card-heading {
+      width: 100%;
+      display: block;
+      padding-top: 300px;
+      background-position: left center;
+    }
+    .card-2 .card-body {
+      display: block;
+      padding: 60px 50px;
+    }
+  }
+  

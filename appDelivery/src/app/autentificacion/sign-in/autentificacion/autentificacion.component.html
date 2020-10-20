@@ -1,38 +1,62 @@
-<div class="container-fluid">
-  <div class="container">
+<div class="page-wrapper bg-red p-t-100 p-b-100 font-robo">
+  <div class="wrapper wrapper--w960">
+      <div class="card card-2">
+          <div class="card-heading"></div>
+          
+          <div class="card-body">
+              <!--Titulo de formulario-->
+              <h2 class="title">
+                Crea tú cuenta
+              </h2>
+             
+              <!--//Titulo de formulario-->
+              <form [formGroup]="signupForm" class="needs-validation" novalidate>
+                <!--Nombre-->
+                <div class="form-group">
+                  <label>Nombre completo</label>
+                  <input formControlName="nombre" [ngClass]="displayFieldCss('nombre')" type="text" class="form-control input-lg" placeholder="Nombre completo*">
+                  <!--Advertencias de validacion-->
+                  
+            
+                  <!--/Advertencias de validacion-->
+                </div>
+                <!--/Nombre-->
 
-    <hr>
-    <div class="row">
-      <div class="col-md-5">
+                <!--Correo electronico-->
+                <div class="form-group">
+                  <label>Correo electronico</label>
+                  <input formControlName="correo" type="email" class="form-control input-lg" placeholder="Correo electronico*">
+                  <!--Advertencias de validacion-->
+                  <span class="help-block">
+                  </span>
+                  <!--/Advertencias de validacion-->
+                </div>
+                <!--/Correo electronico-->
 
 
-            <p class="text-uppercase pull-center"> Registrate</p>
-            <div class="form-group">
-              <input type="text" name="username" id="usernamesignupup" class="form-control input-lg" placeholder="Nombre de usuario" #userName required >
-            </div>
+              <!--Contraseña-->
+              <div class="form-group">
+                  <label>Contraseña</label>
+                  <input formControlName="pwd"  type="password" name="password" id="password" class="form-control input-lg" placeholder="Contraseña*">                  
+              </div>
+               
+                <!--Advertencia de campos requeridos-->
+                    <div  class="text-right" style="margin-top: 10px;"> 
+                      <p>*Campos requeridos</p>
+                    </div>
+                <!--/Advertencia de campos requeridos--> 
 
-            <div class="form-group">
-              <input type="email" name="email" id="emailsignup" class="form-control input-lg" placeholder="Email" #userEmail required>
-            </div>
-            <div class="form-group">
-              <input type="password" name="password" id="passwordsignup" class="form-control input-lg" placeholder="Contraseña" #userPwd required>
-            </div>
+              <!--/Contraseña-->
 
-
-            <div>
-              <input type="submit" class="btn btn-lg btn-primary "  value="Registrarse" (click)="authService.SignUp(userName.value, userEmail.value, userPwd.value)">
-            </div>
-        <!-- Continue with Google -->
-        <div class="formGroup">
-          <button type="button" class="btn googleBtn" (click)="authService.GoogleAuth()">
-            <i class="fab fa-google-plus-g"></i>
-            Continuar con Google
-          </button>
-        </div>
+              <!--Boton registrarse-->
+              <button (click)="registrarUsuario()" class="btn btn-md btn-primary btn-block" id="btn-login" type="button" >REGISTRAR</button>
+              <!--/Boton iniciar sesión-->
 
 
-      </div> 
-    </div>
+              </form>
+          </div>
+      </div>
   </div>
-
 </div>
+
+  
