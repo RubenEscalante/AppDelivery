@@ -28,11 +28,19 @@
                         <p>Masa: <span class="text-capitalize">{{producto.preferencias.masa}}</span></p>
                     </div>
                     <div class="row">
+                        <p>
+                            Ingredientes: 
+                            <span *ngFor="let ingrediente of producto.preferencias['ingredientes'] | keyvalue; let i = index" class="text-capitalize">
+                                {{ingrediente.value.nombre}}<span *ngIf="cantidadIngredientes(producto, i)">, </span>
+                            </span>
+                        </p>
+                    </div>
+                    <div class="row">
                         <p>Costo: ${{producto.costo.toFixed(2)}}</p>
                     </div>
                     <div class="row">
                         <a type="button" class="card-link-secondary mr-3" (click)="eliminarProducto(producto)">
-                            <i class="fa fa-trash mr-1" aria-hidden="true"></i>Elimiar producto
+                            <i class="fa fa-trash mr-1" aria-hidden="true"></i>Eliminar producto
                         </a>
                     </div>
                 </div>
@@ -70,7 +78,7 @@
                     </div>
                     <div class="row">
                         <a type="button" class="card-link-secondary mr-3" (click)="eliminarProducto(producto)">
-                            <i class="fa fa-trash mr-1" aria-hidden="true"></i>Elimiar producto
+                            <i class="fa fa-trash mr-1" aria-hidden="true"></i>Eliminar producto
                         </a>
                     </div>
                 </div>

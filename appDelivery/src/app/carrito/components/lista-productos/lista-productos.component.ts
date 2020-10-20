@@ -131,4 +131,15 @@ guardarCambios(renderizar?:string){
   }
 }
 
+cantidadIngredientes(producto, index):Boolean{
+  if(producto.categoria == "pupusas"){
+    let cantidad = Object.keys(producto.preferencias['ingredientes']).length;
+    if(index < cantidad - 1){
+      return true;
+    }else{
+      return false;
+    }
+  }
+}
+
 }
