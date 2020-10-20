@@ -77,11 +77,25 @@ Estilos modal
 body {
   background-color: #fdf1ec;
 }
-
+.cajaPrecio{
+  position: absolute;
+  border-radius: 200px 200px 200px 200px;
+  -moz-border-radius: 200px 200px 200px 200px;
+  -webkit-border-radius: 200px 200px 200px 200px;
+  border: 0px solid #000000;
+  background-color: #8D2324;
+  width: 100px;
+  height: 100px;
+  left: 6px;
+  top: 6px;
+}
 .price {
   position: absolute;
-  color: #8D2324;
-  left: 448px;
+  color: #e3e3e3;
+  font-family: 'Biryani', sans-serif;
+  font-size: 30px;
+  left: 12px;
+  top: 30px;
 }
 /*
 FORMULARIOS DEL MODAL

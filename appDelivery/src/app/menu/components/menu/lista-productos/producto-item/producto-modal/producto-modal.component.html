@@ -1,10 +1,12 @@
 <div class="wrapper">
   <div class="product-img">
+    <div class="cajaPrecio">
+      <span class="price">{{ productos.costo | currency: "USD" }}</span>
+    </div>
     <img src="https://www.196flavors.com/wp-content/uploads/2013/06/pupusa-3.jpg" height="420" width="327">
   </div>
   <div class="product-info">
     <div class="product-text">
-      <span class="price">{{ productos.costo | currency: "USD" }}</span>
       <h1>{{productos.nombre}}</h1>
       <h2>{{productos.categoria}}</h2>
       <p>{{productos.descripcion}}</p>

@@ -38,8 +38,8 @@
   color: #b0171f;
   flex-shrink: 0;
   flex-basis: calc((100%/3) - 10px);
-  max-width: 350px;
-  height: 73px;
+  max-width: 222px;
+  height: 71px;
   margin: 10px;
   border-radius: 57px 57px 57px 57px;
   -moz-border-radius: 57px 57px 57px 57px;
@@ -51,7 +51,7 @@
 }
 .imgfiltro {
   position: relative;
-  width: 104px;
+  width: 48px;
 }
 .imgfiltro img {
   position: absolute;
