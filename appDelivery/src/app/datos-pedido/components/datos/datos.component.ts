@@ -107,10 +107,10 @@ export class DatosComponent implements OnInit {
     this.total = this.menucartServicio.getCartTotal();
 
     //Envio la orden a la base de datos
-    this.ordenServicio.guardarOrden(this.orden);
+    //this.ordenServicio.guardarOrden(this.orden);
 
     //Elimino los productos almacenados en el carrito
-    this.carritoServicio.remove('cart');
+    //this.carritoServicio.remove('cart');
 
     this.toastr.success('Orden procesada exitosamente', 'Orden Procesada',{
       progressBar:true,

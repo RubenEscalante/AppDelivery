@@ -3,21 +3,27 @@
     overflow-y: scroll;
 }
 
-h1, h4{
+h1, h2, h3, h4{
     font-family: 'Biryani', 'sans-serif';
 }
 
-.resumen{
-    max-height: 450px;
-    overflow-y: scroll;
+button, .fondo{
+    background-color: #b0171f;
+    color: white;
+}
+button:hover{
+    background-color: #000000;
+    color: white;
 }
 
-.scrollbar-color::-webkit-scrollbar-track {
-    /*-webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.1);*/
-    background-color: #F5F5F5;
-    border-radius: 10px; 
+.sin-direcciones{
+    background-color: #000000;
+    color: white;
 }
-    
+
+
+
+
 .scrollbar-color::-webkit-scrollbar {
     width: 12px;
     background-color: #F5F5F5; 
@@ -25,21 +31,14 @@ h1, h4{
     
 .scrollbar-color::-webkit-scrollbar-thumb {
     border-radius: 10px;
-    /*-webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.1);*/
-    background-image: -webkit-gradient(linear, left bottom, left top, from(#ff9a9e), color-stop(99%, #fecfef),
-    to(#fecfef));
-    background-image: -webkit-linear-gradient(330deg, #f6d365 0%, #fda085 100%);
-    background-image: linear-gradient(120deg, #f6d365 0%, #fda085 100%);
+    -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.1);
+    background-color: #b0171f; 
 }
     
-.square::-webkit-scrollbar-track {
-    border-radius: 0 !important; 
+.scrollbar-color {
+    scrollbar-color: #b0171f #F5F5F5;
 }
-    
-.square::-webkit-scrollbar-thumb {
-    border-radius: 0 !important; 
-}
-    
+
 .thin::-webkit-scrollbar {
     width: 6px; 
 }

@@ -1,0 +1,13 @@
+button{
+    background-color: #b0171f;
+    color: white;
+}
+
+button:hover{
+    background-color: #000000;
+    color: white;
+}
+
+h4{
+    font-family: 'Biryani', 'sans-serif';
+}
