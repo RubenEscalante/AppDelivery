@@ -1,3 +1,32 @@
 h4, h5{
     font-family: 'Biryani', 'sans-serif';
 }
+
+.cantidad{
+    background-color: #b0171f;
+    color: white;
+}
+
+.resumen{
+    max-height: 250px;
+    overflow-y: scroll;
+}
+
+.scrollbar-color::-webkit-scrollbar {
+    width: 12px;
+    background-color: #F5F5F5; 
+}
+    
+.scrollbar-color::-webkit-scrollbar-thumb {
+    border-radius: 10px;
+    -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.1);
+    background-color: #b0171f; 
+}
+    
+.scrollbar-color {
+    scrollbar-color: #b0171f #F5F5F5;
+}
+
+.thin::-webkit-scrollbar {
+    width: 6px; 
+}

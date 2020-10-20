@@ -1,3 +1,21 @@
 h1{
     font-family: "Biryani", "sans-serif" ;
 }
+
+button{
+    background-color:  #b0171f;
+}
+
+button:hover{
+    background-color: #000000;
+    color: white;
+}
+
+.carrito-vacio{
+    background-color: #000000;
+}
+
+
+.fa-minus, .fa-plus, .carrito-vacio{
+    color: white;
+}
