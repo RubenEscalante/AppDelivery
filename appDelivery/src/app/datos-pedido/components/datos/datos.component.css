@@ -8,19 +8,28 @@ h1, h2, h3, h4{
 }
 
 button, .fondo{
-    background-color: #b0171f;
+    background-color: #0098D5;
     color: white;
 }
 button:hover{
-    background-color: #000000;
+    background-color: #465B6B;
     color: white;
 }
 
 .sin-direcciones{
-    background-color: #000000;
+    background-color: #465B6B;
     color: white;
 }
 
+.cantidad{
+    background-color: #b0171f; 
+    color: white;
+}
+
+.componente{
+    padding-top: 50px;
+    padding-bottom: 50px;
+}
 
 
 

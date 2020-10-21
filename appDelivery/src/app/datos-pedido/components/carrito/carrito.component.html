@@ -1,11 +1,11 @@
 <div>
-  <h4 class="pl-3 mt-3">
+  <h4 class="pl-3">
     <i class="fa fa-shopping-cart mr-2" aria-hidden="true"></i>
     Resumen
   </h4>
   <hr class="mt-0">
   <h5 class="d-flex justify-content-between align-items-center mb-3">
-    <span>Productos <span class="badge badge-dark badge-pill">{{cantidad}}</span></span>
+    <span>Productos <span class="badge badge-pill cantidad">{{cantidad}}</span></span>
     <span>Sub total</span>
   </h5>
   <!--
@@ -18,7 +18,7 @@
     <ul class="list-group mb-3 resumen scrollbar scrollbar-color thin">
       <li *ngFor="let producto of productos" class="list-group-item d-flex justify-content-between lh-condensed">
         <div>
-          <h6 class="my-0">{{producto.nombre}} <span class="badge badge-dark">x{{producto.cantidad}}</span></h6>
+          <h6 class="my-0">{{producto.nombre}} <span class="badge badge-dark cantidad">x{{producto.cantidad}}</span></h6>
           <small class="text-muted">{{producto.descripcion}}</small>
         </div>
         <span class="text-muted">${{(producto.costo*producto.cantidad).toFixed(2)}}</span>

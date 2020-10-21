@@ -1,9 +1,14 @@
 button{
-    background-color:  #b0171f;
+    background-color:  #0098D5;
     color: white;
 }
 
 button:hover{
-    background-color: #000000;
+    background-color: #465B6B;
     color: white;
+}
+
+.componente{
+    padding-top: 50px;
+    padding-bottom: 50px;
 }

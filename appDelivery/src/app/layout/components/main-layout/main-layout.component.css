@@ -67,3 +67,20 @@
   border: none;
 }
 /* Nuevo Diseño */
+
+.cuerpo{
+  --color-1: #fff;
+  --color-2: rgba(184,182,181,0.2);
+  background: 
+  linear-gradient(135deg, var(--color-1) 25%, transparent 25%) -50px 0,
+  linear-gradient(225deg, var(--color-1) 25%, transparent 25%) -50px 0,
+  linear-gradient(315deg, var(--color-1) 25%, transparent 25%),
+  linear-gradient(45deg, var(--color-1) 25%, transparent 25%);	
+  background-size: 8em 8em;
+  background-color:var(--color-2);
+  /*background-color:rgba(227,28,34,0.1);*/
+
+  /*background-color: rgba(176,23,31,0.3);
+  background-color: rgba(0,152,213,0.3);
+  background-color:rgba(184,182,181,0.3);*/
+}
