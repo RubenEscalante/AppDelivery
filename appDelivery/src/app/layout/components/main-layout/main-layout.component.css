@@ -1,3 +1,32 @@
+/*=============== TITLE ================*/
+.navbar-brand{ 
+  font-family: 'Biryani', sans-serif;
+  color: #0085B6;  
+}
+/*======================================*/
+
+
+.bg-light{
+  background-color: rgba(176, 23, 31) !important; 
+  padding: 0  ;
+  -webkit-box-shadow: 0px 0px 10px -5px rgba(0,0,0,0.75);
+  -moz-box-shadow: 0px 0px 10px -5px rgba(0,0,0,0.75);
+  box-shadow: 0px 0px 10px -5px rgba(0,0,0,0.75);
+}
+
+.nav-text{   
+  margin: 5px 20px 0px;
+  border-bottom: 5px solid #AD1522;
+  display:inline-block;
+  font-family: 'Biryani', sans-serif;
+  font-size: 0.9em;
+  color: white !important;  
+  overflow: visible;
+}
+
+.nav-text:hover{
+  border-bottom: 5px solid white; 
+}
 .authblocknav{
   position: relative;
   display: inline-block;
@@ -15,7 +44,7 @@
 }
 .webcolor{
   overflow: visible !important;
-  background-color: rgba(176, 23, 31) !important;
+  background-color: rgba(176, 23, 31) !important; 
 }
 
 .webcolor .btn-info{

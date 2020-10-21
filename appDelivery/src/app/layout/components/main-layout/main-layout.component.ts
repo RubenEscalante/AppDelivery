@@ -24,5 +24,6 @@ export class MainLayoutComponent implements OnInit {
   abrirModalParaAutentificarse(){ 
     const modalRef =this.modalService.open(LoginmodalComponent, {size:<any>'md'});     
   }
+ 
 
 }
