@@ -3,7 +3,8 @@
 /*=============== TITLE ================*/
 .navbar-brand{ 
   font-family: 'Biryani', sans-serif;
-  color: #006EF9;  
+  color: black;  
+  font-size: 1.5em;
 }
 /*======================================*/
 
