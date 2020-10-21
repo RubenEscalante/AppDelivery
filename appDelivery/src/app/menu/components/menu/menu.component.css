@@ -3,7 +3,7 @@
 ESTILOS MENU
  */
 
- 
+
 .activelink {
   background-color: #0000ff;
 }
@@ -60,7 +60,7 @@ NUEVOS ESTILOS DE MENU
   flex-wrap: wrap;
   width: 100vw !important;
   min-width: 375px;
-  margin: 0 auto; 
+  margin: 0 auto;
   justify-content: center;
   /*background-color: rgb(196, 194, 127);*/
   /*background-color: rgb(196, 194, 127);*/
@@ -94,7 +94,7 @@ NUEVOS ESTILOS DE MENU
 }
 
 .menucart {
-  margin-top: 7px; 
+  margin-top: 7px;
   display: flex;
   flex-flow: row wrap;
   align-content: center;
@@ -417,6 +417,10 @@ input[type=number]::-webkit-outer-spin-button {
   }
   .filtroElements {
     width: 95vw;
+  }
+  .titlefiltro{
+    display: flex;
+    position: relative;
   }
   .contenedor {
     width: 95vw !important;
