@@ -47,10 +47,10 @@
   border-radius: 200px;
   -moz-border-radius: 200px;
   -webkit-border-radius: 200px;
-  border: 4px solid #333333;
-  -webkit-box-shadow: 10px 10px 8px -5px rgba(0, 0, 0, 0.75);
-  -moz-box-shadow: 10px 10px 8px -5px rgba(0, 0, 0, 0.75);
-  box-shadow: 10px 10px 8px -5px rgba(0, 0, 0, 0.75);
+  border: 2px solid rgba(0, 0, 0, 0.1);
+  -webkit-box-shadow: 5px 5px 8px -5px rgba(0, 0, 0, 0.75);
+  -moz-box-shadow: 5px 5px 8px -5px rgba(0, 0, 0, 0.75);
+  box-shadow: 5px 5px 8px -5px rgba(0, 0, 0, 0.75);
 }
 .imgfiltro {
   position: relative;
@@ -63,20 +63,23 @@
   width: 100px;
 }
 .imgb {
-  width: 200px;
+  width: 130px !important;
+  left: -17px !important;
+  top: 2px !important;
   transform: rotate(350deg);
 }
-
+.imgc{
+  width: 125px !important;
+  left: -8px !important;
+  top: -6px !important;
+}
 .filtroitems:hover {
-  -webkit-box-shadow: 4px 5px 0px 0px #333333;
-  -moz-box-shadow: 4px 5px 0px 0px #333333;
-  box-shadow: 4px 5px 0px 0px #333333;
+  border: 3px solid #b0171f;
 }
 
 .filtroactive {
-  -webkit-box-shadow: 4px 5px 0px 0px #333333;
-  -moz-box-shadow: 4px 5px 0px 0px #333333;
-  box-shadow: 4px 5px 0px 0px #333333;
+  border: 3px solid #b0171f;
+
 }
 
 
