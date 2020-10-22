@@ -104,6 +104,7 @@ FORMULARIOS DEL MODAL
   display: flex;
   justify-content: center;
   width: 100%;
+  margin-left: 24px;
 }
 
 .formControls .formRadio {
@@ -118,7 +119,7 @@ FORMULARIOS DEL MODAL
 
 .wrapper {
   height: 420px;
-  width: 654px;
+  width: 720px;
   border-radius: 7px 7px 7px 7px;
   -webkit-box-shadow: 0px 14px 32px 0px rgba(0, 0, 0, 0.15);
   -moz-box-shadow: 0px 14px 32px 0px rgba(0, 0, 0, 0.15);
@@ -138,17 +139,17 @@ FORMULARIOS DEL MODAL
 .product-info {
   float: left;
   height: 420px;
-  width: 327px;
+  width: 392px;
   border-radius: 0 7px 10px 7px;
   background-color: #ffffff;
 }
 
 .product-text {
-  width: 327px;
+  width: 373px;
 }
 
 .product-text h1 {
-  margin: 0 0 0 38px;
+  margin: -19px 0 0 38px;
   padding-top: 52px;
   font-size: 34px;
   color: #474747;
@@ -215,7 +216,7 @@ span {
   display: inline-block;
   height: 50px;
   width: 176px;
-  margin-left: 75px;
+  margin-left: 111px;
   margin-top: 10px;
   box-sizing: border-box;
   border: transparent;
