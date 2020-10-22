@@ -72,7 +72,7 @@ export class DatosComponent implements OnInit {
     }
     
     //Formateando al usuario
-    let usuarioOrden = new Usuario('','','',null,[]);
+    let usuarioOrden = new Usuario(null,'','',null,[]);
     usuarioOrden.nombre = this.usuario.nombre;
     usuarioOrden.correo = this.usuario.correo;
 
