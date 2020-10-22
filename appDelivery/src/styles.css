@@ -13,13 +13,13 @@
    font-family: 'Metrophobic', sans-serif;
  }
 
- /*@media (min-width: 576px){
+ @media (min-width: 576px){
    .modal-dialog {
-     max-width: 720px !important;
+     max-width: 640px !important;
      margin: 1.75rem auto;
    }
  }
-*/
+
 
 
 

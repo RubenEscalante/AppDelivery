@@ -513,7 +513,7 @@ input[type=number]::-webkit-outer-spin-button {
     width: 1000px;
   }
 }*/
-@media only screen and (min-width: 1368px) and (max-width: 1578px){
+@media only screen and (min-width: 1233px) and (max-width: 1578px){
 
   .menucart {
     width: 1280px;
