@@ -17,8 +17,7 @@ import {Producto} from '../models/producto';
 export class ProductoService {
   datosFirebase:AngularFireList<any>; 
 
-  imagenPorDefecto = "gs://dps-pupasdev.appspot.com/default/img-placeholder.jpg";
-
+  
   constructor(private firebase:AngularFireDatabase,
               private storage: AngularFireStorage) { }
 
@@ -34,7 +33,6 @@ export class ProductoService {
   /*TODO:Ya que la imagen se tarda por la conexion hay que poner una pantalla de carga aqui */
   crearProductoImagen(producto:Producto,imagen:File){
     if(!imagen){
-      producto.imagen=this.imagenPorDefecto; 
       this.crearProducto(producto);
     } 
     else{
@@ -58,9 +56,6 @@ export class ProductoService {
         )
         .subscribe();
     }
-
-    
-
 
   }
 

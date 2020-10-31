@@ -9,10 +9,7 @@ import { ValidadorminmaxService } from '../../common/services/validadorminmax.se
 import { ProductoService } from '../../common/services/producto.service';
 
 //Modelos 
-import { Producto} from '../../common/models/producto'; 
-import { element } from 'protractor';
-import { validateBasis } from '@angular/flex-layout';
- 
+import { Producto} from '../../common/models/producto';  
 
 @Component({
   selector: 'app-modalotrosproductos',
@@ -28,6 +25,8 @@ export class ModalotrosproductosComponent implements OnInit {
   //Imagen de producto
   imagenProductoUrl = null;
   imagenProducto;
+
+  imagenPorDefecto="http://via.placeholder.com/200x300";
   
   //Variable para guardar nuevo producto
   private nuevoProducto: Producto = new Producto();
@@ -41,13 +40,12 @@ export class ModalotrosproductosComponent implements OnInit {
               private fb: FormBuilder) { }
 
   ngOnInit(): void {
-    //Creando formGroup 
+
     this.productoForm = this.fb.group({
-      nombre: new FormControl('Prueba1', [Validators.required, Validators.minLength(4),Validators.maxLength(100)]), 
+      nombre: new FormControl('', [Validators.required, Validators.minLength(4),Validators.maxLength(100)]), 
       categoria: new FormControl('',Validators.required),
-      descripcion: new FormControl('Prueba1', [Validators.required, Validators.minLength(4), Validators.maxLength(150)]),
-      costo: new FormControl('0.01', [Validators.required,ValidadorminmaxService.max(100),ValidadorminmaxService.min(0.01)]),
-      
+      descripcion: new FormControl('', [Validators.required, Validators.minLength(4), Validators.maxLength(150)]),
+      costo: new FormControl('', [Validators.required,ValidadorminmaxService.max(100),ValidadorminmaxService.min(0.01)]),     
     
     }); 
     
@@ -55,10 +53,12 @@ export class ModalotrosproductosComponent implements OnInit {
       this.recuperarDatosProducto();
   }
 
+  //Crea un nuevo producto, si ya existe lo actualiza
   crearSinoEditarProducto(){
     if (this.productoForm.invalid) {
       return;
     }    
+
     this.nuevoProducto = Object.assign(this.nuevoProducto,this.productoForm.value);
 
     if(this.productoParaModificar)
@@ -73,8 +73,9 @@ export class ModalotrosproductosComponent implements OnInit {
   } 
 
  /*TODO: Limpiar el campo imagen si la imagen no es valida*/
+
   actualizarImagen(event){
-    if (!event.target.files && !event.target.files[0]) {
+    if (!event.target.files && !event.target.files[0]) {        
       return;
     } 
     //Verificando que el archivo sea una imagen 
@@ -87,14 +88,15 @@ export class ModalotrosproductosComponent implements OnInit {
     this.imagenProducto=event.target.files[0];
 
     var reader = new FileReader();
-    reader.readAsDataURL(event.target.files[0]); // read file as data url
-    reader.onload = (event) => { // called once readAsDataURL is completed      
+    reader.readAsDataURL(event.target.files[0]);  
+    reader.onload = (event) => {  
       this.imagenProductoUrl = event.target.result;  
     }
   
 
   }
 
+  //Recupera los datos del producto a modificar
   recuperarDatosProducto(){      
     
     this.productoForm.get("nombre").setValue(this.productoParaModificar.nombre); 

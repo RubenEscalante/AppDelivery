@@ -30,9 +30,21 @@
 
         <!--imagen-->
         <div class="form-group">
-            <label>Imagen del producto</label>  
-            <img  [src]="imagenProductoUrl" height="200"  > <br/>
-            <input *ngIf="!productoParaModificar.imagen" type="file" (change)="actualizarImagen($event)" class="form-control-file"  >
+            <label>Imagen del producto</label> 
+            <div class="img-container">
+                <div *ngIf="imagenProductoUrl" class="overlay">
+                    <div class="btn-group">
+                        <button class="btn">
+                            <i class="fa fa-edit"></i>
+                        </button>
+                        <button  class="btn">
+                            <i class="fa fa-trash"></i>
+                        </button>
+                    </div>                    
+                </div>                
+                <img src="{{(imagenProductoUrl) || imagenPorDefecto}}"   width="300" height="200"> <br/>
+            </div>            
+            <input *ngIf="!imagenProductoUrl" type="file" (change)="actualizarImagen($event)" class="form-control-file"  >
         </div>
         <!--/EOF imagen-->  
     

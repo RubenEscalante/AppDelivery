@@ -1,0 +1,18 @@
+.ima-container {
+    position: relative;
+    display: inline-block;
+    text-align: center;
+  }
+  
+  .overlay {
+    position: absolute; 
+    z-index: 5;
+    right: 25%;
+  }
+
+img{ 
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    padding: 5px; 
+}
+
