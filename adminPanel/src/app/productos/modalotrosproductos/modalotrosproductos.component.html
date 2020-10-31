@@ -32,7 +32,7 @@
         <div class="form-group">
             <label>Imagen del producto</label>  
             <img  [src]="imagenProductoUrl" height="200"  > <br/>
-            <input type="file" (change)="actualizarImagen($event)"   class="form-control-file"  >
+            <input *ngIf="!productoParaModificar.imagen" type="file" (change)="actualizarImagen($event)" class="form-control-file"  >
         </div>
         <!--/EOF imagen-->  
     

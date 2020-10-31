@@ -6,5 +6,6 @@ export class Producto {
     cantidad: number;
     precio: number;
     categoria:string;    
+    imagen:string;
     preferencias?: (Preferencias)|null; 
 }

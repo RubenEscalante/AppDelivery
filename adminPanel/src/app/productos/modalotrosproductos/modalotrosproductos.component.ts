@@ -27,6 +27,7 @@ export class ModalotrosproductosComponent implements OnInit {
 
   //Imagen de producto
   imagenProductoUrl = null;
+  imagenProducto;
   
   //Variable para guardar nuevo producto
   private nuevoProducto: Producto = new Producto();
@@ -42,10 +43,11 @@ export class ModalotrosproductosComponent implements OnInit {
   ngOnInit(): void {
     //Creando formGroup 
     this.productoForm = this.fb.group({
-      nombre: new FormControl('', [Validators.required, Validators.minLength(4),Validators.maxLength(100)]), 
+      nombre: new FormControl('Prueba1', [Validators.required, Validators.minLength(4),Validators.maxLength(100)]), 
       categoria: new FormControl('',Validators.required),
-      descripcion: new FormControl('', [Validators.required, Validators.minLength(4), Validators.maxLength(150)]),
-      costo: new FormControl('', [Validators.required,ValidadorminmaxService.max(100),ValidadorminmaxService.min(0.01)])
+      descripcion: new FormControl('Prueba1', [Validators.required, Validators.minLength(4), Validators.maxLength(150)]),
+      costo: new FormControl('0.01', [Validators.required,ValidadorminmaxService.max(100),ValidadorminmaxService.min(0.01)]),
+      
     
     }); 
     
@@ -61,33 +63,47 @@ export class ModalotrosproductosComponent implements OnInit {
 
     if(this.productoParaModificar)
       this.productosService.actualizarProducto(this.nuevoProducto,this.idParaModificar);/*.then(result=>{
-        console.log("Se ha actualizado la informaciond el producto");
+        console.log("Se ha actualizado la informacion del producto");
       });*/
     else
-      this.productosService.crearProducto(this.nuevoProducto);
+      this.productosService.crearProductoImagen(this.nuevoProducto, this.imagenProducto);
 
     this.activeModal.dismiss();
 
-  }
- 
+  } 
+
+ /*TODO: Limpiar el campo imagen si la imagen no es valida*/
   actualizarImagen(event){
-    if (event.target.files && event.target.files[0]) {
-      var reader = new FileReader();
+    if (!event.target.files && !event.target.files[0]) {
+      return;
+    } 
+    //Verificando que el archivo sea una imagen 
+    let tipo = event.target.files[0].type;
+    if (tipo.match(/image\/*/) == null) { 
+      console.log("Debe seleccionar una imagen valida"); 
+			return;
+    } 
 
-      reader.readAsDataURL(event.target.files[0]); // read file as data url
+    this.imagenProducto=event.target.files[0];
 
-      reader.onload = (event) => { // called once readAsDataURL is completed
-        this.imagenProductoUrl = event.target.result;
-      }
+    var reader = new FileReader();
+    reader.readAsDataURL(event.target.files[0]); // read file as data url
+    reader.onload = (event) => { // called once readAsDataURL is completed      
+      this.imagenProductoUrl = event.target.result;  
     }
+  
 
   }
 
-  recuperarDatosProducto(){     
+  recuperarDatosProducto(){      
+    
     this.productoForm.get("nombre").setValue(this.productoParaModificar.nombre); 
     this.productoForm.get("categoria").setValue(this.productoParaModificar.categoria); 
     this.productoForm.get("descripcion").setValue(this.productoParaModificar.descripcion); 
     this.productoForm.get("costo").setValue(this.productoParaModificar.costo); 
+
+    this.imagenProductoUrl = this.productoParaModificar.imagen;
+
   }
 
 }
