@@ -12,6 +12,7 @@ import { ProductoService } from '../../common/services/producto.service';
 import { Producto} from '../../common/models/producto'; 
 import { element } from 'protractor';
 import { validateBasis } from '@angular/flex-layout';
+ 
 
 @Component({
   selector: 'app-modalotrosproductos',
@@ -24,6 +25,9 @@ export class ModalotrosproductosComponent implements OnInit {
   @Input() productoParaModificar;
   @Input() idParaModificar;
 
+  //Imagen de producto
+  imagenProductoUrl = null;
+  
   //Variable para guardar nuevo producto
   private nuevoProducto: Producto = new Producto();
 
@@ -66,6 +70,18 @@ export class ModalotrosproductosComponent implements OnInit {
 
   }
  
+  actualizarImagen(event){
+    if (event.target.files && event.target.files[0]) {
+      var reader = new FileReader();
+
+      reader.readAsDataURL(event.target.files[0]); // read file as data url
+
+      reader.onload = (event) => { // called once readAsDataURL is completed
+        this.imagenProductoUrl = event.target.result;
+      }
+    }
+
+  }
 
   recuperarDatosProducto(){     
     this.productoForm.get("nombre").setValue(this.productoParaModificar.nombre); 
