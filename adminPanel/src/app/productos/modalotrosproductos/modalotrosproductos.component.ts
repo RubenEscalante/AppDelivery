@@ -93,10 +93,7 @@ export class ModalotrosproductosComponent implements OnInit {
     this.activeModal.dismiss();
    
 
-  } 
-
- 
-    
+  }     
  
 
   
@@ -125,6 +122,7 @@ export class ModalotrosproductosComponent implements OnInit {
 
   eliminarImagen(){
     this.imagenProductoUrl = null;  
+    this.imagenProducto = null;
   }
 
 

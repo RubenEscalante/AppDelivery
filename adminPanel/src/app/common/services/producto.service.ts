@@ -9,6 +9,7 @@ import { AngularFireStorage } from "@angular/fire/storage";
 //Modelo
 import {Producto} from '../models/producto';
 import { Imagen } from '../models/imagen';
+import { runInThisContext } from 'vm';
 
 
 @Injectable({
@@ -25,6 +26,7 @@ export class ProductoService {
   } 
 
 
+  //*TODO: Esta funcion ya no es necesaria para crear un postre/bebida, pero pupusas la necesita
   crearProducto(producto:Producto){ 
     this.datosFirebase=this.firebase.list('/productos'); 
     var ref =  this.datosFirebase.push(producto); 
@@ -35,7 +37,6 @@ export class ProductoService {
   crearProductoImagen(producto,imagen:File){ 
     this.datosFirebase = this.firebase.list('/productos');
     var ref = this.datosFirebase.push(producto);
-
 
     if(imagen){ 
       producto.id = ref.key; 
@@ -49,7 +50,10 @@ export class ProductoService {
     return this.datosFirebase = this.firebase.list('/productos');
   }
 
+  //Elimina el producto y si existe, su imagen.
   eliminarProducto(producto){
+    if(producto.imagen)
+      this.storage.storage.refFromURL(producto.imagen.url).delete();
     this.datosFirebase.remove(producto.id);
   }
 
@@ -65,6 +69,7 @@ export class ProductoService {
     
   }  
 
+  //Sube una imagen a firebase storage
   subirImagen(producto, imagen){    
     if(!imagen)
       return
@@ -91,7 +96,7 @@ export class ProductoService {
     
   }
  
-
+  //Actualiza una imagen existente 
   actualizarImagen(producto,imagenNueva){  
     if(producto.imagen){
       this.firebase.database.ref('productos/'+producto.id).child('imagen').remove();   
