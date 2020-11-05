@@ -34,17 +34,17 @@
             <div class="img-container">
                 <div *ngIf="imagenProductoUrl" class="overlay">
                     <div class="btn-group">
-                        <button class="btn">
-                            <i class="fa fa-edit"></i>
+                        <button type="button" class="btn" (click)="subirImagen.click()">
+                            <i  class="fa fa-edit"></i>
                         </button>
-                        <button  class="btn">
+                        <button  type="button" class="btn" (click)="eliminarImagen()">
                             <i class="fa fa-trash"></i>
                         </button>
                     </div>                    
                 </div>                
                 <img src="{{(imagenProductoUrl) || imagenPorDefecto}}"   width="300" height="200"> <br/>
             </div>            
-            <input *ngIf="!imagenProductoUrl" type="file" (change)="actualizarImagen($event)" class="form-control-file"  >
+            <input [attr.hidden]="imagenProductoUrl? 'true' : null"   type="file" #subirImagen (change)="actualizarImagen($event)" class="form-control-file"  >
         </div>
         <!--/EOF imagen-->  
     

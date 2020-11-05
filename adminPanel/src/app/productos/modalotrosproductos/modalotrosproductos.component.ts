@@ -10,6 +10,9 @@ import { ProductoService } from '../../common/services/producto.service';
 
 //Modelos 
 import { Producto} from '../../common/models/producto';  
+import { relative } from 'path';
+import { runInThisContext } from 'vm';
+import { retry } from 'rxjs/operators';
 
 @Component({
   selector: 'app-modalotrosproductos',
@@ -23,13 +26,17 @@ export class ModalotrosproductosComponent implements OnInit {
   @Input() idParaModificar;
 
   //Imagen de producto
-  imagenProductoUrl = null;
+  imagenProductoUrl = null;  
   imagenProducto;
+ 
+  //
+  seActualizaImagen = false;
 
   imagenPorDefecto="http://via.placeholder.com/200x300";
   
   //Variable para guardar nuevo producto
   private nuevoProducto: Producto = new Producto();
+
 
   //FormGroup para controlar las pupusas
   productoForm: FormGroup;
@@ -61,17 +68,38 @@ export class ModalotrosproductosComponent implements OnInit {
 
     this.nuevoProducto = Object.assign(this.nuevoProducto,this.productoForm.value);
 
-    if(this.productoParaModificar)
-      this.productosService.actualizarProducto(this.nuevoProducto,this.idParaModificar);/*.then(result=>{
-        console.log("Se ha actualizado la informacion del producto");
-      });*/
-    else
-      this.productosService.crearProductoImagen(this.nuevoProducto, this.imagenProducto);
+    if(!this.productoParaModificar){
+      this.productosService.crearProductoImagen(this.nuevoProducto, this.imagenProducto);      
+      this.activeModal.dismiss();
+      return;
+    }
 
+    //Actualizar producto 
+    this.productosService.actualizarProducto(this.nuevoProducto,this.idParaModificar);    
+
+    if(!this.productoParaModificar.imagen){
+      this.productosService.subirImagen(this.productoParaModificar, this.imagenProducto);
+      this.activeModal.dismiss();
+      return;
+    }
+
+   
+    if(this.imagenProductoUrl != this.productoParaModificar.imagen.url) {
+      this.productosService.actualizarImagen(this.productoParaModificar, this.imagenProducto); 
+      this.activeModal.dismiss();
+      return;
+    }   
+    
     this.activeModal.dismiss();
+   
 
   } 
 
+ 
+    
+ 
+
+  
  /*TODO: Limpiar el campo imagen si la imagen no es valida*/
 
   actualizarImagen(event){
@@ -84,27 +112,33 @@ export class ModalotrosproductosComponent implements OnInit {
       console.log("Debe seleccionar una imagen valida"); 
 			return;
     } 
-
     this.imagenProducto=event.target.files[0];
-
     var reader = new FileReader();
     reader.readAsDataURL(event.target.files[0]);  
+
     reader.onload = (event) => {  
       this.imagenProductoUrl = event.target.result;  
-    }
-  
-
+    }   
   }
 
+  /*TODO: Validación de imagen? */
+
+  eliminarImagen(){
+    this.imagenProductoUrl = null;  
+  }
+
+
+
   //Recupera los datos del producto a modificar
-  recuperarDatosProducto(){      
+  recuperarDatosProducto(){     
     
     this.productoForm.get("nombre").setValue(this.productoParaModificar.nombre); 
     this.productoForm.get("categoria").setValue(this.productoParaModificar.categoria); 
     this.productoForm.get("descripcion").setValue(this.productoParaModificar.descripcion); 
     this.productoForm.get("costo").setValue(this.productoParaModificar.costo); 
 
-    this.imagenProductoUrl = this.productoParaModificar.imagen;
+    if(this.productoParaModificar.imagen) 
+      this.imagenProductoUrl = this.productoParaModificar.imagen.url;
 
   }
 

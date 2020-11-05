@@ -8,7 +8,7 @@ import { AngularFireStorage } from "@angular/fire/storage";
 
 //Modelo
 import {Producto} from '../models/producto';
-
+import { Imagen } from '../models/imagen';
 
 
 @Injectable({
@@ -26,61 +26,24 @@ export class ProductoService {
 
 
   crearProducto(producto:Producto){ 
-    this.datosFirebase=this.firebase.list('/productos');
-    this.datosFirebase.push(producto);
+    this.datosFirebase=this.firebase.list('/productos'); 
+    var ref =  this.datosFirebase.push(producto); 
   }
+
 
   /*TODO:Ya que la imagen se tarda por la conexion hay que poner una pantalla de carga aqui */
-  crearProductoImagen(producto:Producto,imagen:File){
-    if(!imagen){
-      this.crearProducto(producto);
-    } 
-    else{
-      let enlaceDescarga:Observable<string>;
-       //Las imagenes se guardan con una estampa de tiempo
-      var fecha = Date.now(); 
-      const refImagen = `productos/imagen_${fecha}`;      
-      const task = this.storage.upload(refImagen, imagen); 
-      
-      //Subiendo imagen
-      task
-        .snapshotChanges()
-        .pipe(
-          finalize(() => {
-            enlaceDescarga = this.storage.ref(refImagen).getDownloadURL();
-            enlaceDescarga.subscribe(url => {  
-              producto.imagen=url;
-              this.crearProducto(producto);
-            });
-          })
-        )
-        .subscribe();
-    }
+  crearProductoImagen(producto,imagen:File){ 
+    this.datosFirebase = this.firebase.list('/productos');
+    var ref = this.datosFirebase.push(producto);
+
+
+    if(imagen){ 
+      producto.id = ref.key; 
+      this.subirImagen(producto, imagen);
+    }     
 
   }
-
-  subirImagen(imagen){    
-    let enlaceDescarga:Observable<string>;
-    //Las imagenes se guardan con una estampa de tiempo
-    var fecha = Date.now(); 
-    const refImagen = `productos/imagen_${fecha}`;      
-    const task = this.storage.upload(refImagen, imagen); 
-    
-    task
-      .snapshotChanges()
-      .pipe(
-        finalize(() => {
-          enlaceDescarga = this.storage.ref(refImagen).getDownloadURL();
-          enlaceDescarga.subscribe(url => { 
-            console.log(url);     
-            return url;       
-          });
-        })
-      )
-      .subscribe();
-    
-  }
-
+  
 
   obtenerProductos(){
     return this.datosFirebase = this.firebase.list('/productos');
@@ -101,5 +64,47 @@ export class ProductoService {
     })    
     
   }  
+
+  subirImagen(producto, imagen){    
+    if(!imagen)
+      return
+
+    let enlaceDescarga:Observable<string>;
+    var fecha = Date.now(); 
+    const refImagen = `productos/imagen_${fecha}`;      
+    const task = this.storage.upload(refImagen, imagen); 
+    
+    task
+      .snapshotChanges()
+      .pipe(
+        finalize(() => {
+          enlaceDescarga = this.storage.ref(refImagen).getDownloadURL();
+          enlaceDescarga.subscribe(url => { 
+            producto.imagen = new Imagen();
+            producto.imagen.url=url;
+            producto.imagen.ref = refImagen;
+            this.firebase.database.ref('productos/'+producto.id).child('imagen').set(producto.imagen);  
+          });
+        })
+      )
+      .subscribe();
+    
+  }
+ 
+
+  actualizarImagen(producto,imagenNueva){  
+    if(producto.imagen){
+      this.firebase.database.ref('productos/'+producto.id).child('imagen').remove();   
+      this.storage.storage.refFromURL(producto.imagen.url).delete();
+    }
+    
+    this.subirImagen(producto,imagenNueva);   
+     
+  }
+
+
+
+
+
 
 }

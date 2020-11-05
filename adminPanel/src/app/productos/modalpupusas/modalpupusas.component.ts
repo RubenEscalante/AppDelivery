@@ -142,7 +142,8 @@ export class ModalpupusasComponent implements OnInit {
 
     this.nuevaPupusa = Object.assign(this.nuevaPupusa,this.pupusaForm.value);
 
-    this.nuevaPupusa.preferencias = preferencias;  
+    this.nuevaPupusa.preferencias = preferencias; 
+
     this.nuevaPupusa.categoria="pupusas";
 
     if(this.pupusaParaModificar){
