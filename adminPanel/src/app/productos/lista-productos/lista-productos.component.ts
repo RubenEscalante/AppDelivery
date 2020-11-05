@@ -52,7 +52,7 @@ export class ListaProductosComponent implements OnInit {
   }
 
   abrirModalPupusas(producto){
-    const modalRef =this.modalService.open(ModalpupusasComponent, {size:<any>'lg'}); 
+    const modalRef =this.modalService.open(ModalpupusasComponent, {size:<any>'xl'}); 
     modalRef.componentInstance.idParaModificar=producto.id; 
     modalRef.componentInstance.pupusaParaModificar=producto;   
 

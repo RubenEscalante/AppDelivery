@@ -37,6 +37,13 @@ export class ModalpupusasComponent implements OnInit {
   //El ingrediente que selecciona el usuario
   ingredienteSeleccionado:Ingrediente;   
 
+  //Imagen de producto
+  imagenProductoUrl = null;  
+  imagenProducto;
+  
+  //La imagen que se muestra cuando el producto no tiene una imagen
+  imagenPorDefecto="http://via.placeholder.com/200x300";
+
 
   //Variable para guardar nuevo producto
   private nuevaPupusa: Producto = new Producto();
@@ -66,13 +73,15 @@ export class ModalpupusasComponent implements OnInit {
 
   }
 
+  //Si se va a editar un producto esta funcion recupera los datos
   recuperarDatosProducto(){    
     this.pupusaForm.get("nombre").setValue(this.pupusaParaModificar.nombre); 
     this.pupusaForm.get("masa").setValue(this.pupusaParaModificar.preferencias.masa); 
     this.pupusaForm.get("descripcion").setValue(this.pupusaParaModificar.descripcion); 
     this.pupusaForm.get("costo").setValue(this.pupusaParaModificar.costo);     
 
-
+    if(this.pupusaParaModificar.imagen)
+      this.imagenProductoUrl = this.pupusaParaModificar.imagen.url;
     
     
   }
@@ -103,10 +112,7 @@ export class ModalpupusasComponent implements OnInit {
     (err)=>console.error(err),
     // The 3rd callback handles the "complete" event. 
     () => console.log("Complete") 
-    );  
-
-    
-
+    );   
   }
 
   agregarEnLista(){  
@@ -129,6 +135,34 @@ export class ModalpupusasComponent implements OnInit {
   } 
 
 
+    /*TODO: Validación de imagen? */
+
+    eliminarImagen(){
+      this.imagenProductoUrl = null;  
+      this.imagenProducto = null;
+    }
+  
+  /*TODO: Limpiar el campo imagen si la imagen no es valida*/
+
+  actualizarImagen(event){
+    if (!event.target.files && !event.target.files[0]) {        
+      return;
+    } 
+    //Verificando que el archivo sea una imagen 
+    let tipo = event.target.files[0].type;
+    if (tipo.match(/image\/*/) == null) { 
+      console.log("Debe seleccionar una imagen valida"); 
+			return;
+    } 
+    this.imagenProducto=event.target.files[0];
+    var reader = new FileReader();
+    reader.readAsDataURL(event.target.files[0]);  
+
+    reader.onload = (event) => {  
+      this.imagenProductoUrl = event.target.result;  
+    }   
+  }
+
   crearSinoEditarPupusa(){
     if (this.pupusaForm.invalid || !this.receta?.length) {
       return;
@@ -141,18 +175,41 @@ export class ModalpupusasComponent implements OnInit {
     delete this.pupusaForm.value.masa; 
 
     this.nuevaPupusa = Object.assign(this.nuevaPupusa,this.pupusaForm.value);
-
     this.nuevaPupusa.preferencias = preferencias; 
-
     this.nuevaPupusa.categoria="pupusas";
 
-    if(this.pupusaParaModificar){
-      this.productosService.actualizarProducto(this.nuevaPupusa,this.idParaModificar);
-    }
-     
-    else 
-      this.productosService.crearProducto(this.nuevaPupusa);
 
+    /*Si no existe una referencia a una pupusa, entonces se crea una nueva,
+      de lo contrario se edita el producto*/
+      
+    if(!this.pupusaParaModificar){
+      this.productosService.crearProductoImagen(this.nuevaPupusa, this.imagenProducto);      
+      this.activeModal.dismiss();
+      return;
+    }
+
+    //Actualizando producto
+    this.productosService.actualizarProducto(this.nuevaPupusa,this.idParaModificar);   
+
+
+    /*Si el producto no tenia una imagen entonces se sube una imagen, si ya existia una imagen
+      y se detectan cambios entonces se actualiza la imagen existente, de forma que se pueda liberar espacio y
+      no hallan imagenes sin utilizar*/
+
+
+    if(!this.pupusaParaModificar.imagen){
+      this.productosService.subirImagen(this.pupusaParaModificar, this.imagenProducto);
+      this.activeModal.dismiss();
+      return;
+    }
+
+    if(this.imagenProductoUrl != this.pupusaParaModificar.imagen.url) {
+      this.productosService.actualizarImagen(this.pupusaParaModificar, this.imagenProducto); 
+      this.activeModal.dismiss();
+      return;
+    }   
+     
+     
     this.activeModal.dismiss();
 
 

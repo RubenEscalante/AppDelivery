@@ -57,6 +57,7 @@ export class ProductoService {
     this.datosFirebase.remove(producto.id);
   }
 
+  //Actualiza el producto
   actualizarProducto(producto,id){ 
     if(producto.categoria=="pupusas")
       this.firebase.database.ref('productos/'+id).child('preferencias').set(producto.preferencias);  

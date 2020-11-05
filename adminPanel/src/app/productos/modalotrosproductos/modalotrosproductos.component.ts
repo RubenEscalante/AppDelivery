@@ -10,9 +10,6 @@ import { ProductoService } from '../../common/services/producto.service';
 
 //Modelos 
 import { Producto} from '../../common/models/producto';  
-import { relative } from 'path';
-import { runInThisContext } from 'vm';
-import { retry } from 'rxjs/operators';
 
 @Component({
   selector: 'app-modalotrosproductos',
@@ -28,17 +25,15 @@ export class ModalotrosproductosComponent implements OnInit {
   //Imagen de producto
   imagenProductoUrl = null;  
   imagenProducto;
- 
-  //
-  seActualizaImagen = false;
-
+  
+  //La imagen que se muestra cuando el producto no tiene una imagen
   imagenPorDefecto="http://via.placeholder.com/200x300";
   
   //Variable para guardar nuevo producto
   private nuevoProducto: Producto = new Producto();
 
 
-  //FormGroup para controlar las pupusas
+  
   productoForm: FormGroup;
 
 
@@ -124,7 +119,6 @@ export class ModalotrosproductosComponent implements OnInit {
     this.imagenProductoUrl = null;  
     this.imagenProducto = null;
   }
-
 
 
   //Recupera los datos del producto a modificar

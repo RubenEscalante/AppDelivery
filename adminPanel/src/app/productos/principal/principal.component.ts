@@ -19,7 +19,7 @@ export class PrincipalComponent implements OnInit {
   }
 
   abrirModalParaPupusas(){ 
-    const modalRef =this.modalService.open(ModalpupusasComponent, {size:<any>'lg'});     
+    const modalRef =this.modalService.open(ModalpupusasComponent, {size:<any>'xl'});     
   }
 
   abrirModalParaOtrosProductos(){

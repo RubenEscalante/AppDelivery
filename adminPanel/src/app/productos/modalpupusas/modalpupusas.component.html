@@ -9,9 +9,13 @@
 <div class="modal-body" style="margin-bottom: 30px;"> 
 <form [formGroup]="pupusaForm">
 <!--Formulario de pupusas-->
-<div class="row" style="margin: auto 5px;">
+<div class="row" style="margin: auto 5px;"> 
+    
+    
+    
+    
     <!--Columna de la izquierda-->
-    <div div class="col-md-6" style="border-right: 1px solid #C7CED4;">
+    <div div class="col-md-4" style="border-right: 1px solid #C7CED4;">
 
         <!--Tipo de masa-->
         <div class="form-group">
@@ -22,6 +26,9 @@
                 </label>
                 <label class="radio-inline">
                     <input type="radio" formControlName="masa" value="maiz"> Maiz
+                </label> 
+                <label class="radio-inline">
+                    <input type="radio" formControlName="masa" value="ambas"> Ambas
                 </label> 
              </div> 
         </div> 
@@ -63,8 +70,33 @@
     </div>
     <!--/EOF Columna de la izquierda-->
 
+    <!--Columna central-->
+    <div class="col-md-4" style="border-right: 1px solid #C7CED4;">
+        <!--imagen-->
+        <div class="form-group">
+            <label>Imagen del producto</label> 
+            <div class="img-container">
+                <div *ngIf="imagenProductoUrl" class="overlay">
+                    <div class="btn-group">
+                        <button type="button" class="btn" (click)="subirImagen.click()">
+                            <i  class="fa fa-edit"></i>
+                        </button>
+                        <button  type="button" class="btn" (click)="eliminarImagen()">
+                            <i class="fa fa-trash"></i>
+                        </button>
+                    </div>                    
+                </div>                
+                <img src="{{(imagenProductoUrl) || imagenPorDefecto}}"   width="300" height="200"> <br/>
+            </div>            
+            <input [attr.hidden]="imagenProductoUrl? 'true' : null"   type="file" #subirImagen (change)="actualizarImagen($event)" class="form-control-file"  >
+        </div>
+        <!--/EOF imagen-->    
+    </div>
+    <!--/EOF Columna central-->
+    
+
     <!--Columna de la derecha-->
-    <div class="col-md-6">
+    <div class="col-md-4" >          
 
         <!--Nombre de la pupusa-->
         <div class="form-group">
@@ -114,16 +146,15 @@
          <button type="button" (click)="crearSinoEditarPupusa()" class="btn btn-primary ml-auto">
             {{pupusaParaModificar? "Guardar cambios":"Crear pupusa"}}
         </button>
-         <!--/EOF Boton Añadir --> 
-        
-        
-
-
+         <!--/EOF Boton Añadir -->       
     </div>
     <!--/EOF Columna de la derecha-->
 
+
+   
     
-     
+    
+    
 </div>
 </form>
 <!--/EOF Formulario de pupusas-->
