@@ -9,7 +9,6 @@ import { ListaProductosComponent } from './lista-productos/lista-productos.compo
 import { ModalpupusasComponent } from './modalpupusas/modalpupusas.component';
 import { ModalotrosproductosComponent } from './modalotrosproductos/modalotrosproductos.component';
 
-
 @NgModule({
   declarations: [PrincipalComponent, ListaProductosComponent, ModalpupusasComponent, ModalotrosproductosComponent],
   imports: [

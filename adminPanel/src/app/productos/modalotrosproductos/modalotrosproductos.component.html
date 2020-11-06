@@ -1,5 +1,7 @@
 <div class="modal-header">
-    <h4 class="modal-title">Crear un nuevo producto</h4>
+    <h4  class="modal-title">
+        {{productoParaModificar? "Modificar producto":"Crear un nuevo producto"}}
+    </h4> 
     <button type="button" class="close" aria-label="Close" (click)="activeModal.dismiss('Cross click')">
       <span aria-hidden="true">&times;</span>
     </button>
@@ -9,8 +11,8 @@
 <form [formGroup]="productoForm">
 <!--Formulario de productos-->
 <div class="row" style="margin: auto 5px;">
-    <!--Columna principal-->
-    <div div class="col-md-12" style="border-right: 1px solid #C7CED4;">
+    <!--columna izquierda-->
+    <div class="col-md-6" style="border-right: 1px solid #C7CED4;">
 
         <!--Tipo de producto-->
         <div class="form-group">
@@ -24,11 +26,35 @@
                 </label> 
              </div> 
         </div> 
-        <!--/EOF Tipo de producto-->  
-         
+        <!--/EOF Tipo de producto-->   
+
+        <!--imagen-->
+        <div class="form-group">
+            <label>Imagen del producto</label> 
+            <div class="img-container">
+                <div *ngIf="imagenProductoUrl" class="overlay">
+                    <div class="btn-group">
+                        <button type="button" class="btn" (click)="subirImagen.click()">
+                            <i  class="fa fa-edit"></i>
+                        </button>
+                        <button  type="button" class="btn" (click)="eliminarImagen()">
+                            <i class="fa fa-trash"></i>
+                        </button>
+                    </div>                    
+                </div>                
+                <img src="{{(imagenProductoUrl) || imagenPorDefecto}}"   width="300" height="200"> <br/>
+            </div>            
+            <input [attr.hidden]="imagenProductoUrl? 'true' : null"   type="file" #subirImagen (change)="actualizarImagen($event)" class="form-control-file"  >
+        </div>
+        <!--/EOF imagen-->  
+    
+    </div>
+    <!--/EOF columna izquierda-->     
+    <!--columna derecha-->
+    <div class="col-md-6">
          <!--Nombre del producto-->
          <div class="form-group">
-            <label>Nombre de la pupusa</label>
+            <label>Nombre del producto</label>
             <input type="text" formControlName="nombre" class="form-control" placeholder="Coca-cola en lata 12oz">     
              <!--Advertencias de validacion-->     
              <small  class="invalid form-text text-muted" *ngIf="!productoForm.get('nombre').valid && (productoForm.get('nombre').touched || productoForm.get('nombre').dirty)">
@@ -69,14 +95,15 @@
             <!--/EOF Advertencias de validacion-->
         </div> 
         <!--/EOF Campo precio-->  
-
-        <!--Boton Añadir  --> 
-        <button type="button" (click)="crearProducto()" class="btn btn-primary ml-auto">Crear producto</button>
+         <!--Boton Añadir  --> 
+         <button type="button" (click)="crearSinoEditarProducto()" class="btn btn-primary ml-auto">
+            {{productoParaModificar? "Guardar cambios":"Crear producto"}}
+        </button>
         <!--/EOF Boton Añadir --> 
-    
+
+
     </div>
-    <!--/EOF Columna principal-->     
-     
+    <!--/EOF columna derecha-->
 </div>
 </form>
 <!--/EOF Formulario de productos-->
