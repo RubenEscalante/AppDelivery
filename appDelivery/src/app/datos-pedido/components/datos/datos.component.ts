@@ -7,6 +7,8 @@ import { CarritoService } from 'src/app/carrito/services/carrito.service';
 import { MenucartService } from 'src/app/menu/services/menucart.service';
 import { OrdenService } from '../../services/orden.service';
 import { ToastrService } from 'ngx-toastr';
+import { DatosService } from '../../../panel-usuario/services/datos.service';
+import { Direccion } from '../../models/direccion';
 
 
 
@@ -32,7 +34,8 @@ export class DatosComponent implements OnInit {
     private carritoServicio:CarritoService,
     private menucartServicio:MenucartService,
     private ordenServicio:OrdenService,
-    private toastr:ToastrService
+    private toastr:ToastrService,
+    private datosServicio:DatosService
   ) { }
 
   ngOnInit(): void {
@@ -40,9 +43,21 @@ export class DatosComponent implements OnInit {
     this.usuario = JSON.parse(localStorage.getItem('user'));
 
     //Defino la dirección y el teléfono al nuevo usuario registrado
-    if(typeof(this.usuario.direcciones) == 'undefined'){
+    if(typeof(this.usuario.direcciones) == 'undefined' && typeof(this.usuario.telefono) == 'undefined'){
       let usuarioProvisional = new Usuario(this.usuario.uid,this.usuario.nombre,this.usuario.correo,"",[]);
+
+      //Reviso si hay direcciones almacenadas
+      this.datosServicio.obtenerDirecciones().snapshotChanges().subscribe(item => {
+        usuarioProvisional.direcciones = [];
+        item.forEach(element => {
+          let x = element.payload.toJSON();
+          usuarioProvisional.direcciones.push(x as Direccion)
+        })
+      });
+      
       this.usuario = usuarioProvisional;
+      console.log(this.usuario.direcciones);
+      localStorage.setItem('user',JSON.stringify(this.usuario));
     }
     
     this.productos = this.carritoServicio.get('cart');
@@ -54,6 +69,7 @@ export class DatosComponent implements OnInit {
     this.usuario.direcciones.push(d);
     localStorage.setItem('user',JSON.stringify(this.usuario));
     //Aqui abajo debo guardar la nueva dirección agregada en la base de datos
+    this.datosServicio.guardarDireccion(this.usuario.direcciones);
   }
 
   procesarOrden(datos){

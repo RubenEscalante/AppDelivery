@@ -1,71 +1,78 @@
-<form *ngIf="activarDireccion" [formGroup]="formularioDireccion" (ngSubmit)="agregarDireccion(formularioDireccion.value)">
-    <div class="row form-group justify-content-center">
-        <div class="col-8">
+<ng-template #content let-modal>
+    <div class="modal-header">
+      <h4 class="modal-title">Agregar una nueva dirección</h4>
+      <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    <div class="modal-body">
+      <form [formGroup]="formularioDireccion" (ngSubmit)="guardarDireccion(formularioDireccion.value)">
+          <div class="form-group">
             <input type="text" class="form-control" formControlName="nombre" placeholder="Nombre de la dirección*" required>
             <span *ngIf="this.formularioDireccion.get('nombre').touched && this.formularioDireccion.get('nombre').errors?.required">
-                (El nombre no puede quedar vacío)
+              (El nombre no puede quedar vacío)
             </span>
             <span *ngIf="this.formularioDireccion.get('nombre').errors?.validarCadena">
-                (El nombre de la dirección debe de ser una cadena de texto)
+              (El nombre de la dirección debe de ser una cadena de texto)
             </span>
-        </div>
-    </div>
-    <div class="row form-group justify-content-center">
-        <div class="col-8">
+          </div>
+          <div class="form-group">
             <input type="text" class="form-control" formControlName="direccion" placeholder="Dirección*">
             <span *ngIf="this.formularioDireccion.get('direccion').touched && this.formularioDireccion.get('direccion').errors?.required">
-                (La dirección no puede quedar vacía)
+              (La dirección no puede quedar vacía)
             </span>
             <span *ngIf="this.formularioDireccion.get('direccion').errors?.validarCadena">
-                (La dirección debe de ser una cadena de texto)
-             </span>
-        </div>
+              (La dirección debe de ser una cadena de texto)
+            </span>
+          </div>
+          <div class="row form-group">
+              <div class="col-6">
+                <select name="departamento" id="departamento" class="form-control" formControlName="departamento">
+                  <option value="">Departamento*</option>
+                  <option value="San Salvador">San Salvador</option>
+                </select>
+                <span *ngIf="this.formularioDireccion.get('departamento').touched && this.formularioDireccion.get('departamento').errors?.required">
+                  (Debe seleccionar un departamento)
+                </span>
+              </div>
+              <div class="col-6">
+                <select name="municipio" id="municipio" class="form-control" formControlName="municipio">
+                    <option value="">Municipio*</option>
+                    <option value="Aguilares">Aguilares</option>
+                    <option value="Apopa">Apopa</option>
+                    <option value="Ayutuxtepeque">Ayutuxtepeque</option>
+                    <option value="Cuscatancingo">Cuscatancingo</option>
+                    <option value="El Paisnal">El Paisnal</option>
+                    <option value="Guazapa">Guazapa</option>
+                    <option value="Ilopango">Ilopango</option>
+                    <option value="Mejicanos">Mejicanos</option>
+                    <option value="Nejapa">Nejapa</option>
+                    <option value="Panchimalco">Panchimalco</option>
+                    <option value="Rosario de Mora">Rosario de Mora</option>
+                    <option value="San Marcos">San Marcos</option>
+                    <option value="San Martín">San Martín</option>
+                    <option value="San Salvador">San Salvador</option>
+                    <option value="Santiago Texacuangos">Santiago Texacuangos</option>
+                    <option value="Santo Tomás">Santo Tomás</option>
+                    <option value="Soyapango">Soyapango</option>
+                    <option value="Tonacatepeque">Tonacatepeque</option>
+                    <option value="Delgado">Delgado</option>
+                </select>
+                <span *ngIf="this.formularioDireccion.get('municipio').touched && this.formularioDireccion.get('municipio').errors?.required">
+                  (Debe seleccionar un municipio)
+                </span>
+              </div>
+          </div>
+          <div class="modal-footer justify-content-between">
+            <p>Campos con * son requeridos</p>
+            <button type="submit" class="btn btn-outline-dark" (click)="modal.close('Save click')" [disabled]="formularioDireccion.invalid">Guardar</button>
+          </div>
+      </form>
     </div>
-    <div class="row form-group justify-content-center">
-        <div class="col-8">
-            <div class="row">
-                <div class="col-6">
-                    <select name="departamento" id="departamento" class="form-control" formControlName="departamento">
-                        <option value="">Departamento*</option>
-                        <option value="San Salvador">San Salvador</option>
-                    </select>
-                    <span *ngIf="this.formularioDireccion.get('departamento').touched && this.formularioDireccion.get('departamento').errors?.required">
-                        (Debe seleccionar un departamento)
-                    </span>
-                  </div>
-                  <div class="col-6">
-                    <select name="municipio" id="municipio" class="form-control" formControlName="municipio">
-                        <option value="">Municipio*</option>
-                        <option value="Aguilares">Aguilares</option>
-                        <option value="Apopa">Apopa</option>
-                        <option value="Ayutuxtepeque">Ayutuxtepeque</option>
-                        <option value="Cuscatancingo">Cuscatancingo</option>
-                        <option value="El Paisnal">El Paisnal</option>
-                        <option value="Guazapa">Guazapa</option>
-                        <option value="Ilopango">Ilopango</option>
-                        <option value="Mejicanos">Mejicanos</option>
-                        <option value="Nejapa">Nejapa</option>
-                        <option value="Panchimalco">Panchimalco</option>
-                        <option value="Rosario de Mora">Rosario de Mora</option>
-                        <option value="San Marcos">San Marcos</option>
-                        <option value="San Martín">San Martín</option>
-                        <option value="San Salvador">San Salvador</option>
-                        <option value="Santiago Texacuangos">Santiago Texacuangos</option>
-                        <option value="Santo Tomás">Santo Tomás</option>
-                        <option value="Soyapango">Soyapango</option>
-                        <option value="Tonacatepeque">Tonacatepeque</option>
-                        <option value="Delgado">Delgado</option>
-                    </select>
-                    <span *ngIf="this.formularioDireccion.get('municipio').touched && this.formularioDireccion.get('municipio').errors?.required">
-                        (Debe seleccionar un municipio)
-                    </span>
-                  </div>
-            </div>
-        </div>
-    </div>
-    <div class="row justify-content-center">
-        <div class="col-8 text-center">
-            <button type="submit" class="btn btn-dark my-3" [disabled]="formularioDireccion.invalid">Guardar dirección</button>
-        </div>
-    </div>
-</form>
+    
+</ng-template>
+
+<button class="btn ml-2 my-2 d-block boton-formulario" type="button" (click)="modal.open(content)">
+  <i class="fa fa-plus" aria-hidden="true"></i>
+  <span class="pl-2">Agregar dirección</span>
+</button>
