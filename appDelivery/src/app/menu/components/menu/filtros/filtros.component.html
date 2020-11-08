@@ -1,3 +1,48 @@
+<div class="contenedor-filtro">
+  <div class="elemento-filtro" (click)="cambiarfiltro('pupusas')">
+    <div class="img-filtro"  [class.filtroactive]="valorFiltro == 'pupusas'">
+      <img
+        src="assets/img/pupusafiltro.png"
+        alt="imgFiltro"
+        srcset=""
+        style="width: 100%"
+      />
+    </div>
+
+    <div class="footer-filtro"><h1>Pupusa</h1></div>
+  </div>
+  <div class="elemento-filtro" (click)="cambiarfiltro('bebidas')">
+    <div class="img-filtro" [class.filtroactive]="valorFiltro == 'bebidas'">
+      <img
+        src="assets/img/bebidafiltro.png"
+        alt="imgFiltro"
+        srcset=""
+        style="width: 100%"
+      />
+    </div>
+
+    <div class="footer-filtro"><h1>Bebidas</h1></div>
+  </div>
+  <div class="elemento-filtro" (click)="cambiarfiltro('postres')">
+    <div class="img-filtro " [class.filtroactive]="valorFiltro == 'postres'">
+      <img
+        src="assets/img/postrefiltro.png"
+        alt="imgFiltro"
+        class="imgc"
+        srcset=""
+        style="width: 100%"
+      />
+    </div>
+
+    <div class="footer-filtro"><h1>Postres</h1></div>
+  </div>
+</div>
+
+
+
+
+
+<!--
 <div class="filtrocontent">
   <div class="filtroElements">
     <div class="filtroitems" (click)="cambiarfiltro('pupusas')" [class.filtroactive]="valorFiltro == 'pupusas'">
@@ -27,4 +72,4 @@
  </div>
 </div>
 
-
+-->

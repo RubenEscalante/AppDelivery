@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, HostListener, OnInit} from '@angular/core';
 import {ProductlistService} from '../../../services/productlist.service';
 import {ProductfilterService} from '../../../services/productfilter.service';
 import {Products} from 'src/app/menu/models/products';
@@ -11,18 +11,36 @@ import {Products} from 'src/app/menu/models/products';
 export class ListaProductosComponent implements OnInit {
   Productos: Products[];
   valorfiltro: any;
+  valorfiltroMasa: any = 'ambas';
   page_size: number = 8;
   page_number: number = 1;
+  public innerWidth: any;
 
   constructor(
     private productListService: ProductlistService,
     private filterService: ProductfilterService
   ) {
   }
-
+  @HostListener('window:resize', ['$event'])
+  onResize(event) {
+    this.innerWidth = window.innerWidth;
+    if (this.innerWidth < 1076) {
+      this.page_size = 6;
+    } else {
+      this.page_size = 8;
+    }
+  } /*Al redimenzionar*/
   ngOnInit(): void {
+    if (document.documentElement.clientWidth < 1059)
+    {
+      this.page_size = 6;
+    }else{
+      this.page_size = 8;
+    }
+    /*Al cargar o entrar al modulo*/
     if (!this.valorfiltro) {
       this.valorfiltro = 'pupusas';
+      this.valorfiltroMasa = 'ambas';
     }
     this.filterService.enviarMensajeObservable.subscribe((data) => {
       this.valorfiltro = data;
@@ -52,5 +70,15 @@ export class ListaProductosComponent implements OnInit {
 
       });
 
+  }
+
+  valorFiltroMasa(prop) {
+    this.valorfiltroMasa = prop;
+  }
+
+  conditionalProduct() {
+    this.Productos.forEach(data => {
+      return ['pupusas', 'Especialidad'].includes(data.categoria);
+    });
   }
 }

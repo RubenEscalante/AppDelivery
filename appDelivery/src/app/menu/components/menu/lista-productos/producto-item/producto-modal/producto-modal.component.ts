@@ -107,9 +107,14 @@ export class ProductoModalComponent implements OnInit {
         quantity: 1
       });
     } else {
+      this.valor > 30 ? this.valor = 30 :
       this.productoModalForm.setValue({
         quantity: this.valor
       });
     }
+  }
+
+  cerrar() {
+    this.activeModal.close();
   }
 }

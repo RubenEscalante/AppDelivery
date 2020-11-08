@@ -14,7 +14,7 @@ import {ToastrService} from 'ngx-toastr';
   styleUrls: ['./producto-item.component.css', '../../menu.component.css'],
 })
 export class ProductoItemComponent implements OnInit {
-  @Input() productos: Products;
+  @Input() productos: any;
   valor: number = 1;
   productoForm = this.fb.group({
     quantity: [1, [Validators.required, Validators.pattern(/^[1-9]\d*$/), Validators.min(1)]]
@@ -26,13 +26,12 @@ export class ProductoItemComponent implements OnInit {
   }
 
   ngOnInit(): void {
-
   }
 
   openModal() {
     if (this.conditionalProduct()) {
       const modalRef = this.modalService.open(ProductoModalComponent, {
-        centered: true,
+        centered: true, windowClass: 'custom-class'
       });
       modalRef.componentInstance.productos = this.productos;
     }
@@ -99,6 +98,7 @@ export class ProductoItemComponent implements OnInit {
         quantity: 1
       });
     } else {
+      this.valor > 30 ? this.valor = 30 :
       this.productoForm.setValue({
         quantity: this.valor
       });

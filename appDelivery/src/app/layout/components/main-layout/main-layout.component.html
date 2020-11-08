@@ -4,7 +4,7 @@
       <span class="w-100 d-lg-none d-block"><!-- hidden spacer to center brand on mobile --></span>
 
       <!--Logo del sitio-->
-      <img src="https://www.flaticon.com/svg/static/icons/svg/2912/2912292.svg" width="40" height="30" class="d-inline-block align-top" alt="logo"> 
+      <img src="https://www.flaticon.com/svg/static/icons/svg/2912/2912292.svg" width="40" height="30" class="d-inline-block align-top" alt="logo">
       <!--/Logo del sitio-->
 
       <!--Titulo del sitio-->
@@ -14,8 +14,8 @@
       <!--/Titulo del sitio-->
 
       <!--Titulo del sitio en md (por defecto oculto hasta que cambie la resolucion)-->
-      <a class="navbar-brand  mx-auto d-lg-none d-inline-block">      
-        APP PUPUSAS     
+      <a class="navbar-brand  mx-auto d-lg-none d-inline-block">
+        APP PUPUSAS
       </a>
       <!--/Titulo del sitio en md-->
 
@@ -27,7 +27,7 @@
   </div>
   <!--//TODO: En pantallas pequeñas esta barra de navegacion no muestra bien el boton de salir de la sesion-->
   <div class="collapse navbar-collapse flex-grow-1 text-right" id="myNavbar">
-      <ul class="navbar-nav ml-auto flex-nowrap"> 
+      <ul class="navbar-nav ml-auto flex-nowrap">
           <!--//TODO: Esto puede ser mas eficiente, no se necesita mostrar el componente dos veces-->
           <!--Carrito de compras-->
           <li class="nav-item">
@@ -46,16 +46,16 @@
           </ng-template>
           <!--/Carrito de compras-->
 
-          <!--Mensaje de bienvenida--> 
-          <li class="nav-item dropdown" *ngIf="authService.userData as user; else iniciar_sesion">    
+          <!--Mensaje de bienvenida-->
+          <li class="nav-item dropdown" *ngIf="authService.userData as user; else iniciar_sesion">
             <button class="btn dropdown-toggle nav-link m-2 menu-item"   data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
               Bienvenido, {{authService.getUserName()}}
             </button>
             <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
               <a class="dropdown-item" routerLink="/perfil-usuario">Perfil de usuario</a>
               <a class="dropdown-item cursor-pointer" href="#" (click)="authService.SignOut()">Cerrar Sesion</a>
-            </div>  
-          </li> 
+            </div>
+          </li>
           <!--/EOF Mensaje de bienvenida-->
 
           <!--Template para iniciar sesion-->
@@ -63,10 +63,10 @@
             <li class="nav-item">
               <button type="button" id="loginbutton" class="btn nav-link m-2 menu-item" (click)="abrirModalParaAutentificarse()">
                 Iniciar sesión
-              </button> 
+              </button>
             </li>
           </ng-template>
-          <!--/EOF Template  para iniciar sesion-->  
+          <!--/EOF Template  para iniciar sesion-->
       </ul>
   </div>
 </nav>
@@ -74,17 +74,17 @@
 
 <!--Barra central-->
 <nav class="navbar navbar-expand-sm navbar-light bg-light">
-  <div class="mx-auto d-sm-flex d-block flex-sm-nowrap"> 
+  <div class="mx-auto d-sm-flex d-block flex-sm-nowrap">
       <div class="text-center">
           <ul class="navbar-nav">
               <li class="nav-item active">
                   <a class="nav-text nav-link" routerLink="/menu">VER EL MENÚ</a>
-              </li> 
+              </li>
           </ul>
       </div>
   </div>
 </nav>
-<!--/Barra central--> 
+<!--/Barra central-->
 
 <div class="cuerpo">
   <router-outlet></router-outlet>

@@ -3,13 +3,11 @@
   visibility: 0;
   height: 0px;
 }
-
 .modalTransition {
   transition: all 600ms;
   opacity: 1;
   visibility: 1;
   height: 0;
-
 }
 
 .clearfix{
@@ -70,6 +68,7 @@ Contenido
   margin-bottom: 25px;
 }
 
+
 /*
 Estilos modal
 */
@@ -88,6 +87,27 @@ body {
   height: 100px;
   left: 6px;
   top: 6px;
+}
+.cajaCerrar{
+  position: absolute;
+  border-radius: 200px 200px 200px 200px;
+  -moz-border-radius: 200px 200px 200px 200px;
+  -webkit-border-radius: 200px 200px 200px 200px;
+  border: 0px solid #000000;
+  background-color: #8D2324;
+  width: 60px;
+  height: 60px;
+  right: -20px;
+  top: -25px;
+}
+.cerrar {
+  cursor:pointer;
+  position: absolute;
+  color: #e3e3e3;
+  font-family: 'Biryani', sans-serif;
+  font-size: 30px;
+  left: 22px;
+  top: 12px;
 }
 .price {
   position: absolute;
@@ -469,5 +489,6 @@ input[type=number]::-webkit-outer-spin-button {
     width: 500px;
   }
 }
+
 
 

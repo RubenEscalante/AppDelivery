@@ -18,6 +18,7 @@ import {MenucartService} from './services/menucart.service';
 import {AngularFireModule} from '@angular/fire';
 import {environment} from '../../environments/environment';
 import {AngularFireDatabaseModule} from '@angular/fire/database';
+import { FiltromasaPipe } from './Pipes/filtromasa.pipe';
 
 
 
@@ -29,7 +30,8 @@ import {AngularFireDatabaseModule} from '@angular/fire/database';
     ProductoItemComponent,
     ProductoModalComponent,
     FiltroPipe,
-    PaginacionPipe
+    PaginacionPipe,
+    FiltromasaPipe
 
 
   ],

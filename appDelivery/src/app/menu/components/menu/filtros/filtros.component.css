@@ -1,4 +1,33 @@
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*
 .filtrocontent {
   display: flex;
   width: 100vw;
@@ -17,8 +46,11 @@
   width: 99%;
   margin-top: -36px;
   margin-bottom: 36px;
-  /*background-color: rgb(42, 156, 190);*/
+  background-color: rgb(42, 156, 190);
+
 }
+*/
+/*
 .filtroitems *{
   font-family: 'Biryani' , sans-serif !important; ;
   font-size: 1.1em;
@@ -81,5 +113,5 @@
   border: 3px solid #b0171f;
 
 }
-
+*/
 
