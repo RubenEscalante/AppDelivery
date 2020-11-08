@@ -1,4 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
+import { FormGroup, FormControl, Validators, ValidationErrors } from '@angular/forms';
 
 @Component({
   selector: 'app-password',
@@ -8,6 +9,11 @@ import { Component, OnInit, Input } from '@angular/core';
 export class PasswordComponent implements OnInit {
 
   activarContra:Boolean;
+  cambiarContra = new FormGroup({
+    contra: new FormControl('',[Validators.required]),
+    nuevaContra: new FormControl('',[Validators.required]),
+    confirmarContra: new FormControl('',[Validators.required])
+  });
   constructor() { }
 
   ngOnInit(): void {
