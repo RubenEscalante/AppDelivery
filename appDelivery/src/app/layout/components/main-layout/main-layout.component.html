@@ -4,18 +4,18 @@
       <span class="w-100 d-lg-none d-block"><!-- hidden spacer to center brand on mobile --></span>
 
       <!--Logo del sitio-->
-      <img src="https://www.flaticon.com/svg/static/icons/svg/2912/2912292.svg" width="40" height="30" class="d-inline-block align-top" alt="logo">
+      <img src="../../../../assets/img/logo.png" width="100" height="45" class="d-inline-block align-top" alt="logo">
       <!--/Logo del sitio-->
 
       <!--Titulo del sitio-->
       <a class="navbar-brand d-none d-lg-inline-block" href="#">
-         App Pupusas
+         RESTAURANTE EL COMALITO
       </a>
       <!--/Titulo del sitio-->
 
       <!--Titulo del sitio en md (por defecto oculto hasta que cambie la resolucion)-->
       <a class="navbar-brand  mx-auto d-lg-none d-inline-block">
-        APP PUPUSAS
+        RESTAURANTE EL COMALITO
       </a>
       <!--/Titulo del sitio en md-->
 
@@ -32,8 +32,8 @@
           <!--Carrito de compras-->
           <li class="nav-item">
             <button *ngIf="authService.userData as user; else mostrar_modal" type="button" routerLink="/carrito" class="btn nav-link m-2 menu-item">
-              <i class="fa fa-shopping-cart" aria-hidden="true"></i> Carrito
-              <span class="badge badge-pill badge-danger">{{menuCartservice.getCartLength()}}</span>
+              <i class="fa fa-shopping-cart fa-lg" aria-hidden="true"></i>
+              <span class="badge badge-pill badge-danger cantidad">{{menuCartservice.getCartLength()}}</span>
               <span class="h6 ml-2">$ {{menuCartservice.getCartTotal().toFixed(2)}}</span>
             </button>
           </li>
@@ -41,10 +41,19 @@
             <button type="button" (click)="abrirModalParaAutentificarse()" class="btn nav-link m-2 menu-item">
               <i class="fa fa-shopping-cart" aria-hidden="true"></i> Carrito
               <span class="badge badge-pill badge-danger">{{menuCartservice.getCartLength()}}</span>
-              <span class="h6 ml-2">$ {{menuCartservice.getCartTotal().toFixed(2)}}</span>
+              <span class="h6">$ {{menuCartservice.getCartTotal().toFixed(2)}}</span>
             </button>
           </ng-template>
           <!--/Carrito de compras-->
+
+          <!-- Ordenes del usuario -->
+          <li *ngIf="authService.userData as user" class="nav-item">
+            <button type="button" class="btn nav-link m-2 menu-item" (click)="abrirModalParaOrdenes()">
+              <i class="fa fa-history fa-lg historial mr-1" aria-hidden="true"></i>
+              <span class="historial">Mis Órdenes</span>
+            </button>
+          </li>
+          <!-- /Ordenes del usuario -->
 
           <!--Mensaje de bienvenida-->
           <li class="nav-item dropdown" *ngIf="authService.userData as user; else iniciar_sesion">

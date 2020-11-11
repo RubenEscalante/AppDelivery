@@ -1,0 +1,50 @@
+.con-ordenes{
+    height: 80vh;
+    padding-top: 0;
+    padding-bottom: 0;
+}
+
+.sin-ordenes{
+    background-color: #465B6B;
+    color: white;
+}
+
+.detalle-orden{
+    background-color: rgba(0,0,0,0.03);
+    height: 100%;
+    overflow-y: scroll;
+}
+
+.lista-ordenes{
+    height: 100%;
+    overflow-y: scroll;
+}
+
+.cantidad{
+    background-color: #b0171f; 
+    color: white;
+}
+
+.orden-seleccionada:focus{
+    /* background-color:  rgba(0,0,0,0.05); */
+    background-color:  #0098D5;
+    background-color: rgba(0, 152, 213,0.2);
+}
+
+h3, h4{
+    font-family: 'Biryani', 'sans-serif';
+}
+
+.boton-formulario{
+    background-color:  #0098D5;
+    color: white;
+    font-family: 'Jaldi', sans-serif;
+    text-transform: uppercase;
+}
+  
+.boton-formulario:hover{
+    background-color: #465B6B;
+    color: white;
+}
+
+

@@ -1,0 +1,97 @@
+<div class="modal-header">
+  <h4 class="modal-title">
+    <i class="fa fa-history fa-lg mr-2" aria-hidden="true"></i>
+    MIS ÓRDENES
+  </h4>
+  <button type="button" class="close boton-formulario" aria-label="Close" (click)="activeModal.dismiss()">
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>
+<div *ngIf="historial.length != 0; else sinOrdenes" class="modal-body con-ordenes">
+  <div class="row h-100">
+    <div class="col-4 border-right p-3 lista-ordenes">
+      <div class="row">
+        <button *ngFor="let orden of historial" type="button" class="card btn border-0 my-1 orden-seleccionada" (click)="seleccionarOrden(orden)">
+          <div class="card-body">
+            <div class="row text-left">
+              <div class="col-4">
+                <img src="../../../../assets/img/combo4.png" class="img-fluid rounded">
+              </div>
+              <div class="col-8">
+                <h3 class="card-title h5 m-0">Fecha {{formatearFecha(orden.fechaCreacion, "lista")}}</h3>
+                <h5 class="h5 my-2">${{orden.total.toFixed(2)}}</h5>
+              </div>
+            </div>
+          </div>
+        </button>
+
+
+        <!-- <div class="col-4">
+          <img src="../../../../assets/img/placeholder-img.jpg" class="img-fluid rounded-circle">
+        </div>
+        <div class="col-8">
+          <div class="row">
+            <p class="h3">Orden #1</p>
+          </div>
+          <div class="row">
+            <p class="h4">$26.99</p>
+          </div>
+        </div> -->
+
+      </div>
+    </div>
+    <div class="col-8 detalle-orden">
+      <div class="row justify-content-center">
+        <div class="card w-75 my-5">
+          <div class="card-body">
+            <div class="row">
+              <div class="col-7 text-capitalize">
+                {{formatearFecha(ordenSeleccionada.fechaCreacion, "resumen")}}
+              </div>
+              <div class="col-5 text-right">
+                Estado: {{ordenSeleccionada.estado}}
+              </div>
+            </div>
+            <hr>
+            <div class="row">
+              <div class="col">
+                <h4 class="h4">Productos</h4>
+                <div class="row justify-content-center">
+                  <ul class="list-group mb-3 w-75">
+                    <li *ngFor="let producto of ordenSeleccionada.productos"
+                      class="list-group-item d-flex justify-content-between lh-condensed">
+                      <div>
+                        <h6 class="my-0">{{producto.nombre}} <span class="badge cantidad">x{{producto.cantidad}}</span></h6>
+                        <small class="text-muted">{{producto.descripcion}}</small>
+                      </div>
+                      <span class="text-muted">${{(producto.precio*producto.cantidad).toFixed(2)}}</span>
+                    </li>
+                    <li class="list-group-item d-flex justify-content-between">
+                      <span>Total (USD)</span>
+                      <strong>${{ordenSeleccionada.total.toFixed(2)}}</strong>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+            <hr>
+            <div class="row">
+              <div class="col">
+                <h4 class="h4">Dirección</h4>
+                <p>{{ordenSeleccionada.direccionEnvio}}</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<ng-template #sinOrdenes>
+  <div class="modal-body">
+    <div class="row justify-content-center w-100">
+      <p class="h4 py-2 text-center rounded sin-ordenes w-75">Esta cuenta no posee ordenes registradas</p>
+    </div>
+    
+  </div>
+</ng-template> 

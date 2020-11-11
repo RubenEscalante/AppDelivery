@@ -31,6 +31,8 @@ export class AutentificacionComponent implements OnInit {
     if (this.signupForm.invalid) {
       return;
     } 
+    //La verdad no sé por qué con dejar el console log si lo registra, puede ser solo problema mio (F. Majano)
+    //TODO: Se debería enviar un correo de confirmación
     //TODO: Este formulario no deberia de enviarse asi 
     this.authService.SignUp(this.signupForm.value.nombre, this.signupForm.value.correo, this.signupForm.value.pwd)
   }

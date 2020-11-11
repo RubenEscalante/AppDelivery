@@ -8,6 +8,8 @@ export class DatosService {
 
   datosList:AngularFireList<any>;
   direccionesList:AngularFireList<any>;
+  historialList:AngularFireList<any>;
+  ordenesList:AngularFireList<any>;
   usuario;
 
   constructor(private firebase:AngularFireDatabase) {
@@ -18,8 +20,28 @@ export class DatosService {
   obtenerDirecciones(){
     return this.direccionesList = this.firebase.list('/clientes/'+this.usuario.uid+'/direcciones');
   }
+
+  obtenerHistorial(){
+    return this.historialList = this.firebase.list('/clientes/'+this.usuario.uid+'/historial');
+  }
+
+  obtenerOrdenes(){
+    return this.ordenesList = this.firebase.list('/ordenes');
+  }
   
   guardarDireccion(direcciones){
     this.datosList.update('direcciones',direcciones);
+  }
+
+  eliminarDireccion(direcciones){
+    this.datosList.set('direcciones',direcciones);
+  }
+
+  guardarHistorial(historial){
+    this.datosList.update('historial',historial);
+  }
+
+  guardarTelefono(telefono){
+    this.datosList.set('telefono',telefono);
   }
 }
