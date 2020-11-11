@@ -9,7 +9,7 @@
 </div>
 <div *ngIf="historial.length != 0; else sinOrdenes" class="modal-body con-ordenes">
   <div class="row h-100">
-    <div class="col-4 border-right p-3 lista-ordenes">
+    <div class="col-4 border-right p-3 lista-ordenes scrollbar scrollbar-color thin">
       <div class="row">
         <button *ngFor="let orden of historial" type="button" class="card btn border-0 my-1 orden-seleccionada" (click)="seleccionarOrden(orden)">
           <div class="card-body">
@@ -40,7 +40,7 @@
 
       </div>
     </div>
-    <div class="col-8 detalle-orden">
+    <div class="col-8 detalle-orden scrollbar scrollbar-color thin">
       <div class="row justify-content-center">
         <div class="card w-75 my-5">
           <div class="card-body">
