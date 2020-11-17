@@ -3,6 +3,8 @@ import { Direccion } from 'src/app/datos-pedido/models/direccion';
 import { Usuario } from 'src/app/datos-pedido/models/usuario';
 import { DatosService } from '../../services/datos.service';
 import { FormGroup, FormControl, Validators, ValidationErrors } from '@angular/forms';
+import { ToastrService } from 'ngx-toastr';
+import { AuthService } from '../../../autentificacion/services/auth.service'
 
 @Component({
   selector: 'app-datos-usuario',
@@ -13,31 +15,26 @@ export class DatosUsuarioComponent implements OnInit {
 
   usuario:Usuario;
   contraBool:Boolean;
-  perfilUsuario = new FormGroup({
-    telefono: new FormControl('',[Validators.required])
-  });
-  constructor(private datosServicio:DatosService) {
-    this.contraBool = false;
-    
-   }
+  perfilUsuario:FormGroup;
+  constructor(
+    private datosServicio:DatosService,
+    private toastr:ToastrService,
+    private auth:AuthService
+  ) {}
 
   ngOnInit(): void {
     this.usuario = JSON.parse(localStorage.getItem('user'));
-    
-    //Defino la dirección y el teléfono al nuevo usuario registrado
-    if(typeof(this.usuario.direcciones) == 'undefined' && typeof(this.usuario.telefono) == 'undefined'){
-      let usuarioProvisional = new Usuario(this.usuario.uid,this.usuario.nombre,this.usuario.correo,"",[]);
+    this.perfilUsuario = new FormGroup({
+      telefono: new FormControl(this.usuario.telefono,[Validators.required, Validators.pattern('[0-9]{4}-[0-9]{4}')])
+    });
 
-      //Reviso si hay direcciones almacenadas
-      this.datosServicio.obtenerDirecciones().snapshotChanges().subscribe(item => {
-        usuarioProvisional.direcciones = [];
-        item.forEach(element => {
-          let x = element.payload.toJSON();
-          usuarioProvisional.direcciones.push(x as Direccion)
-        })
-      });
-      
-      this.usuario = usuarioProvisional;
+    //Defino la dirección y el teléfono al nuevo usuario registrado
+    if(typeof(this.usuario.direcciones) == 'undefined'){
+      this.usuario.direcciones = [];
+      localStorage.setItem('user',JSON.stringify(this.usuario));
+    }
+    if(typeof(this.usuario.telefono) == 'undefined'){
+      this.usuario.telefono = "";
       localStorage.setItem('user',JSON.stringify(this.usuario));
     }
   }
@@ -47,11 +44,44 @@ export class DatosUsuarioComponent implements OnInit {
     console.log(this.contraBool);
   }
 
-  guardarDireccion(d){
-    this.usuario.direcciones.push(d);
+  guardarDireccion(direccion){
+    this.usuario.direcciones.push(direccion);
     localStorage.setItem('user', JSON.stringify(this.usuario));
     this.datosServicio.guardarDireccion(this.usuario.direcciones);
+    this.toastr.success('Direccion guardada exitosamente', 'Nueva Direccion',{
+      progressBar: true,
+      timeOut: 1500,
+      closeButton: true
+    });
   }
+
+  eliminarDireccion(direccion){
+    let indice = this.usuario.direcciones.indexOf(direccion);
+    console.log(this.usuario.direcciones);
+    this.usuario.direcciones.splice(indice,1);
+    console.log(this.usuario.direcciones);
+    localStorage.setItem('user', JSON.stringify(this.usuario));
+    this.datosServicio.eliminarDireccion(this.usuario.direcciones);
+    this.toastr.warning('Direccion eliminada exitosamente', 'Direccion Eliminada',{
+      progressBar: true,
+      timeOut: 1500,
+      closeButton: true
+    });
+  }
+
+  guardarTelefono(datos){
+    this.usuario.telefono = datos.telefono;
+    console.log("enviando telefono:"+datos.telefono);
+    localStorage.setItem('user',JSON.stringify(this.usuario));
+    this.datosServicio.guardarTelefono(this.usuario.telefono);
+    this.toastr.success('Telefono actualizado exitosamente', 'Telefono Actualizado',{
+      progressBar: true,
+      timeOut: 1500,
+      closeButton: true
+    });
+  }
+
+
 
   validarCadena(control:FormControl):ValidationErrors{
     if(Number(control.value)){

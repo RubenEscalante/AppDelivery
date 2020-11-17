@@ -9,6 +9,7 @@ import { OrdenService } from '../../services/orden.service';
 import { ToastrService } from 'ngx-toastr';
 import { DatosService } from '../../../panel-usuario/services/datos.service';
 import { Direccion } from '../../models/direccion';
+import { OrdenHistorial } from '../../models/orden-historial';
 
 
 
@@ -22,6 +23,7 @@ export class DatosComponent implements OnInit {
   //Este es el usuario que utilizo para mostrar los datos
   public usuario:Usuario;
   public orden:Orden;
+  public historial:OrdenHistorial;
   public formularioDatos = new FormGroup({
     direccion: new FormControl('',[Validators.required])
   });
@@ -43,20 +45,34 @@ export class DatosComponent implements OnInit {
     this.usuario = JSON.parse(localStorage.getItem('user'));
 
     //Defino la dirección y el teléfono al nuevo usuario registrado
-    if(typeof(this.usuario.direcciones) == 'undefined' && typeof(this.usuario.telefono) == 'undefined'){
-      let usuarioProvisional = new Usuario(this.usuario.uid,this.usuario.nombre,this.usuario.correo,"",[]);
+    // if(typeof(this.usuario.direcciones) == 'undefined' && typeof(this.usuario.telefono) == 'undefined'){
+    //   let usuarioProvisional = new Usuario(this.usuario.uid,this.usuario.nombre,this.usuario.correo,"",[]);
 
-      //Reviso si hay direcciones almacenadas
-      this.datosServicio.obtenerDirecciones().snapshotChanges().subscribe(item => {
-        usuarioProvisional.direcciones = [];
-        item.forEach(element => {
-          let x = element.payload.toJSON();
-          usuarioProvisional.direcciones.push(x as Direccion)
-        })
-      });
+    //   //Reviso si hay direcciones almacenadas
+    //   this.datosServicio.obtenerDirecciones().snapshotChanges().subscribe(item => {
+    //     usuarioProvisional.direcciones = [];
+    //     item.forEach(element => {
+    //       let x = element.payload.toJSON();
+    //       usuarioProvisional.direcciones.push(x as Direccion)
+    //     })
+    //   });
       
-      this.usuario = usuarioProvisional;
-      console.log(this.usuario.direcciones);
+    //   this.usuario = usuarioProvisional;
+    //   localStorage.setItem('user',JSON.stringify(this.usuario));
+    // }
+
+    if(typeof(this.usuario.direcciones) == 'undefined'){      
+      this.usuario.direcciones = [];
+      localStorage.setItem('user',JSON.stringify(this.usuario));
+    }
+
+    if(typeof(this.usuario.telefono) == 'undefined'){      
+      this.usuario.telefono = "";
+      localStorage.setItem('user',JSON.stringify(this.usuario));
+    }
+
+    if(typeof(this.usuario.historial) == 'undefined'){      
+      this.usuario.historial = [];
       localStorage.setItem('user',JSON.stringify(this.usuario));
     }
     
@@ -70,6 +86,20 @@ export class DatosComponent implements OnInit {
     localStorage.setItem('user',JSON.stringify(this.usuario));
     //Aqui abajo debo guardar la nueva dirección agregada en la base de datos
     this.datosServicio.guardarDireccion(this.usuario.direcciones);
+  }
+
+  eliminarDireccion(direccion){
+    let indice = this.usuario.direcciones.indexOf(direccion);
+    console.log(this.usuario.direcciones);
+    this.usuario.direcciones.splice(indice,1);
+    console.log(this.usuario.direcciones);
+    localStorage.setItem('user', JSON.stringify(this.usuario));
+    this.datosServicio.eliminarDireccion(this.usuario.direcciones);
+    this.toastr.warning('Direccion eliminada exitosamente', 'Direccion Eliminada',{
+      progressBar: true,
+      timeOut: 1500,
+      closeButton: true
+    });
   }
 
   procesarOrden(datos){
@@ -88,7 +118,7 @@ export class DatosComponent implements OnInit {
     }
     
     //Formateando al usuario
-    let usuarioOrden = new Usuario(null,'','',null,[]);
+    let usuarioOrden = new Usuario(null,'','',null,[],[]);
     usuarioOrden.nombre = this.usuario.nombre;
     usuarioOrden.correo = this.usuario.correo;
 
@@ -106,24 +136,49 @@ export class DatosComponent implements OnInit {
     let segundos = fecha_ob.getSeconds();
     let fecha = dia + "/" + mes + "/" + año + " " + horas + ":" + minutos + ":" + segundos;
 
-    //Construyendo el objeto de la orden que será almacenado en al BD
+    //Obteniendo el id de la Orden
+    let idOrden = this.generatePushID();
+
+    //Construyendo el objeto de la orden que será almacenado en la rama de ordenes de la BD
     this.orden = new Orden(
       0,
       direccion,
       'Recibido',
       fecha,
-      this.generatePushID(),
+      idOrden,
       productos,
       this.menucartServicio.getCartTotal(),
       this.menucartServicio.getCartTotal(),
       usuarioOrden,
       this.usuario.telefono
     );
+
+    //Construyendo el objeto de la orden que voy a almacenar en la rama del usuario
+    this.historial = new OrdenHistorial(
+      idOrden,
+      'Recibido',
+      fecha,
+      direccion,
+      productos,
+      this.menucartServicio.getCartTotal()
+    );
+    
+
+    //Ahora inserto la nueva orden en la primera posición del historial, de manera que la primera orden agregada es la más reciente
+    //y las ordenes quedan de la mas nueva a la mas antigua
+    this.usuario.historial.unshift(this.historial);
     
     this.total = this.menucartServicio.getCartTotal();
 
-    //Envio la orden a la base de datos
+    //Envio la orden a la rama de ordenes la base de datos
     this.ordenServicio.guardarOrden(this.orden);
+
+    //Envio la orden al historial del cliente y la guardo en el localStorage
+    this.ordenServicio.guardarOrdenHistorial(this.usuario.historial);
+    // for(let orden of this.usuario.historial){
+    //   this.ordenServicio.guardarOrdenHistorial(orden);
+    // }
+    localStorage.setItem('user',JSON.stringify(this.usuario));
 
     //Elimino los productos almacenados en el carrito
     this.carritoServicio.remove('cart');

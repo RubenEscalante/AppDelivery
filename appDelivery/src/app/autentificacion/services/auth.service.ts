@@ -39,7 +39,9 @@ export class AuthService {
             uid: this.userData.uid,
             nombre: snapshot.val().nombre,
             correo: snapshot.val().email,
-            direccion: snapshot.val().direccion
+            direcciones: snapshot.val().direcciones,
+            telefono: snapshot.val().telefono,
+            historial: snapshot.val().historial
           };
           localStorage.setItem('user', JSON.stringify(this.actualUser)); // cambiar por  this.userData para ver objeto completo
           //localStorage.setItem('firebaseUserData', JSON.stringify(this.userData));
@@ -122,11 +124,14 @@ export class AuthService {
   ForgotPassword(passwordResetEmail) {
     return this.afAuth.sendPasswordResetEmail(passwordResetEmail)
       .then(() => {
-        window.alert('Password reset email sent, check your inbox.');
+        // window.alert('Password reset email sent, check your inbox.');
+        this.SignOut();
+        // this.router.navigate(['']);
       }).catch((error) => {
         window.alert(error);
       });
   }
+  
 
   // Devuelve verdadero cuando el usuario está conectado y
   // el correo electrónico está verificado
@@ -192,7 +197,7 @@ export class AuthService {
     return this.afAuth.signOut().then(() => {
       localStorage.setItem('user', null);
       localStorage.removeItem('user');
-      this.router.navigate(['menu']);
+      window.location.reload();
     });
   }
 

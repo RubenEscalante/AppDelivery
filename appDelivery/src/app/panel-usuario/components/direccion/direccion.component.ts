@@ -46,7 +46,14 @@ export class DireccionComponent implements OnInit {
     }
   }
 
-  guardarDireccion(d){
-
+  guardarDireccion(datosDireccion){
+    this.direccion = datosDireccion;
+    console.log(this.direccion);
+    this.enviarDireccion.emit(this.direccion);
+    // this.toastr.success('Direccion registrada exitosamente', 'Direccion Registrada',{
+    //   progressBar:true,
+    //   timeOut:1500,
+    //   closeButton:true
+    // })
   }
 }

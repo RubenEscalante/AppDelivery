@@ -43,6 +43,11 @@
   color: white;
 }
 
+small{
+  padding-left: 5px;
+  color: red;
+}
+
 /*Estilo para hacer los floating labels*/
 .form-label-group {
     position: relative;

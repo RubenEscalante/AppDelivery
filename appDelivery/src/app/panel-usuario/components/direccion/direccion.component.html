@@ -9,21 +9,21 @@
       <form [formGroup]="formularioDireccion" (ngSubmit)="guardarDireccion(formularioDireccion.value)">
           <div class="form-group">
             <input type="text" class="form-control" formControlName="nombre" placeholder="Nombre de la dirección*" required>
-            <span *ngIf="this.formularioDireccion.get('nombre').touched && this.formularioDireccion.get('nombre').errors?.required">
-              (El nombre no puede quedar vacío)
-            </span>
-            <span *ngIf="this.formularioDireccion.get('nombre').errors?.validarCadena">
-              (El nombre de la dirección debe de ser una cadena de texto)
-            </span>
+            <small *ngIf="this.formularioDireccion.get('nombre').touched && this.formularioDireccion.get('nombre').errors?.required">
+              El nombre no puede quedar vacío
+            </small>
+            <small *ngIf="this.formularioDireccion.get('nombre').errors?.validarCadena">
+              El nombre de la dirección debe de ser una cadena de texto
+            </small>
           </div>
           <div class="form-group">
-            <input type="text" class="form-control" formControlName="direccion" placeholder="Dirección*">
-            <span *ngIf="this.formularioDireccion.get('direccion').touched && this.formularioDireccion.get('direccion').errors?.required">
-              (La dirección no puede quedar vacía)
-            </span>
-            <span *ngIf="this.formularioDireccion.get('direccion').errors?.validarCadena">
-              (La dirección debe de ser una cadena de texto)
-            </span>
+            <textarea rows="3" class="form-control" formControlName="direccion" placeholder="Dirección*"></textarea>
+            <small *ngIf="this.formularioDireccion.get('direccion').touched && this.formularioDireccion.get('direccion').errors?.required">
+              La dirección no puede quedar vacía
+            </small>
+            <small *ngIf="this.formularioDireccion.get('direccion').errors?.validarCadena">
+              La dirección debe de ser una cadena de texto
+            </small>
           </div>
           <div class="row form-group">
               <div class="col-6">
@@ -31,9 +31,9 @@
                   <option value="">Departamento*</option>
                   <option value="San Salvador">San Salvador</option>
                 </select>
-                <span *ngIf="this.formularioDireccion.get('departamento').touched && this.formularioDireccion.get('departamento').errors?.required">
-                  (Debe seleccionar un departamento)
-                </span>
+                <small *ngIf="this.formularioDireccion.get('departamento').touched && this.formularioDireccion.get('departamento').errors?.required">
+                  Debe seleccionar un departamento
+                </small>
               </div>
               <div class="col-6">
                 <select name="municipio" id="municipio" class="form-control" formControlName="municipio">
@@ -58,21 +58,21 @@
                     <option value="Tonacatepeque">Tonacatepeque</option>
                     <option value="Delgado">Delgado</option>
                 </select>
-                <span *ngIf="this.formularioDireccion.get('municipio').touched && this.formularioDireccion.get('municipio').errors?.required">
-                  (Debe seleccionar un municipio)
-                </span>
+                <small *ngIf="this.formularioDireccion.get('municipio').touched && this.formularioDireccion.get('municipio').errors?.required">
+                  Debe seleccionar un municipio
+                </small>
               </div>
           </div>
           <div class="modal-footer justify-content-between">
             <p>Campos con * son requeridos</p>
-            <button type="submit" class="btn btn-outline-dark" (click)="modal.close('Save click')" [disabled]="formularioDireccion.invalid">Guardar</button>
+            <button type="submit" class="btn btn-outline-dark boton-formulario" (click)="modal.close('Save click')" [disabled]="formularioDireccion.invalid">Guardar</button>
           </div>
       </form>
     </div>
     
 </ng-template>
 
-<button class="btn ml-2 my-2 d-block boton-formulario" type="button" (click)="modal.open(content)">
+<button class="btn ml-2 my-2 d-block boton-formulario" type="button" (click)="modal.open(content, {size:'lg'})">
   <i class="fa fa-plus" aria-hidden="true"></i>
   <span class="pl-2">Agregar dirección</span>
 </button>
