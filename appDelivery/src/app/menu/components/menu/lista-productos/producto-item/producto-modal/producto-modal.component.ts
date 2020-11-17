@@ -14,7 +14,7 @@ import {ToastrService} from 'ngx-toastr';
   styleUrls: ['./producto-modal.component.css', '../../../menu.component.css'],
 })
 export class ProductoModalComponent implements OnInit {
-  @Input() productos: Products ;
+  @Input() productos: any ;
   Object = Object;
   public modalsNumber = 0;
   public timeLeft: number = 60;
@@ -65,7 +65,7 @@ export class ProductoModalComponent implements OnInit {
         preferencias: this.productos.preferencias,
         costo: this.productos.costo,
         cantidad: formValue.value.quantity,
-        imgurl: this.productos.imgurl
+        imagen: this.productos.imagen === undefined ? 'https://www.lonestarpark.com/wp-content/uploads/2019/04/image-placeholder-500x500.jpg' : this.productos.imagen.url
       };
       this.menuCartservice.addToCar(mycart);
       this.productoModalForm.setValue({

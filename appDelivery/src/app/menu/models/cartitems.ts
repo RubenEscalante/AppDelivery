@@ -6,5 +6,5 @@ export interface Cartitems {
     preferencias?: string[];
     costo: number;
     cantidad: number;
-    imgurl: string;
+    imagen: string;
 }

@@ -47,6 +47,7 @@ export class ProductoItemComponent implements OnInit {
         quantity: 1
       });
     } else {
+
       const myvalue = this.productoForm;
       const mycart: Cartitems = {
         id: this.productos.id,
@@ -56,14 +57,14 @@ export class ProductoItemComponent implements OnInit {
         preferencias: this.productos.preferencias,
         costo: this.productos.costo,
         cantidad: myvalue.value.quantity,
-        imgurl: this.productos.imgurl
+        imagen: this.productos.imagen === undefined ? 'https://www.lonestarpark.com/wp-content/uploads/2019/04/image-placeholder-500x500.jpg' : this.productos.imagen.url
       };
       this.menuCartservice.addToCar(mycart);
       this.productoForm.setValue({
         quantity: 1
       });
 
-      this.toastr.success('Producto agregado al carrito', 'Exito',{
+      this.toastr.success('Producto agregado al carrito', 'Exito', {
         progressBar: true,
         timeOut: 1500,
         closeButton: true
