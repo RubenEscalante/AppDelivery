@@ -3,7 +3,7 @@ import {HttpClient} from '@angular/common/http';
 import {Products} from 'src/app/menu/models/products';
 import {AngularFireDatabase, AngularFireList} from '@angular/fire/database';
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'any'
 })
 export class ProductlistService {
   productList: AngularFireList<any>;
@@ -14,6 +14,11 @@ export class ProductlistService {
    // return this.http.get<Products>('data/productos.json');
    return this.productList = this.firebase.list('productos');
   }
+  getIngredientes() {
+    // return this.http.get<Products>('data/productos.json');
+    return this.productList = this.firebase.list('ingredientes');
+  }
+
   setProductos(){
 
   }

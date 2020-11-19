@@ -68,7 +68,7 @@ export class MenucartService {
       }
     }
     return costoTotal;
-    
+
   }
 
 }
