@@ -1,16 +1,43 @@
 
 
 
-<div class="contenedor-item-menu">
-  <div class="filtroMasa" *ngIf= "valorfiltro == 'pupusas'" >
-    <ul>
-      <li (click)="valorFiltroMasa('ambas')"  [class.filtromasaactive]="valorfiltroMasa == 'ambas'">Ambas</li>
-      <li (click)="valorFiltroMasa('maiz')"   [class.filtromasaactive]="valorfiltroMasa == 'maiz'">Maiz</li>
-      <li (click)="valorFiltroMasa('arroz')"  [class.filtromasaactive]="valorfiltroMasa == 'arroz'">Arroz</li>
-    </ul>
+<!--Barra central-->
+<nav class="navbar navbar-expand-sm navbar-light bg-light" >
+  <div class="mx-auto d-sm-flex d-block flex-sm-nowrap">
+      <div class="text-center">
+          <ul class="navbar-nav">
+              <li   [class.filtromasaactive]="valorfiltro == 'pupusas' && valorfiltroMasa == 'ambas'"> 
+                <a class="nav-text nav-link" (click)="valorFiltroMasa('ambas')">Todas las pupusas</a> 
+              </li>
+              <li   [class.filtromasaactive]="valorfiltroMasa == 'arroz'"> 
+                <a class="nav-text nav-link" (click)="valorFiltroMasa('arroz')">Solo de arroz</a> 
+              </li>
+              <li   [class.filtromasaactive]="valorfiltroMasa == 'maiz'"> 
+                <a class="nav-text nav-link" (click)="valorFiltroMasa('maiz')">Solo de maiz</a> 
+              </li> 
+              <li class="nav-item active" [class.filtromasaactive]="valorfiltro == 'bebidas'">
+                <a class="nav-text nav-link"  (click)="cambiarfiltro('bebidas')">Bebidas</a>
+              </li>
+              <li class="nav-item active">
+                <a class="nav-text nav-link" [class.filtromasaactive]="valorfiltro == 'postres'"  (click)="cambiarfiltro('postres')">Postres</a>
+              </li>
+              <li class="nav-item active">
+                <a class="nav-text nav-link" routerLink="/personalizar">Arma tu pupusa</a>
+              </li>
+          </ul>
+      </div>
   </div>
+</nav>
+
+<!--/Barra central-->
+
+
+<div class="contenedor-item-menu" style="margin-top: 50px;"> 
+
+
+
   <!-- SI ESTA SELECCIONADO LAS PUPUSAS -->
-<div class="contenedor" *ngIf="valorfiltro == 'pupusas'">
+<div class="contenedor" *ngIf="valorfiltro == 'pupusas'"  >
   <div
     *ngFor="
       let productos of Productos
@@ -23,7 +50,7 @@
   </div>
 </div>
   <!-- SI ESTA SELECCIONADO POSTRES O BEBIDAS -->
-  <div class="contenedor" *ngIf="valorfiltro == 'bebidas' || valorfiltro == 'postres'">
+  <div class="contenedor" *ngIf="valorfiltro == 'bebidas' || valorfiltro == 'postres'" >
   <div
 
     *ngFor="
@@ -36,8 +63,9 @@
   </div>
 </div>
 </div>
+<br>
 
-<div *ngIf="valorfiltro == 'pupusas'">
+<div *ngIf="valorfiltro == 'pupusas'" >
   <div *ngIf="page_size < (Productos | filtro: valorfiltro:'categoria'  | filtromasa:  valorfiltroMasa).length">
     <ngb-pagination
       size="lg"
@@ -49,7 +77,7 @@
     ></ngb-pagination>
   </div>
 </div>
-<div *ngIf="valorfiltro == 'bebidas' || valorfiltro == 'postres'">
+<div *ngIf="valorfiltro == 'bebidas' || valorfiltro == 'postres'"  >
   <div *ngIf="page_size < (Productos | filtro: valorfiltro:'categoria').length">
     <ngb-pagination
       size="lg"
@@ -60,5 +88,7 @@
       class="d-flex justify-content-center paginacionMenu"
     ></ngb-pagination>
   </div>
+
 </div>
 
+<div style="height: 50px;"></div>
