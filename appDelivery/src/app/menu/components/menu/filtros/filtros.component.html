@@ -1,16 +1,5 @@
 <div class="contenedor-filtro">
-  <div class="elemento-filtro" (click)="cambiarfiltro('pupusas')">
-    <div class="img-filtro"  [class.filtroactive]="valorFiltro == 'pupusas'">
-      <img
-        src="assets/img/pupusafiltro.png"
-        alt="imgFiltro"
-        srcset=""
-        style="width: 100%"
-      />
-    </div>
-
-    <div class="footer-filtro"><h1>Pupusa</h1></div>
-  </div>
+  
   <div class="elemento-filtro" (click)="cambiarfiltro('bebidas')">
     <div class="img-filtro" [class.filtroactive]="valorFiltro == 'bebidas'">
       <img
@@ -22,6 +11,19 @@
     </div>
 
     <div class="footer-filtro"><h1>Bebidas</h1></div>
+  </div>
+
+  <div class="elemento-filtro" (click)="cambiarfiltro('pupusas')">
+    <div class="img-filtro"  [class.filtroactive]="valorFiltro == 'pupusas'">
+      <img
+        src="assets/img/pupusafiltro.png"
+        alt="imgFiltro"
+        srcset=""
+        style="width: 100%"
+      />
+    </div>
+
+    <div class="footer-filtro"><h1>Pupusa</h1></div>
   </div>
   <div class="elemento-filtro" (click)="cambiarfiltro('postres')">
     <div class="img-filtro " [class.filtroactive]="valorFiltro == 'postres'">
@@ -35,7 +37,22 @@
     </div>
 
     <div class="footer-filtro"><h1>Postres</h1></div>
-  </div>
+  </div> 
+  <!--Do Else-->
+  <a class="elemento-filtro" routerLink="pupusas" >
+    <div class="img-filtro ">
+      <img
+        src="assets/img/pupusafiltro.png"
+        alt="imgFiltro"
+        class="imgc"
+        srcset=""
+        style="width: 100%"
+      />
+    </div>
+
+    <div class="footer-filtro"><h1>Pupusas v2</h1></div>
+  </a> 
+ 
 </div>
 
 

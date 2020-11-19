@@ -1,0 +1,538 @@
+/* You can add global styles to this file, and also import other style files */
+/*
+ESTILOS MENU
+ */
+
+ /deep/ .paginacionMenu .pagination .active a{
+    background: #8D2324 !important;
+    border-color: #8D2324 !important;
+    border-radius: 1000px !important;
+  }
+  
+  /deep/ .paginacionMenu .activelink {
+    background-color: #8D2324;
+  }
+  
+  /deep/ .paginacionMenu .pagination a {
+    color: #8D2324;
+    border-radius: 200px !important;
+    margin-left: 15px !important;
+  }
+  
+  .flex-between {
+    justify-content: space-between;
+  }
+  
+  .flex-item {
+    display: flex;
+    padding: 2px;
+    width: 100%;
+  }
+  
+  .box {
+    display: inline-block;
+    font-size: 20px;
+    line-height: 50px;
+  }
+  
+  .fade {
+    transition: opacity 0.15s ease-out !important;
+  }
+  .imgc{
+    position: absolute;
+    top: 3px;
+    left: 2px;
+  }
+  /********************************************************
+  *********************************************************
+  *********************************************************
+  *********************************************************
+  *********************************************************
+  NUEVOS ESTILOS DE MENU
+   NUEVOS ESTILOS DE MENU NUEVOS ESTILOS DE MENU
+    NUEVOS ESTILOS DE MENU
+     NUEVOS ESTILOS DE MENU
+      NUEVOS ESTILOS DE MENU NUEVOS ESTILOS DE MENU
+   */
+  
+  .contenedor-filtro {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+    cursor: pointer;
+    margin: 0px auto;
+    margin-bottom: 20px;
+    max-width: 500px;
+    min-width: auto;
+    height: auto;
+    /* background-color: tomato;*/
+  }
+  .elemento-filtro {
+    position: relative;
+    justify-self: center;
+    width: 135px;
+    height: 160px;
+    margin-top: 25px;
+    /*border: 3px solid red;*/
+    /* background-color: violet;*/
+  }
+  .filtroactive {
+    border: 3px solid #b0171f !important;
+  }
+  .img-filtro:hover {
+    border: 3px solid #b0171f !important;
+  }
+  .img-filtro {
+    position: relative;
+    margin: 0 auto;
+    width: 110px;
+    height: 110px;
+    border-radius: 200px;
+    border: 2px solid rgba(0, 0, 0, 0.1);
+    box-shadow: 5px 5px 8px -5px rgba(0, 0, 0, 0.75);
+    background-color: white;
+  }
+  .img-filtro img {
+    position: absolute;
+    bottom: 15px;
+  }
+  .footer-filtro {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    text-align: center;
+    /*background-color: thistle;*/
+  }
+  .footer-filtro h1 {
+    font-size: 1.2em;
+    color: #b0171f;
+  }
+  .filtroMasa ul{
+    padding: 0px !important;
+  }
+  .filtroMasa{
+    background-color: #26272b;
+    color: white;
+    width: fit-content;
+    padding: 0px !important;
+  margin: 0px auto;
+    border-radius: 10px;
+  }
+  .filtroMasa li{
+    display: inline-block;
+    text-decoration: none;
+    padding: 15px;
+    cursor: pointer;
+    width: 90px;
+    text-align: center;
+  }
+  .filtroMasa li:hover{
+    background-color: #8D2324;
+    border-radius: 10px;
+  }
+  .filtromasaactive{
+    background-color: #8D2324;
+    border-radius: 10px;
+  }
+  /*--------------------------------------------------------------*/
+  /**************************************************************/
+  /*ESTILOS DEL MENU*/
+  .contenedor {
+    display: grid;
+    grid-template-columns: repeat(4,1fr);
+    gap: 30px 0px;
+    padding: 10px;
+    max-width: 1365px;
+    min-width: auto;
+    height: auto;
+    margin: 0px auto;
+    padding-top: 25px;
+   /* border: 4px solid red;*/
+    border-top: 1px solid #9faab7;
+    align-items: self-end;
+  }
+  .contenedor-item-menu {
+    /*ESTA CLASE ES PARA QUE LA PAGINACION NO SE MUEVA*/
+    max-width: 1365px;
+    min-width: auto;
+    margin: 0px auto;
+    max-height: auto;
+    min-height: 750px;
+    /*border: 3px solid maroon;*/
+  }
+  .item-menu {
+    display: flex;
+    flex-flow: row wrap;
+    /*justify-self: center; <-------TODO Trabajar esto, deberia centrar con esto y no con margin 0 auto */
+    margin: 0px auto;
+    width: 80%;
+    min-height: 297px;
+    /*border: 3px solid blue;*/
+  }
+  .item-menu:hover {
+    box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
+  }
+  
+  .item-menu-cabecera {
+    width: 100%;
+    height: fit-content;
+    /* background-color: red;*/
+  }
+  .item-menu-cabecera strong {
+    display: block;
+    margin-right: 10px;
+  }
+  .item-menu-cabecera h2 {
+    font-weight: normal;
+    font-size: 20px;
+    line-height: 20px;
+    font-weight: 300;
+    text-align: center;
+    overflow-wrap: anywhere;
+  }
+  .item-menu-img {
+    position: relative;
+    width: 100%;
+    height: fit-content;
+    /*background-color: royalblue;*/
+  }
+  .item-menu-img img {
+    width: 100%;
+    -webkit-box-shadow: 5px 9px 14px -9px rgba(0, 0, 0, 0.75);
+    -moz-box-shadow: 5px 9px 14px -9px rgba(0, 0, 0, 0.75);
+    box-shadow: 5px 9px 14px -9px rgba(0, 0, 0, 0.75);
+    transition: 0.3s;
+  }
+  .nohover {
+    display: none !important;
+  }
+  .item-menu-img-detalles {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .item-menu .item-menu-img .item-menu-img-detalles {
+    visibility: 0;
+    opacity: 0;
+    float: left;
+    position: absolute;
+    left: 0px;
+    top: 0px;
+    width: 100%;
+    height: 0px;
+    background-color: rgba(176, 23, 31, 0.5);
+    transition: height 0.3s, opacity;
+  }
+  .item-menu .item-menu-img img:hover + .item-menu-img-detalles {
+    opacity: 1;
+    height: 100%;
+  }
+  
+  .item-menu .item-menu-img .item-menu-img-detalles:hover {
+    opacity: 1;
+    height: 100%;
+  }
+  
+  .item-menu .item-menu-img .item-menu-img-detalles:hover .btn {
+    height: 50px;
+  }
+  
+  /*ESTILO CAJA PARA BEBIDAD Y POSTRES*/
+  
+  .items2 {
+    display: flex;
+    flex-flow: row wrap;
+    width: 250px;
+    background-color: white;
+  }
+  .items2 .menuitemfooter {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    height: auto;
+    /*background-color: darkgoldenrod;*/
+  }
+  .items2 .item-menu-img {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 15px;
+  }
+  .items2 .item-menu-img img {
+    box-shadow: none;
+    width: 70%;
+  }
+  .items2 .menuitemfooter .carticon {
+    margin: 0 auto;
+    width: 50px;
+    height: 50px;
+    background-color: rgb(8, 8, 7);
+  }
+  .items2 .menuitemfooter .botonCarrito {
+    border: none;
+    background-color: #b0171f;
+    text-align: center;
+    cursor: pointer;
+    padding: 15px 22px;
+    margin-top: 5px;
+    margin-bottom: 5px;
+    border-radius: 20px;
+    color: white;
+    text-decoration: none;
+    font-size: 15px;
+    font-weight: 600;
+  }
+  .items2 .menuitemfooter .botonCarrito i {
+    margin-right: 5px;
+    font-size: 20px;
+  }
+  /*
+  ========================
+        BUTTON THREE
+  ========================
+  */
+  .btn {
+    line-height: 50px;
+    height: 0px;
+    text-align: center;
+    width: 94%;
+    cursor: pointer;
+  }
+  .btn-three {
+    color: #fff;
+    transition: all 0.5s;
+    position: relative;
+  }
+  
+  .btn-three::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+    background-color: rgba(255, 255, 255, 0.1);
+    transition: all 0.3s;
+  }
+  
+  .btn-three:hover::before {
+    opacity: 0;
+    transform: scale(0.5, 0.5);
+  }
+  
+  .btn-three::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+    opacity: 0;
+    transition: all 0.3s;
+    border: 1px solid rgba(255, 255, 255, 0.5);
+    transform: scale(1.2, 1.2);
+  }
+  
+  .btn-three:hover::after {
+    opacity: 1;
+    transform: scale(1, 1);
+  }
+  /*
+  ========================
+       FIN BUTTON THREE
+  ========================
+  */
+  
+  /*
+  INPUT NUMBER CSS
+  */
+  input[type="number"] {
+    -webkit-appearance: textfield;
+    -moz-appearance: textfield;
+    appearance: textfield;
+  }
+  
+  input[type="number"]::-webkit-inner-spin-button,
+  input[type="number"]::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+  }
+  
+  .number-input {
+    border: 0;
+    display: inline-flex;
+  }
+  
+  .number-input,
+  .number-input * {
+    box-sizing: border-box;
+  }
+  
+  .number-input button {
+    outline: none;
+    -webkit-appearance: none;
+    background-color: transparent;
+    border: none;
+    align-items: center;
+    justify-content: center;
+    width: 2rem;
+    height: 2rem;
+    cursor: pointer;
+    margin: 0;
+    position: relative;
+    box-shadow: 0px 0px 1px #964b0e;
+    background-color: rgba(226, 222, 222, 0.28);
+    border-radius: 50%;
+  }
+  
+  .number-input button:before,
+  .number-input button:after {
+    display: inline-block;
+    position: absolute;
+    content: "";
+    width: 1rem;
+    height: 2px;
+    background-color: #964b0e;
+    transform: translate(-50%, -50%);
+  }
+  .number-input button.plus:after {
+    transform: translate(-50%, -50%) rotate(90deg);
+  }
+  
+  .number-input input[type="number"] {
+    font-family: sans-serif;
+    max-width: 4rem;
+    padding: 0.4rem;
+    border: none;
+    border-width: 0 2px;
+    font-size: 2rem;
+    height: 2rem;
+    font-weight: bold;
+    text-align: center;
+    color: #964b0e;
+  }
+  @media only screen and (max-width: 1200px) {
+    .item-menu {
+      min-height: 230px;
+    }
+    /* ESTO ES PARA LA PAGINACION, QUE NO SE MUEVA*/
+    .contenedor-item-menu {
+      min-height: 65vh;
+      padding-bottom: 5%;
+      /* min-height: calc(750px - 10px);*/
+     /* border: 3px solid green;*/
+    }
+  }
+  
+  
+  
+  @media only screen and (max-width: 1075px) {
+    .contenedor {
+      grid-template-columns: repeat(3, 1fr);
+      max-width: 1365px;
+    }
+  }
+  
+  @media only screen and (max-width: 900px) {
+    .contenedor {
+      grid-template-columns: repeat(2, 1fr);
+      max-width: 700px;
+    }
+    .items2{
+      width: 230px;
+    }
+  }
+  
+  /deep/ @media (min-width: 576px) {
+    .custom-class .modal-dialog {
+      max-width: 721px !important;
+      margin: 1.75rem auto;
+    }
+  
+  }
+  /deep/ @media (max-width: 720px) {
+    .custom-class .modal-dialog {
+      max-width: 518px !important;
+      margin: 1.75rem auto;
+    }
+    .custom-class .modal-content {
+      width: 100% !important;
+    }
+    .product-img{
+      float: left;
+      height: 140px !important;
+      width: 516px !important;
+    }
+  }
+  
+  @media only screen and (max-width: 414px) {
+    .elemento-filtro{
+      width: 105px;
+    }
+    .item-menu{
+      width: 170px;
+    }
+  }
+  @media only screen and (max-width: 411px) {
+    .elemento-filtro{
+      width: 105px;
+    }
+    .item-menu{
+      width: 180px;
+    }
+  }
+  @media only screen and (max-width: 375px) {
+    .elemento-filtro{
+      width: 105px;
+    }
+    .item-menu{
+      width: 150px;
+    }
+  }
+  @media only screen and (max-width: 360px) {
+    .elemento-filtro{
+      width: 105px;
+    }
+    .item-menu{
+      width: 150px;
+    }
+  }
+  @media only screen and (max-width: 320px) {
+    .elemento-filtro{
+      width: 90px;
+      height: 140px;
+    }
+    .item-menu{
+      width: 130px;
+    }
+    .img-filtro{
+      width: 95px;
+      height: 95px;
+    }.items2 .menuitemfooter .botonCarrito{
+    padding: 10px 22px;
+       }
+  }
+  @media only screen and (max-width: 280px) {
+    .contenedor {
+      grid-template-columns: repeat(1, 1fr);
+      max-width: 700px;
+    }
+    .contenedor-filtro{
+      gap: 0px;
+    }
+    .elemento-filtro{
+      width: 70px;
+      height: 120px;
+    }
+    .item-menu{
+      width: 200px;
+    }
+    .img-filtro{
+      width: 80px;
+      height: 80px;
+    }.items2 .menuitemfooter .botonCarrito{
+       padding: 10px 22px;
+     }
+  }
+  

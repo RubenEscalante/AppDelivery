@@ -7,7 +7,9 @@ import { ProductfilterService } from '../../../services/productfilter.service';
   styleUrls: ['./filtros.component.css', '../menu.component.css'],
 })
 export class FiltrosComponent implements OnInit {
+  
   valorFiltro: string = "pupusas";
+
   constructor(private filterService: ProductfilterService) {}
 
   ngOnInit(): void {}
@@ -16,4 +18,5 @@ export class FiltrosComponent implements OnInit {
     this.filterService.enviarValorFiltro(value);
     this.valorFiltro = value;
   }
+ 
 }

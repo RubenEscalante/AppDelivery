@@ -20,6 +20,8 @@ import {environment} from '../../environments/environment';
 import {AngularFireDatabaseModule} from '@angular/fire/database';
 import { FiltromasaPipe } from './Pipes/filtromasa.pipe';
 
+import { MenuSoloPupusasComponent } from './components/menu-solo-pupusas/menu-solo-pupusas.component';
+
 
 
 @NgModule({
@@ -31,7 +33,8 @@ import { FiltromasaPipe } from './Pipes/filtromasa.pipe';
     ProductoModalComponent,
     FiltroPipe,
     PaginacionPipe,
-    FiltromasaPipe
+    FiltromasaPipe,
+    MenuSoloPupusasComponent
 
 
   ],
