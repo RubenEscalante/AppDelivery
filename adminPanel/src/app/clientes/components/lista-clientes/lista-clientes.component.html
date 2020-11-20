@@ -1,0 +1,21 @@
+<h2>
+    Clientes registrados
+</h2>
+<br>
+<table class="table table-bordered table-sm ">
+    <thead class="thead-light">
+        <tr>
+            <th>ID</th>
+            <th>Nombre</th>
+            <th>Correo Electronico</th>  
+            
+        </tr>
+    </thead> 
+    <tbody *ngFor="let cliente of listaClientes">    
+        <tr>
+            <td>{{cliente.id}}</td>
+            <td>{{cliente.nombre}}</td>
+            <td>{{cliente.email}}</td>  
+        </tr>
+    </tbody>
+</table>
