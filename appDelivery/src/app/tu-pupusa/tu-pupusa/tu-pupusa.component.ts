@@ -7,12 +7,14 @@ import {FormBuilder, FormGroup, FormArray, FormControl, Validators} from '@angul
 import {Cartitems} from '../../menu/models/cartitems';
 import {MenucartService} from '../../menu/services/menucart.service';
 import {ToastrService} from 'ngx-toastr';
+import {ProductfilterService} from '../../menu/services/productfilter.service';
+import {Router} from '@angular/router';
 
 
 @Component({
   selector: 'app-tu-pupusa',
   templateUrl: './tu-pupusa.component.html',
-  styleUrls: ['./tu-pupusa.component.css', '../../menu/components/menu/menu.component.css']
+  styleUrls: ['./tu-pupusa.component.css', '../../menu/components/menu/menu.component.css', '../../menu/components/menu/lista-productos/lista-productos.component.css']
 })
 
 
@@ -30,7 +32,8 @@ export class TuPupusaComponent implements OnInit {
     masa: ['Arroz']
   });
 
-  constructor(private productListService: ProductlistService, private fb: FormBuilder, public menuCartservice: MenucartService, private toastr: ToastrService) {
+  constructor(private productListService: ProductlistService, private fb: FormBuilder, public menuCartservice: MenucartService, private toastr: ToastrService,private filterService: ProductfilterService,
+              private router: Router) {
     this.form = this.fb.group({
       checkArray: this.fb.array([], [Validators.required])
     });
@@ -195,6 +198,16 @@ export class TuPupusaComponent implements OnInit {
           masa: this.productoForm.value.masa
         });
       this.getCosto();
+    }
+  }
+  cambiarfiltro(value: string) {
+    this.filterService.enviarValorFiltro(value);
+    this.router.navigate(['menu/categorias'], { queryParams: { filtro: value } });
+    if (value === 'maiz') {
+      this.router.navigate(['menu/categorias'], { queryParams: { filtro: 'pupusas', valorfiltroMasa: value } });
+    }
+    if (value === 'arroz') {
+      this.router.navigate(['menu/categorias'], { queryParams: { filtro: 'pupusas', valorfiltroMasa: value } });
     }
   }
 }

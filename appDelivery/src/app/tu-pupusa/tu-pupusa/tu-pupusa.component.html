@@ -1,4 +1,38 @@
 <!-- NAV CENTRAL -->
+<!--Barra central-->
+<nav class="navbar navbar-expand-sm navbar-light bg-light" >
+  <div class="mx-auto d-sm-flex d-block flex-sm-nowrap">
+    <div class="text-center">
+      <ul class="navbar-nav">
+        <li   >
+          <a class="nav-text nav-link" (click)="cambiarfiltro('pupusas')">Todas las pupusas</a>
+        </li>
+        <li (click)="cambiarfiltro('arroz')" >
+          <a class="nav-text nav-link" >Solo de arroz</a>
+        </li>
+        <li  (click)="cambiarfiltro('maiz')">
+          <a class="nav-text nav-link" >Solo de maiz</a>
+        </li>
+        <li class="nav-item active" >
+          <a class="nav-text nav-link"  (click)="cambiarfiltro('bebidas')">Bebidas</a>
+        </li>
+        <li class="nav-item active">
+          <a class="nav-text nav-link"  (click)="cambiarfiltro('postres')">Postres</a>
+        </li>
+        <li class="nav-item active filtromasaactive">
+          <a class="nav-text nav-link" routerLink="/personalizar">Arma tu pupusa</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+<!--/Barra central-->
+
+
+
+
+
+
 
 <div class="contenedorP">
   <div class="contenedorPersonalizar">
