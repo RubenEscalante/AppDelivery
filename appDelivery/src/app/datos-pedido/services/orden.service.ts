@@ -15,8 +15,8 @@ export class OrdenService {
   constructor(private firebase:AngularFireDatabase) { 
     this.usuario = JSON.parse(localStorage.getItem('user'));
     this.ordenesList = this.firebase.list('/ordenes');
-    // this.usuarioList = this.firebase.list('/clientes/'+this.usuario.uid+'/historial');
-    this.usuarioList = this.firebase.list('/clientes/'+this.usuario.uid);
+    this.usuarioList = this.firebase.list('/clientes/'+this.usuario.uid+'/historial');
+    // this.usuarioList = this.firebase.list('/clientes/'+this.usuario.uid);
   }
 
   guardarOrden(orden:Orden){
@@ -30,20 +30,21 @@ export class OrdenService {
       subtotal: orden.subtotal,
       telefono: orden.telefono,
       total: orden.total,
-      usuario: orden.usuario
+      usuario: orden.usuario,
+      userId: this.usuario.uid 
     })
   }
 
-  guardarOrdenHistorial(ordenes:OrdenHistorial[]){
-    // this.usuarioList.set(orden.id,{
-    //   id: orden.id,
-    //   estado: orden.estado,
-    //   fechaCreacion: orden.fechaCreacion,
-    //   direccionEnvio: orden.direccionEnvio,
-    //   productos: orden.productos,
-    //   total: orden.total
-    // });
-    this.usuarioList.update('historial',ordenes);
+  guardarOrdenHistorial(orden:OrdenHistorial){
+    this.usuarioList.set(orden.id,{
+      id: orden.id,
+      estado: orden.estado,
+      fechaCreacion: orden.fechaCreacion,
+      direccionEnvio: orden.direccionEnvio,
+      productos: orden.productos,
+      total: orden.total
+    });
+    // this.usuarioList.update('historial',ordenes);
   }
 
   //Esto me salvó la vida, elimina todo el nodo si no especificas un elemento hijo

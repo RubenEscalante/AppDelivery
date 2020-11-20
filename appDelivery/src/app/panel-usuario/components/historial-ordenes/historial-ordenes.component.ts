@@ -37,7 +37,7 @@ export class HistorialOrdenesComponent implements OnInit {
       this.historial = [];
       item.forEach(element =>{
         let x = element.payload.toJSON();
-        this.historial.push(this.formatearDatos(x) as OrdenHistorial);
+        this.historial.unshift(this.formatearDatos(x) as OrdenHistorial);
       });
 
       this.ordenSeleccionada = this.historial[0];
