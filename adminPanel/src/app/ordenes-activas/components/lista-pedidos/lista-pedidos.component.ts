@@ -35,7 +35,7 @@ export class ListaPedidosComponent implements OnInit {
       respuesta.forEach(element=>{
         let x = element.payload.toJSON();
         x["id"] = element.key;  
-        this.listaPedidos.push(x as Orden) 
+        this.listaPedidos.unshift(x as Orden) 
       })
       this.global.numeroOrdenes=this.listaPedidos.length;
     },
