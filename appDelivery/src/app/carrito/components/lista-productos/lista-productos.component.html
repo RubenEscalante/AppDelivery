@@ -16,7 +16,7 @@
         
                     <div *ngIf="producto.categoria == 'pupusas'" class="row py-2">
                         <div class="col-3 align-self-center">
-                            <img src="../../../../assets/img/placeholder-img.jpg" alt="..." class="img-fluid">
+                            <img [src]="producto.imagen" alt="..." class="img-fluid">
                         </div>
                         <div class="col-5">
                             <div class="row">
