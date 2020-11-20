@@ -8,7 +8,7 @@ import { Producto } from '../../models/producto';
 //Servicio
 import { CarritoService } from '../../services/carrito.service';
 import { MenucartService } from '../../../menu/services/menucart.service';
- 
+
 @Component({
   selector: 'app-lista-productos',
   templateUrl: './lista-productos.component.html',
@@ -28,7 +28,8 @@ export class ListaProductosComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    this.productos = this.carritoService.get('cart'); 
+    this.productos = this.carritoService.get('cart');
+    console.log(this.productos);
     this.obtenerTotal();
   }
 
@@ -42,7 +43,7 @@ export class ListaProductosComponent implements OnInit {
     }
     this.carritoVacio.emit(false);
   }*/
-  
+
   this.guardarCambios();
   this.total = this.menuServicio.getCartTotal();
   if(this.productos == null || this.productos.length == 0){
@@ -51,7 +52,7 @@ export class ListaProductosComponent implements OnInit {
     this.carritoVacio.emit(false);
   }
   this.enviarTotal.emit(this.total);
-  
+
 }
 
 //Elimina un solo producto
