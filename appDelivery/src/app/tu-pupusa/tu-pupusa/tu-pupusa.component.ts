@@ -128,7 +128,7 @@ export class TuPupusaComponent implements OnInit {
         preferencias,
         costo: this.costoUnidad,
         cantidad: myvalue.value.quantity,
-        imagen: 'https://www.lonestarpark.com/wp-content/uploads/2019/04/image-placeholder-500x500.jpg'
+        imagen: 'https://www.196flavors.com/wp-content/uploads/2013/06/pupusa-3-FP.jpg'
       };
       this.menuCartservice.addToCar(mycart);
       this.toastr.success('Producto agregado al carrito', 'Exito', {
