@@ -2,6 +2,10 @@ import {Component, HostListener, OnInit} from '@angular/core';
 import {ProductlistService} from '../../../services/productlist.service';
 import {ProductfilterService} from '../../../services/productfilter.service';
 import {Products} from 'src/app/menu/models/products';
+ 
+
+import { ActivatedRoute, Router } from '@angular/router';
+
 
 @Component({
   selector: 'app-lista-productos',
@@ -18,7 +22,9 @@ export class ListaProductosComponent implements OnInit {
 
   constructor(
     private productListService: ProductlistService,
-    private filterService: ProductfilterService
+    private filterService: ProductfilterService,
+    private route: ActivatedRoute
+    
   ) {
   }
   @HostListener('window:resize', ['$event'])
@@ -29,7 +35,10 @@ export class ListaProductosComponent implements OnInit {
     } else {
       this.page_size = 8;
     }
-  } /*Al redimenzionar*/
+  } /*Al redimensionar*/
+
+
+
   ngOnInit(): void {
     if (document.documentElement.clientWidth < 1059)
     {
@@ -37,11 +46,18 @@ export class ListaProductosComponent implements OnInit {
     }else{
       this.page_size = 8;
     }
-    /*Al cargar o entrar al modulo*/
-    if (!this.valorfiltro) {
-      this.valorfiltro = 'pupusas';
-      this.valorfiltroMasa = 'ambas';
-    }
+
+    this.route
+      .queryParams      
+      .subscribe(params => { 
+        this.valorfiltro = params['filtro'] || 'pupusas';
+     });
+     
+ 
+    this.valorfiltroMasa = 'ambas'; 
+
+    
+
     this.filterService.enviarMensajeObservable.subscribe((data) => {
       this.valorfiltro = data;
       this.page_number = 1;
@@ -72,8 +88,15 @@ export class ListaProductosComponent implements OnInit {
 
   }
 
+   
   valorFiltroMasa(prop) {
+    this.cambiarfiltro('pupusas');
     this.valorfiltroMasa = prop;
+  }
+
+  cambiarfiltro(value: string) {
+    this.filterService.enviarValorFiltro(value);
+    this.valorfiltro = value;
   }
 
   conditionalProduct() {

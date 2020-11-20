@@ -57,15 +57,17 @@ NUEVOS ESTILOS DE MENU
 
 .contenedor-filtro {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 20px;
+  grid-template-columns: repeat(4, 2fr);
+  gap: 80px;
   cursor: pointer;
   margin: 0px auto;
-  margin-bottom: 20px;
-  max-width: 500px;
+  max-width: 800px;
   min-width: auto;
   height: auto;
-  /* background-color: tomato;*/
+
+
+  padding-bottom: 100px;
+ /*background-color: tomato; */
 }
 .elemento-filtro {
   position: relative;
@@ -85,8 +87,8 @@ NUEVOS ESTILOS DE MENU
 .img-filtro {
   position: relative;
   margin: 0 auto;
-  width: 110px;
-  height: 110px;
+  width: 150px;
+  height: 150px;
   border-radius: 200px;
   border: 2px solid rgba(0, 0, 0, 0.1);
   box-shadow: 5px 5px 8px -5px rgba(0, 0, 0, 0.75);
@@ -96,9 +98,9 @@ NUEVOS ESTILOS DE MENU
   position: absolute;
   bottom: 15px;
 }
-.footer-filtro {
+.footer-filtro { 
   position: absolute;
-  bottom: 0;
+  bottom: 40;
   width: 100%;
   text-align: center;
   /*background-color: thistle;*/
@@ -270,17 +272,20 @@ margin: 0px auto;
 }
 .items2 .menuitemfooter .botonCarrito {
   border: none;
-  background-color: #b0171f;
+  background-color: #008AC2;
   text-align: center;
   cursor: pointer;
-  padding: 15px 22px;
-  margin-top: 5px;
-  margin-bottom: 5px;
+  padding: 8px 35px;
+  margin-top: 15px;
+  margin-bottom: 15px;
   border-radius: 20px;
   color: white;
   text-decoration: none;
-  font-size: 15px;
-  font-weight: 600;
+  font-size: 14px;
+  vertical-align: middle;
+  font-weight: 600; 
+  letter-spacing: 1.5px;
+  
 }
 .items2 .menuitemfooter .botonCarrito i {
   margin-right: 5px;
@@ -535,3 +540,6 @@ input[type="number"]::-webkit-outer-spin-button {
      padding: 10px 22px;
    }
 }
+
+
+
