@@ -257,6 +257,9 @@ margin: 0px auto;
   height: auto;
   /*background-color: darkgoldenrod;*/
 }
+.itemsfooters{
+ /* margin-left: 50px;*/
+}
 .items2 .item-menu-img {
   display: flex;
   justify-content: center;
@@ -279,7 +282,7 @@ margin: 0px auto;
   background-color: #008AC2;
   text-align: center;
   cursor: pointer;
-  padding: 8px 35px;
+  padding: 8px 15px;
   margin-top: 15px;
   margin-bottom: 15px;
   border-radius: 20px;
