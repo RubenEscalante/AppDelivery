@@ -1,3 +1,83 @@
+<div class="item-menu" [class.items2]="!conditionalProduct()">
+  <div class="item-menu-cabecera">
+    <strong><p> {{ productos.costo | currency: "USD" }}</p></strong>
+    <h2> {{ productos.nombre }}</h2>
+  </div>
+  <div class="item-menu-img">
+    <img
+      src="{{productos.imagen === undefined || productos.imagen === null || productos.imagen === 'null'  ? 'https://www.lonestarpark.com/wp-content/uploads/2019/04/image-placeholder-500x500.jpg' : productos.imagen.url}}"
+      alt="Avatar"
+    />
+
+    <div class="item-menu-img-detalles" [class.nohover]="!conditionalProduct()">
+      <div class="btn btn-three" (click)="openModal()">
+        <span>ORDENAR</span>
+      </div>
+    </div>
+  </div>
+  <div *ngIf="!conditionalProduct(); then showPlus "></div>
+  <ng-template #showPlus>
+  <div class="menuitemfooter">
+    <div class="itemsfooters">
+      <form [formGroup]="productoForm" (ngSubmit)="onSubmit()">
+      <div class="number-input">
+        <button
+          (click)="restarcantidad()" type="button"
+        ></button>
+        <input
+          formControlName="quantity"
+          class="quantity"
+          min="1"
+          max="30"
+          name="quantity"
+          value="1"
+          type="number"
+          readonly
+        />
+        <button
+          (click)="aumentarcantidad()" class="plus" type="button"
+        ></button>
+      </div>
+      <div>
+        <button type="submit" class="botonCarrito">
+          <i class="fa fa-cart-plus"></i>AGREGAR
+        </button>
+      </div>
+      </form>
+    </div>
+  </div>
+  </ng-template>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!--
 
 <div [class.menuitems]="conditionalProduct()" [class.items2]="!conditionalProduct()">
   <div class="menuItemsHeader">
@@ -42,7 +122,7 @@
 
 </div>
 
-
+-->
 
 
 

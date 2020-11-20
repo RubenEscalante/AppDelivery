@@ -18,6 +18,8 @@ const routes: Routes = [
     children: [
       { path: 'menu',
         loadChildren: ()=> import('../menu/menu.module').then(mod => mod.MenuModule)},
+      { path: 'personalizar',
+        loadChildren: ()=> import('../tu-pupusa/tu-pupusa.module').then(mod => mod.TuPupusaModule)},
       { path: 'carrito',
         loadChildren: ()=> import('../carrito/carrito.module').then(mod => mod.CarritoModule),
         canActivateChild: [AuthGuard]},
@@ -38,7 +40,7 @@ const routes: Routes = [
         canActivateChild: [SessionGuard]}
     ]
   }];
-   
+
 
 @NgModule({
   imports: [RouterModule.forChild(routes)],

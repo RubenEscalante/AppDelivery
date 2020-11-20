@@ -1,5 +1,6 @@
 import { Component, OnInit, EventEmitter, Output } from '@angular/core';
-import { FormGroup, FormControl, Validators, ValidationErrors } from '@angular/forms'
+import { FormGroup, FormControl, Validators, ValidationErrors } from '@angular/forms';
+import { NgbModal,  ModalDismissReasons} from '@ng-bootstrap/ng-bootstrap';
 import { Direccion } from 'src/app/datos-pedido/models/direccion';
 
 @Component({
@@ -20,7 +21,9 @@ export class DireccionComponent implements OnInit {
 
   @Output() enviarDireccion = new EventEmitter();
 
-  constructor() { }
+  constructor(
+    public modal:NgbModal
+  ) { }
 
   ngOnInit(): void {
   }
@@ -41,5 +44,16 @@ export class DireccionComponent implements OnInit {
     }else{
       return null;
     }
+  }
+
+  guardarDireccion(datosDireccion){
+    this.direccion = datosDireccion;
+    console.log(this.direccion);
+    this.enviarDireccion.emit(this.direccion);
+    // this.toastr.success('Direccion registrada exitosamente', 'Direccion Registrada',{
+    //   progressBar:true,
+    //   timeOut:1500,
+    //   closeButton:true
+    // })
   }
 }

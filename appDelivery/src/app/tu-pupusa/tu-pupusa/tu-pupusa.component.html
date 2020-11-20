@@ -1,0 +1,175 @@
+<!-- NAV CENTRAL -->
+<!--Barra central-->
+<nav class="navbar navbar-expand-sm navbar-light bg-light" >
+  <div class="mx-auto d-sm-flex d-block flex-sm-nowrap">
+    <div class="text-center">
+      <ul class="navbar-nav">
+        <li   >
+          <a class="nav-text nav-link" (click)="cambiarfiltro('pupusas')">Todas las pupusas</a>
+        </li>
+        <li (click)="cambiarfiltro('arroz')" >
+          <a class="nav-text nav-link" >Solo de arroz</a>
+        </li>
+        <li  (click)="cambiarfiltro('maiz')">
+          <a class="nav-text nav-link" >Solo de maiz</a>
+        </li>
+        <li class="nav-item active" >
+          <a class="nav-text nav-link"  (click)="cambiarfiltro('bebidas')">Bebidas</a>
+        </li>
+        <li class="nav-item active">
+          <a class="nav-text nav-link"  (click)="cambiarfiltro('postres')">Postres</a>
+        </li>
+        <li class="nav-item active filtromasaactive">
+          <a class="nav-text nav-link" routerLink="/personalizar">Arma tu pupusa</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+<!--/Barra central-->
+
+
+
+
+
+
+
+<div class="container contenedor-padre">
+  <div class="contenedorPersonalizar">
+    <div class="headerContenedor">
+      <h2>ARMA TU PUPUSA </h2> <span class="precioTotalHeader"><h2> TOTAL: {{costoTotal.toFixed(2) | currency: "USD"}}</h2></span>
+    </div>
+    <div class="cajaIngredientes">
+      <div class="cajaIngredientesHeader">
+        <h4>Ingredientes <span class="numCheck"><span [className]="numChecked < 2 ? 'textRed': 'textGreen'" >{{this.numChecked}}/4 </span></span></h4>
+      </div>
+      <div class="cajaIngredientesLista">
+        <form [formGroup]="form" (ngSubmit)="submitForm()" novalidate>
+          <div *ngFor="let data of Ingredientes; let i=index" class="inputGroup">
+
+            <input type="checkbox"  id="{{data.id}}"  [value]="data.id" (change)="onCheckboxChange($event)"   />
+            <label for="{{data.id}}">{{data.nombre}} -  {{data.costo | currency: "USD"}}</label>
+
+
+          </div>
+        </form>
+      </div>
+    </div>
+    <div class="cajaDatos">
+      <form [formGroup]="productoForm" (ngSubmit)="submitForm()">
+        <div class="headerCajaDatos middle" >
+          <div class="masa">
+            <label>
+              <input type="radio"    formControlName="masa" value="Arroz" class="option-input radio" checked/>
+              <div class=" box">
+                <span >Arroz</span>
+              </div>
+            </label>
+            <label>
+              <input type="radio" formControlName="masa" value="Maiz"  class="option-input radio" checked/>
+              <div class="box">
+                <span>Maiz</span>
+              </div>
+            </label>
+          </div>
+          <div class="cantidad">
+            <h2>Cantidad: </h2>
+            <div class="number-input">
+              <button
+                (click)="restarcantidad()" type="button"
+              ></button>
+              <input
+                formControlName="quantity"
+                class="quantity"
+                min="1"
+                max="30"
+                name="quantity"
+                value="1"
+                type="number"
+                readonly
+              />
+              <button
+                (click)="aumentarcantidad()" class="plus" type="button"
+              ></button>
+            </div>
+          </div>
+        </div>
+
+        <div class="datosIngredientes">
+          <p class="error" *ngIf="this.form.controls['checkArray'].errors?.required">
+            Debes elegir minimo 2 ingredientes y máximo 4.
+          </p>
+          <div *ngFor="let data of itemsArmaTuPupusa; let i=index" class="itemsIngredientes">
+
+              <p>{{data.nombre}} -{{data.costo | currency: "USD"}}</p>
+
+          </div>
+        </div>
+        <div class="footerContenedor">
+          <input class="botonInput" type="submit" value="Agregar al carrito" >
+        </div>
+      </form>
+
+    </div>
+  </div>
+</div>
+
+
+
+<!--
+
+<div class="contenedorPersonalizar">
+  <h1>Arma tu pupusa</h1>
+
+    <form [formGroup]="form" (ngSubmit)="submitForm()" novalidate>
+      <div *ngFor="let data of Ingredientes; let i=index">
+        <label>
+          <input type="checkbox" [value]="data.id" (change)="onCheckboxChange($event)" />
+          {{data.nombre}} -  {{data.costo | currency: "USD"}}
+        </label>
+      </div>
+      <p class="error" *ngIf="this.form.controls['checkArray'].errors?.required">
+        Checkbox is required, select atleast one value.
+      </p>
+
+    </form>
+
+
+
+  <div id="add">
+    <div *ngFor="let data of itemsArmaTuPupusa; let i=index">
+      <label>
+        <p>{{data.nombre}} -{{data.costo | currency: "USD"}}</p>
+      </label>
+    </div>
+    <p>Unidad: {{costoUnidad.toFixed(2)}} Total: {{costoTotal.toFixed(2)}}</p>
+    <form [formGroup]="productoForm" (ngSubmit)="submitForm()">
+      <p>Masa</p>
+      <input type="radio" formControlName="masa" value="Arroz" > Arroz
+      <input type="radio" formControlName="masa" value="Maiz"> Maiz
+      <div class="number-input">
+        <button
+          (click)="restarcantidad()" type="button"
+        ></button>
+        <input
+          formControlName="quantity"
+          class="quantity"
+          min="1"
+          max="30"
+          name="quantity"
+          value="1"
+          type="number"
+          readonly
+        />
+        <button
+          (click)="aumentarcantidad()" class="plus" type="button"
+        ></button>
+      </div>
+      <div>
+        <input type="submit" value="Agregar al carrito" >
+      </div>
+    </form>
+
+  </div>
+</div>
+-->

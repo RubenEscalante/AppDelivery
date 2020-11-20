@@ -1,30 +1,63 @@
-<div class="filtrocontent">
-  <div class="filtroElements">
-    <div class="filtroitems" (click)="cambiarfiltro('pupusas')" [class.filtroactive]="valorFiltro == 'pupusas'">
-      <div class="imgfiltro">
-        <img src="assets/img/pupusafiltro.png" class="imgf" alt="" srcset="" />
-      </div>
-      <div class="titlefiltro">
-        <h1>Pupusas</h1>
-      </div>
-    </div>
-    <div class="filtroitems" (click)="cambiarfiltro('bebidas')" [class.filtroactive]="valorFiltro == 'bebidas'">
-      <div class="imgfiltro">
-        <img src="assets/img/bebidafiltro.png" class="imgb" alt="" srcset="" />
-      </div>
-      <div class="titlefiltro">
-        <h1>Bebidas</h1>
-      </div>
-    </div>
-    <div class="filtroitems" (click)="cambiarfiltro('postres')" [class.filtroactive]="valorFiltro == 'postres'">
-      <div class="imgfiltro">
-       <img src="assets/img/postrefiltro.png" class="imgc" alt="" srcset="" />
-     </div>
-     <div class="titlefiltro">
-       <h1>Postres</h1>
-     </div>
-   </div>
- </div>
-</div>
+<div class="contenedor-filtro">
 
+  <!--Pupusas-->
+  <div class="elemento-filtro" routerLink='categorias'>
+    <div class="img-filtro" >
+      <img
+        src="assets/img/pupusafiltro.png"
+        alt="imgFiltro"
+        srcset=""
+        style="width: 100%"
+      />
+    </div>
+    <div class="footer-filtro"><h1>Pupusas</h1></div>
+  </div>
+
+
+
+  <!--Bebidas-->
+  <div class="elemento-filtro"   (click)="cambiarfiltro('bebidas')">
+    <div class="img-filtro"  >
+      <img
+        src="assets/img/bebidafiltro.png"
+        alt="imgFiltro"
+        srcset=""
+        style="width: 100%"
+      />
+    </div>
+
+    <div class="footer-filtro"><h1>Bebidas</h1></div>
+  </div>
+
+
+  <!--Postres-->
+  <div class="elemento-filtro"  (click)="cambiarfiltro('postres')">
+    <div class="img-filtro "  >
+      <img
+        src="assets/img/postrefiltro.png"
+        alt="imgFiltro"
+        class="imgc"
+        srcset=""
+        style="width: 100%"
+      />
+    </div>
+
+    <div class="footer-filtro"><h1>Postres</h1></div>
+  </div>
+
+  <div class="elemento-filtro" [routerLink]="'/personalizar'" >
+    <div class="img-filtro "  >
+      <img
+        src="assets/img/armatupupusa.png"
+        alt="imgFiltro"
+        class="imgc"
+        srcset=""
+        style="width: 100%"
+      />
+    </div>
+
+    <div class="footer-filtro"><h1>Arma tu pupusa</h1></div>
+  </div>
+
+</div>
 

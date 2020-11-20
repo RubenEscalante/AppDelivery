@@ -1,3 +1,18 @@
+
+<nav class="navbar navbar-expand-sm navbar-light bg-light">
+  <div class="mx-auto d-sm-flex d-block flex-sm-nowrap">
+      <div class="text-center">
+          <ul class="navbar-nav ">
+              <li class="nav-item active">
+                  <a class="nav-text nav-link" routerLink="/menu">VOLVER AL MENÚ</a>
+              </li> 
+          </ul>
+      </div>
+  </div>
+</nav> 
+
+
+
 <div class="componente">
   <!--<div *ngIf="confirmarOrden" class="container">-->
   <div *ngIf="confirmarOrden" class="container">
@@ -9,7 +24,7 @@
 
         <div class="row shadow bg-white rounded">
           <div class="col">
-            <div class="row pl-3 mt-3">            
+            <div class="row pl-3 mt-3">
               <h4>
                 <i class="fa fa-user mr-2" aria-hidden="true"></i>Datos del cliente
               </h4>
@@ -29,7 +44,8 @@
               </div>
               <div class="col-6 mb-3">
                 <label for="telefono">Teléfono</label>
-                <input type="tel" class="form-control" id="telefono" [value]="usuario.telefono" pattern="[0-9]{4}-[0-9]{4}" required readonly>
+                <input type="tel" class="form-control" id="telefono" [value]="usuario.telefono"
+                  pattern="[0-9]{4}-[0-9]{4}" required readonly>
               </div>
             </div>
           </div>
@@ -44,25 +60,48 @@
               </h4>
             </div>
             <hr class="mt-0">
-            <form [formGroup]="formularioDatos" class="row justify-content-center direcciones scrollbar scrollbar-color thin">
+            <form [formGroup]="formularioDatos"
+              class="row justify-content-center direcciones scrollbar scrollbar-color thin">
               <!--Direcciones-->
               <div class="col-10" *ngIf="usuario.direcciones.length > 0; else sinDirecciones">
-                <div *ngFor="let direccion of usuario.direcciones" class="row py-2">
-                  <div class="card w-100">
+                <div *ngFor="let direccion of usuario.direcciones" class="direccion mx-2 my-2">
+                  <div class="card">
                     <div class="card-body">
-                      <h5 class="card-title">{{direccion.nombre}}</h5>
                       <div class="row">
-                        <div class="col-8">
-                          <p class="d-inline-flex card-text">{{direccion.direccion+", "+direccion.municipio+", "+direccion.departamento}}</p>
+                        <div class="col-1 mr-3">
+                          <i class="fa fa-map-marker fa-3x direccion-i" aria-hidden="true"></i>
                         </div>
-                        <div class="col-4">
-                          <input class="d-inline-flex p-2 form-check-input" type="radio" name="direccion" [value]="direccion" formControlName="direccion" required>
-                          <label>Elegir esta dirección</label>
+                        <div class="col-7">
+                          <div class="row h-25">
+                            <h5 class="card-title direccion-nombre">
+                              {{direccion.nombre}}
+                            </h5>
+                          </div>
+                          <div class="row h-25 departamento-municipio">
+                            <p class="mt-2 mb-0"><small class="text-muted">{{direccion.departamento}} |
+                                {{direccion.municipio}}</small> </p>
+                          </div>
+                        </div>
+                        <div class="col-3">
+                          <div class="row justify-content-end">
+                            <a type="button" class="card-link-secondary mr-3 " (click)="eliminarDireccion(direccion)">
+                              <i class="fa fa-trash mr-1" aria-hidden="true"></i>Eliminar
+                            </a>
+                          </div>
                         </div>
                       </div>
+                      <p class="card-text">{{direccion.direccion}}</p>
+
+                      <div class="row justify-content-end">
+                        <div class="col-8 ">
+                          <label for="direccion" class="ml-5">Elegir esta dirección</label>
+                          <input class="form-check-input ml-4" type="radio" name="direccion" id="direccion" [value]="direccion" formControlName="direccion" required>
+                        </div>
+                      </div>
+
                     </div>
                   </div>
-                </div>              
+                </div>
               </div>
               <!--Direcciones-->
 
@@ -71,10 +110,10 @@
                   <p class="rounded py-2 sin-direcciones">No posee direcciones registradas</p>
                 </div>
               </ng-template>
-              
+
             </form>
 
-            
+
 
             <!--Modal para agregar direcciones-->
             <div class="row justify-content-center">
@@ -91,16 +130,19 @@
         <div class="p-3 shadow bg-white rounded">
           <app-carrito></app-carrito>
         </div>
-      
-        <div class="row justify-content-between mt-5">
-          <button class="btn" routerLink="/menu" type="button">Regresar al menú</button>
-          <button class="btn" routerLink="/carrito" type="button">Regresar al carrito</button>
-          <button class="btn" type="submit" (click)="procesarOrden(formularioDatos.value)"  [disabled]="formularioDatos.invalid">Confirmar compra</button>
+
+        <div class="row mt-5"> 
+          <div class="ml-auto">
+            <button class="btn mr-3" routerLink="/carrito" type="button">Regresar al carrito</button>
+          <button class="btn" type="submit" (click)="procesarOrden(formularioDatos.value)"
+            [disabled]="formularioDatos.invalid">Confirmar compra</button>
+          </div>
+          
         </div>
       </div>
     </div>
 
-    
+
   </div>
 
   <!--<div *ngIf="ordenProcesada" class="container">-->
@@ -123,10 +165,11 @@
         <hr>
         <div class="row">
           <p>Gracias por preferirnos. Puede revisar el estado de su pedido en su <a>Historial</a></p>
-          <p>Ante cualquier duda o inconveniente con su orden, puede llamarnos al número 2254-6854, guarde su número de orden.</p>
+          <p>Ante cualquier duda o inconveniente con su orden, puede llamarnos al número 2254-6854, guarde su número de
+            orden.</p>
         </div>
         <div class="row">
-          
+
         </div>
         <div class="row">
           <div class="col">
@@ -135,7 +178,8 @@
             </div>
             <div class="row justify-content-center">
               <ul class="list-group mb-3">
-                <li *ngFor="let producto of productos" class="list-group-item d-flex justify-content-between lh-condensed">
+                <li *ngFor="let producto of productos"
+                  class="list-group-item d-flex justify-content-between lh-condensed">
                   <div>
                     <h6 class="my-0">{{producto.nombre}} <span class="badge cantidad">x{{producto.cantidad}}</span></h6>
                     <small class="text-muted">{{producto.descripcion}}</small>

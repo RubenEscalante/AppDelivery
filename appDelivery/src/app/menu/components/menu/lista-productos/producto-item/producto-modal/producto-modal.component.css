@@ -3,13 +3,11 @@
   visibility: 0;
   height: 0px;
 }
-
 .modalTransition {
   transition: all 600ms;
   opacity: 1;
   visibility: 1;
   height: 0;
-
 }
 
 .clearfix{
@@ -18,11 +16,6 @@
 /* width */
 ::-webkit-scrollbar {
   width: 7px;
-}
-
-/* Track */
-::-webkit-scrollbar-track {
-
 }
 
 /* Handle */
@@ -70,6 +63,7 @@ Contenido
   margin-bottom: 25px;
 }
 
+
 /*
 Estilos modal
 */
@@ -87,7 +81,29 @@ body {
   width: 100px;
   height: 100px;
   left: 6px;
-  top: 6px;
+  top: 43px;
+  z-index: 100;
+}
+.cajaCerrar{
+  position: absolute;
+  border-radius: 200px 200px 200px 200px;
+  -moz-border-radius: 200px 200px 200px 200px;
+  -webkit-border-radius: 200px 200px 200px 200px;
+  border: 0px solid #000000;
+  background-color: #8D2324;
+  width: 60px;
+  height: 60px;
+  right: -20px;
+  top: -25px;
+}
+.cerrar {
+  cursor:pointer;
+  position: absolute;
+  color: #e3e3e3;
+  font-family: 'Biryani', sans-serif;
+  font-size: 30px;
+  left: 22px;
+  top: 12px;
 }
 .price {
   position: absolute;
@@ -96,6 +112,16 @@ body {
   font-size: 30px;
   left: 12px;
   top: 30px;
+}
+.imagenModal{
+  position: absolute;
+  left: 0;
+  top: 20px;
+  width: 269px !important;
+  height: 220px !important;
+  margin-top: 82px;
+  margin-left: 32px;
+  border: 12px solid white;
 }
 /*
 FORMULARIOS DEL MODAL
@@ -469,5 +495,6 @@ input[type=number]::-webkit-outer-spin-button {
     width: 500px;
   }
 }
+
 
 

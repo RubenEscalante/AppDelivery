@@ -1,5 +1,7 @@
-h1{
+.title{
     font-family: "Biryani", "sans-serif" ;
+    color: #313131;
+    margin-top: 30px; 
 }
 
 button{
@@ -7,7 +9,7 @@ button{
 }
 
 button:hover{
-    background-color: #465B6B;
+    background-color: #585858;
     color: white;
 }
 
@@ -18,4 +20,26 @@ button:hover{
 
 .fa-minus, .fa-plus, .carrito-vacio{
     color: white;
+}
+
+
+
+.col-margen-izquierda{
+    padding-left: 40px;
+}
+
+.lista-productos{ 
+    padding: auto 30px;
+    max-height: 600px;
+    overflow-y: auto; 
+    overflow-x: hidden;
+}
+
+.descripcion-producto{
+    color: #7A7A7A;
+}
+
+.imagen{
+    height: 230.5px;
+    width: 230.5px;
 }

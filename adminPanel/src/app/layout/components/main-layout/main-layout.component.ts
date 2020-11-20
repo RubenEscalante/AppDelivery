@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {Global} from '../../../common/global';
+
 
 @Component({
   selector: 'app-main-layout',
@@ -7,11 +7,9 @@ import {Global} from '../../../common/global';
   styleUrls: ['./main-layout.component.css']
 })
 export class MainLayoutComponent implements OnInit {
-  global: Global;
-
-  constructor(global:Global) { 
-    console.log('Main layout constructor called'); 
-    this.global=global;
+  
+  constructor() { 
+    console.log('Main layout constructor called');  
   }
 
   ngOnInit(): void {

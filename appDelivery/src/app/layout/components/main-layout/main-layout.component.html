@@ -4,18 +4,18 @@
       <span class="w-100 d-lg-none d-block"><!-- hidden spacer to center brand on mobile --></span>
 
       <!--Logo del sitio-->
-      <img src="https://www.flaticon.com/svg/static/icons/svg/2912/2912292.svg" width="40" height="30" class="d-inline-block align-top" alt="logo"> 
+      <img src="../../../../assets/img/logo.png" width="100" height="45" class="d-inline-block align-top" alt="logo">
       <!--/Logo del sitio-->
 
       <!--Titulo del sitio-->
       <a class="navbar-brand d-none d-lg-inline-block" href="#">
-         App Pupusas
+         RESTAURANTE EL COMALITO
       </a>
       <!--/Titulo del sitio-->
 
       <!--Titulo del sitio en md (por defecto oculto hasta que cambie la resolucion)-->
-      <a class="navbar-brand  mx-auto d-lg-none d-inline-block">      
-        APP PUPUSAS     
+      <a class="navbar-brand  mx-auto d-lg-none d-inline-block">
+        RESTAURANTE EL COMALITO
       </a>
       <!--/Titulo del sitio en md-->
 
@@ -27,35 +27,44 @@
   </div>
   <!--//TODO: En pantallas pequeñas esta barra de navegacion no muestra bien el boton de salir de la sesion-->
   <div class="collapse navbar-collapse flex-grow-1 text-right" id="myNavbar">
-      <ul class="navbar-nav ml-auto flex-nowrap"> 
+      <ul class="navbar-nav ml-auto flex-nowrap">
           <!--//TODO: Esto puede ser mas eficiente, no se necesita mostrar el componente dos veces-->
           <!--Carrito de compras-->
           <li class="nav-item">
-            <button *ngIf="authService.userData as user; else mostrar_modal" type="button" routerLink="/carrito" class="btn nav-link m-2 menu-item">
-              <i class="fa fa-shopping-cart" aria-hidden="true"></i> Carrito
-              <span class="badge badge-pill badge-danger">{{menuCartservice.getCartLength()}}</span>
+            <button *ngIf="authService.userData as user; else mostrar_modal" type="button" routerLink="/carrito" class="btn nav-link m-2 menu-item" style="color:black">
+              <i class="fa fa-shopping-cart fa-lg" aria-hidden="true"></i>
+              <span class="badge badge-pill badge-danger cantidad">{{menuCartservice.getCartLength()}}</span>
               <span class="h6 ml-2">$ {{menuCartservice.getCartTotal().toFixed(2)}}</span>
             </button>
           </li>
           <ng-template #mostrar_modal>
-            <button type="button" (click)="abrirModalParaAutentificarse()" class="btn nav-link m-2 menu-item">
-              <i class="fa fa-shopping-cart" aria-hidden="true"></i> Carrito
-              <span class="badge badge-pill badge-danger">{{menuCartservice.getCartLength()}}</span>
-              <span class="h6 ml-2">$ {{menuCartservice.getCartTotal().toFixed(2)}}</span>
+            <button type="button" (click)="abrirModalParaAutentificarse()" class="btn nav-link m-2 menu-item" style="color:black">
+              <i class="fa fa-shopping-cart fa-lg" aria-hidden="true"></i>  
+              <span class="badge badge-pill badge-danger cantidad">{{menuCartservice.getCartLength()}}</span>
+              <span class="h6">$ {{menuCartservice.getCartTotal().toFixed(2)}}</span>
             </button>
           </ng-template>
           <!--/Carrito de compras-->
 
-          <!--Mensaje de bienvenida--> 
-          <li class="nav-item dropdown" *ngIf="authService.userData as user; else iniciar_sesion">    
+          <!-- Ordenes del usuario -->
+          <li *ngIf="authService.userData as user" class="nav-item">
+            <button type="button" class="btn nav-link m-2 menu-item" (click)="abrirModalParaOrdenes()">
+              <i class="fa fa-history fa-lg historial mr-1" aria-hidden="true"></i>
+              <span class="historial">Mis Órdenes</span>
+            </button>
+          </li>
+          <!-- /Ordenes del usuario -->
+
+          <!--Mensaje de bienvenida-->
+          <li class="nav-item dropdown" *ngIf="authService.userData as user; else iniciar_sesion">
             <button class="btn dropdown-toggle nav-link m-2 menu-item"   data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
               Bienvenido, {{authService.getUserName()}}
             </button>
             <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
               <a class="dropdown-item" routerLink="/perfil-usuario">Perfil de usuario</a>
               <a class="dropdown-item cursor-pointer" href="#" (click)="authService.SignOut()">Cerrar Sesion</a>
-            </div>  
-          </li> 
+            </div>
+          </li>
           <!--/EOF Mensaje de bienvenida-->
 
           <!--Template para iniciar sesion-->
@@ -63,28 +72,32 @@
             <li class="nav-item">
               <button type="button" id="loginbutton" class="btn nav-link m-2 menu-item" (click)="abrirModalParaAutentificarse()">
                 Iniciar sesión
-              </button> 
+              </button>
             </li>
           </ng-template>
-          <!--/EOF Template  para iniciar sesion-->  
+          <!--/EOF Template  para iniciar sesion-->
       </ul>
   </div>
 </nav>
 <!--/Barra de navegacion-->
 
 <!--Barra central-->
+<!--
 <nav class="navbar navbar-expand-sm navbar-light bg-light">
-  <div class="mx-auto d-sm-flex d-block flex-sm-nowrap"> 
+  <div class="mx-auto d-sm-flex d-block flex-sm-nowrap">
       <div class="text-center">
           <ul class="navbar-nav">
               <li class="nav-item active">
                   <a class="nav-text nav-link" routerLink="/menu">VER EL MENÚ</a>
-              </li> 
+              </li>
+            <li class="nav-item active">
+              <a class="nav-text nav-link" routerLink="/personalizar">ARMA TU PUPUSA</a>
+            </li>
           </ul>
       </div>
   </div>
-</nav>
-<!--/Barra central--> 
+</nav>-->
+<!--/Barra central-->
 
 <div class="cuerpo">
   <router-outlet></router-outlet>

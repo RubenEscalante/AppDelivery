@@ -1,9 +1,14 @@
-<div class="wrapper">
+<div class="modalMenu">
+  <div class="cajaCerrar">
+    <span class="cerrar" (click)="cerrar()">x</span>
+  </div>
   <div class="product-img">
     <div class="cajaPrecio">
       <span class="price">{{ productos.costo | currency: "USD" }}</span>
     </div>
-    <img src="https://www.196flavors.com/wp-content/uploads/2013/06/pupusa-3.jpg" height="420" width="327">
+    <!--Sustituir esto aca para poner imagen class="imagenModal" src="{{productos.imagen === undefined || productos.imagen === null || productos.imagen === 'null'  ? 'https://www.lonestarpark.com/wp-content/uploads/2019/04/image-placeholder-500x500.jpg' : productos.imagen.url}}"  -->
+    <img src="https://www.196flavors.com/wp-content/uploads/2013/06/pupusa-3.jpg" height="420" width="327" style="width: 100%">
+    <img class="imagenModal" src="{{productos.imagen === undefined || productos.imagen === null || productos.imagen === 'null'  ? 'https://www.lonestarpark.com/wp-content/uploads/2019/04/image-placeholder-500x500.jpg' : productos.imagen.url}}">
   </div>
   <div class="product-info">
     <div class="product-text">
@@ -28,7 +33,7 @@
           </div> -->
           <div class="number-input formNumber">
             <button (click)="restarcantidad()" type="button"></button>
-            <input formControlName="quantity" class="quantity" min="1" name="quantity" value="1" type="number">
+            <input formControlName="quantity" class="quantity" min="1" max="30" name="quantity" value="1" type="number" readonly>
             <button (click)="aumentarcantidad()" type="button" class="plus"></button>
           </div>
 
@@ -42,9 +47,9 @@
 
     </div>
   </div>
+
+
 </div>
-
-
 
 
 

@@ -1,117 +1,119 @@
-<div class="mx-5">
-    <div class="row">
-        <div class="col my-3">
-            <h1 class="h1">
-                <i class="fa fa-shopping-cart" aria-hidden="true"></i>
-                Carrito
-            </h1>
-            <hr>
-        </div>
+
+<div class="row ">
+    <div class="col m-3">
+            <h3 class="title">
+                Carrito de compras ({{menuServicio.getCartLength()}} items)
+            </h3>
+        <hr>
     </div>
 
-    
-    <div *ngIf="productos != null && productos.length > 0; else carritoVacio">
-        <div *ngFor="let producto of productos">
-
-            <div *ngIf="producto.categoria == 'pupusas'" class="row py-2">
-                <div class="col-3 align-self-center">
-                    <img src="../../../../assets/img/placeholder-img.jpg" alt="..." class="img-fluid">
-                </div>
-                <div class="col-5">
-                    <div class="row">
-                        <p class="h4 font-weight-bold w-75">{{producto.nombre}}</p>
-                    </div>
-                    <div class="row">
-                        <p>Descripción: <span class="text-capitalize">{{producto.descripcion}}</span></p>
-                    </div>
-                    <div class="row">
-                        <p>Masa: <span class="text-capitalize">{{producto.preferencias.masa}}</span></p>
-                    </div>
-                    <div class="row">
-                        <p>
-                            Ingredientes: 
-                            <span *ngFor="let ingrediente of producto.preferencias['ingredientes'] | keyvalue; let i = index" class="text-capitalize">
-                                {{ingrediente.value.nombre}}<span *ngIf="cantidadIngredientes(producto, i)">, </span>
-                            </span>
-                        </p>
-                    </div>
-                    <div class="row">
-                        <p>Costo: ${{producto.costo.toFixed(2)}}</p>
-                    </div>
-                    <div class="row">
-                        <a type="button" class="card-link-secondary mr-3" (click)="eliminarProducto(producto)">
-                            <i class="fa fa-trash mr-1" aria-hidden="true"></i>Eliminar producto
-                        </a>
-                    </div>
-                </div>
-                <div class="col-4">
-                    <div class="row d-flex justify-content-center">
-                        <div class="input-group w-50">
-                            <div class="input-group-prepend">
-                                <button class="btn btn-outline-dark d-inline" (click)="decrementarCantidad(producto)"><i class="fa fa-minus" aria-hidden="true"></i></button>
-                            </div>
-                            <input type="number" min="0" max="50" [value]="producto.cantidad" class="form-control d-inline w-25 text-center" [(ngModel)]="producto.cantidad" (change)="obtenerTotal()" readonly>
-                            <div class="input-group-append">
-                                <button class="btn btn-outline-dark d-inline" (click)="incrementarCantidad(producto)"><i class="fa fa-plus" aria-hidden="true"></i></button>
-                            </div>
-                        </div> 
-                    </div>
-                    <div class="row h-75 d-flex align-items-end flex-row justify-content-center">
-                        <p class="">Subtotal: ${{(producto.costo*producto.cantidad).toFixed(2)}}</p>
-                    </div>
-                </div>
-            </div>
-
-            <div *ngIf="producto.categoria != 'pupusas'" class="row py-2">
-                <div class="col-3 align-self-center">
-                    <img src="https://www.cowgirlcontractcleaning.com/wp-content/uploads/sites/360/2018/05/placeholder-img.jpg" alt="..." class="img-fluid">
-                </div>
-                <div class="col-5">
-                    <div class="row">
-                        <p class="h4 font-weight-bold w-75">{{producto.nombre}}</p>
-                    </div>
-                    <div class="row">
-                        <p>Descripción: <span class="text-capitalize">{{producto.descripcion}}</span></p>
-                    </div>
-                    <div class="row">
-                        <p>Costo: ${{producto.costo.toFixed(2)}}</p>
-                    </div>
-                    <div class="row">
-                        <a type="button" class="card-link-secondary mr-3" (click)="eliminarProducto(producto)">
-                            <i class="fa fa-trash mr-1" aria-hidden="true"></i>Eliminar producto
-                        </a>
-                    </div>
-                </div>
-                <div class="col-4">
-                    <div class="row d-flex justify-content-center">
-                        <div class="input-group w-50">
-                            <div class="input-group-prepend">
-                                <button class="btn btn-outline-secondary d-inline" (click)="decrementarCantidad(producto)"><i class="fa fa-minus" aria-hidden="true"></i></button>
-                            </div>
-                            <input type="number" min="0" max="50" [value]="producto.cantidad" class="form-control d-inline w-25 text-center" [(ngModel)]="producto.cantidad" (change)="obtenerTotal()" readonly>
-                            <div class="input-group-append">
-                                <button class="btn btn-outline-secondary d-inline" (click)="incrementarCantidad(producto)"><i class="fa fa-plus" aria-hidden="true"></i></button>
-                            </div>
-                        </div> 
-                    </div>
-                    <div class="row h-75 d-flex align-items-end flex-row justify-content-center">
-                        <p class="">Subtotal: ${{(producto.costo*producto.cantidad).toFixed(2)}}</p>
-                    </div>
-                </div>
-            </div>
-            <hr class="my-3">
-        </div>
-    </div>
-    
-    
-    
-    <ng-template #carritoVacio>
-        <div class="row">
-            <div class="col-12">
-                <p class="h4 py-2 text-center rounded carrito-vacio">No hay productos en el carrito</p>
-            </div>
-        </div>
-    </ng-template>
+    <hr>
 </div>
+        <div class="row">
+        <div class=" lista-productos">
+            <div *ngIf="productos != null && productos.length > 0; else carritoVacio">
+                <div *ngFor="let producto of productos">
+
+                    <div *ngIf="producto.categoria == 'pupusas'" class="row py-2">
+                        <div class="col-3 align-self-center">
+                            <img [src]="producto.imagen" alt="..." class="img-fluid">
+                        </div>
+                        <div class="col-5">
+                            <div class="row">
+                                <p class="h4 font-weight-bold w-75">{{producto.nombre}}</p>
+                            </div>
+                            <div class="row">
+                                <p>  <span class=" descripcion-producto">{{producto.descripcion}}</span></p>
+                            </div>
+                            <div class="row">
+                                <p>Masa: <span class="text-capitalize">{{producto.preferencias.masa}}</span></p>
+                            </div>
+                            <div class="row">
+                                <p>
+                                    Ingredientes:
+                                    <span *ngFor="let ingrediente of producto.preferencias['ingredientes'] | keyvalue; let i = index" class="text-capitalize">
+                                        {{ingrediente.value.nombre}}<span *ngIf="cantidadIngredientes(producto, i)">, </span>
+                                    </span>
+                                </p>
+                            </div>
+                            <div class="row">
+                                <p>Costo: ${{producto.costo.toFixed(2)}}</p>
+                            </div>
+                            <div class="row">
+                                <a type="button" class="card-link-secondary mr-3" (click)="eliminarProducto(producto)">
+                                    <i class="fa fa-trash mr-1" aria-hidden="true"></i>Eliminar producto
+                                </a>
+                            </div>
+                        </div>
+                        <div class="col-4">
+                            <div class="row d-flex justify-content-center">
+                                <div class="input-group w-50">
+                                    <div class="input-group-prepend">
+                                        <button class="btn btn-outline-dark d-inline" (click)="decrementarCantidad(producto)"><i class="fa fa-minus" aria-hidden="true"></i></button>
+                                    </div>
+                                    <input type="number" min="0" max="50" [value]="producto.cantidad" class="form-control d-inline w-25 text-center" [(ngModel)]="producto.cantidad" (change)="obtenerTotal()" readonly>
+                                    <div class="input-group-append">
+                                        <button class="btn btn-outline-dark d-inline" (click)="incrementarCantidad(producto)"><i class="fa fa-plus" aria-hidden="true"></i></button>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row h-75 d-flex align-items-end flex-row justify-content-center">
+                                <p class="">Subtotal: ${{(producto.costo*producto.cantidad).toFixed(2)}}</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div *ngIf="producto.categoria != 'pupusas'" class="row py-2">
+                        <div class="col-3 align-self-center">
+                            <img [src]="producto.imagen" alt="..." class="img-fluid">
+                        </div>
+                        <div class="col-5">
+                            <div class="row">
+                                <p class="h4 font-weight-bold w-75"> <strong>{{producto.nombre}}</strong></p>
+                            </div>
+                            <div class="row">
+                                <p>  <span class="  descripcion-producto">{{producto.descripcion}}</span></p>
+                            </div>
+                            <div class="row">
+                                <p>Costo: ${{producto.costo.toFixed(2)}}</p>
+                            </div>
+                            <div class="row">
+                                <a type="button" class="card-link-secondary mr-3" (click)="eliminarProducto(producto)">
+                                    <i class="fa fa-trash mr-1" aria-hidden="true"></i>Eliminar producto
+                                </a>
+                            </div>
+                        </div>
+                        <div class="col-4">
+                            <div class="row d-flex justify-content-center">
+                                <div class="input-group w-50">
+                                    <div class="input-group-prepend">
+                                        <button class="btn btn-outline-secondary d-inline" (click)="decrementarCantidad(producto)"><i class="fa fa-minus" aria-hidden="true"></i></button>
+                                    </div>
+                                    <input type="number" min="0" max="50" [value]="producto.cantidad" class="form-control d-inline w-25 text-center" [(ngModel)]="producto.cantidad" (change)="obtenerTotal()" readonly>
+                                    <div class="input-group-append">
+                                        <button class="btn  d-inline" (click)="incrementarCantidad(producto)"><i class="fa fa-plus" aria-hidden="true"></i></button>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row h-75 d-flex align-items-end flex-row justify-content-center">
+                                <p class="">Subtotal: ${{(producto.costo*producto.cantidad).toFixed(2)}}</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="my-5"></div>
+                </div>
+            </div>
+            <ng-template #carritoVacio>
+                <div class="row">
+                    <div class="col-12">
+                        <p class="h5 py-2 text-center" style="color:#7A7A7A ;">El carrito esta vacio.</p>
+                    </div>
+                </div>
+            </ng-template>
+        </div>
+    </div>
+
+
+
 
 

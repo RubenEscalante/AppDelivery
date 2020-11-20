@@ -23,12 +23,13 @@ export class ListaProductosComponent implements OnInit {
 
   constructor(
     private carritoService:CarritoService,
-    private menuServicio:MenucartService,
+    public menuServicio:MenucartService,
     private toastr:ToastrService
   ) { }
 
   ngOnInit(): void {
     this.productos = this.carritoService.get('cart');
+    console.log(this.productos);
     this.obtenerTotal();
   }
 
@@ -42,7 +43,7 @@ export class ListaProductosComponent implements OnInit {
     }
     this.carritoVacio.emit(false);
   }*/
-  
+
   this.guardarCambios();
   this.total = this.menuServicio.getCartTotal();
   if(this.productos == null || this.productos.length == 0){
@@ -51,7 +52,7 @@ export class ListaProductosComponent implements OnInit {
     this.carritoVacio.emit(false);
   }
   this.enviarTotal.emit(this.total);
-  
+
 }
 
 //Elimina un solo producto

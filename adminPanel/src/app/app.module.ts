@@ -14,13 +14,18 @@ import { environment } from '../environments/environment';
 import { AngularFireModule } from '@angular/fire';
 import { AngularFireDatabaseModule } from '@angular/fire/database';
 
-
+import {
+  AngularFireStorageModule,
+  AngularFireStorageReference,
+  AngularFireUploadTask 
+} from "@angular/fire/storage"; 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent 
   ],
   imports: [
     BrowserModule, //Angular Firebase
+    AngularFireStorageModule,
     AngularFireModule.initializeApp(environment.firebase), 
     AngularFireDatabaseModule,
     HttpClientModule,

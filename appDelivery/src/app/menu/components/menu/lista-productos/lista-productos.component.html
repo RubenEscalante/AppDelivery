@@ -1,4 +1,56 @@
-<div class="menucart">
+
+
+
+<!--Barra central-->
+<nav class="navbar navbar-expand-sm navbar-light bg-light" >
+  <div class="mx-auto d-sm-flex d-block flex-sm-nowrap">
+      <div class="text-center">
+          <ul class="navbar-nav">
+              <li   [class.filtromasaactive]="valorfiltro == 'pupusas' && valorfiltroMasa == 'ambas'"> 
+                <a class="nav-text nav-link" (click)="valorFiltroMasa('ambas')">Todas las pupusas</a> 
+              </li>
+              <li   [class.filtromasaactive]="valorfiltro == 'pupusas' && valorfiltroMasa == 'arroz'"> 
+                <a class="nav-text nav-link" (click)="valorFiltroMasa('arroz')">Solo de arroz</a> 
+              </li>
+              <li   [class.filtromasaactive]="valorfiltro == 'pupusas' && valorfiltroMasa == 'maiz'"> 
+                <a class="nav-text nav-link" (click)="valorFiltroMasa('maiz')">Solo de maiz</a> 
+              </li> 
+              <li class="nav-item active" [class.filtromasaactive]="valorfiltro == 'bebidas'">
+                <a class="nav-text nav-link"  (click)="cambiarfiltro('bebidas')">Bebidas</a>
+              </li>
+              <li class="nav-item active">
+                <a class="nav-text nav-link" [class.filtromasaactive]="valorfiltro == 'postres'"  (click)="cambiarfiltro('postres')">Postres</a>
+              </li>
+              <li class="nav-item active">
+                <a class="nav-text nav-link" routerLink="/personalizar">Arma tu pupusa</a>
+              </li>
+          </ul>
+      </div>
+  </div>
+</nav>
+
+<!--/Barra central-->
+
+
+<div class="contenedor-item-menu" style="margin-top: 50px;"> 
+
+
+
+  <!-- SI ESTA SELECCIONADO LAS PUPUSAS -->
+<div class="contenedor" *ngIf="valorfiltro == 'pupusas'"  >
+  <div
+    *ngFor="
+      let productos of Productos
+        | filtro: valorfiltro:'categoria'
+        | filtromasa: valorfiltroMasa
+        | paginacion: page_size:page_number
+    "
+  >
+    <app-producto-item [productos]="productos"></app-producto-item>
+  </div>
+</div>
+  <!-- SI ESTA SELECCIONADO POSTRES O BEBIDAS -->
+  <div class="contenedor" *ngIf="valorfiltro == 'bebidas' || valorfiltro == 'postres'" >
   <div
 
     *ngFor="
@@ -10,16 +62,33 @@
     <app-producto-item [productos]="productos"></app-producto-item>
   </div>
 </div>
+</div>
+<br>
 
+<div *ngIf="valorfiltro == 'pupusas'" >
+  <div *ngIf="page_size < (Productos | filtro: valorfiltro:'categoria'  | filtromasa:  valorfiltroMasa).length">
+    <ngb-pagination
+      size="lg"
+      [directionLinks]="false"
+      [(page)]="page_number"
+      [pageSize]="page_size"
+      [collectionSize]="(Productos | filtro: valorfiltro:'categoria').length"
+      class="d-flex justify-content-center paginacionMenu"
+    ></ngb-pagination>
+  </div>
+</div>
+<div *ngIf="valorfiltro == 'bebidas' || valorfiltro == 'postres'"  >
+  <div *ngIf="page_size < (Productos | filtro: valorfiltro:'categoria').length">
+    <ngb-pagination
+      size="lg"
+      [directionLinks]="false"
+      [(page)]="page_number"
+      [pageSize]="page_size"
+      [collectionSize]="(Productos | filtro: valorfiltro:'categoria').length"
+      class="d-flex justify-content-center paginacionMenu"
+    ></ngb-pagination>
+  </div>
 
-<div *ngIf="page_size < (Productos | filtro: valorfiltro:'categoria').length">
-  <ngb-pagination
-    size="lg"
-    [directionLinks]="false"
-    [(page)]="page_number"
-    [pageSize]="page_size"
-    [collectionSize]="(Productos | filtro: valorfiltro:'categoria').length"
-    class="d-flex justify-content-center"
-  ></ngb-pagination>
 </div>
 
+<div style="height: 50px;"></div>
