@@ -10,3 +10,5 @@ export class Producto {
     imagen?: (Imagen)|null;
     preferencias?: (Preferencias)|null; 
 }
+
+

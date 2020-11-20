@@ -24,6 +24,7 @@ import { CarrouselComponent } from './components/carrousel/carrousel.component';
 
 
 
+
 @NgModule({
   declarations: [
     MenuComponent,
