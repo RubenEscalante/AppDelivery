@@ -8,11 +8,7 @@ import { Router} from '@angular/router';
   templateUrl: './filtros.component.html',
   styleUrls: ['./filtros.component.css', '../menu.component.css'],
 })
-<<<<<<< HEAD
-export class FiltrosComponent implements OnInit { 
-=======
 export class FiltrosComponent implements OnInit {
->>>>>>> 4c8e37162b9fb662c0db9f3efcda2116dee0e6bd
   constructor(private filterService: ProductfilterService,
               private router: Router) {}
 
