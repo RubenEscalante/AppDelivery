@@ -1,7 +1,7 @@
 # AppDelivery PupasRicas (Proyecto DPS)
-Manual de usuario
+Este repositorio contiene dos aplicaciones, AppDelivery es la aplicación para clientes. Mientras que adminPanel es la aplicación de administración, desde la cual se pueden agregar productos, movilizar ordenes y otras acciones administrativas.
 
-Enlace de Aplicación en hosting
+Enlace de App Delivery en hosting
 https://dps-pupasdev.web.app/ 
 
 Enlace de Trello
