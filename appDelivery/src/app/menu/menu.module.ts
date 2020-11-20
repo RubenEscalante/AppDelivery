@@ -21,8 +21,7 @@ import {AngularFireDatabaseModule} from '@angular/fire/database';
 import { FiltromasaPipe } from './Pipes/filtromasa.pipe';
 import { MenuSoloPupusasComponent } from './components/menu/menu-solo-pupusas/menu-solo-pupusas.component';
 import { CarrouselComponent } from './components/carrousel/carrousel.component';
-
-import { MenuSoloPupusasComponent } from './components/menu-solo-pupusas/menu-solo-pupusas.component';
+ 
 
 
 
@@ -36,12 +35,8 @@ import { MenuSoloPupusasComponent } from './components/menu-solo-pupusas/menu-so
     FiltroPipe,
     PaginacionPipe,
     FiltromasaPipe,
-<<<<<<< HEAD
-    MenuSoloPupusasComponent
-=======
     MenuSoloPupusasComponent,
     CarrouselComponent
->>>>>>> napote
 
 
   ],

@@ -8,7 +8,7 @@ import { Producto } from '../../models/producto';
 //Servicio
 import { CarritoService } from '../../services/carrito.service';
 import { MenucartService } from '../../../menu/services/menucart.service';
-
+ 
 @Component({
   selector: 'app-lista-productos',
   templateUrl: './lista-productos.component.html',
@@ -23,12 +23,12 @@ export class ListaProductosComponent implements OnInit {
 
   constructor(
     private carritoService:CarritoService,
-    private menuServicio:MenucartService,
+    public menuServicio:MenucartService,
     private toastr:ToastrService
   ) { }
 
   ngOnInit(): void {
-    this.productos = this.carritoService.get('cart');
+    this.productos = this.carritoService.get('cart'); 
     this.obtenerTotal();
   }
 

@@ -8,17 +8,9 @@ import { Router} from '@angular/router';
   templateUrl: './filtros.component.html',
   styleUrls: ['./filtros.component.css', '../menu.component.css'],
 })
-<<<<<<< HEAD
-export class FiltrosComponent implements OnInit {
-  
-  valorFiltro: string = "pupusas";
-
-  constructor(private filterService: ProductfilterService) {}
-=======
 export class FiltrosComponent implements OnInit { 
   constructor(private filterService: ProductfilterService,
               private router: Router) {}
->>>>>>> napote
 
   ngOnInit(): void {}
 
@@ -28,9 +20,4 @@ export class FiltrosComponent implements OnInit {
     
 
   }
-<<<<<<< HEAD
- 
-=======
-
->>>>>>> napote
 }
