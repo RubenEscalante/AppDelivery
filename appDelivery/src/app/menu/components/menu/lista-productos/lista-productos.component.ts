@@ -2,7 +2,7 @@ import {Component, HostListener, OnInit} from '@angular/core';
 import {ProductlistService} from '../../../services/productlist.service';
 import {ProductfilterService} from '../../../services/productfilter.service';
 import {Products} from 'src/app/menu/models/products';
- 
+
 
 import { ActivatedRoute, Router } from '@angular/router';
 
@@ -24,7 +24,7 @@ export class ListaProductosComponent implements OnInit {
     private productListService: ProductlistService,
     private filterService: ProductfilterService,
     private route: ActivatedRoute
-    
+
   ) {
   }
   @HostListener('window:resize', ['$event'])
@@ -48,15 +48,16 @@ export class ListaProductosComponent implements OnInit {
     }
 
     this.route
-      .queryParams      
-      .subscribe(params => { 
+      .queryParams
+      .subscribe(params => {
         this.valorfiltro = params['filtro'] || 'pupusas';
+        this.valorfiltroMasa = params['valorfiltroMasa'] || 'ambas';
      });
-     
- 
-    this.valorfiltroMasa = 'ambas'; 
 
-    
+
+
+
+
 
     this.filterService.enviarMensajeObservable.subscribe((data) => {
       this.valorfiltro = data;
@@ -88,7 +89,7 @@ export class ListaProductosComponent implements OnInit {
 
   }
 
-   
+
   valorFiltroMasa(prop) {
     this.cambiarfiltro('pupusas');
     this.valorfiltroMasa = prop;

@@ -1,10 +1,10 @@
 <div class="contenedor-filtro">
 
-  <!--Pupusas--> 
+  <!--Pupusas-->
   <div class="elemento-filtro" routerLink='categorias'>
     <div class="img-filtro" >
       <img
-        src="assets/img/bebidafiltro.png"
+        src="assets/img/pupusafiltro.png"
         alt="imgFiltro"
         srcset=""
         style="width: 100%"
@@ -19,14 +19,14 @@
   <div class="elemento-filtro"   (click)="cambiarfiltro('bebidas')">
     <div class="img-filtro"  >
       <img
-        src="assets/img/pupusafiltro.png"
+        src="assets/img/bebidafiltro.png"
         alt="imgFiltro"
         srcset=""
         style="width: 100%"
       />
     </div>
 
-    <div class="footer-filtro"><h1>Pupusa</h1></div>
+    <div class="footer-filtro"><h1>Bebidas</h1></div>
   </div>
 
 
@@ -45,10 +45,10 @@
     <div class="footer-filtro"><h1>Postres</h1></div>
   </div>
 
-  <div class="elemento-filtro"  (click)="cambiarfiltro('postres')">
+  <div class="elemento-filtro" [routerLink]="'/personalizar'" >
     <div class="img-filtro "  >
       <img
-        src="assets/img/pupusafiltro.png"
+        src="assets/img/armatupupusa.png"
         alt="imgFiltro"
         class="imgc"
         srcset=""
@@ -60,5 +60,4 @@
   </div>
 
 </div>
- 
-  
+
