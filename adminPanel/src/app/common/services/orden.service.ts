@@ -15,6 +15,7 @@ import {Orden} from '../models/orden';
 export class OrdenService{ 
 
   datosFirebase:AngularFireList<any>;
+  historialUsuario:AngularFireList<any>;
 
   constructor(private firebase:AngularFireDatabase) { }
 
@@ -25,6 +26,10 @@ export class OrdenService{
   obtenerOrdenes(){  
     return this.datosFirebase = this.firebase.list('ordenes'); 
   }
+
+  // obtenerUsuario(){
+  //   return this.usuariosFirebase = this.firebase.list('clientes');
+  // }
   
   //Buscar Orden por estado
   filtrarOrdenesEstado(){
@@ -32,7 +37,11 @@ export class OrdenService{
   }
 
   //Cuando sea necesario actualizar el estado de la orden seleccionada
-  actualizarEstado(orden:Orden){      
+  actualizarEstado(orden:Orden){
+    this.historialUsuario = this.firebase.list('clientes/'+orden.userId+'/historial');
+    this.historialUsuario.update(orden.id,{
+      estado: orden.estado
+    });      
     return this.datosFirebase.update(orden.id,{
       estado: orden.estado 
       })    

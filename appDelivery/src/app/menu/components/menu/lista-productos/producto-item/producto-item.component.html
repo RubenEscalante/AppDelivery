@@ -5,7 +5,7 @@
   </div>
   <div class="item-menu-img">
     <img
-      src="{{productos.imagen === undefined ? 'https://www.lonestarpark.com/wp-content/uploads/2019/04/image-placeholder-500x500.jpg' : productos.imagen.url}}"
+      src="{{productos.imagen === undefined || productos.imagen === null || productos.imagen === 'null'  ? 'https://www.lonestarpark.com/wp-content/uploads/2019/04/image-placeholder-500x500.jpg' : productos.imagen.url}}"
       alt="Avatar"
     />
 

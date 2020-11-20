@@ -13,5 +13,5 @@ export interface Orden {
     descuento:number;
     fechaCreacion: Date;
     fechaEntrega?: Date;
-    
+    userId:string;
 }

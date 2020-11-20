@@ -21,7 +21,11 @@ import {AngularFireDatabaseModule} from '@angular/fire/database';
 import { FiltromasaPipe } from './Pipes/filtromasa.pipe';
 import { MenuSoloPupusasComponent } from './components/menu/menu-solo-pupusas/menu-solo-pupusas.component';
 import { CarrouselComponent } from './components/carrousel/carrousel.component';
+<<<<<<< HEAD
  
+=======
+
+>>>>>>> 4c8e37162b9fb662c0db9f3efcda2116dee0e6bd
 
 
 

@@ -25,7 +25,7 @@ export class ListaPedidosComponent implements OnInit {
               }
 
   ngOnInit() {
-    this.obtenerOrdenes();   
+    this.obtenerOrdenes();
   }
 
   obtenerOrdenes():void{ 
@@ -35,7 +35,7 @@ export class ListaPedidosComponent implements OnInit {
       respuesta.forEach(element=>{
         let x = element.payload.toJSON();
         x["id"] = element.key;  
-        this.listaPedidos.push(x as Orden) 
+        this.listaPedidos.unshift(x as Orden) 
       })
       this.global.numeroOrdenes=this.listaPedidos.length;
     },
@@ -89,7 +89,33 @@ export class ListaPedidosComponent implements OnInit {
         this.ordenActiva=undefined;
     } 
     this.obtenerOrdenes();
-  } 
+  }
+
+  moverOrden(orden:Orden){
+    switch(orden.estado){
+      case "Recibido":
+        orden.estado = "Cocinado";
+        this.ordenActiva = orden;
+        break;
+      case "Cocinado":
+        orden.estado = "Listo";
+        this.ordenActiva = orden;
+        break;
+      case "Listo":
+        orden.estado = "Enviado";
+        this.ordenActiva = orden;
+        break;
+      case "Enviado":
+        orden.estado = "Entregado";
+        this.ordenActiva = orden;
+        this.actualizar();
+        this.moverHistorial(orden);
+        this.eliminarPedido();
+        break;
+    }
+
+    this.actualizar();
+  }
  
 
 }

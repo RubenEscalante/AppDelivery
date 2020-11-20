@@ -42,20 +42,30 @@
                     <p>{{pedido.direccionEnvio}}</p> 
                     
                 </td>
-                <td colspan="1"> 
-                    <button (click)="moverCocina(pedido);actualizar()">    
-                        Cocinado                                  
-                    </button> <br>
-                    <button (click)="moverListo(pedido);actualizar()">    
+                <td colspan="1">
+                    <button class="btn btn-light" (click)="moverOrden(pedido)">
+                        <span *ngIf="pedido.estado == 'Recibido'; else cocinado">Cocinado</span>
+                        <ng-template #cocinado>
+                            <span *ngIf="pedido.estado == 'Cocinado'; else listo">Listo</span>
+                        </ng-template>
+                        <ng-template #listo>
+                            <span *ngIf="pedido.estado == 'Listo'; else enviado">Enviado</span>
+                        </ng-template>
+                        <ng-template #enviado>
+                            <span *ngIf="pedido.estado == 'Enviado'">Entregado</span>
+                        </ng-template>                                  
+                    </button>
+                     
+                    <!-- <button class="btn btn-light" (click)="moverListo(pedido);actualizar();botones('l')" [hidden]="listo">    
                         Listo                               
                     </button> <br> 
 
-                    <button href="" (click)="moverEnviado(pedido);actualizar()">    
+                    <button class="btn btn-light" href="" (click)="moverEnviado(pedido);actualizar();botones('env')" [hidden]="enviado">    
                         Enviado                               
                     </button>   <br>
-                    <button href="" (click)="moverEntregado(pedido);actualizar();moverHistorial(pedido);eliminarPedido()">    
+                    <button class="btn btn-light" href="" (click)="moverEntregado(pedido);actualizar();moverHistorial(pedido);eliminarPedido();botones('ent')" [hidden]="entregado">    
                         Entregado                            
-                    </button><br>               
+                    </button><br>                -->
                 </td>
             </tr> 
         </tbody> 
