@@ -128,7 +128,7 @@ export class TuPupusaComponent implements OnInit {
         preferencias,
         costo: this.costoUnidad,
         cantidad: myvalue.value.quantity,
-        imagen: 'https://www.196flavors.com/wp-content/uploads/2013/06/pupusa-3-FP.jpg'
+        imagen: '../../../assets/img/pupusaPersonalizada.jpg'
       };
       this.menuCartservice.addToCar(mycart);
       this.toastr.success('Producto agregado al carrito', 'Exito', {
