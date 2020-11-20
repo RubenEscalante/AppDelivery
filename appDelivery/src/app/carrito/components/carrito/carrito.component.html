@@ -16,7 +16,7 @@
             <div class="col-md-8 px-4">
                 <app-lista-productos #listaCarrito (enviarTotal)="recibirTotal($event)" (carritoVacio)="estadoCarrito($event)"></app-lista-productos>
                 <div class="row vaciar-carrito">
-                    <button class="btn" (click)="listaCarrito.vaciarCarrito()" [disabled]="carritoVacio">
+                    <button class="btn" (click)="listaCarrito.vaciarCarrito()" [attr.hidden]='carritoVacio? true:null' [disabled]="carritoVacio">
                         <i class="fa fa-trash pr-2"></i>
                         Vaciar carrito
                     </button>
