@@ -18,12 +18,10 @@ import {
   AngularFireStorageModule,
   AngularFireStorageReference,
   AngularFireUploadTask 
-} from "@angular/fire/storage";
-
-
+} from "@angular/fire/storage"; 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent 
   ],
   imports: [
     BrowserModule, //Angular Firebase
