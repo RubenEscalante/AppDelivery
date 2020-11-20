@@ -57,10 +57,10 @@
     </div>
     <div class="cajaDatos">
       <form [formGroup]="productoForm" (ngSubmit)="submitForm()">
-        <div class="headerCajaDatos middle">
+        <div class="headerCajaDatos middle" >
           <div class="masa">
             <label>
-              <input type="radio"  formControlName="masa" value="Arroz" class="option-input radio" checked/>
+              <input type="radio"    formControlName="masa" value="Arroz" class="option-input radio" checked/>
               <div class=" box">
                 <span >Arroz</span>
               </div>
@@ -97,7 +97,7 @@
 
         <div class="datosIngredientes">
           <p class="error" *ngIf="this.form.controls['checkArray'].errors?.required">
-            Debes elejir minimo 2 ingredientes maximo 4.
+            Debes elegir minimo 2 ingredientes y máximo 4.
           </p>
           <div *ngFor="let data of itemsArmaTuPupusa; let i=index" class="itemsIngredientes">
 

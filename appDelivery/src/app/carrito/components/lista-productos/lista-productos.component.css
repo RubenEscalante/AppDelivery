@@ -38,3 +38,8 @@ button:hover{
 .descripcion-producto{
     color: #7A7A7A;
 }
+
+.imagen{
+    height: 230.5px;
+    width: 230.5px;
+}

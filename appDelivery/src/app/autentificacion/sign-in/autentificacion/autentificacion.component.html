@@ -29,7 +29,12 @@
                   <label>Nombre completo</label>
                   <input formControlName="nombre" [ngClass]="displayFieldCss('nombre')" type="text" class="form-control input-lg" placeholder="Nombre completo*">
                   <!--Advertencias de validacion-->
-                  
+                  <small *ngIf="this.signupForm.get('nombre').touched && this.signupForm.get('nombre').errors?.required">
+                    Este campo es requerido
+                  </small>
+                  <small *ngIf="this.signupForm.get('nombre').errors?.minlength || this.signupForm.get('nombre').errors?.maxlength">
+                    El nombre debe tener entre 3 y 22 caracteres
+                  </small>
             
                   <!--/Advertencias de validacion-->
                 </div>
@@ -40,8 +45,12 @@
                   <label>Correo electronico</label>
                   <input formControlName="correo" type="email" class="form-control input-lg" placeholder="Correo electronico*">
                   <!--Advertencias de validacion-->
-                  <span class="help-block">
-                  </span>
+                  <small *ngIf="this.signupForm.get('correo').touched && this.signupForm.get('correo').errors?.required">
+                    Este campo es requerido
+                  </small>
+                  <small *ngIf="this.signupForm.get('correo').errors?.email">
+                    El formato de correo es invalido.
+                  </small>
                   <!--/Advertencias de validacion-->
                 </div>
                 <!--/Correo electronico-->
@@ -50,7 +59,13 @@
               <!--Contraseña-->
               <div class="form-group">
                   <label>Contraseña</label>
-                  <input formControlName="pwd"  type="password" name="password" id="password" class="form-control input-lg" placeholder="Contraseña*">                  
+                  <input formControlName="pwd"  type="password" name="password" id="password" class="form-control input-lg" placeholder="Contraseña*">
+                  <small *ngIf="this.signupForm.get('pwd').touched && this.signupForm.get('pwd').errors?.required">
+                    Este campo es requerido
+                  </small>
+                  <small *ngIf="this.signupForm.get('pwd').errors?.minlength || this.signupForm.get('pwd').errors?.maxlength">
+                    La contraseña debe tener entre 6 y 12 caracteres
+                  </small>              
               </div>
                
                 <!--Advertencia de campos requeridos-->
