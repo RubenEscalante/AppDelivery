@@ -31,16 +31,16 @@
           <!--//TODO: Esto puede ser mas eficiente, no se necesita mostrar el componente dos veces-->
           <!--Carrito de compras-->
           <li class="nav-item">
-            <button *ngIf="authService.userData as user; else mostrar_modal" type="button" routerLink="/carrito" class="btn nav-link m-2 menu-item">
+            <button *ngIf="authService.userData as user; else mostrar_modal" type="button" routerLink="/carrito" class="btn nav-link m-2 menu-item" style="color:black">
               <i class="fa fa-shopping-cart fa-lg" aria-hidden="true"></i>
               <span class="badge badge-pill badge-danger cantidad">{{menuCartservice.getCartLength()}}</span>
               <span class="h6 ml-2">$ {{menuCartservice.getCartTotal().toFixed(2)}}</span>
             </button>
           </li>
           <ng-template #mostrar_modal>
-            <button type="button" (click)="abrirModalParaAutentificarse()" class="btn nav-link m-2 menu-item">
-              <i class="fa fa-shopping-cart" aria-hidden="true"></i> Carrito
-              <span class="badge badge-pill badge-danger">{{menuCartservice.getCartLength()}}</span>
+            <button type="button" (click)="abrirModalParaAutentificarse()" class="btn nav-link m-2 menu-item" style="color:black">
+              <i class="fa fa-shopping-cart fa-lg" aria-hidden="true"></i>  
+              <span class="badge badge-pill badge-danger cantidad">{{menuCartservice.getCartLength()}}</span>
               <span class="h6">$ {{menuCartservice.getCartTotal().toFixed(2)}}</span>
             </button>
           </ng-template>
