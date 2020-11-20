@@ -1,19 +1,19 @@
- 
+
 <div class="row ">
-    <div class="col m-3"> 
-            <h3 class="title"> 
-                Carrito de compras ({{menuServicio.getCartLength()}} items) 
-            </h3>   
+    <div class="col m-3">
+            <h3 class="title">
+                Carrito de compras ({{menuServicio.getCartLength()}} items)
+            </h3>
         <hr>
-    </div> 
+    </div>
 
     <hr>
 </div>
         <div class="row">
-        <div class=" lista-productos"> 
+        <div class=" lista-productos">
             <div *ngIf="productos != null && productos.length > 0; else carritoVacio">
                 <div *ngFor="let producto of productos">
-        
+
                     <div *ngIf="producto.categoria == 'pupusas'" class="row py-2">
                         <div class="col-3 align-self-center">
                             <img [src]="producto.imagen" alt="..." class="img-fluid">
@@ -30,7 +30,7 @@
                             </div>
                             <div class="row">
                                 <p>
-                                    Ingredientes: 
+                                    Ingredientes:
                                     <span *ngFor="let ingrediente of producto.preferencias['ingredientes'] | keyvalue; let i = index" class="text-capitalize">
                                         {{ingrediente.value.nombre}}<span *ngIf="cantidadIngredientes(producto, i)">, </span>
                                     </span>
@@ -55,17 +55,17 @@
                                     <div class="input-group-append">
                                         <button class="btn btn-outline-dark d-inline" (click)="incrementarCantidad(producto)"><i class="fa fa-plus" aria-hidden="true"></i></button>
                                     </div>
-                                </div> 
+                                </div>
                             </div>
                             <div class="row h-75 d-flex align-items-end flex-row justify-content-center">
                                 <p class="">Subtotal: ${{(producto.costo*producto.cantidad).toFixed(2)}}</p>
                             </div>
                         </div>
                     </div>
-        
+
                     <div *ngIf="producto.categoria != 'pupusas'" class="row py-2">
                         <div class="col-3 align-self-center">
-                            <img src="https://www.cowgirlcontractcleaning.com/wp-content/uploads/sites/360/2018/05/placeholder-img.jpg" alt="..." class="img-fluid">
+                            <img [src]="producto.imagen" alt="..." class="img-fluid">
                         </div>
                         <div class="col-5">
                             <div class="row">
@@ -93,7 +93,7 @@
                                     <div class="input-group-append">
                                         <button class="btn  d-inline" (click)="incrementarCantidad(producto)"><i class="fa fa-plus" aria-hidden="true"></i></button>
                                     </div>
-                                </div> 
+                                </div>
                             </div>
                             <div class="row h-75 d-flex align-items-end flex-row justify-content-center">
                                 <p class="">Subtotal: ${{(producto.costo*producto.cantidad).toFixed(2)}}</p>
@@ -102,7 +102,7 @@
                     </div>
                     <div class="my-5"></div>
                 </div>
-            </div> 
+            </div>
             <ng-template #carritoVacio>
                 <div class="row">
                     <div class="col-12">
@@ -110,7 +110,7 @@
                     </div>
                 </div>
             </ng-template>
-        </div> 
+        </div>
     </div>
 
 
