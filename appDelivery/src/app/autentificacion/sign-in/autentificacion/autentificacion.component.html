@@ -32,11 +32,8 @@
                   <small *ngIf="this.signupForm.get('nombre').touched && this.signupForm.get('nombre').errors?.required">
                     Este campo es requerido
                   </small>
-                  <small *ngIf="this.signupForm.get('nombre').errors?.minlength">
-                    El nombre debe tener más de 3 caracteres
-                  </small>
-                  <small *ngIf="this.signupForm.get('nombre').errors?.maxlength">
-                    El nombre debe tener menos de 22 caracteres
+                  <small *ngIf="this.signupForm.get('nombre').errors?.minlength || this.signupForm.get('nombre').errors?.maxlength">
+                    El nombre debe tener entre 3 y 22 caracteres
                   </small>
             
                   <!--/Advertencias de validacion-->
@@ -52,7 +49,7 @@
                     Este campo es requerido
                   </small>
                   <small *ngIf="this.signupForm.get('correo').errors?.email">
-                    Debe ingresar un correo válido. Ej: usuario@dominio.com
+                    El formato de correo es invalido.
                   </small>
                   <!--/Advertencias de validacion-->
                 </div>
@@ -66,12 +63,9 @@
                   <small *ngIf="this.signupForm.get('pwd').touched && this.signupForm.get('pwd').errors?.required">
                     Este campo es requerido
                   </small>
-                  <small *ngIf="this.signupForm.get('pwd').errors?.minlength">
-                    La contraseña debe tener más de 6 caracteres
-                  </small>
-                  <small *ngIf="this.signupForm.get('pwd').errors?.maxlength">
-                    La contraseña debe tener menos de 12 caracteres
-                  </small>                  
+                  <small *ngIf="this.signupForm.get('pwd').errors?.minlength || this.signupForm.get('pwd').errors?.maxlength">
+                    La contraseña debe tener entre 6 y 12 caracteres
+                  </small>              
               </div>
                
                 <!--Advertencia de campos requeridos-->
