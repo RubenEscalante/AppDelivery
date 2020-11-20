@@ -12,17 +12,36 @@
                     <!--Correo electronico-->
                     <div class="form-group">
                         <label>Correo electronico</label>
-                        <input formControlName="correo" type="email" class="form-control input-lg" placeholder="Correo electronico*">
-                        <!--Advertencias de validacion-->
-                        <span class="help-block">
-                        </span>
-                        <!--/Advertencias de validacion-->
+                        <input formControlName="correo" type="email" class="form-control input-lg" placeholder="Correo electronico*">                       
+
+                        <!--Advertencias de validacion-->  
+                        <div *ngIf="loginForm.get('correo').invalid && (loginForm.get('correo').touched || loginForm.get('correo').dirty)">
+                            <small  class="help-block invalid form-text text-muted" *ngIf="loginForm.get('correo').errors.required">
+                                Este campo es requerido.
+                            </small>  
+                            <small  class="help-block invalid form-text text-muted" *ngIf="loginForm.get('correo').errors.email">
+                                El formato de correo es invalido.
+                            </small>   
+                        </div>   
+                         <!--/Advertencias de validacion-->
+                  
                     </div>
                     <!--Contraseña-->
                     <div class="form-group">
                         <label>Contraseña</label>
                         <input formControlName="pwd"  type="password" name="password" id="password" class="form-control input-lg" placeholder="Contraseña*">
-                        
+                         <!--Advertencias de validacion-->  
+                         <div *ngIf="loginForm.get('pwd').invalid && (loginForm.get('pwd').touched || loginForm.get('pwd').dirty)">
+                            <small  class="help-block invalid form-text text-muted" *ngIf="loginForm.get('pwd').errors.required">
+                                Este campo es requerido.
+                            </small>  
+                            <small  class="help-block invalid form-text text-muted" *ngIf="loginForm.get('pwd').errors.minlength || loginForm.get('pwd').errors.maxlength ">
+                                La contraseña debe tener entre 6 y 12 caracteres.
+                            </small>   
+                        </div>   
+                         <!--/Advertencias de validacion--> 
+
+
                         <!--Olvide mi contraseña-->
                         <div  class="text-right" style="margin-top: 10px;"> 
                             <a href="#" id="forgot-password-link">Olvide mi contraseña</a>
