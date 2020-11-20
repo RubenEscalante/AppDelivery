@@ -6,7 +6,9 @@
     <div class="cajaPrecio">
       <span class="price">{{ productos.costo | currency: "USD" }}</span>
     </div>
+    <!--Sustituir esto aca para poner imagen class="imagenModal" src="{{productos.imagen === undefined || productos.imagen === null || productos.imagen === 'null'  ? 'https://www.lonestarpark.com/wp-content/uploads/2019/04/image-placeholder-500x500.jpg' : productos.imagen.url}}"  -->
     <img src="https://www.196flavors.com/wp-content/uploads/2013/06/pupusa-3.jpg" height="420" width="327" style="width: 100%">
+    <img class="imagenModal" src="{{productos.imagen === undefined || productos.imagen === null || productos.imagen === 'null'  ? 'https://www.lonestarpark.com/wp-content/uploads/2019/04/image-placeholder-500x500.jpg' : productos.imagen.url}}">
   </div>
   <div class="product-info">
     <div class="product-text">

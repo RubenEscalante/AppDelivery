@@ -17,7 +17,7 @@
 ::-webkit-scrollbar {
   width: 7px;
 }
- 
+
 /* Handle */
 ::-webkit-scrollbar-thumb {
   background: #b0171f !important;
@@ -81,7 +81,8 @@ body {
   width: 100px;
   height: 100px;
   left: 6px;
-  top: 6px;
+  top: 43px;
+  z-index: 100;
 }
 .cajaCerrar{
   position: absolute;
@@ -111,6 +112,16 @@ body {
   font-size: 30px;
   left: 12px;
   top: 30px;
+}
+.imagenModal{
+  position: absolute;
+  left: 0;
+  top: 20px;
+  width: 269px !important;
+  height: 220px !important;
+  margin-top: 82px;
+  margin-left: 32px;
+  border: 12px solid white;
 }
 /*
 FORMULARIOS DEL MODAL
